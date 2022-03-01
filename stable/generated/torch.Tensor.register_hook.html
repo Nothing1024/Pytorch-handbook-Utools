@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.register_hook — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-register-hook">
+         <h1>
+          torch.Tensor.register_hook
+          <a class="headerlink" href="#torch-tensor-register-hook" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.register_hook">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             register_hook
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              hook
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/_tensor.html#Tensor.register_hook">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.register_hook" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Registers a backward hook.
+           </p>
+           <p>
+            The hook will be called every time a gradient with respect to the
+Tensor is computed. The hook should have the following signature:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="n">hook</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span> <span class="ow">or</span> <span class="kc">None</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            The hook should not modify its argument, but it can optionally return
+a new gradient which will be used in place of
+            <a class="reference internal" href="torch.Tensor.grad.html#torch.Tensor.grad" title="torch.Tensor.grad">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               grad
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <p>
+            This function returns a handle with a method
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              handle.remove()
+             </span>
+            </code>
+            that removes the hook from the module.
+           </p>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">register_hook</span><span class="p">(</span><span class="k">lambda</span> <span class="n">grad</span><span class="p">:</span> <span class="n">grad</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># double the gradient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">grad</span>
+
+<span class="go"> 2</span>
+<span class="go"> 4</span>
+<span class="go"> 6</span>
+<span class="go">[torch.FloatTensor of size (3,)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>  <span class="c1"># removes the hook</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

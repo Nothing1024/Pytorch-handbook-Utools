@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.functional.pixel_unshuffle — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-functional-pixel-unshuffle">
+         <h1>
+          torch.nn.functional.pixel_unshuffle
+          <a class="headerlink" href="#torch-nn-functional-pixel-unshuffle" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.functional.pixel_unshuffle">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.functional.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             pixel_unshuffle
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              downscale_factor
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.nn.functional.pixel_unshuffle" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Reverses the
+            <a class="reference internal" href="torch.nn.PixelShuffle.html#torch.nn.PixelShuffle" title="torch.nn.PixelShuffle">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               PixelShuffle
+              </span>
+             </code>
+            </a>
+            operation by rearranging elements in a
+tensor of shape
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mo>
+                   ∗
+                  </mo>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   C
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   H
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   r
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   W
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   r
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  (*, C, H \times r, W \times r)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 ∗
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.07153em;">
+                 C
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.08125em;">
+                 H
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.02778em;">
+                 r
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 W
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.02778em;">
+                 r
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            to a tensor of shape
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mo>
+                   ∗
+                  </mo>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   C
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <msup>
+                   <mi>
+                    r
+                   </mi>
+                   <mn>
+                    2
+                   </mn>
+                  </msup>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   H
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   W
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  (*, C \times r^2, H, W)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 ∗
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.07153em;">
+                 C
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1.064108em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal" style="margin-right:0.02778em;">
+                  r
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.8141079999999999em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        2
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.08125em;">
+                 H
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 W
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            , where r is the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              downscale_factor
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            See
+            <a class="reference internal" href="torch.nn.PixelUnshuffle.html#torch.nn.PixelUnshuffle" title="torch.nn.PixelUnshuffle">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               PixelUnshuffle
+              </span>
+             </code>
+            </a>
+            for details.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 downscale_factor
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – factor to increase spatial resolution by
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">pixel_unshuffle</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="go">torch.Size([1, 9, 4, 4])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

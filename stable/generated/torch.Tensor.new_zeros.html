@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.new_zeros — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-new-zeros">
+         <h1>
+          torch.Tensor.new_zeros
+          <a class="headerlink" href="#torch-tensor-new-zeros" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.new_zeros">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             new_zeros
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              size
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              requires_grad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.new_zeros" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns a Tensor of size
+            <a class="reference internal" href="torch.Tensor.size.html#torch.Tensor.size" title="torch.Tensor.size">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               size
+              </span>
+             </code>
+            </a>
+            filled with
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              0
+             </span>
+            </code>
+            .
+By default, the returned Tensor has the same
+            <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.dtype
+              </span>
+             </code>
+            </a>
+            and
+            <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.device
+              </span>
+             </code>
+            </a>
+            as this tensor.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 size
+                </strong>
+                (
+                <em>
+                 int...
+                </em>
+                ) – a list, tuple, or
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  torch.Size
+                 </span>
+                </code>
+                of integers defining the
+shape of the output tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired type of returned tensor.
+Default: if None, same
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                as this tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 device
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired device of returned tensor.
+Default: if None, same
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
+                as this tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 requires_grad
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If autograd should record operations on the
+returned tensor. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">((),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span><span class="o">.</span><span class="n">new_zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">tensor([[ 0.,  0.,  0.],</span>
+<span class="go">        [ 0.,  0.,  0.]], dtype=torch.float64)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

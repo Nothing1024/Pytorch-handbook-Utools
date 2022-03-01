@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   StreamContext — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="streamcontext">
+         <h1>
+          StreamContext
+          <a class="headerlink" href="#streamcontext" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.cuda.StreamContext">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             StreamContext
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              stream
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/cuda.html#StreamContext">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.StreamContext" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Context-manager that selects a given stream.
+           </p>
+           <p>
+            All CUDA kernels queued within its context will be enqueued on a selected
+stream.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               Stream
+              </strong>
+              (
+              <a class="reference internal" href="torch.cuda.Stream.html#torch.cuda.Stream" title="torch.cuda.Stream">
+               <em>
+                Stream
+               </em>
+              </a>
+              ) – selected stream. This manager is a no-op if it’s
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                None
+               </span>
+              </code>
+              .
+             </p>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Streams are per-device.
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

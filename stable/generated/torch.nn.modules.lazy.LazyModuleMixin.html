@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   LazyModuleMixin — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="lazymodulemixin">
+         <h1>
+          LazyModuleMixin
+          <a class="headerlink" href="#lazymodulemixin" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.modules.lazy.LazyModuleMixin">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.modules.lazy.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             LazyModuleMixin
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/lazy.html#LazyModuleMixin">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.modules.lazy.LazyModuleMixin" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            A mixin for modules that lazily initialize parameters, also known as “lazy modules.”
+           </p>
+           <p>
+            Modules that lazily initialize parameters, or “lazy modules”,
+derive the shapes of their parameters from the first input(s)
+to their forward method. Until that first forward they contain
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              torch.nn.UninitializedParameter
+             </span>
+            </code>
+            s that should not be accessed
+or used, and afterward they contain regular
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              torch.nn.Parameter
+             </span>
+            </code>
+            s.
+Lazy modules are convenient since they don’t require computing some
+module arguments, like the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              in_features
+             </span>
+            </code>
+            argument of a
+typical
+            <a class="reference internal" href="torch.nn.Linear.html#torch.nn.Linear" title="torch.nn.Linear">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.nn.Linear
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <p>
+            After construction, networks with lazy modules should first
+be converted to the desired dtype and placed on the expected device.
+This is because lazy modules only perform shape inference so the usual dtype
+and device placement behavior applies.
+The lazy modules should then perform “dry runs” to initialize all the components in the module.
+These “dry runs” send inputs of the correct size, dtype, and device through
+the network and to each one of its lazy modules. After this the network can be used as usual.
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">LazyMLP</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>       <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LazyLinear</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">relu1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+<span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LazyLinear</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">relu2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">... </span>   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+<span class="gp">... </span>       <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+<span class="gp">... </span>       <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="gp">... </span>       <span class="k">return</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># constructs a network with lazy modules</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span> <span class="o">=</span> <span class="n">LazyMLP</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># transforms the network's device and dtype</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># NOTE: these transforms can and should be applied after construction and before any 'dry runs'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">double</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span>
+<span class="go">LazyMLP( (fc1): LazyLinear(in_features=0, out_features=10, bias=True)</span>
+<span class="go">  (relu1): ReLU()</span>
+<span class="go">  (fc2): LazyLinear(in_features=0, out_features=1, bias=True)</span>
+<span class="go">  (relu2): ReLU()</span>
+<span class="go">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># performs a dry run to initialize the network's lazy modules</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># after initialization, LazyLinear modules become regular Linear modules</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span>
+<span class="go">LazyMLP(</span>
+<span class="go">  (fc1): Linear(in_features=10, out_features=10, bias=True)</span>
+<span class="go">  (relu1): ReLU()</span>
+<span class="go">  (fc2): Linear(in_features=10, out_features=1, bias=True)</span>
+<span class="go">  (relu2): ReLU()</span>
+<span class="go">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># attaches an optimizer, since parameters can now be used as usual</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">optim</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            A final caveat when using lazy modules is that the order of initialization of a network’s
+parameters may change, since the lazy modules are always initialized after other modules.
+For example, if the LazyMLP class defined above had a
+            <a class="reference internal" href="torch.nn.LazyLinear.html#torch.nn.LazyLinear" title="torch.nn.LazyLinear">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.nn.LazyLinear
+              </span>
+             </code>
+            </a>
+            module
+first and then a regular
+            <a class="reference internal" href="torch.nn.Linear.html#torch.nn.Linear" title="torch.nn.Linear">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.nn.Linear
+              </span>
+             </code>
+            </a>
+            second, the second module would be
+initialized on construction and the first module would be initialized during the first dry run.
+This can cause the parameters of a network using lazy modules to be initialized differently
+than the parameters of a network without lazy modules as the order of parameter initializations,
+which often depends on a stateful random number generator, is different.
+Check
+            <a class="reference internal" href="../notes/randomness.html">
+             <span class="doc">
+              Reproducibility
+             </span>
+            </a>
+            for more details.
+           </p>
+           <p>
+            Lazy modules can be serialized with a state dict like other modules. For example:
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span> <span class="o">=</span> <span class="n">LazyMLP</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The state dict shows the uninitialized parameters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+<span class="go">OrderedDict([('fc1.weight', Uninitialized parameter),</span>
+<span class="go">             ('fc1.bias',</span>
+<span class="go">              tensor([-1.8832e+25,  4.5636e-41, -1.8832e+25,  4.5636e-41, -6.1598e-30,</span>
+<span class="go">                       4.5637e-41, -1.8788e+22,  4.5636e-41, -2.0042e-31,  4.5637e-41])),</span>
+<span class="go">             ('fc2.weight', Uninitialized parameter),</span>
+<span class="go">             ('fc2.bias', tensor([0.0019]))])</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            Lazy modules can load regular
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              torch.nn.Parameter
+             </span>
+            </code>
+            s (i.e. you can serialize/deserialize
+initialized LazyModules and they will remain initialized)
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">full_mlp</span> <span class="o">=</span> <span class="n">LazyMLP</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Dry run to initialize another module</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">full_mlp</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load an initialized state into a lazy module</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">full_mlp</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The state dict now holds valid values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+<span class="go">OrderedDict([('fc1.weight',</span>
+<span class="go">              tensor([[-0.3837],</span>
+<span class="go">                      [ 0.0907],</span>
+<span class="go">                      [ 0.6708],</span>
+<span class="go">                      [-0.5223],</span>
+<span class="go">                      [-0.9028],</span>
+<span class="go">                      [ 0.2851],</span>
+<span class="go">                      [-0.4537],</span>
+<span class="go">                      [ 0.6813],</span>
+<span class="go">                      [ 0.5766],</span>
+<span class="go">                      [-0.8678]])),</span>
+<span class="go">             ('fc1.bias',</span>
+<span class="go">              tensor([-1.8832e+25,  4.5636e-41, -1.8832e+25,  4.5636e-41, -6.1598e-30,</span>
+<span class="go">                       4.5637e-41, -1.8788e+22,  4.5636e-41, -2.0042e-31,  4.5637e-41])),</span>
+<span class="go">             ('fc2.weight',</span>
+<span class="go">              tensor([[ 0.1320,  0.2938,  0.0679,  0.2793,  0.1088, -0.1795, -0.2301,  0.2807,</span>
+<span class="go">                        0.2479,  0.1091]])),</span>
+<span class="go">             ('fc2.bias', tensor([0.0019]))])</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            Note, however, that the loaded parameters will not be replaced when doing a “dry run” if they are initialized
+when the state is loaded. This prevents using initialized modules in different contexts.
+           </p>
+           <dl class="py method">
+            <dt id="torch.nn.modules.lazy.LazyModuleMixin.has_uninitialized_params">
+             <code class="sig-name descname">
+              <span class="pre">
+               has_uninitialized_params
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/lazy.html#LazyModuleMixin.has_uninitialized_params">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.modules.lazy.LazyModuleMixin.has_uninitialized_params" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Check if a module has parameters that are not initialized
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.modules.lazy.LazyModuleMixin.initialize_parameters">
+             <code class="sig-name descname">
+              <span class="pre">
+               initialize_parameters
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                *
+               </span>
+              </span>
+              <span class="n">
+               <span class="pre">
+                args
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                **
+               </span>
+              </span>
+              <span class="n">
+               <span class="pre">
+                kwargs
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/lazy.html#LazyModuleMixin.initialize_parameters">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.modules.lazy.LazyModuleMixin.initialize_parameters" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Initialize parameters according to the input batch properties.
+This adds an interface to isolate parameter initialization from the
+forward pass when doing parameter shape inference.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

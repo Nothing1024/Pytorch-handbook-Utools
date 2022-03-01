@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.requires_grad_ — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-requires-grad">
+         <h1>
+          torch.Tensor.requires_grad_
+          <a class="headerlink" href="#torch-tensor-requires-grad" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.requires_grad_">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             requires_grad_
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              requires_grad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.requires_grad_" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Change if autograd should record operations on this tensor: sets this tensor’s
+            <a class="reference internal" href="torch.Tensor.requires_grad.html#torch.Tensor.requires_grad" title="torch.Tensor.requires_grad">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               requires_grad
+              </span>
+             </code>
+            </a>
+            attribute in-place. Returns this tensor.
+           </p>
+           <p>
+            <a class="reference internal" href="#torch.Tensor.requires_grad_" title="torch.Tensor.requires_grad_">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               requires_grad_()
+              </span>
+             </code>
+            </a>
+            ’s main use case is to tell autograd to begin recording
+operations on a Tensor
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              tensor
+             </span>
+            </code>
+            . If
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              tensor
+             </span>
+            </code>
+            has
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              requires_grad=False
+             </span>
+            </code>
+            (because it was obtained through a DataLoader, or required preprocessing or
+initialization),
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              tensor.requires_grad_()
+             </span>
+            </code>
+            makes it so that autograd will
+begin to record operations on
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              tensor
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               requires_grad
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+               <em>
+                bool
+               </em>
+              </a>
+              ) – If autograd should record operations on this tensor.
+Default:
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                True
+               </span>
+              </code>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let's say we want to preprocess some saved weights and use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the result as new weights.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">saved_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loaded_weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">saved_weights</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">loaded_weights</span><span class="p">)</span>  <span class="c1"># some function</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span>
+<span class="go">tensor([-0.5503,  0.4926, -2.1158, -0.8303])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Now, start to record operations done to weights</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span><span class="o">.</span><span class="n">grad</span>
+<span class="go">tensor([-1.1007,  0.9853, -4.2316, -1.6606])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

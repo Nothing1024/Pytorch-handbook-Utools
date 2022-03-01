@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.lerp — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-lerp">
+         <h1>
+          torch.lerp
+          <a class="headerlink" href="#torch-lerp" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.lerp">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             lerp
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              end
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              weight
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.lerp" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Does a linear interpolation of two tensors
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              start
+             </span>
+            </code>
+            (given by
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            ) and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              end
+             </span>
+            </code>
+            based
+on a scalar or tensor
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              weight
+             </span>
+            </code>
+            and returns the resulting
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              out
+             </span>
+            </code>
+            tensor.
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mtext>
+                    out
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   =
+                  </mo>
+                  <msub>
+                   <mtext>
+                    start
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   +
+                  </mo>
+                  <msub>
+                   <mtext>
+                    weight
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   ×
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <msub>
+                   <mtext>
+                    end
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   −
+                  </mo>
+                  <msub>
+                   <mtext>
+                    start
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{out}_i = \text{start}_i + \text{weight}_i \times (\text{end}_i - \text{start}_i)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.76508em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   out
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        i
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.76508em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   start
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        i
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.93858em;vertical-align:-0.24414em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   weight
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.21752399999999997em;">
+                     <span style="top:-2.4558600000000004em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        i
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.24414em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   end
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        i
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 −
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   start
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        i
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            The shapes of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              start
+             </span>
+            </code>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              end
+             </span>
+            </code>
+            must be
+            <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+             <span class="std std-ref">
+              broadcastable
+             </span>
+            </a>
+            . If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              weight
+             </span>
+            </code>
+            is a tensor, then
+the shapes of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              weight
+             </span>
+            </code>
+            ,
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              start
+             </span>
+            </code>
+            , and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              end
+             </span>
+            </code>
+            must be
+            <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+             <span class="std std-ref">
+              broadcastable
+             </span>
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor with the starting points
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 end
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor with the ending points
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 weight
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 tensor
+                </em>
+                ) – the weight for the interpolation formula
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span>
+<span class="go">tensor([ 1.,  2.,  3.,  4.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end</span>
+<span class="go">tensor([ 10.,  10.,  10.,  10.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">lerp</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="go">tensor([ 5.5000,  6.0000,  6.5000,  7.0000])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">lerp</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="go">tensor([ 5.5000,  6.0000,  6.5000,  7.0000])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

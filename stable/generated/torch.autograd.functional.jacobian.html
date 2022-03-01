@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.autograd.functional.jacobian — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-autograd-functional-jacobian">
+         <h1>
+          torch.autograd.functional.jacobian
+          <a class="headerlink" href="#torch-autograd-functional-jacobian" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.autograd.functional.jacobian">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.autograd.functional.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             jacobian
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              func
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inputs
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              create_graph
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              strict
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              vectorize
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/autograd/functional.html#jacobian">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.autograd.functional.jacobian" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Function that computes the Jacobian of a given function.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 func
+                </strong>
+                (
+                <em>
+                 function
+                </em>
+                ) – a Python function that takes Tensor inputs and returns
+a tuple of Tensors or a Tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 inputs
+                </strong>
+                (
+                <em>
+                 tuple of Tensors
+                </em>
+                <em>
+                 or
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – inputs to the function
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  func
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 create_graph
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , the Jacobian will be
+computed in a differentiable manner. Note that when
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  strict
+                 </span>
+                </code>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , the result can not require gradients or be disconnected
+from the inputs.  Defaults to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 strict
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , an error will be raised when we
+detect that there exists an input such that all the outputs are
+independent of it. If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , we return a Tensor of zeros as the
+jacobian for said inputs, which is the expected mathematical value.
+Defaults to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 vectorize
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – This feature is experimental, please use at
+your own risk. When computing the jacobian, usually we invoke
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  autograd.grad
+                 </span>
+                </code>
+                once per row of the jacobian. If this flag is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , we use the vmap prototype feature as the backend to
+vectorize calls to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  autograd.grad
+                 </span>
+                </code>
+                so we only invoke it once
+instead of once per row. This should lead to performance
+improvements in many use cases, however, due to this feature
+being incomplete, there may be performance cliffs. Please
+use
+                <cite>
+                 torch._C._debug_only_display_vmap_fallback_warnings(True)
+                </cite>
+                to show any performance warnings and file us issues if
+warnings exist for your use case. Defaults to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              if there is a single
+input and output, this will be a single Tensor containing the
+Jacobian for the linearized inputs and output. If one of the two is
+a tuple, then the Jacobian will be a tuple of Tensors. If both of
+them are tuples, then the Jacobian will be a tuple of tuple of
+Tensors where
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                Jacobian[i][j]
+               </span>
+              </code>
+              will contain the Jacobian of the
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                i
+               </span>
+              </code>
+              th output and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                j
+               </span>
+              </code>
+              th input and will have as size the
+concatenation of the sizes of the corresponding output and the
+corresponding input and will have same dtype and device as the
+corresponding input.
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Return type
+            </dt>
+            <dd class="field-odd">
+             <p>
+              Jacobian (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               Tensor
+              </a>
+              or nested tuple of Tensors)
+             </p>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Example
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">exp_reducer</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jacobian</span><span class="p">(</span><span class="n">exp_reducer</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="go">tensor([[[1.4917, 2.4352],</span>
+<span class="go">         [0.0000, 0.0000]],</span>
+<span class="go">        [[0.0000, 0.0000],</span>
+<span class="go">         [2.4369, 2.3799]]])</span>
+</pre>
+            </div>
+           </div>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jacobian</span><span class="p">(</span><span class="n">exp_reducer</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">create_graph</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">tensor([[[1.4917, 2.4352],</span>
+<span class="go">         [0.0000, 0.0000]],</span>
+<span class="go">        [[0.0000, 0.0000],</span>
+<span class="go">         [2.4369, 2.3799]]], grad_fn=&lt;ViewBackward&gt;)</span>
+</pre>
+            </div>
+           </div>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">exp_adder</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jacobian</span><span class="p">(</span><span class="n">exp_adder</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="go">(tensor([[2.8052, 0.0000],</span>
+<span class="go">        [0.0000, 3.3963]]),</span>
+<span class="go"> tensor([[3., 0.],</span>
+<span class="go">         [0., 3.]]))</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

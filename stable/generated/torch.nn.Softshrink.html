@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Softshrink — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="softshrink">
+         <h1>
+          Softshrink
+          <a class="headerlink" href="#softshrink" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.Softshrink">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             Softshrink
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              lambd
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0.5
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/activation.html#Softshrink">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.Softshrink" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applies the soft shrinkage function elementwise:
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   SoftShrinkage
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   =
+                  </mo>
+                  <mrow>
+                   <mo fence="true">
+                    {
+                   </mo>
+                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mi>
+                         x
+                        </mi>
+                        <mo>
+                         −
+                        </mo>
+                        <mi>
+                         λ
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mtext>
+                         if
+                        </mtext>
+                        <mi>
+                         x
+                        </mi>
+                        <mo>
+                         &gt;
+                        </mo>
+                        <mi>
+                         λ
+                        </mi>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mi>
+                         x
+                        </mi>
+                        <mo>
+                         +
+                        </mo>
+                        <mi>
+                         λ
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mtext>
+                         if
+                        </mtext>
+                        <mi>
+                         x
+                        </mi>
+                        <mo>
+                         &lt;
+                        </mo>
+                        <mo>
+                         −
+                        </mo>
+                        <mi>
+                         λ
+                        </mi>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mn>
+                         0
+                        </mn>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mtext>
+                        otherwise
+                       </mtext>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                   </mtable>
+                  </mrow>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{SoftShrinkage}(x) =
+\begin{cases}
+x - \lambda, &amp; \text{ if } x &gt; \lambda \\
+x + \lambda, &amp; \text{ if } x &lt; -\lambda \\
+0, &amp; \text{ otherwise }
+\end{cases}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  SoftShrinkage
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:4.32em;vertical-align:-1.9099999999999997em;">
+                </span>
+                <span class="minner">
+                 <span class="mopen">
+                  <span class="delimsizing mult">
+                   <span class="vlist-t vlist-t2">
+                    <span class="vlist-r">
+                     <span class="vlist" style="height:2.3500199999999998em;">
+                      <span style="top:-2.19999em;">
+                       <span class="pstrut" style="height:3.15em;">
+                       </span>
+                       <span class="delimsizinginner delim-size4">
+                        <span>
+                         ⎩
+                        </span>
+                       </span>
+                      </span>
+                      <span style="top:-2.19199em;">
+                       <span class="pstrut" style="height:3.15em;">
+                       </span>
+                       <span style="height:0.31599999999999984em;width:0.889em;">
+                        <svg height="0.31599999999999984em" preserveaspectratio="xMinYMin" style="width:0.889em" viewbox="0 0 889 316" width="0.889em" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M384 0 H504 V316 H384z M384 0 H504 V316 H384z">
+                         </path>
+                        </svg>
+                       </span>
+                      </span>
+                      <span style="top:-3.15001em;">
+                       <span class="pstrut" style="height:3.15em;">
+                       </span>
+                       <span class="delimsizinginner delim-size4">
+                        <span>
+                         ⎨
+                        </span>
+                       </span>
+                      </span>
+                      <span style="top:-4.292009999999999em;">
+                       <span class="pstrut" style="height:3.15em;">
+                       </span>
+                       <span style="height:0.31599999999999984em;width:0.889em;">
+                        <svg height="0.31599999999999984em" preserveaspectratio="xMinYMin" style="width:0.889em" viewbox="0 0 889 316" width="0.889em" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M384 0 H504 V316 H384z M384 0 H504 V316 H384z">
+                         </path>
+                        </svg>
+                       </span>
+                      </span>
+                      <span style="top:-4.600019999999999em;">
+                       <span class="pstrut" style="height:3.15em;">
+                       </span>
+                       <span class="delimsizinginner delim-size4">
+                        <span>
+                         ⎧
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span class="vlist-s">
+                      ​
+                     </span>
+                    </span>
+                    <span class="vlist-r">
+                     <span class="vlist" style="height:1.8500199999999998em;">
+                      <span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mord">
+                  <span class="mtable">
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:2.41em;">
+                       <span style="top:-4.41em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         </span>
+                         <span class="mbin">
+                          −
+                         </span>
+                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         </span>
+                         <span class="mord mathnormal">
+                          λ
+                         </span>
+                         <span class="mpunct">
+                          ,
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.97em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         </span>
+                         <span class="mbin">
+                          +
+                         </span>
+                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         </span>
+                         <span class="mord mathnormal">
+                          λ
+                         </span>
+                         <span class="mpunct">
+                          ,
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-1.5300000000000002em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord">
+                          0
+                         </span>
+                         <span class="mpunct">
+                          ,
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.9099999999999997em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                   <span class="arraycolsep" style="width:1em;">
+                   </span>
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:2.41em;">
+                       <span style="top:-4.41em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           if
+                          </span>
+                         </span>
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mrel">
+                          &gt;
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mord mathnormal">
+                          λ
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.97em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           if
+                          </span>
+                         </span>
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mrel">
+                          &lt;
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mord">
+                          −
+                         </span>
+                         <span class="mord mathnormal">
+                          λ
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-1.5300000000000002em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           otherwise
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.9099999999999997em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               lambd
+              </strong>
+              – the
+              <span class="math">
+               <span class="katex">
+                <span class="katex-mathml">
+                 <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <semantics>
+                   <mrow>
+                    <mi>
+                     λ
+                    </mi>
+                   </mrow>
+                   <annotation encoding="application/x-tex">
+                    \lambda
+                   </annotation>
+                  </semantics>
+                 </math>
+                </span>
+                <span aria-hidden="true" class="katex-html">
+                 <span class="base">
+                  <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                  </span>
+                  <span class="mord mathnormal">
+                   λ
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+              (must be no less than zero) value for the Softshrink formulation. Default: 0.5
+             </p>
+            </dd>
+           </dl>
+           <dl class="simple">
+            <dt>
+             Shape:
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <p>
+                Input:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , where
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo>
+                       ∗
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      *
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                means any number of dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                Output:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , same shape as the input.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <img alt="../_images/Softshrink.png" src="../_images/Softshrink.png">
+            <p>
+             Examples:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softshrink</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+             </div>
+            </div>
+           </img>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

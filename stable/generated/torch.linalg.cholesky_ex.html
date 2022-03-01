@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.cholesky_ex — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-cholesky-ex">
+         <h1>
+          torch.linalg.cholesky_ex
+          <a class="headerlink" href="#torch-linalg-cholesky-ex" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.cholesky_ex">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             cholesky_ex
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              upper
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              check_errors
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.linalg.cholesky_ex" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the Cholesky decomposition of a complex Hermitian or real
+symmetric positive-definite matrix.
+           </p>
+           <p>
+            This function skips the (slow) error checking and error message construction
+of
+            <a class="reference internal" href="torch.linalg.cholesky.html#torch.linalg.cholesky" title="torch.linalg.cholesky">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.linalg.cholesky()
+              </span>
+             </code>
+            </a>
+            , instead directly returning the LAPACK
+error codes as part of a named tuple
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              (L,
+             </span>
+             <span class="pre">
+              info)
+             </span>
+            </code>
+            . This makes this function
+a faster way to check if a matrix is positive-definite, and it provides an
+opportunity to handle decomposition errors more gracefully or performantly
+than
+            <a class="reference internal" href="torch.linalg.cholesky.html#torch.linalg.cholesky" title="torch.linalg.cholesky">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.linalg.cholesky()
+              </span>
+             </code>
+            </a>
+            does.
+           </p>
+           <p>
+            Supports input of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a batch of matrices then
+the output has the same batch dimensions.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is not a Hermitian positive-definite matrix, or if it’s a batch of matrices
+and one or more of them is not a Hermitian positive-definite matrix,
+then
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            stores a positive integer for the corresponding matrix.
+The positive integer indicates the order of the leading minor that is not positive-definite,
+and the decomposition could not be completed.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            filled with zeros indicates that the decomposition was successful.
+If
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              check_errors=True
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            contains positive integers, then a RuntimeError is thrown.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               A
+              </span>
+             </code>
+             is on a CUDA device, this function may synchronize that device with the CPU.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This function is “experimental” and it may change in a future PyTorch release.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.cholesky.html#torch.linalg.cholesky" title="torch.linalg.cholesky">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.cholesky()
+               </span>
+              </code>
+             </a>
+             is a NumPy compatible variant that always checks for errors.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               A
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – the Hermitian
+              <cite>
+               n times n
+              </cite>
+              matrix or the batch of such matrices of size
+              <cite>
+               (*, n, n)
+              </cite>
+              where
+              <cite>
+               *
+              </cite>
+              is one or more batch dimensions.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 upper
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether to return an upper triangular matrix.
+The tensor returned with upper=True is the conjugate transpose of the tensor
+returned with upper=False.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 check_errors
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – controls whether to check the content of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  infos
+                 </span>
+                </code>
+                . Default:
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+                 <em>
+                  tuple
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – tuple of two tensors to write the output to. Ignored if
+                <cite>
+                 None
+                </cite>
+                . Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">t</span><span class="p">()</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>  <span class="c1"># creates a Hermitian positive-definite matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky_ex</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">tensor([[ 2.3792+0.0000j, -0.9023+0.9831j],</span>
+<span class="go">        [-0.9023-0.9831j,  0.8757+0.0000j]], dtype=torch.complex128)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span>
+<span class="go">tensor([[ 1.5425+0.0000j,  0.0000+0.0000j],</span>
+<span class="go">        [-0.5850-0.6374j,  0.3567+0.0000j]], dtype=torch.complex128)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span>
+<span class="go">tensor(0, dtype=torch.int32)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

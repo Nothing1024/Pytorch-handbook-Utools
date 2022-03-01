@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.as_tensor — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-as-tensor">
+         <h1>
+          torch.as_tensor
+          <a class="headerlink" href="#torch-as-tensor" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.as_tensor">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             as_tensor
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              data
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.as_tensor" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Convert the data into a
+            <cite>
+             torch.Tensor
+            </cite>
+            . If the data is already a
+            <cite>
+             Tensor
+            </cite>
+            with the same
+            <cite>
+             dtype
+            </cite>
+            and
+            <cite>
+             device
+            </cite>
+            ,
+no copy will be performed, otherwise a new
+            <cite>
+             Tensor
+            </cite>
+            will be returned with computational graph retained if data
+            <cite>
+             Tensor
+            </cite>
+            has
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              requires_grad=True
+             </span>
+            </code>
+            . Similarly, if the data is an
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              ndarray
+             </span>
+            </code>
+            of the corresponding
+            <cite>
+             dtype
+            </cite>
+            and
+the
+            <cite>
+             device
+            </cite>
+            is the cpu, no copy will be performed.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 data
+                </strong>
+                (
+                <em>
+                 array_like
+                </em>
+                ) – Initial data for the tensor. Can be a list, tuple,
+NumPy
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  ndarray
+                 </span>
+                </code>
+                , scalar, and other types.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired data type of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , infers data type from
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  data
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 device
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired device of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , uses the current device for the default tensor type
+(see
+                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.set_default_tensor_type()
+                  </span>
+                 </code>
+                </a>
+                ).
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  device
+                 </span>
+                </code>
+                will be the CPU
+for CPU tensor types and the current CUDA device for CUDA tensor types.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">tensor([ 1,  2,  3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([-1,  2,  3])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">tensor([ 1,  2,  3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([1,  2,  3])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

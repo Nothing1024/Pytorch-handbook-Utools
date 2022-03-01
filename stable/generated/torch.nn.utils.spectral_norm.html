@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.utils.spectral_norm — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-utils-spectral-norm">
+         <h1>
+          torch.nn.utils.spectral_norm
+          <a class="headerlink" href="#torch-nn-utils-spectral-norm" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.utils.spectral_norm">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             spectral_norm
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              module
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              name
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'weight'
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              n_power_iterations
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              eps
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1e-12
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/spectral_norm.html#spectral_norm">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.spectral_norm" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applies spectral normalization to a parameter in the given module.
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mi mathvariant="bold">
+                    W
+                   </mi>
+                   <mrow>
+                    <mi>
+                     S
+                    </mi>
+                    <mi>
+                     N
+                    </mi>
+                   </mrow>
+                  </msub>
+                  <mo>
+                   =
+                  </mo>
+                  <mfrac>
+                   <mi mathvariant="bold">
+                    W
+                   </mi>
+                   <mrow>
+                    <mi>
+                     σ
+                    </mi>
+                    <mo stretchy="false">
+                     (
+                    </mo>
+                    <mi mathvariant="bold">
+                     W
+                    </mi>
+                    <mo stretchy="false">
+                     )
+                    </mo>
+                   </mrow>
+                  </mfrac>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   σ
+                  </mi>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi mathvariant="bold">
+                   W
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   =
+                  </mo>
+                  <munder>
+                   <mrow>
+                    <mi>
+                     max
+                    </mi>
+                    <mo>
+                     ⁡
+                    </mo>
+                   </mrow>
+                   <mrow>
+                    <mi mathvariant="bold">
+                     h
+                    </mi>
+                    <mo>
+                     :
+                    </mo>
+                    <mi mathvariant="bold">
+                     h
+                    </mi>
+                    <mo mathvariant="normal">
+                     ≠
+                    </mo>
+                    <mn>
+                     0
+                    </mn>
+                   </mrow>
+                  </munder>
+                  <mfrac>
+                   <mrow>
+                    <mi mathvariant="normal">
+                     ∥
+                    </mi>
+                    <mi mathvariant="bold">
+                     W
+                    </mi>
+                    <mi mathvariant="bold">
+                     h
+                    </mi>
+                    <msub>
+                     <mi mathvariant="normal">
+                      ∥
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msub>
+                   </mrow>
+                   <mrow>
+                    <mi mathvariant="normal">
+                     ∥
+                    </mi>
+                    <mi mathvariant="bold">
+                     h
+                    </mi>
+                    <msub>
+                     <mi mathvariant="normal">
+                      ∥
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msub>
+                   </mrow>
+                  </mfrac>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathbf{W}_{SN} = \dfrac{\mathbf{W}}{\sigma(\mathbf{W})},
+\sigma(\mathbf{W}) = \max_{\mathbf{h}: \mathbf{h} \ne 0} \dfrac{\|\mathbf{W} \mathbf{h}\|_2}{\|\mathbf{h}\|_2}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.83611em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathbf" style="margin-right:0.01597em;">
+                  W
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.32833099999999993em;">
+                     <span style="top:-2.5500000000000003em;margin-left:-0.01597em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight" style="margin-right:0.10903em;">
+                         SN
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:2.29911em;vertical-align:-0.936em;">
+                </span>
+                <span class="mord">
+                 <span class="mopen nulldelimiter">
+                 </span>
+                 <span class="mfrac">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:1.36311em;">
+                     <span style="top:-2.314em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="mord">
+                       <span class="mord mathnormal" style="margin-right:0.03588em;">
+                        σ
+                       </span>
+                       <span class="mopen">
+                        (
+                       </span>
+                       <span class="mord mathbf" style="margin-right:0.01597em;">
+                        W
+                       </span>
+                       <span class="mclose">
+                        )
+                       </span>
+                      </span>
+                     </span>
+                     <span style="top:-3.23em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="frac-line" style="border-bottom-width:0.04em;">
+                      </span>
+                     </span>
+                     <span style="top:-3.677em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="mord">
+                       <span class="mord mathbf" style="margin-right:0.01597em;">
+                        W
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.936em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03588em;">
+                 σ
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathbf" style="margin-right:0.01597em;">
+                 W
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:2.363em;vertical-align:-0.936em;">
+                </span>
+                <span class="mop op-limits">
+                 <span class="vlist-t vlist-t2">
+                  <span class="vlist-r">
+                   <span class="vlist" style="height:0.43055999999999994em;">
+                    <span style="top:-2.3478920000000003em;margin-left:0em;">
+                     <span class="pstrut" style="height:3em;">
+                     </span>
+                     <span class="sizing reset-size6 size3 mtight">
+                      <span class="mord mtight">
+                       <span class="mord mathbf mtight">
+                        h
+                       </span>
+                       <span class="mrel mtight">
+                        :
+                       </span>
+                       <span class="mord mathbf mtight">
+                        h
+                       </span>
+                       <span class="mrel mtight">
+                        <span class="mrel mtight">
+                         <span class="mord vbox mtight">
+                          <span class="thinbox mtight">
+                           <span class="rlap mtight">
+                            <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                            </span>
+                            <span class="inner">
+                             <span class="mord mtight">
+                              <span class="mrel mtight">
+                               
+                              </span>
+                             </span>
+                            </span>
+                            <span class="fix">
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                        <span class="mrel mtight">
+                         =
+                        </span>
+                       </span>
+                       <span class="mord mtight">
+                        0
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span style="top:-3em;">
+                     <span class="pstrut" style="height:3em;">
+                     </span>
+                     <span>
+                      <span class="mop">
+                       max
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                   <span class="vlist-s">
+                    ​
+                   </span>
+                  </span>
+                  <span class="vlist-r">
+                   <span class="vlist" style="height:0.8882159999999999em;">
+                    <span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord">
+                 <span class="mopen nulldelimiter">
+                 </span>
+                 <span class="mfrac">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:1.427em;">
+                     <span style="top:-2.314em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="mord">
+                       <span class="mord">
+                        ∥
+                       </span>
+                       <span class="mord mathbf">
+                        h
+                       </span>
+                       <span class="mord">
+                        <span class="mord">
+                         ∥
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span style="top:-3.23em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="frac-line" style="border-bottom-width:0.04em;">
+                      </span>
+                     </span>
+                     <span style="top:-3.677em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="mord">
+                       <span class="mord">
+                        ∥
+                       </span>
+                       <span class="mord mathbf">
+                        Wh
+                       </span>
+                       <span class="mord">
+                        <span class="mord">
+                         ∥
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.936em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            Spectral normalization stabilizes the training of discriminators (critics)
+in Generative Adversarial Networks (GANs) by rescaling the weight tensor
+with spectral norm
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   σ
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \sigma
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03588em;">
+                 σ
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            of the weight matrix calculated using
+power iteration method. If the dimension of the weight tensor is greater
+than 2, it is reshaped to 2D in power iteration method to get spectral
+norm. This is implemented via a hook that calculates spectral norm and
+rescales weight before every
+            <code class="xref py py-meth docutils literal notranslate">
+             <span class="pre">
+              forward()
+             </span>
+            </code>
+            call.
+           </p>
+           <p>
+            See
+            <a class="reference external" href="https://arxiv.org/abs/1802.05957">
+             Spectral Normalization for Generative Adversarial Networks
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 module
+                </strong>
+                (
+                <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                 <em>
+                  nn.Module
+                 </em>
+                </a>
+                ) – containing module
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 name
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – name of weight parameter
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 n_power_iterations
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – number of power iterations to
+calculate spectral norm
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 eps
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – epsilon for numerical stability in
+calculating norms
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – dimension corresponding to number of outputs,
+the default is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  0
+                 </span>
+                </code>
+                , except for modules that are instances of
+ConvTranspose{1,2,3}d, when it is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  1
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              The original module with the spectral norm hook
+             </p>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function has been reimplemented as
+             <a class="reference internal" href="torch.nn.utils.parametrizations.spectral_norm.html#torch.nn.utils.parametrizations.spectral_norm" title="torch.nn.utils.parametrizations.spectral_norm">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.nn.utils.parametrizations.spectral_norm()
+               </span>
+              </code>
+             </a>
+             using the new
+parametrization functionality in
+             <a class="reference internal" href="torch.nn.utils.parametrize.register_parametrization.html#torch.nn.utils.parametrize.register_parametrization" title="torch.nn.utils.parametrize.register_parametrization">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.nn.utils.parametrize.register_parametrization()
+               </span>
+              </code>
+             </a>
+             . Please use
+the newer version. This function will be deprecated in a future version
+of PyTorch.
+            </p>
+           </div>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">spectral_norm</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span>
+<span class="go">Linear(in_features=20, out_features=40, bias=True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">weight_u</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([40])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

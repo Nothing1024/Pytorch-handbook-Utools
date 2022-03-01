@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.utils.prune.global_unstructured — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-utils-prune-global-unstructured">
+         <h1>
+          torch.nn.utils.prune.global_unstructured
+          <a class="headerlink" href="#torch-nn-utils-prune-global-unstructured" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.utils.prune.global_unstructured">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.prune.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             global_unstructured
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              parameters
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              pruning_method
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              importance_scores
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/prune.html#global_unstructured">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.prune.global_unstructured" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Globally prunes tensors corresponding to all parameters in
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              parameters
+             </span>
+            </code>
+            by applying the specified
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              pruning_method
+             </span>
+            </code>
+            .
+Modifies modules in place by:
+           </p>
+           <ol class="arabic simple">
+            <li>
+             <p>
+              adding a named buffer called
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name+'_mask'
+               </span>
+              </code>
+              corresponding to the
+binary mask applied to the parameter
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name
+               </span>
+              </code>
+              by the pruning method.
+             </p>
+            </li>
+            <li>
+             <p>
+              replacing the parameter
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name
+               </span>
+              </code>
+              by its pruned version, while the
+original (unpruned) parameter is stored in a new parameter named
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name+'_orig'
+               </span>
+              </code>
+              .
+             </p>
+            </li>
+           </ol>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 parameters
+                </strong>
+                (
+                <em>
+                 Iterable of
+                </em>
+                <em>
+                 (
+                </em>
+                <em>
+                 module
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 name
+                </em>
+                <em>
+                 )
+                </em>
+                <em>
+                 tuples
+                </em>
+                ) – parameters of
+the model to prune in a global fashion, i.e. by aggregating all
+weights prior to deciding which ones to prune. module must be of
+type
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  nn.Module
+                 </span>
+                </code>
+                , and name must be a string.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 pruning_method
+                </strong>
+                (
+                <em>
+                 function
+                </em>
+                ) – a valid pruning function from this module,
+or a custom one implemented by the user that satisfies the
+implementation guidelines and has
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  PRUNING_TYPE='unstructured'
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 importance_scores
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">
+                 <em>
+                  dict
+                 </em>
+                </a>
+                ) – a dictionary mapping (module, name) tuples to
+the corresponding parameter’s importance scores tensor. The tensor
+should be the same shape as the parameter, and is used for computing
+mask for pruning.
+If unspecified or None, the parameter will be used in place of its
+importance scores.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 kwargs
+                </strong>
+                – other keyword arguments such as:
+amount (int or float): quantity of parameters to prune across the
+specified parameters.
+If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  float
+                 </span>
+                </code>
+                , should be between 0.0 and 1.0 and represent the
+fraction of parameters to prune. If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  int
+                 </span>
+                </code>
+                , it represents the
+absolute number of parameters to prune.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Raises
+            </dt>
+            <dd class="field-even">
+             <p>
+              <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.10)">
+               <strong>
+                TypeError
+               </strong>
+              </a>
+              – if
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                PRUNING_TYPE
+               </span>
+               <span class="pre">
+                !=
+               </span>
+               <span class="pre">
+                'unstructured'
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Since global structured pruning doesn’t make much sense unless the
+norm is normalized by the size of the parameter, we now limit the
+scope of global pruning to unstructured methods.
+            </p>
+           </div>
+           <p class="rubric">
+            Examples
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">([</span>
+<span class="go">        ('first', nn.Linear(10, 4)),</span>
+<span class="go">        ('second', nn.Linear(4, 1)),</span>
+<span class="go">    ]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameters_to_prune</span> <span class="o">=</span> <span class="p">(</span>
+<span class="go">        (net.first, 'weight'),</span>
+<span class="go">        (net.second, 'weight'),</span>
+<span class="go">    )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prune</span><span class="o">.</span><span class="n">global_unstructured</span><span class="p">(</span>
+<span class="go">        parameters_to_prune,</span>
+<span class="go">        pruning_method=prune.L1Unstructured,</span>
+<span class="go">        amount=10,</span>
+<span class="go">    )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">parameters_to_vector</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">buffers</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+<span class="go">tensor(10, dtype=torch.uint8)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

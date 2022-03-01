@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.tile — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tile">
+         <h1>
+          torch.tile
+          <a class="headerlink" href="#torch-tile" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.tile">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             tile
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dims
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.tile" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Constructs a tensor by repeating the elements of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            .
+The
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            argument specifies the number of repetitions
+in each dimension.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            specifies fewer dimensions than
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            has, then
+ones are prepended to
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            until all dimensions are specified.
+For example, if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            has shape (8, 6, 4, 2) and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            is (2, 2), then
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            is treated as (1, 1, 2, 2).
+           </p>
+           <p>
+            Analogously, if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            has fewer dimensions than
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            specifies, then
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            is treated as if it were unsqueezed at
+dimension zero until it has as many dimensions as
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            specifies.
+For example, if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            has shape (4, 2) and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            is (3, 3, 2, 2), then
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            is treated as if it had the
+shape (1, 1, 4, 2).
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function is similar to NumPy’s tile function.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor whose elements to repeat.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dims
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+                 <em>
+                  tuple
+                 </em>
+                </a>
+                ) – the number of repetitions per dimension.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">tile</span><span class="p">((</span><span class="mi">2</span><span class="p">,))</span>
+<span class="go">tensor([1, 2, 3, 1, 2, 3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">tensor([[1, 2, 1, 2],</span>
+<span class="go">        [3, 4, 3, 4],</span>
+<span class="go">        [1, 2, 1, 2],</span>
+<span class="go">        [3, 4, 3, 4]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

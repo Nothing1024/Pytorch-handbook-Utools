@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.set_default_tensor_type — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-set-default-tensor-type">
+         <h1>
+          torch.set_default_tensor_type
+          <a class="headerlink" href="#torch-set-default-tensor-type" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.set_default_tensor_type">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             set_default_tensor_type
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              t
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch.html#set_default_tensor_type">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.set_default_tensor_type" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Sets the default
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch.Tensor
+             </span>
+            </code>
+            type to floating point tensor type
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              t
+             </span>
+            </code>
+            . This type will also be used as default floating point type for
+type inference in
+            <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.tensor()
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <p>
+            The default floating point tensor type is initially
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch.FloatTensor
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               t
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.10)">
+               <em>
+                type
+               </em>
+              </a>
+              <em>
+               or
+              </em>
+              <em>
+               string
+              </em>
+              ) – the floating point tensor type or its name
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span>    <span class="c1"># initial default for floating point is torch.float32</span>
+<span class="go">torch.float32</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">set_default_tensor_type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">DoubleTensor</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span>    <span class="c1"># a new floating point tensor</span>
+<span class="go">torch.float64</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

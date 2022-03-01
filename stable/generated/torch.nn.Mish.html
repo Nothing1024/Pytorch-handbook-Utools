@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Mish — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="mish">
+         <h1>
+          Mish
+          <a class="headerlink" href="#mish" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.Mish">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             Mish
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inplace
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/activation.html#Mish">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.Mish" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applies the Mish function, element-wise.
+Mish: A Self Regularized Non-Monotonic Neural Activation Function.
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   Mish
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo>
+                   ∗
+                  </mo>
+                  <mtext>
+                   Tanh
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext>
+                   Softplus
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{Mish}(x) = x * \text{Tanh}(\text{Softplus}(x))
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  Mish
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ∗
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  Tanh
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  Softplus
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 ))
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             See
+             <a class="reference external" href="https://arxiv.org/abs/1908.08681">
+              Mish: A Self Regularized Non-Monotonic Neural Activation Function
+             </a>
+            </p>
+           </div>
+           <dl class="simple">
+            <dt>
+             Shape:
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <p>
+                Input:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , where
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo>
+                       ∗
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      *
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                means any number of dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                Output:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , same shape as the input.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Mish</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

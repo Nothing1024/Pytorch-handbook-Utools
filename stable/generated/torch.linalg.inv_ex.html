@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.inv_ex — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-inv-ex">
+         <h1>
+          torch.linalg.inv_ex
+          <a class="headerlink" href="#torch-linalg-inv-ex" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.inv_ex">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             inv_ex
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              check_errors
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.linalg.inv_ex" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the inverse of a square matrix if it is invertible.
+           </p>
+           <p>
+            Returns a namedtuple
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              (inverse,
+             </span>
+             <span class="pre">
+              info)
+             </span>
+            </code>
+            .
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              inverse
+             </span>
+            </code>
+            contains the result of
+inverting
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            stores the LAPACK error codes.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is not an invertible matrix, or if it’s a batch of matrices
+and one or more of them is not an invertible matrix,
+then
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            stores a positive integer for the corresponding matrix.
+The positive integer indicates the diagonal element of the LU decomposition of
+the input matrix that is exactly zero.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            filled with zeros indicates that the inversion was successful.
+If
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              check_errors=True
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            contains positive integers, then a RuntimeError is thrown.
+           </p>
+           <p>
+            Supports input of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a batch of matrices then
+the output has the same batch dimensions.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               A
+              </span>
+             </code>
+             is on a CUDA device then this function may synchronize
+that device with the CPU.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This function is “experimental” and it may change in a future PyTorch release.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.inv.html#torch.linalg.inv" title="torch.linalg.inv">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.inv()
+               </span>
+              </code>
+             </a>
+             is a NumPy compatible variant that always checks for errors.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 A
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – tensor of shape
+                <cite>
+                 (*, n, n)
+                </cite>
+                where
+                <cite>
+                 *
+                </cite>
+                is zero or more batch dimensions
+consisting of square matrices.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 check_errors
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – controls whether to check the content of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  info
+                 </span>
+                </code>
+                . Default:
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+               <em>
+                tuple
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – tuple of two tensors to write the output to. Ignored if
+              <cite>
+               None
+              </cite>
+              . Default:
+              <cite>
+               None
+              </cite>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Ainv</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv_ex</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">Ainv</span><span class="p">)</span>
+<span class="go">tensor(0.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span>
+<span class="go">tensor(0, dtype=torch.int32)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

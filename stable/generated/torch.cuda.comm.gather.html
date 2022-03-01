@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.cuda.comm.gather — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-cuda-comm-gather">
+         <h1>
+          torch.cuda.comm.gather
+          <a class="headerlink" href="#torch-cuda-comm-gather" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.cuda.comm.gather">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.comm.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             gather
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              tensors
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              destination
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/parallel/comm.html#gather">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.comm.gather" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Gathers tensors from multiple GPU devices.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 tensors
+                </strong>
+                (
+                <em>
+                 Iterable
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                ) – an iterable of tensors to gather.
+Tensor sizes in all dimensions other than
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                have to match.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – a dimension along which the tensors will be
+concatenated. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  0
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 destination
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <em>
+                  torch.device
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 , or
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output device.
+Can be CPU or CUDA. Default: the current CUDA device.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 keyword-only
+                </em>
+                ) – the tensor to store gather result.
+Its sizes must match those of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  tensors
+                 </span>
+                </code>
+                , except for
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                ,
+where the size must equal
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  sum(tensor.size(dim)
+                 </span>
+                 <span class="pre">
+                  for
+                 </span>
+                 <span class="pre">
+                  tensor
+                 </span>
+                 <span class="pre">
+                  in
+                 </span>
+                 <span class="pre">
+                  tensors)
+                 </span>
+                </code>
+                .
+Can be on CPU or CUDA.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               destination
+              </span>
+             </code>
+             must not be specified when
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               out
+              </span>
+             </code>
+             is specified.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <ul class="simple">
+               <li>
+                <dl class="simple">
+                 <dt>
+                  If
+                  <code class="xref py py-attr docutils literal notranslate">
+                   <span class="pre">
+                    destination
+                   </span>
+                  </code>
+                  is specified,
+                 </dt>
+                 <dd>
+                  <p>
+                   a tensor located on
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     destination
+                    </span>
+                   </code>
+                   device, that is a result of
+concatenating
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     tensors
+                    </span>
+                   </code>
+                   along
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     dim
+                    </span>
+                   </code>
+                   .
+                  </p>
+                 </dd>
+                </dl>
+               </li>
+               <li>
+                <dl class="simple">
+                 <dt>
+                  If
+                  <code class="xref py py-attr docutils literal notranslate">
+                   <span class="pre">
+                    out
+                   </span>
+                  </code>
+                  is specified,
+                 </dt>
+                 <dd>
+                  <p>
+                   the
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     out
+                    </span>
+                   </code>
+                   tensor, now containing results of concatenating
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     tensors
+                    </span>
+                   </code>
+                   along
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     dim
+                    </span>
+                   </code>
+                   .
+                  </p>
+                 </dd>
+                </dl>
+               </li>
+              </ul>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

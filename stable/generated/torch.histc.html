@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.histc — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-histc">
+         <h1>
+          torch.histc
+          <a class="headerlink" href="#torch-histc" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.histc">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             histc
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              bins
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              100
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              min
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              max
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.histc" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the histogram of a tensor.
+           </p>
+           <p>
+            The elements are sorted into equal width bins between
+            <a class="reference internal" href="torch.min.html#torch.min" title="torch.min">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               min
+              </span>
+             </code>
+            </a>
+            and
+            <a class="reference internal" href="torch.max.html#torch.max" title="torch.max">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               max
+              </span>
+             </code>
+            </a>
+            . If
+            <a class="reference internal" href="torch.min.html#torch.min" title="torch.min">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               min
+              </span>
+             </code>
+            </a>
+            and
+            <a class="reference internal" href="torch.max.html#torch.max" title="torch.max">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               max
+              </span>
+             </code>
+            </a>
+            are both zero, the minimum and
+maximum values of the data are used.
+           </p>
+           <p>
+            Elements lower than min and higher than max are ignored.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 bins
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – number of histogram bins
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 min
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – lower end of the range (inclusive)
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 max
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – upper end of the range (inclusive)
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              Histogram represented as a tensor
+             </p>
+            </dd>
+            <dt class="field-even">
+             Return type
+            </dt>
+            <dd class="field-even">
+             <p>
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               Tensor
+              </a>
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">histc</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">tensor([ 0.,  2.,  1.,  0.])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

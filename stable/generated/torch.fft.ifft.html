@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.fft.ifft — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-fft-ifft">
+         <h1>
+          torch.fft.ifft
+          <a class="headerlink" href="#torch-fft-ifft" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.fft.ifft">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.fft.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             ifft
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              n
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              -
+             </span>
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              norm
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.fft.ifft" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the one dimensional inverse discrete Fourier transform of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 n
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – Signal length. If given, the input will either be zero-padded
+or trimmed to this length before computing the IFFT.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The dimension along which to take the one dimensional IFFT.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 norm
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) –
+                <p>
+                 Normalization mode. For the backward transform
+(
+                 <a class="reference internal" href="#torch.fft.ifft" title="torch.fft.ifft">
+                  <code class="xref py py-func docutils literal notranslate">
+                   <span class="pre">
+                    ifft()
+                   </span>
+                  </code>
+                 </a>
+                 ), these correspond to:
+                </p>
+                <ul>
+                 <li>
+                  <p>
+                   <code class="docutils literal notranslate">
+                    <span class="pre">
+                     "forward"
+                    </span>
+                   </code>
+                   - no normalization
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   <code class="docutils literal notranslate">
+                    <span class="pre">
+                     "backward"
+                    </span>
+                   </code>
+                   - normalize by
+                   <code class="docutils literal notranslate">
+                    <span class="pre">
+                     1/n
+                    </span>
+                   </code>
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   <code class="docutils literal notranslate">
+                    <span class="pre">
+                     "ortho"
+                    </span>
+                   </code>
+                   - normalize by
+                   <code class="docutils literal notranslate">
+                    <span class="pre">
+                     1/sqrt(n)
+                    </span>
+                   </code>
+                   (making the IFFT orthonormal)
+                  </p>
+                 </li>
+                </ul>
+                <p>
+                 Calling the forward transform (
+                 <a class="reference internal" href="torch.fft.fft.html#torch.fft.fft" title="torch.fft.fft">
+                  <code class="xref py py-func docutils literal notranslate">
+                   <span class="pre">
+                    fft()
+                   </span>
+                  </code>
+                 </a>
+                 ) with the same
+normalization mode will apply an overall normalization of
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   1/n
+                  </span>
+                 </code>
+                 between
+the two transforms. This is required to make
+                 <a class="reference internal" href="#torch.fft.ifft" title="torch.fft.ifft">
+                  <code class="xref py py-func docutils literal notranslate">
+                   <span class="pre">
+                    ifft()
+                   </span>
+                  </code>
+                 </a>
+                 the exact inverse.
+                </p>
+                <p>
+                 Default is
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   "backward"
+                  </span>
+                 </code>
+                 (normalize by
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   1/n
+                  </span>
+                 </code>
+                 ).
+                </p>
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Example
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span> <span class="mf">6.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="o">+</span><span class="mf">2.</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="o">-</span><span class="mf">2.</span><span class="n">j</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">tensor([0.+0.j, 1.+0.j, 2.+0.j, 3.+0.j])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

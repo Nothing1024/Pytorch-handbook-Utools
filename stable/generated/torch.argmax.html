@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.argmax — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-argmax">
+         <h1>
+          torch.argmax
+          <a class="headerlink" href="#torch-argmax" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.argmax">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             argmax
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            LongTensor
+           </span>
+           <a class="headerlink" href="#torch.argmax" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the indices of the maximum value of all elements in the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            tensor.
+           </p>
+           <p>
+            This is the second value returned by
+            <a class="reference internal" href="torch.max.html#torch.max" title="torch.max">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               torch.max()
+              </span>
+             </code>
+            </a>
+            . See its
+documentation for the exact semantics of this method.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If there are multiple maximal values then the indices of the first maximal value are returned.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               input
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – the input tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[ 1.3398,  0.2663, -0.2686,  0.2450],</span>
+<span class="go">        [-0.7401, -0.8805, -0.3402, -1.1936],</span>
+<span class="go">        [ 0.4907, -1.3948, -1.0691, -0.3132],</span>
+<span class="go">        [-1.6092,  0.5419, -0.2993,  0.3195]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">tensor(0)</span>
+</pre>
+            </div>
+           </div>
+           <dl class="py function">
+            <dt>
+             <code class="sig-prename descclassname">
+              <span class="pre">
+               torch.
+              </span>
+             </code>
+             <code class="sig-name descname">
+              <span class="pre">
+               argmax
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                input
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                dim
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                keepdim
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                False
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             →
+             <span class="pre">
+              LongTensor
+             </span>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <p>
+            Returns the indices of the maximum values of a tensor across a dimension.
+           </p>
+           <p>
+            This is the second value returned by
+            <a class="reference internal" href="torch.max.html#torch.max" title="torch.max">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               torch.max()
+              </span>
+             </code>
+            </a>
+            . See its
+documentation for the exact semantics of this method.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – the dimension to reduce. If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , the argmax of the flattened input is returned.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 keepdim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – whether the output tensor has
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                retained or not. Ignored if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  dim=None
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[ 1.3398,  0.2663, -0.2686,  0.2450],</span>
+<span class="go">        [-0.7401, -0.8805, -0.3402, -1.1936],</span>
+<span class="go">        [ 0.4907, -1.3948, -1.0691, -0.3132],</span>
+<span class="go">        [-1.6092,  0.5419, -0.2993,  0.3195]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([ 0,  2,  0,  1])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

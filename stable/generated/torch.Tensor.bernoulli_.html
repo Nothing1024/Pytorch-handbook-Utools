@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.bernoulli_ — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-bernoulli">
+         <h1>
+          torch.Tensor.bernoulli_
+          <a class="headerlink" href="#torch-tensor-bernoulli" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.bernoulli_">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             bernoulli_
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              p
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0.5
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              generator
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.bernoulli_" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Fills each location of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            with an independent sample from
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   Bernoulli
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext mathvariant="monospace">
+                   p
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{Bernoulli}(\texttt{p})
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  Bernoulli
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord texttt">
+                  p
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            .
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            can have integral
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              dtype
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              p
+             </span>
+            </code>
+            should either be a scalar or tensor containing probabilities to be
+used for drawing the binary random number.
+           </p>
+           <p>
+            If it is a tensor, the
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msup>
+                   <mtext>
+                    i
+                   </mtext>
+                   <mrow>
+                    <mi>
+                     t
+                    </mi>
+                    <mi>
+                     h
+                    </mi>
+                   </mrow>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{i}^{th}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.906868em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   i
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.906868em;">
+                     <span style="top:-3.12076em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         t
+                        </span>
+                        <span class="mord mathnormal mtight">
+                         h
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            element of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            tensor
+will be set to a value sampled from
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   Bernoulli
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext mathvariant="monospace">
+                   p_tensor[i]
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{Bernoulli}(\texttt{p\_tensor[i]})
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  Bernoulli
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord texttt">
+                  p_tensor[i]
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            . In this case
+            <cite>
+             p
+            </cite>
+            must have
+floating point
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              dtype
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            See also
+            <a class="reference internal" href="torch.Tensor.bernoulli.html#torch.Tensor.bernoulli" title="torch.Tensor.bernoulli">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               bernoulli()
+              </span>
+             </code>
+            </a>
+            and
+            <a class="reference internal" href="torch.bernoulli.html#torch.bernoulli" title="torch.bernoulli">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.bernoulli()
+              </span>
+             </code>
+            </a>
+           </p>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

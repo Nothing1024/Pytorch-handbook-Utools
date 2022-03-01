@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.matrix_power — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-matrix-power">
+         <h1>
+          torch.linalg.matrix_power
+          <a class="headerlink" href="#torch-linalg-matrix-power" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.matrix_power">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             matrix_power
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              n
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.linalg.matrix_power" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the
+            <cite>
+             n
+            </cite>
+            -th power of a square matrix for an integer
+            <cite>
+             n
+            </cite>
+            .
+           </p>
+           <p>
+            Supports input of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a batch of matrices then
+the output has the same batch dimensions.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              n
+             </span>
+            </code>
+            <cite>
+             = 0
+            </cite>
+            , it returns the identity matrix (or batch) of the same shape
+as
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            . If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              n
+             </span>
+            </code>
+            is negative, it returns the inverse of each matrix
+(if invertible) raised to the power of
+            <cite>
+             abs(n)
+            </cite>
+            .
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Consider using
+             <a class="reference internal" href="torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.solve()
+               </span>
+              </code>
+             </a>
+             if possible for multiplying a matrix on the left by
+a negative power as, if
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               n
+              </span>
+             </code>
+             <cite>
+              &gt; 0
+             </cite>
+             :
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="n">matrix_power</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="n">matrix_power</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="o">-</span><span class="n">n</span><span class="p">)</span>  <span class="o">@</span> <span class="n">B</span>
+</pre>
+             </div>
+            </div>
+            <p>
+             It is always prefered to use
+             <a class="reference internal" href="torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                solve()
+               </span>
+              </code>
+             </a>
+             when possible, as it is faster and more
+numerically stable than computing
+             <span class="math">
+              <span class="katex">
+               <span class="katex-mathml">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                 <semantics>
+                  <mrow>
+                   <msup>
+                    <mi>
+                     A
+                    </mi>
+                    <mrow>
+                     <mo>
+                      −
+                     </mo>
+                     <mi>
+                      n
+                     </mi>
+                    </mrow>
+                   </msup>
+                  </mrow>
+                  <annotation encoding="application/x-tex">
+                   A^{-n}
+                  </annotation>
+                 </semantics>
+                </math>
+               </span>
+               <span aria-hidden="true" class="katex-html">
+                <span class="base">
+                 <span class="strut" style="height:0.771331em;vertical-align:0em;">
+                 </span>
+                 <span class="mord">
+                  <span class="mord mathnormal">
+                   A
+                  </span>
+                  <span class="msupsub">
+                   <span class="vlist-t">
+                    <span class="vlist-r">
+                     <span class="vlist" style="height:0.771331em;">
+                      <span style="top:-3.063em;margin-right:0.05em;">
+                       <span class="pstrut" style="height:2.7em;">
+                       </span>
+                       <span class="sizing reset-size6 size3 mtight">
+                        <span class="mord mtight">
+                         <span class="mord mtight">
+                          −
+                         </span>
+                         <span class="mord mathnormal mtight">
+                          n
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+             explicitly.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.solve()
+               </span>
+              </code>
+             </a>
+             computes
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               A
+              </span>
+             </code>
+             <cite>
+              .inverse() @
+             </cite>
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               B
+              </span>
+             </code>
+             with a
+numerically stable algorithm.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 A
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – tensor of shape
+                <cite>
+                 (*, m, m)
+                </cite>
+                where
+                <cite>
+                 *
+                </cite>
+                is zero or more batch dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 n
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – the exponent.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – output tensor. Ignored if
+              <cite>
+               None
+              </cite>
+              . Default:
+              <cite>
+               None
+              </cite>
+              .
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Raises
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.10)">
+               <strong>
+                RuntimeError
+               </strong>
+              </a>
+              – if
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                n
+               </span>
+              </code>
+              <cite>
+               &lt; 0
+              </cite>
+              and the matrix
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                A
+               </span>
+              </code>
+              or any matrix in the
+    batch of matrices
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                A
+               </span>
+              </code>
+              is not invertible.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">tensor([[1., 0., 0.],</span>
+<span class="go">        [0., 1., 0.],</span>
+<span class="go">        [0., 0., 1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">tensor([[ 1.0756,  0.4980,  0.0100],</span>
+<span class="go">        [-1.6617,  1.4994, -1.9980],</span>
+<span class="go">        [-0.4509,  0.2731,  0.8001]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([[[ 0.2640,  0.4571, -0.5511],</span>
+<span class="go">        [-1.0163,  0.3491, -1.5292],</span>
+<span class="go">        [-0.4899,  0.0822,  0.2773]],</span>
+<span class="go">        [[ 0.2640,  0.4571, -0.5511],</span>
+<span class="go">        [-1.0163,  0.3491, -1.5292],</span>
+<span class="go">        [-0.4899,  0.0822,  0.2773]]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

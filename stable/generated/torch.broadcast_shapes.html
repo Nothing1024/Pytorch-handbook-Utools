@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.broadcast_shapes — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-broadcast-shapes">
+         <h1>
+          torch.broadcast_shapes
+          <a class="headerlink" href="#torch-broadcast-shapes" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.broadcast_shapes">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             broadcast_shapes
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              shapes
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Size
+           </span>
+           <a class="reference internal" href="../_modules/torch/functional.html#broadcast_shapes">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.broadcast_shapes" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Similar to
+            <a class="reference internal" href="torch.broadcast_tensors.html#torch.broadcast_tensors" title="torch.broadcast_tensors">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               broadcast_tensors()
+              </span>
+             </code>
+            </a>
+            but for shapes.
+           </p>
+           <p>
+            This is equivalent to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch.broadcast_tensors(*map(torch.empty,
+             </span>
+             <span class="pre">
+              shapes))[0].shape
+             </span>
+            </code>
+            but avoids the need create to intermediate tensors. This is useful for
+broadcasting tensors of common batch shape but different rightmost shape,
+e.g. to broadcast mean vectors with covariance matrices.
+           </p>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">broadcast_shapes</span><span class="p">((</span><span class="mi">2</span><span class="p">,),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">torch.Size([1, 3, 2])</span>
+</pre>
+            </div>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               *shapes
+              </strong>
+              (
+              <em>
+               torch.Size
+              </em>
+              ) – Shapes of tensors.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              A shape compatible with all input shapes.
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Return type
+            </dt>
+            <dd class="field-odd">
+             <p>
+              shape (torch.Size)
+             </p>
+            </dd>
+            <dt class="field-even">
+             Raises
+            </dt>
+            <dd class="field-even">
+             <p>
+              <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.10)">
+               <strong>
+                RuntimeError
+               </strong>
+              </a>
+              – If shapes are incompatible.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

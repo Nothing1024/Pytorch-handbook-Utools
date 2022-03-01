@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.functional.avg_pool3d — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-functional-avg-pool3d">
+         <h1>
+          torch.nn.functional.avg_pool3d
+          <a class="headerlink" href="#torch-nn-functional-avg-pool3d" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.functional.avg_pool3d">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.functional.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             avg_pool3d
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              kernel_size
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              stride
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              padding
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              ceil_mode
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              count_include_pad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              divisor_override
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.nn.functional.avg_pool3d" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applies 3D average-pooling operation in
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   k
+                  </mi>
+                  <mi>
+                   T
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   k
+                  </mi>
+                  <mi>
+                   H
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   k
+                  </mi>
+                  <mi>
+                   W
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  kT \times kH \times kW
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.77777em;vertical-align:-0.08333em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03148em;">
+                 k
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 T
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.77777em;vertical-align:-0.08333em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03148em;">
+                 k
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.08125em;">
+                 H
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 kW
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            regions by step
+size
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   s
+                  </mi>
+                  <mi>
+                   T
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   s
+                  </mi>
+                  <mi>
+                   H
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   s
+                  </mi>
+                  <mi>
+                   W
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  sT \times sH \times sW
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.76666em;vertical-align:-0.08333em;">
+                </span>
+                <span class="mord mathnormal">
+                 s
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 T
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.76666em;vertical-align:-0.08333em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.08125em;">
+                 sH
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 s
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 W
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            steps. The number of output features is equal to
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo stretchy="false">
+                   ⌊
+                  </mo>
+                  <mfrac>
+                   <mtext>
+                    input planes
+                   </mtext>
+                   <mrow>
+                    <mi>
+                     s
+                    </mi>
+                    <mi>
+                     T
+                    </mi>
+                   </mrow>
+                  </mfrac>
+                  <mo stretchy="false">
+                   ⌋
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \lfloor\frac{\text{input planes}}{sT}\rfloor
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1.277216em;vertical-align:-0.345em;">
+                </span>
+                <span class="mopen">
+                 ⌊
+                </span>
+                <span class="mord">
+                 <span class="mopen nulldelimiter">
+                 </span>
+                 <span class="mfrac">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.9322159999999999em;">
+                     <span style="top:-2.6550000000000002em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         s
+                        </span>
+                        <span class="mord mathnormal mtight" style="margin-right:0.13889em;">
+                         T
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span style="top:-3.23em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="frac-line" style="border-bottom-width:0.04em;">
+                      </span>
+                     </span>
+                     <span style="top:-3.446108em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord text mtight">
+                         <span class="mord mtight">
+                          input planes
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.345em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+                <span class="mclose">
+                 ⌋
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            .
+           </p>
+           <p>
+            See
+            <a class="reference internal" href="torch.nn.AvgPool3d.html#torch.nn.AvgPool3d" title="torch.nn.AvgPool3d">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               AvgPool3d
+              </span>
+             </code>
+            </a>
+            for details and output shape.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                – input tensor
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mtext>
+                       minibatch
+                      </mtext>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mtext>
+                       in_channels
+                      </mtext>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       i
+                      </mi>
+                      <mi>
+                       T
+                      </mi>
+                      <mo>
+                       ×
+                      </mo>
+                      <mi>
+                       i
+                      </mi>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       i
+                      </mi>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (\text{minibatch} , \text{in\_channels} , iT \times iH , iW)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1.06em;vertical-align:-0.31em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      minibatch
+                     </span>
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      in_channels
+                     </span>
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal">
+                     i
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     T
+                    </span>
+                    <span class="mspace" style="margin-right:0.2222222222222222em;">
+                    </span>
+                    <span class="mbin">
+                     ×
+                    </span>
+                    <span class="mspace" style="margin-right:0.2222222222222222em;">
+                    </span>
+                   </span>
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mord mathnormal">
+                     i
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     iW
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 kernel_size
+                </strong>
+                – size of the pooling region. Can be a single number or a
+tuple
+                <cite>
+                 (kT, kH, kW)
+                </cite>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 stride
+                </strong>
+                – stride of the pooling operation. Can be a single number or a
+tuple
+                <cite>
+                 (sT, sH, sW)
+                </cite>
+                . Default:
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  kernel_size
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 padding
+                </strong>
+                – implicit zero paddings on both sides of the input. Can be a
+single number or a tuple
+                <cite>
+                 (padT, padH, padW)
+                </cite>
+                , Default: 0
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 ceil_mode
+                </strong>
+                – when True, will use
+                <cite>
+                 ceil
+                </cite>
+                instead of
+                <cite>
+                 floor
+                </cite>
+                in the formula
+to compute the output shape
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 count_include_pad
+                </strong>
+                – when True, will include the zero-padding in the
+averaging calculation
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 divisor_override
+                </strong>
+                – if specified, it will be used as divisor, otherwise
+size of the pooling region will be used. Default: None
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

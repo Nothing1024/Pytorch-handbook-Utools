@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.slogdet — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-slogdet">
+         <h1>
+          torch.linalg.slogdet
+          <a class="headerlink" href="#torch-linalg-slogdet" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.slogdet">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             slogdet
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.linalg.slogdet" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the sign and natural logarithm of the absolute value of the determinant of a square matrix.
+           </p>
+           <p>
+            For complex
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            , it returns the angle and the natural logarithm of the modulus of the
+determinant, that is, a logarithmic polar decomposition of the determinant.
+           </p>
+           <p>
+            Supports input of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a batch of matrices then
+the output has the same batch dimensions.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function is computed using
+             <a class="reference internal" href="torch.lu.html#torch.lu" title="torch.lu">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.lu()
+               </span>
+              </code>
+             </a>
+             .
+When inputs are on a CUDA device, this function synchronizes that device with the CPU.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             The determinant can be recovered as
+             <cite>
+              sign * exp(logabsdet)
+             </cite>
+             .
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When a matrix has a determinant of zero, it returns
+             <cite>
+              (0, -inf)
+             </cite>
+             .
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.det.html#torch.linalg.det" title="torch.linalg.det">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.det()
+               </span>
+              </code>
+             </a>
+             computes the determinant of square matrices.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               A
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – tensor of shape
+              <cite>
+               (*, n, n)
+              </cite>
+              where
+              <cite>
+               *
+              </cite>
+              is zero or more batch dimensions.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+               <em>
+                tuple
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – output tuple of two tensors. Ignored if
+              <cite>
+               None
+              </cite>
+              . Default:
+              <cite>
+               None
+              </cite>
+              .
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <p>
+               A named tuple
+               <cite>
+                (sign, logabsdet)
+               </cite>
+               .
+              </p>
+              <p>
+               <cite>
+                logabsdet
+               </cite>
+               will always be real-valued, even when
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 A
+                </span>
+               </code>
+               is complex.
+              </p>
+              <p>
+               <cite>
+                sign
+               </cite>
+               will have the same dtype as
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 A
+                </span>
+               </code>
+               .
+              </p>
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">tensor([[ 0.0032, -0.2239, -1.1219],</span>
+<span class="go">        [-0.6690,  0.1161,  0.4053],</span>
+<span class="go">        [-1.6218, -0.9273, -0.0082]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">tensor(-0.7576)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">logdet</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">tensor(nan)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">slogdet</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">torch.return_types.linalg_slogdet(sign=tensor(-1.), logabsdet=tensor(-0.2776))</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

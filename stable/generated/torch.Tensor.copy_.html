@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.copy_ — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-copy">
+         <h1>
+          torch.Tensor.copy_
+          <a class="headerlink" href="#torch-tensor-copy" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.copy_">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             copy_
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              src
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              non_blocking
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.copy_" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Copies the elements from
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              src
+             </span>
+            </code>
+            into
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            tensor and returns
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            The
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              src
+             </span>
+            </code>
+            tensor must be
+            <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+             <span class="std std-ref">
+              broadcastable
+             </span>
+            </a>
+            with the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            tensor. It may be of a different data type or reside on a
+different device.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 src
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the source tensor to copy from
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 non_blocking
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                and this copy is between CPU and GPU,
+the copy may occur asynchronously with respect to the host. For other
+cases, this argument has no effect.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Transformer — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="transformer">
+         <h1>
+          Transformer
+          <a class="headerlink" href="#transformer" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.Transformer">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             Transformer
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="pre">
+             d_model=512
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             nhead=8
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             num_encoder_layers=6
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             num_decoder_layers=6
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             dim_feedforward=2048
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             dropout=0.1
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             activation=&lt;function
+            </span>
+            <span class="pre">
+             relu&gt;
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             custom_encoder=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             custom_decoder=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             layer_norm_eps=1e-05
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             batch_first=False
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             norm_first=False
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             device=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             dtype=None
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/transformer.html#Transformer">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.Transformer" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            A transformer model. User is able to modify the attributes as needed. The architecture
+is based on the paper “Attention Is All You Need”. Ashish Vaswani, Noam Shazeer,
+Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Lukasz Kaiser, and
+Illia Polosukhin. 2017. Attention is all you need. In Advances in Neural Information
+Processing Systems, pages 6000-6010. Users can build the BERT(
+            <a class="reference external" href="https://arxiv.org/abs/1810.04805">
+             https://arxiv.org/abs/1810.04805
+            </a>
+            )
+model with corresponding parameters.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 d_model
+                </strong>
+                – the number of expected features in the encoder/decoder inputs (default=512).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 nhead
+                </strong>
+                – the number of heads in the multiheadattention models (default=8).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 num_encoder_layers
+                </strong>
+                – the number of sub-encoder-layers in the encoder (default=6).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 num_decoder_layers
+                </strong>
+                – the number of sub-decoder-layers in the decoder (default=6).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim_feedforward
+                </strong>
+                – the dimension of the feedforward network model (default=2048).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dropout
+                </strong>
+                – the dropout value (default=0.1).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 activation
+                </strong>
+                – the activation function of encoder/decoder intermediate layer, can be a string
+(“relu” or “gelu”) or a unary callable. Default: relu
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 custom_encoder
+                </strong>
+                – custom encoder (default=None).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 custom_decoder
+                </strong>
+                – custom decoder (default=None).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 layer_norm_eps
+                </strong>
+                – the eps value in layer normalization components (default=1e-5).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 batch_first
+                </strong>
+                – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , then the input and output tensors are provided
+as (batch, seq, feature). Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                (seq, batch, feature).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 norm_first
+                </strong>
+                – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , encoder and decoder layers will perform LayerNorms before
+other attention and feedforward operations, otherwise after. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                (after).
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl>
+            <dt>
+             Examples::
+            </dt>
+            <dd>
+             <div class="doctest highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transformer_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span><span class="n">nhead</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">num_encoder_layers</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">src</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tgt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">transformer_model</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">tgt</span><span class="p">)</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+           </dl>
+           <p>
+            Note: A full example to apply nn.Transformer module for the word language model is available in
+            <a class="reference external" href="https://github.com/pytorch/examples/tree/master/word_language_model">
+             https://github.com/pytorch/examples/tree/master/word_language_model
+            </a>
+           </p>
+           <dl class="py method">
+            <dt id="torch.nn.Transformer.forward">
+             <code class="sig-name descname">
+              <span class="pre">
+               forward
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                src
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                tgt
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                src_mask
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                tgt_mask
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                memory_mask
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                src_key_padding_mask
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                tgt_key_padding_mask
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                memory_key_padding_mask
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/transformer.html#Transformer.forward">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.Transformer.forward" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Take in and process masked source/target sequences.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   src
+                  </strong>
+                  – the sequence to the encoder (required).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   tgt
+                  </strong>
+                  – the sequence to the decoder (required).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   src_mask
+                  </strong>
+                  – the additive mask for the src sequence (optional).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   tgt_mask
+                  </strong>
+                  – the additive mask for the tgt sequence (optional).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   memory_mask
+                  </strong>
+                  – the additive mask for the encoder output (optional).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   src_key_padding_mask
+                  </strong>
+                  – the ByteTensor mask for src keys per batch (optional).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   tgt_key_padding_mask
+                  </strong>
+                  – the ByteTensor mask for tgt keys per batch (optional).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   memory_key_padding_mask
+                  </strong>
+                  – the ByteTensor mask for memory keys per batch (optional).
+                 </p>
+                </li>
+               </ul>
+              </dd>
+             </dl>
+             <dl>
+              <dt>
+               Shape:
+              </dt>
+              <dd>
+               <ul class="simple">
+                <li>
+                 <p>
+                  src:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         E
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (S, N, E)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       E
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  ,
+                  <cite>
+                   (N, S, E)
+                  </cite>
+                  if batch_first.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  tgt:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         E
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (T, N, E)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       E
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  ,
+                  <cite>
+                   (N, T, E)
+                  </cite>
+                  if batch_first.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  src_mask:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (S, S)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  .
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  tgt_mask:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (T, T)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  .
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  memory_mask:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (T, S)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  .
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  src_key_padding_mask:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (N, S)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  .
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  tgt_key_padding_mask:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (N, T)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  .
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  memory_key_padding_mask:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (N, S)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  .
+                 </p>
+                </li>
+               </ul>
+               <p>
+                Note: [src/tgt/memory]_mask ensures that position i is allowed to attend the unmasked
+positions. If a ByteTensor is provided, the non-zero positions are not allowed to attend
+while the zero positions will be unchanged. If a BoolTensor is provided, positions with
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                are not allowed to attend while
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                values will be unchanged. If a FloatTensor
+is provided, it will be added to the attention weight.
+[src/tgt/memory]_key_padding_mask provides specified elements in the key to be ignored by
+the attention. If a ByteTensor is provided, the non-zero positions will be ignored while the zero
+positions will be unchanged. If a BoolTensor is provided, the positions with the
+value of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                will be ignored while the position with the value of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                will be unchanged.
+               </p>
+               <ul class="simple">
+                <li>
+                 <p>
+                  output:
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         E
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (T, N, E)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       E
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  ,
+                  <cite>
+                   (N, T, E)
+                  </cite>
+                  if batch_first.
+                 </p>
+                </li>
+               </ul>
+               <p>
+                Note: Due to the multi-head attention architecture in the transformer model,
+the output sequence length of a transformer is same as the input sequence
+(i.e. target) length of the decode.
+               </p>
+               <p>
+                where S is the source sequence length, T is the target sequence length, N is the
+batch size, E is the feature number
+               </p>
+              </dd>
+             </dl>
+             <p class="rubric">
+              Examples
+             </p>
+             <div class="doctest highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">transformer_model</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">tgt</span><span class="p">,</span> <span class="n">src_mask</span><span class="o">=</span><span class="n">src_mask</span><span class="p">,</span> <span class="n">tgt_mask</span><span class="o">=</span><span class="n">tgt_mask</span><span class="p">)</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.Transformer.generate_square_subsequent_mask">
+             <em class="property">
+              <span class="pre">
+               static
+              </span>
+             </em>
+             <code class="sig-name descname">
+              <span class="pre">
+               generate_square_subsequent_mask
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                sz
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/transformer.html#Transformer.generate_square_subsequent_mask">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.Transformer.generate_square_subsequent_mask" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Generate a square mask for the sequence. The masked positions are filled with float(‘-inf’).
+Unmasked positions are filled with float(0.0).
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

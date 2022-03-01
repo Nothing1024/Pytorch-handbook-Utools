@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.annotate — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-annotate">
+         <h1>
+          torch.jit.annotate
+          <a class="headerlink" href="#torch-jit-annotate" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.annotate">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             annotate
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              the_type
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              the_value
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit.html#annotate">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.annotate" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            This method is a pass-through function that returns
+            <cite>
+             the_value
+            </cite>
+            , used to hint TorchScript
+compiler the type of
+            <cite>
+             the_value
+            </cite>
+            . It is a no-op when running outside of TorchScript.
+           </p>
+           <p>
+            Though TorchScript can infer correct type for most Python expressions, there are some cases where
+type inference can be wrong, including:
+           </p>
+           <ul class="simple">
+            <li>
+             <p>
+              Empty containers like
+              <cite>
+               []
+              </cite>
+              and
+              <cite>
+               {}
+              </cite>
+              , which TorchScript assumes to be container of
+              <cite>
+               Tensor
+              </cite>
+             </p>
+            </li>
+            <li>
+             <p>
+              Optional types like
+              <cite>
+               Optional[T]
+              </cite>
+              but assigned a valid value of type
+              <cite>
+               T
+              </cite>
+              , TorchScript would assume
+it is type
+              <cite>
+               T
+              </cite>
+              rather than
+              <cite>
+               Optional[T]
+              </cite>
+             </p>
+            </li>
+           </ul>
+           <p>
+            Note that
+            <cite>
+             annotate()
+            </cite>
+            does not help in
+            <cite>
+             __init__
+            </cite>
+            method of
+            <cite>
+             torch.nn.Module
+            </cite>
+            subclasses because it
+is executed in eager mode. To annotate types of
+            <cite>
+             torch.nn.Module
+            </cite>
+            attributes,
+use
+            <code class="xref py py-meth docutils literal notranslate">
+             <span class="pre">
+              Annotate()
+             </span>
+            </code>
+            instead.
+           </p>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-python3 notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span>
+<span class="k">def</span> <span class="nf">fn</span><span class="p">():</span>
+    <span class="c1"># Telling TorchScript that this empty dictionary is a (str -&gt; int) dictionary</span>
+    <span class="c1"># instead of default dictionary type of (str -&gt; Tensor).</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="p">{})</span>
+
+    <span class="c1"># Without `torch.jit.annotate` above, following statement would fail because of</span>
+    <span class="c1"># type mismatch.</span>
+    <span class="n">d</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+</pre>
+            </div>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 the_type
+                </strong>
+                – Python type that should be passed to TorchScript compiler as type hint for
+                <cite>
+                 the_value
+                </cite>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 the_value
+                </strong>
+                – Value or expression to hint type for.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              <cite>
+               the_value
+              </cite>
+              is passed back as return value.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.cuda.make_graphed_callables — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-cuda-make-graphed-callables">
+         <h1>
+          torch.cuda.make_graphed_callables
+          <a class="headerlink" href="#torch-cuda-make-graphed-callables" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.cuda.make_graphed_callables">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             make_graphed_callables
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              callables
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              sample_args
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/cuda/graphs.html#make_graphed_callables">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.make_graphed_callables" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Accepts callables (functions or
+            <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               nn.Module
+              </span>
+             </code>
+            </a>
+            s)
+and returns graphed versions.
+           </p>
+           <p>
+            Each graphed callable’s forward pass runs its source callable’s
+forward CUDA work as a CUDA graph inside a single autograd node.
+           </p>
+           <p>
+            The graphed callable’s forward pass also appends
+a backward node to the autograd graph. During backward, this node runs the
+callable’s backward work as a CUDA graph.
+           </p>
+           <p>
+            Therefore, each graphed callable should be a drop-in replacement for its source callable
+in an autograd-enabled training loop.
+           </p>
+           <p>
+            See
+            <a class="reference internal" href="../notes/cuda.html#partial-network-capture">
+             <span class="std std-ref">
+              Partial-network capture
+             </span>
+            </a>
+            for detailed use and constraints.
+           </p>
+           <p>
+            If you pass a tuple of several callables, their captures will use the same memory pool.
+See
+            <a class="reference internal" href="../notes/cuda.html#graph-memory-management">
+             <span class="std std-ref">
+              Graph memory management
+             </span>
+            </a>
+            for when this is appropriate.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 callables
+                </strong>
+                (
+                <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                 <em>
+                  torch.nn.Module
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 Python function
+                </em>
+                <em>
+                 , or
+                </em>
+                <em>
+                 tuple of these
+                </em>
+                ) – Callable or callables to graph.
+See
+                <a class="reference internal" href="../notes/cuda.html#graph-memory-management">
+                 <span class="std std-ref">
+                  Graph memory management
+                 </span>
+                </a>
+                for when passing a tuple of callables
+is appropriate.  If you pass a tuple of callables, their order in the tuple must be the same order
+they’ll run in the live workload.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 sample_args
+                </strong>
+                (
+                <em>
+                 tuple of Tensors
+                </em>
+                <em>
+                 , or
+                </em>
+                <em>
+                 tuple of tuples of Tensors
+                </em>
+                ) – Samples args for each callable.
+If a single callable was passed,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  sample_args
+                 </span>
+                </code>
+                must be a single tuple of argument Tensors.
+If a tuple of callables was passed,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  sample_args
+                 </span>
+                </code>
+                must be tuple of tuples of argument Tensors.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             The
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               requires_grad
+              </span>
+             </code>
+             state of each Tensor in
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               sample_args
+              </span>
+             </code>
+             must match the state
+that’s expected for the corresponding real input in the training loop.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This API is in beta and may change in future releases.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               sample_args
+              </span>
+             </code>
+             for each callable must be a tuple of Tensors. Other types and keyword args
+are not allowed.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             Returned callables do not support higher order differentiation (e.g., double backward).
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             In any
+             <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                Module
+               </span>
+              </code>
+             </a>
+             passed to
+             <a class="reference internal" href="#torch.cuda.make_graphed_callables" title="torch.cuda.make_graphed_callables">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                make_graphed_callables()
+               </span>
+              </code>
+             </a>
+             , only parameters
+may be trainable. Buffers must have
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               requires_grad=False
+              </span>
+             </code>
+             .
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             After you pass a
+             <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                torch.nn.Module
+               </span>
+              </code>
+             </a>
+             through
+             <a class="reference internal" href="#torch.cuda.make_graphed_callables" title="torch.cuda.make_graphed_callables">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                make_graphed_callables()
+               </span>
+              </code>
+             </a>
+             ,
+you may not add or remove any of that Module’s parameters or buffers.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                torch.nn.Module
+               </span>
+              </code>
+             </a>
+             s passed to
+             <a class="reference internal" href="#torch.cuda.make_graphed_callables" title="torch.cuda.make_graphed_callables">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                make_graphed_callables()
+               </span>
+              </code>
+             </a>
+             must not have module hooks
+registered on them at the time they are passed. However, registering hooks on modules
+             <em>
+              after
+             </em>
+             passing them
+through
+             <a class="reference internal" href="#torch.cuda.make_graphed_callables" title="torch.cuda.make_graphed_callables">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                make_graphed_callables()
+               </span>
+              </code>
+             </a>
+             is allowed.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             When running a graphed callable, you must pass its arguments in the same order and format
+they appeared in that callable’s
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               sample_args
+              </span>
+             </code>
+             .
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             All Tensor outputs of graphed callables must require grad.
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

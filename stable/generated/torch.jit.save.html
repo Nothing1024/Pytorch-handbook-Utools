@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.save — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-save">
+         <h1>
+          torch.jit.save
+          <a class="headerlink" href="#torch-jit-save" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.save">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             save
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              m
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              f
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              _extra_files
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit/_serialization.html#save">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.save" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Save an offline version of this module for use in a separate process. The
+saved module serializes all of the methods, submodules, parameters, and
+attributes of this module. It can be loaded into the C++ API using
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch::jit::load(filename)
+             </span>
+            </code>
+            or into the Python API with
+            <a class="reference internal" href="torch.jit.load.html#torch.jit.load" title="torch.jit.load">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.jit.load
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <p>
+            To be able to save a module, it must not make any calls to native Python
+functions.  This means that all submodules must be subclasses of
+            <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               ScriptModule
+              </span>
+             </code>
+            </a>
+            as well.
+           </p>
+           <div class="admonition danger">
+            <p class="admonition-title">
+             Danger
+            </p>
+            <p>
+             All modules, no matter their device, are always loaded onto the CPU
+during loading.  This is different from
+             <a class="reference internal" href="torch.load.html#torch.load" title="torch.load">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.load()
+               </span>
+              </code>
+             </a>
+             ’s semantics
+and may change in the future.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 m
+                </strong>
+                – A
+                <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   ScriptModule
+                  </span>
+                 </code>
+                </a>
+                to save.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 f
+                </strong>
+                – A file-like object (has to implement write and flush) or a string
+containing a file name.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 _extra_files
+                </strong>
+                – Map from filename to contents which will be stored as part of
+                <cite>
+                 f
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             torch.jit.save attempts to preserve the behavior of some operators
+across versions. For example, dividing two integer tensors in
+PyTorch 1.5 performed floor division, and if the module
+containing that code is saved in PyTorch 1.5 and loaded in PyTorch 1.6
+its division behavior will be preserved. The same module saved in
+PyTorch 1.6 will fail to load in PyTorch 1.5, however, since the
+behavior of division changed in 1.6, and 1.5 does not know how to
+replicate the 1.6 behavior.
+            </p>
+           </div>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-python3 notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule</span><span class="p">())</span>
+
+<span class="c1"># Save to file</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s1">'scriptmodule.pt'</span><span class="p">)</span>
+<span class="c1"># This line is equivalent to the previous</span>
+<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"scriptmodule.pt"</span><span class="p">)</span>
+
+<span class="c1"># Save to io.BytesIO buffer</span>
+<span class="n">buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+
+<span class="c1"># Save with extra files</span>
+<span class="n">extra_files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo.txt'</span><span class="p">:</span> <span class="sa">b</span><span class="s1">'bar'</span><span class="p">}</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s1">'scriptmodule.pt'</span><span class="p">,</span> <span class="n">_extra_files</span><span class="o">=</span><span class="n">extra_files</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

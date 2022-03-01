@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.autograd.function.FunctionCtx.set_materialize_grads — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-autograd-function-functionctx-set-materialize-grads">
+         <h1>
+          torch.autograd.function.FunctionCtx.set_materialize_grads
+          <a class="headerlink" href="#torch-autograd-function-functionctx-set-materialize-grads" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.autograd.function.FunctionCtx.set_materialize_grads">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             FunctionCtx.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             set_materialize_grads
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              value
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/autograd/function.html#FunctionCtx.set_materialize_grads">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.autograd.function.FunctionCtx.set_materialize_grads" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Sets whether to materialize output grad tensors. Default is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            <strong>
+             This should be called only from inside the
+            </strong>
+            <code class="xref py py-func docutils literal notranslate">
+             <span class="pre">
+              forward()
+             </span>
+            </code>
+            <strong>
+             method
+            </strong>
+           </p>
+           <p>
+            If
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            , undefined output grad tensors will be expanded to tensors full
+of zeros prior to calling the
+            <code class="xref py py-func docutils literal notranslate">
+             <span class="pre">
+              backward()
+             </span>
+            </code>
+            method.
+           </p>
+           <dl>
+            <dt>
+             Example::
+            </dt>
+            <dd>
+             <div class="doctest highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">SimpleFunc</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nd">@staticmethod</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nd">@staticmethod</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nd">@once_differentiable</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">g1</span> <span class="o">+</span> <span class="n">g2</span>  <span class="c1"># No check for None necessary</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We modify SimpleFunc to handle non-materialized grad outputs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Func</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nd">@staticmethod</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">ctx</span><span class="o">.</span><span class="n">set_materialize_grads</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nd">@staticmethod</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nd">@once_differentiable</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">x</span><span class="p">,</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_tensors</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">grad_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">if</span> <span class="n">g1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># We must check for None now</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="n">grad_input</span> <span class="o">+=</span> <span class="n">g1</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">if</span> <span class="n">g2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="n">grad_input</span> <span class="o">+=</span> <span class="n">g2</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">grad_input</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Func</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># induces g2 to be undefined</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

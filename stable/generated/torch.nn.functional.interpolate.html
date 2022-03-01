@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.functional.interpolate — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-functional-interpolate">
+         <h1>
+          torch.nn.functional.interpolate
+          <a class="headerlink" href="#torch-nn-functional-interpolate" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.functional.interpolate">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.functional.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             interpolate
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              size
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              scale_factor
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              mode
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'nearest'
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              align_corners
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              recompute_scale_factor
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/functional.html#interpolate">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.functional.interpolate" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Down/up samples the input to either the given
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              size
+             </span>
+            </code>
+            or the given
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              scale_factor
+             </span>
+            </code>
+           </p>
+           <p>
+            The algorithm used for interpolation is determined by
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              mode
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            Currently temporal, spatial and volumetric sampling are supported, i.e.
+expected inputs are 3-D, 4-D or 5-D in shape.
+           </p>
+           <p>
+            The input dimensions are interpreted in the form:
+            <cite>
+             mini-batch x channels x [optional depth] x [optional height] x width
+            </cite>
+            .
+           </p>
+           <p>
+            The modes available for resizing are:
+            <cite>
+             nearest
+            </cite>
+            ,
+            <cite>
+             linear
+            </cite>
+            (3D-only),
+            <cite>
+             bilinear
+            </cite>
+            ,
+            <cite>
+             bicubic
+            </cite>
+            (4D-only),
+            <cite>
+             trilinear
+            </cite>
+            (5D-only),
+            <cite>
+             area
+            </cite>
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 size
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ] or
+                </em>
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ] or
+                </em>
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                ) – output spatial size.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 scale_factor
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                ) – multiplier for spatial size. If
+                <cite>
+                 scale_factor
+                </cite>
+                is a tuple,
+its length has to match
+                <cite>
+                 input.dim()
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 mode
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                ) – algorithm used for upsampling:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'nearest'
+                 </span>
+                </code>
+                |
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'linear'
+                 </span>
+                </code>
+                |
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'bilinear'
+                 </span>
+                </code>
+                |
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'bicubic'
+                 </span>
+                </code>
+                |
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'trilinear'
+                 </span>
+                </code>
+                |
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'area'
+                 </span>
+                </code>
+                . Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'nearest'
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 align_corners
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – Geometrically, we consider the pixels of the
+input and output as squares rather than points.
+If set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , the input and output tensors are aligned by the
+center points of their corner pixels, preserving the values at the corner pixels.
+If set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , the input and output tensors are aligned by the corner
+points of their corner pixels, and the interpolation uses edge value padding
+for out-of-boundary values, making this operation
+                <em>
+                 independent
+                </em>
+                of input size
+when
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  scale_factor
+                 </span>
+                </code>
+                is kept the same. This only has an effect when
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  mode
+                 </span>
+                </code>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'linear'
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'bilinear'
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'bicubic'
+                 </span>
+                </code>
+                or
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'trilinear'
+                 </span>
+                </code>
+                .
+Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 recompute_scale_factor
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – recompute the scale_factor for use in the
+interpolation calculation. If
+                <cite>
+                 recompute_scale_factor
+                </cite>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , then
+                <cite>
+                 scale_factor
+                </cite>
+                must be passed in and
+                <cite>
+                 scale_factor
+                </cite>
+                is used to compute the
+output
+                <cite>
+                 size
+                </cite>
+                . The computed output
+                <cite>
+                 size
+                </cite>
+                will be used to infer new scales for
+the interpolation. Note that when
+                <cite>
+                 scale_factor
+                </cite>
+                is floating-point, it may differ
+from the recomputed
+                <cite>
+                 scale_factor
+                </cite>
+                due to rounding and precision issues.
+If
+                <cite>
+                 recomputed_scale_factor
+                </cite>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , then
+                <cite>
+                 size
+                </cite>
+                or
+                <cite>
+                 scale_factor
+                </cite>
+                will
+be used directly for interpolation.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             With
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               mode='bicubic'
+              </span>
+             </code>
+             , it’s possible to cause overshoot, in other words it can produce
+negative values or values greater than 255 for images.
+Explicitly call
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               result.clamp(min=0,
+              </span>
+              <span class="pre">
+               max=255)
+              </span>
+             </code>
+             if you want to reduce the overshoot
+when displaying the image.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             With
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               align_corners
+              </span>
+              <span class="pre">
+               =
+              </span>
+              <span class="pre">
+               True
+              </span>
+             </code>
+             , the linearly interpolating modes
+(
+             <cite>
+              linear
+             </cite>
+             ,
+             <cite>
+              bilinear
+             </cite>
+             , and
+             <cite>
+              trilinear
+             </cite>
+             ) don’t proportionally align the
+output and input pixels, and thus the output values can depend on the
+input size. This was the default behavior for these modes up to version
+0.3.1. Since then, the default behavior is
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               align_corners
+              </span>
+              <span class="pre">
+               =
+              </span>
+              <span class="pre">
+               False
+              </span>
+             </code>
+             .
+See
+             <a class="reference internal" href="torch.nn.Upsample.html#torch.nn.Upsample" title="torch.nn.Upsample">
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                Upsample
+               </span>
+              </code>
+             </a>
+             for concrete examples on how this
+affects the outputs.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             When scale_factor is specified, if recompute_scale_factor=True,
+scale_factor is used to compute the output_size which will then
+be used to infer new scales for the interpolation.
+The default behavior for recompute_scale_factor changed to False
+in 1.6.0, and scale_factor is used in the interpolation
+calculation.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This operation may produce nondeterministic gradients when given tensors on a CUDA device. See
+             <a class="reference internal" href="../notes/randomness.html">
+              <span class="doc">
+               Reproducibility
+              </span>
+             </a>
+             for more information.
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.script — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-script">
+         <h1>
+          torch.jit.script
+          <a class="headerlink" href="#torch-jit-script" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.script">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             script
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              obj
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              optimize
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              _frames_up
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              _rcb
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              example_inputs
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit/_script.html#script">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.script" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Scripting a function or
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              nn.Module
+             </span>
+            </code>
+            will inspect the source code, compile
+it as TorchScript code using the TorchScript compiler, and return a
+            <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               ScriptModule
+              </span>
+             </code>
+            </a>
+            or
+            <a class="reference internal" href="torch.jit.ScriptFunction.html#torch.jit.ScriptFunction" title="torch.jit.ScriptFunction">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               ScriptFunction
+              </span>
+             </code>
+            </a>
+            . TorchScript itself is a subset of the Python language, so not all
+features in Python work, but we provide enough functionality to compute on
+tensors and do control-dependent operations. For a complete guide, see the
+            <a class="reference internal" href="../jit_language_reference.html#language-reference">
+             <span class="std std-ref">
+              TorchScript Language Reference
+             </span>
+            </a>
+            .
+           </p>
+           <p>
+            Scripting a dictionary or list copies the data inside it into a TorchScript instance than can be
+subsequently passed by reference between Python and TorchScript with zero copy overhead.
+           </p>
+           <dl class="simple">
+            <dt>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               torch.jit.script
+              </span>
+             </code>
+             can be used as a function for modules, functions, dictionaries and lists
+            </dt>
+            <dd>
+             <p>
+              and as a decorator
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                @torch.jit.script
+               </span>
+              </code>
+              for
+              <a class="reference internal" href="../jit_language_reference.html#id2">
+               <span class="std std-ref">
+                TorchScript Classes
+               </span>
+              </a>
+              and functions.
+             </p>
+            </dd>
+           </dl>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 obj
+                </strong>
+                (callable, class, or
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  nn.Module
+                 </span>
+                </code>
+                ) – The
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  nn.Module
+                 </span>
+                </code>
+                , function, class type,
+dictionary, or list to compile.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 example_inputs
+                </strong>
+                (
+                <em>
+                 Union
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 List
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 Dict
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 Callable
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 List
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">
+                 <em>
+                  None
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                ) – Provide example inputs
+to annotate the arguments for a function or
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  nn.Module
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              If
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                obj
+               </span>
+              </code>
+              is
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                nn.Module
+               </span>
+              </code>
+              ,
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                script
+               </span>
+              </code>
+              returns
+a
+              <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptModule
+                </span>
+               </code>
+              </a>
+              object. The returned
+              <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptModule
+                </span>
+               </code>
+              </a>
+              will
+have the same set of sub-modules and parameters as the
+original
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                nn.Module
+               </span>
+              </code>
+              . If
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                obj
+               </span>
+              </code>
+              is a standalone function,
+a
+              <a class="reference internal" href="torch.jit.ScriptFunction.html#torch.jit.ScriptFunction" title="torch.jit.ScriptFunction">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptFunction
+                </span>
+               </code>
+              </a>
+              will be returned. If
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                obj
+               </span>
+              </code>
+              is a
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                dict
+               </span>
+              </code>
+              , then
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                script
+               </span>
+              </code>
+              returns an instance of
+              <cite>
+               torch._C.ScriptDict
+              </cite>
+              . If
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                obj
+               </span>
+              </code>
+              is a
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                list
+               </span>
+              </code>
+              ,
+then
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                script
+               </span>
+              </code>
+              returns an instance of
+              <cite>
+               torch._C.ScriptList
+              </cite>
+              .
+             </p>
+            </dd>
+           </dl>
+           <dl>
+            <dt>
+             <strong>
+              Scripting a function
+             </strong>
+            </dt>
+            <dd>
+             <p>
+              The
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                @torch.jit.script
+               </span>
+              </code>
+              decorator will construct a
+              <a class="reference internal" href="torch.jit.ScriptFunction.html#torch.jit.ScriptFunction" title="torch.jit.ScriptFunction">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptFunction
+                </span>
+               </code>
+              </a>
+              by compiling the body of the function.
+             </p>
+             <p>
+              Example (scripting a function):
+             </p>
+             <div class="highlight-python3 notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">():</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foo</span><span class="p">))</span>  <span class="c1"># torch.jit.ScriptFunction</span>
+
+<span class="c1"># See the compiled graph as Python code</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+
+<span class="c1"># Call the function using the TorchScript interpreter</span>
+<span class="n">foo</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+            <dt>
+             <strong>
+              **Scripting a function using example_inputs
+             </strong>
+            </dt>
+            <dd>
+             <p>
+              Example inputs can be used to annotate a function arguments.
+             </p>
+             <p>
+              Example (annotating a function before scripting):
+             </p>
+             <div class="highlight-python3 notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="k">def</span> <span class="nf">test_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># Annotate the arguments to be int</span>
+<span class="n">scripted_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">test_sum</span><span class="p">,</span> <span class="n">example_inputs</span><span class="o">=</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">scripted_fn</span><span class="p">))</span>  <span class="c1"># torch.jit.ScriptFunction</span>
+
+<span class="c1"># See the compiled graph as Python code</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scripted_fn</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+
+<span class="c1"># Call the function using the TorchScript interpreter</span>
+<span class="n">scripted_fn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+            <dt>
+             <strong>
+              Scripting an nn.Module
+             </strong>
+            </dt>
+            <dd>
+             <p>
+              Scripting an
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                nn.Module
+               </span>
+              </code>
+              by default will compile the
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                forward
+               </span>
+              </code>
+              method and recursively
+compile any methods, submodules, and functions called by
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                forward
+               </span>
+              </code>
+              . If a
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                nn.Module
+               </span>
+              </code>
+              only uses
+features supported in TorchScript, no changes to the original module code should be necessary.
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                script
+               </span>
+              </code>
+              will construct
+              <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptModule
+                </span>
+               </code>
+              </a>
+              that has copies of the attributes, parameters, and methods of
+the original module.
+             </p>
+             <p>
+              Example (scripting a simple module with a Parameter):
+             </p>
+             <div class="highlight-python3 notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># This parameter will be copied to the new ScriptModule</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+
+        <span class="c1"># When this submodule is used, it will be compiled</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">mv</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+
+        <span class="c1"># This calls the `forward` method of the `nn.Linear` module, which will</span>
+        <span class="c1"># cause the `self.linear` submodule to be compiled to a `ScriptModule` here</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+<span class="n">scripted_module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre>
+              </div>
+             </div>
+             <p>
+              Example (scripting a module with traced submodules):
+             </p>
+             <div class="highlight-python3 notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+<span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># torch.jit.trace produces a ScriptModule's conv1 and conv2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+<span class="n">scripted_module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule</span><span class="p">())</span>
+</pre>
+              </div>
+             </div>
+             <p>
+              To compile a method other than
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                forward
+               </span>
+              </code>
+              (and recursively compile anything it calls), add
+the
+              <a class="reference internal" href="../jit.html#torch.jit.export" title="torch.jit.export">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 @torch.jit.export
+                </span>
+               </code>
+              </a>
+              decorator to the method. To opt out of compilation
+use
+              <a class="reference internal" href="torch.jit.ignore.html#torch.jit.ignore" title="torch.jit.ignore">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 @torch.jit.ignore
+                </span>
+               </code>
+              </a>
+              or
+              <a class="reference internal" href="torch.jit.unused.html#torch.jit.unused" title="torch.jit.unused">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 @torch.jit.unused
+                </span>
+               </code>
+              </a>
+              .
+             </p>
+             <p>
+              Example (an exported and ignored method in a module):
+             </p>
+             <div class="highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">export</span>
+    <span class="k">def</span> <span class="nf">some_entry_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="mi">10</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">ignore</span>
+    <span class="k">def</span> <span class="nf">python_only_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="c1"># This function won't be compiled, so any</span>
+        <span class="c1"># Python APIs can be used</span>
+        <span class="kn">import</span> <span class="nn">pdb</span>
+        <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">python_only_fn</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="mi">99</span>
+
+<span class="n">scripted_module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scripted_module</span><span class="o">.</span><span class="n">some_entry_point</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scripted_module</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+</pre>
+              </div>
+             </div>
+             <p>
+              Example ( Annotating forward of nn.Module using example_inputs):
+             </p>
+             <div class="highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
+
+<span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+<span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">TestNNModule</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MyModule</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">MyModule</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">pdt_model</span> <span class="o">=</span> <span class="n">TestNNModule</span><span class="p">()</span>
+
+<span class="c1"># Runs the pdt_model in eager model with the inputs provided and annotates the arguments of forward</span>
+<span class="n">scripted_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">pdt_model</span><span class="p">,</span> <span class="n">example_inputs</span><span class="o">=</span><span class="p">{</span><span class="n">pdt_model</span><span class="p">:</span> <span class="p">[([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">],</span> <span class="p">),</span> <span class="p">],</span> <span class="p">})</span>
+
+<span class="c1"># Run the scripted_model with actual inputs</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scripted_model</span><span class="p">([</span><span class="mi">20</span><span class="p">]))</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

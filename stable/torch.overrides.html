@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.overrides — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-overrides">
+         <h1>
+          torch.overrides
+          <a class="headerlink" href="#torch-overrides" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <p>
+          This module exposes various helper functions for the
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            __torch_function__
+           </span>
+          </code>
+          protocol. See
+          <a class="reference internal" href="notes/extending.html#extending-torch">
+           <span class="std std-ref">
+            Extending torch
+           </span>
+          </a>
+          for more detail on the
+          <code class="docutils literal notranslate">
+           <span class="pre">
+            __torch_function__
+           </span>
+          </code>
+          protocol.
+         </p>
+         <div class="section" id="functions">
+          <h2>
+           Functions
+           <a class="headerlink" href="#functions" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <dl class="py function">
+           <dt id="torch.overrides.get_ignored_functions">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              get_ignored_functions
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#get_ignored_functions">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.get_ignored_functions" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return public functions that cannot be overridden by
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               __torch_function__
+              </span>
+             </code>
+             .
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+             </dt>
+             <dd class="field-odd">
+              <p>
+               A tuple of functions that are publicly available in the torch API but cannot
+be overridden with
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 __torch_function__
+                </span>
+               </code>
+               . Mostly this is because none of the
+arguments of these functions are tensors or tensor-likes.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Return type
+             </dt>
+             <dd class="field-even">
+              <p>
+               Set[Callable]
+              </p>
+             </dd>
+            </dl>
+            <p class="rubric">
+             Examples
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="o">.</span><span class="n">as_subclass</span> <span class="ow">in</span> <span class="n">torch</span><span class="o">.</span><span class="n">overrides</span><span class="o">.</span><span class="n">get_ignored_functions</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">add</span> <span class="ow">in</span> <span class="n">torch</span><span class="o">.</span><span class="n">overrides</span><span class="o">.</span><span class="n">get_ignored_functions</span><span class="p">()</span>
+<span class="go">False</span>
+</pre>
+             </div>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.get_overridable_functions">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              get_overridable_functions
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#get_overridable_functions">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.get_overridable_functions" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             List functions that are overridable via __torch_function__
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+             </dt>
+             <dd class="field-odd">
+              <p>
+               A dictionary that maps namespaces that contain overridable functions
+to functions in that namespace that can be overridden.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Return type
+             </dt>
+             <dd class="field-even">
+              <p>
+               Dict[Any, List[Callable]]
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.get_testing_overrides">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              get_testing_overrides
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#get_testing_overrides">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.get_testing_overrides" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Return a dict containing dummy overrides for all overridable functions
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+             </dt>
+             <dd class="field-odd">
+              <p>
+               A dictionary that maps overridable functions in the PyTorch API to
+lambda functions that have the same signature as the real function
+and unconditionally return -1. These lambda functions are useful
+for testing API coverage for a type that defines
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 __torch_function__
+                </span>
+               </code>
+               .
+              </p>
+             </dd>
+             <dt class="field-even">
+              Return type
+             </dt>
+             <dd class="field-even">
+              <p>
+               Dict[Callable, Callable]
+              </p>
+             </dd>
+            </dl>
+            <p class="rubric">
+             Examples
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">inspect</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_add</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">overrides</span><span class="o">.</span><span class="n">get_testing_overrides</span><span class="p">()[</span><span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">my_add</span><span class="p">)</span>
+<span class="go">&lt;Signature (input, other, out=None)&gt;</span>
+</pre>
+             </div>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.handle_torch_function">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              handle_torch_function
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               public_api
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               relevant_args
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="o">
+              <span class="pre">
+               *
+              </span>
+             </span>
+             <span class="n">
+              <span class="pre">
+               args
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="o">
+              <span class="pre">
+               **
+              </span>
+             </span>
+             <span class="n">
+              <span class="pre">
+               kwargs
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#handle_torch_function">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.handle_torch_function" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Implement a function with checks for
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               __torch_function__
+              </span>
+             </code>
+             overrides.
+            </p>
+            <p>
+             See torch::autograd::handle_torch_function for the equivalent of this
+function in the C++ implementation.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+             </dt>
+             <dd class="field-odd">
+              <ul class="simple">
+               <li>
+                <p>
+                 <strong>
+                  public_api
+                 </strong>
+                 (
+                 <em>
+                  function
+                 </em>
+                 ) – Function exposed by the public torch API originally called like
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   public_api(*args,
+                  </span>
+                  <span class="pre">
+                   **kwargs)
+                  </span>
+                 </code>
+                 on which arguments are now being
+checked.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  relevant_args
+                 </strong>
+                 (
+                 <em>
+                  iterable
+                 </em>
+                 ) – Iterable of arguments to check for __torch_function__ methods.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  args
+                 </strong>
+                 (
+                 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+                  <em>
+                   tuple
+                  </em>
+                 </a>
+                 ) – Arbitrary positional arguments originally passed into
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   public_api
+                  </span>
+                 </code>
+                 .
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  kwargs
+                 </strong>
+                 (
+                 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+                  <em>
+                   tuple
+                  </em>
+                 </a>
+                 ) – Arbitrary keyword arguments originally passed into
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   public_api
+                  </span>
+                 </code>
+                 .
+                </p>
+               </li>
+              </ul>
+             </dd>
+             <dt class="field-even">
+              Returns
+             </dt>
+             <dd class="field-even">
+              <p>
+               Result from calling
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 implementation
+                </span>
+               </code>
+               or an
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 __torch_function__
+                </span>
+               </code>
+               method, as appropriate.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Return type
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)">
+                object
+               </a>
+              </p>
+             </dd>
+            </dl>
+            <p>
+             :raises TypeError : if no implementation is found.:
+            </p>
+            <p class="rubric">
+             Example
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># This will make func dispatchable by __torch_function__</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">handle_torch_function</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,),</span> <span class="n">a</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">0</span>
+</pre>
+             </div>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.has_torch_function">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              has_torch_function
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="headerlink" href="#torch.overrides.has_torch_function" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Check for __torch_function__ implementations in the elements of an iterable.
+Considers exact
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               Tensor
+              </span>
+             </code>
+             s and
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               Parameter
+              </span>
+             </code>
+             s non-dispatchable.
+:param relevant_args: Iterable or aguments to check for __torch_function__ methods.
+:type relevant_args: iterable
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Returns
+             </dt>
+             <dd class="field-odd">
+              <p>
+               True if any of the elements of relevant_args have __torch_function__
+implementations, False otherwise.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Return type
+             </dt>
+             <dd class="field-even">
+              <p>
+               <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                bool
+               </a>
+              </p>
+             </dd>
+            </dl>
+            <div class="admonition seealso">
+             <p class="admonition-title">
+              See also
+             </p>
+             <dl class="simple">
+              <dt>
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 torch.is_tensor_like
+                </span>
+               </code>
+              </dt>
+              <dd>
+               <p>
+                Checks if something is a Tensor-like, including an exact
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Tensor
+                 </span>
+                </code>
+                .
+               </p>
+              </dd>
+             </dl>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.is_tensor_like">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              is_tensor_like
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               inp
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#is_tensor_like">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.is_tensor_like" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Returns
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               True
+              </span>
+             </code>
+             if the passed-in input is a Tensor-like.
+            </p>
+            <p>
+             Currently, this occurs whenever there’s a
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               __torch_function__
+              </span>
+             </code>
+             attribute on the type of the input.
+            </p>
+            <p class="rubric">
+             Examples
+            </p>
+            <p>
+             A subclass of tensor is generally a Tensor-like.
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">SubTensor</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span> <span class="o">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_tensor_like</span><span class="p">(</span><span class="n">SubTensor</span><span class="p">([</span><span class="mi">0</span><span class="p">]))</span>
+<span class="go">True</span>
+</pre>
+             </div>
+            </div>
+            <p>
+             Built-in or user types aren’t usually Tensor-like.
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_tensor_like</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_tensor_like</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">NotATensor</span><span class="p">:</span> <span class="o">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_tensor_like</span><span class="p">(</span><span class="n">NotATensor</span><span class="p">())</span>
+<span class="go">False</span>
+</pre>
+             </div>
+            </div>
+            <p>
+             But, they can be made Tensor-like by implementing __torch_function__.
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">TensorLike</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nd">@classmethod</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__torch_function__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_tensor_like</span><span class="p">(</span><span class="n">TensorLike</span><span class="p">())</span>
+<span class="go">True</span>
+</pre>
+             </div>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.is_tensor_method_or_property">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              is_tensor_method_or_property
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               func
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#is_tensor_method_or_property">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.is_tensor_method_or_property" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Returns True if the function passed in is a handler for a
+method or property belonging to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               torch.Tensor
+              </span>
+             </code>
+             , as passed
+into
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               __torch_function__
+              </span>
+             </code>
+             .
+            </p>
+            <div class="admonition note">
+             <p class="admonition-title">
+              Note
+             </p>
+             <p>
+              For properties, their
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                __get__
+               </span>
+              </code>
+              method must be passed in.
+             </p>
+            </div>
+            <p>
+             This may be needed, in particular, for the following reasons:
+            </p>
+            <ol class="arabic simple">
+             <li>
+              <p>
+               Methods/properties sometimes don’t contain a
+               <cite>
+                __module__
+               </cite>
+               slot.
+              </p>
+             </li>
+             <li>
+              <p>
+               They require that the first passed-in argument is an instance
+of
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 torch.Tensor
+                </span>
+               </code>
+               .
+              </p>
+             </li>
+            </ol>
+            <p class="rubric">
+             Examples
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_tensor_method_or_property</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="o">.</span><span class="n">add</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_tensor_method_or_property</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">)</span>
+<span class="go">False</span>
+</pre>
+             </div>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.wrap_torch_function">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              wrap_torch_function
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               dispatcher
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#wrap_torch_function">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.wrap_torch_function" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Wraps a given function with
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               __torch_function__
+              </span>
+             </code>
+             -related functionality.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                dispatcher
+               </strong>
+               (
+               <em>
+                Callable
+               </em>
+               ) – A callable that returns an iterable of Tensor-likes passed into the function.
+              </p>
+             </dd>
+            </dl>
+            <div class="admonition note">
+             <p class="admonition-title">
+              Note
+             </p>
+             <p>
+              This decorator may reduce the performance of your code. Generally, it’s enough to express
+your code as a series of functions that, themselves, support __torch_function__. If you
+find yourself in the rare situation where this is not the case, e.g. if you’re wrapping a
+low-level library and you also need it to work for Tensor-likes, then this function is available.
+             </p>
+            </div>
+            <p class="rubric">
+             Examples
+            </p>
+            <div class="doctest highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">dispatcher</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="c1"># Must have the same signature as func</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@torch</span><span class="o">.</span><span class="n">overrides</span><span class="o">.</span><span class="n">wrap_torch_function</span><span class="p">(</span><span class="n">dispatcher</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="c1"># This will make func dispatchable by __torch_function__</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">0</span>
+</pre>
+             </div>
+            </div>
+           </dd>
+          </dl>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

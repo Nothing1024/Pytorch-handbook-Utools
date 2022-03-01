@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg">
+         <h1>
+          torch.linalg
+          <a class="headerlink" href="#torch-linalg" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <p>
+          Common linear algebra operations.
+         </p>
+         <span class="target" id="module-torch.linalg">
+         </span>
+         <div class="section" id="matrix-properties">
+          <h2>
+           Matrix Properties
+           <a class="headerlink" href="#matrix-properties" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.norm">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.norm.html#torch.linalg.norm" title="torch.linalg.norm">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  norm
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes a vector or matrix norm.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.vector_norm">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.vector_norm.html#torch.linalg.vector_norm" title="torch.linalg.vector_norm">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  vector_norm
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes a vector norm.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.matrix_norm">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.matrix_norm.html#torch.linalg.matrix_norm" title="torch.linalg.matrix_norm">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  matrix_norm
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes a matrix norm.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.det">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.det.html#torch.linalg.det" title="torch.linalg.det">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  det
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the determinant of a square matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.slogdet">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.slogdet.html#torch.linalg.slogdet" title="torch.linalg.slogdet">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  slogdet
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the sign and natural logarithm of the absolute value of the determinant of a square matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.cond">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.cond.html#torch.linalg.cond" title="torch.linalg.cond">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  cond
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the condition number of a matrix with respect to a matrix norm.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.matrix_rank">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.matrix_rank.html#torch.linalg.matrix_rank" title="torch.linalg.matrix_rank">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  matrix_rank
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the numerical rank of a matrix.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="decompositions">
+          <h2>
+           Decompositions
+           <a class="headerlink" href="#decompositions" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.cholesky">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.cholesky.html#torch.linalg.cholesky" title="torch.linalg.cholesky">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  cholesky
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the Cholesky decomposition of a complex Hermitian or real symmetric positive-definite matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.qr">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.qr.html#torch.linalg.qr" title="torch.linalg.qr">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  qr
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the QR decomposition of a matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.eig">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.eig.html#torch.linalg.eig" title="torch.linalg.eig">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  eig
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the eigenvalue decomposition of a square matrix if it exists.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.eigvals">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.eigvals.html#torch.linalg.eigvals" title="torch.linalg.eigvals">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  eigvals
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the eigenvalues of a square matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.eigh">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.eigh.html#torch.linalg.eigh" title="torch.linalg.eigh">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  eigh
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the eigenvalue decomposition of a complex Hermitian or real symmetric matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.eigvalsh">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.eigvalsh.html#torch.linalg.eigvalsh" title="torch.linalg.eigvalsh">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  eigvalsh
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the eigenvalues of a complex Hermitian or real symmetric matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.svd">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.svd.html#torch.linalg.svd" title="torch.linalg.svd">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  svd
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the singular value decomposition (SVD) of a matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.svdvals">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.svdvals.html#torch.linalg.svdvals" title="torch.linalg.svdvals">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  svdvals
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the singular values of a matrix.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="solvers">
+          <h2>
+           Solvers
+           <a class="headerlink" href="#solvers" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.solve">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  solve
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the solution of a square system of linear equations with a unique solution.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.lstsq">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.lstsq.html#torch.linalg.lstsq" title="torch.linalg.lstsq">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  lstsq
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes a solution to the least squares problem of a system of linear equations.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="inverses">
+          <h2>
+           Inverses
+           <a class="headerlink" href="#inverses" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.inv">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.inv.html#torch.linalg.inv" title="torch.linalg.inv">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  inv
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the inverse of a square matrix if it exists.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.pinv">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.pinv.html#torch.linalg.pinv" title="torch.linalg.pinv">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  pinv
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the pseudoinverse (Moore-Penrose inverse) of a matrix.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="matrix-products">
+          <h2>
+           Matrix Products
+           <a class="headerlink" href="#matrix-products" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.matmul">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.matmul.html#torch.linalg.matmul" title="torch.linalg.matmul">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  matmul
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Alias for
+               <a class="reference internal" href="generated/torch.matmul.html#torch.matmul" title="torch.matmul">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.matmul()
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.matrix_power">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.matrix_power.html#torch.linalg.matrix_power" title="torch.linalg.matrix_power">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  matrix_power
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the
+               <cite>
+                n
+               </cite>
+               -th power of a square matrix for an integer
+               <cite>
+                n
+               </cite>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.multi_dot">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.multi_dot.html#torch.linalg.multi_dot" title="torch.linalg.multi_dot">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  multi_dot
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Efficiently multiplies two or more matrices by reordering the multiplications so that the fewest arithmetic operations are performed.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.householder_product">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.householder_product.html#torch.linalg.householder_product" title="torch.linalg.householder_product">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  householder_product
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the first
+               <cite>
+                n
+               </cite>
+               columns of a product of Householder matrices.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="tensor-operations">
+          <h2>
+           Tensor Operations
+           <a class="headerlink" href="#tensor-operations" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.tensorinv">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.tensorinv.html#torch.linalg.tensorinv" title="torch.linalg.tensorinv">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  tensorinv
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the multiplicative inverse of
+               <a class="reference internal" href="generated/torch.tensordot.html#torch.tensordot" title="torch.tensordot">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.tensordot()
+                 </span>
+                </code>
+               </a>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.tensorsolve">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.tensorsolve.html#torch.linalg.tensorsolve" title="torch.linalg.tensorsolve">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  tensorsolve
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the solution
+               <cite>
+                X
+               </cite>
+               to the system
+               <cite>
+                torch.tensordot(A, X) = B
+               </cite>
+               .
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="experimental-functions">
+          <h2>
+           Experimental Functions
+           <a class="headerlink" href="#experimental-functions" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.cholesky_ex">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.cholesky_ex.html#torch.linalg.cholesky_ex" title="torch.linalg.cholesky_ex">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  cholesky_ex
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the Cholesky decomposition of a complex Hermitian or real symmetric positive-definite matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.inv_ex">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.inv_ex.html#torch.linalg.inv_ex" title="torch.linalg.inv_ex">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  inv_ex
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the inverse of a square matrix if it is invertible.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

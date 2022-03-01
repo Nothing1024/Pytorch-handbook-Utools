@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   SELU — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="selu">
+         <h1>
+          SELU
+          <a class="headerlink" href="#selu" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.SELU">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             SELU
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inplace
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/activation.html#SELU">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.SELU" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applied element-wise, as:
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   SELU
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   =
+                  </mo>
+                  <mtext>
+                   scale
+                  </mtext>
+                  <mo>
+                   ∗
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   max
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mn>
+                   0
+                  </mn>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   +
+                  </mo>
+                  <mi>
+                   min
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mn>
+                   0
+                  </mn>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   α
+                  </mi>
+                  <mo>
+                   ∗
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   exp
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   −
+                  </mo>
+                  <mn>
+                   1
+                  </mn>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{SELU}(x) = \text{scale} * (\max(0,x) + \min(0, \alpha * (\exp(x) - 1)))
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  SELU
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  scale
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ∗
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mop">
+                 max
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 0
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mop">
+                 min
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 0
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.0037em;">
+                 α
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ∗
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mop">
+                 exp
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 −
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord">
+                 1
+                </span>
+                <span class="mclose">
+                 )))
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            with
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   α
+                  </mi>
+                  <mo>
+                   =
+                  </mo>
+                  <mn>
+                   1.6732632423543772848170429916717
+                  </mn>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \alpha = 1.6732632423543772848170429916717
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.0037em;">
+                 α
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 1.6732632423543772848170429916717
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            and
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   scale
+                  </mtext>
+                  <mo>
+                   =
+                  </mo>
+                  <mn>
+                   1.0507009873554804934193349852946
+                  </mn>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{scale} = 1.0507009873554804934193349852946
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  scale
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 1.0507009873554804934193349852946
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            .
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             When using
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               kaiming_normal
+              </span>
+             </code>
+             or
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               kaiming_normal_
+              </span>
+             </code>
+             for initialisation,
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               nonlinearity='linear'
+              </span>
+             </code>
+             should be used instead of
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               nonlinearity='selu'
+              </span>
+             </code>
+             in order to get
+             <a class="reference external" href="https://arxiv.org/abs/1706.02515">
+              Self-Normalizing Neural Networks
+             </a>
+             .
+See
+             <a class="reference internal" href="../nn.init.html#torch.nn.init.calculate_gain" title="torch.nn.init.calculate_gain">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.nn.init.calculate_gain()
+               </span>
+              </code>
+             </a>
+             for more information.
+            </p>
+           </div>
+           <p>
+            More details can be found in the paper
+            <a class="reference external" href="https://arxiv.org/abs/1706.02515">
+             Self-Normalizing Neural Networks
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               inplace
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+               <em>
+                bool
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – can optionally do the operation in-place. Default:
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                False
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+           <dl class="simple">
+            <dt>
+             Shape:
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <p>
+                Input:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , where
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo>
+                       ∗
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      *
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                means any number of dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                Output:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , same shape as the input.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <img alt="../_images/SELU.png" src="../_images/SELU.png">
+            <p>
+             Examples:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">SELU</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+             </div>
+            </div>
+           </img>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

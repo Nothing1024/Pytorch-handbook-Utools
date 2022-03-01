@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.utils.skip_init — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-utils-skip-init">
+         <h1>
+          torch.nn.utils.skip_init
+          <a class="headerlink" href="#torch-nn-utils-skip-init" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.utils.skip_init">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             skip_init
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              module_cls
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/init.html#skip_init">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.skip_init" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Given a module class object and args / kwargs, instantiates the module without initializing
+parameters / buffers.  This can be useful if initialization is slow or if custom initialization will
+be performed, making the default initialization unnecessary. There are some caveats to this, due to
+the way this function is implemented:
+           </p>
+           <p>
+            1. The module must accept a
+            <cite>
+             device
+            </cite>
+            arg in its constructor that is passed to any parameters
+or buffers created during construction.
+           </p>
+           <p>
+            2. The module must not perform any computation on parameters in its constructor except
+initialization (i.e. functions from
+            <code class="xref py py-mod docutils literal notranslate">
+             <span class="pre">
+              torch.nn.init
+             </span>
+            </code>
+            ).
+           </p>
+           <p>
+            If these conditions are satisfied, the module can be instantiated with parameter / buffer values
+uninitialized, as if having been created using
+            <a class="reference internal" href="torch.empty.html#torch.empty" title="torch.empty">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.empty()
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 module_cls
+                </strong>
+                – Class object; should be a subclass of
+                <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.nn.Module
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 args
+                </strong>
+                – args to pass to the module’s constructor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 kwargs
+                </strong>
+                – kwargs to pass to the module’s constructor
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Instantiated module with uninitialized parameters / buffers
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">skip_init</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">weight</span>
+<span class="go">Parameter containing:</span>
+<span class="go">tensor([[0.0000e+00, 1.5846e+29, 7.8307e+00, 2.5250e-29, 1.1210e-44]],</span>
+<span class="go">       requires_grad=True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">skip_init</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">,</span> <span class="n">in_features</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m2</span><span class="o">.</span><span class="n">weight</span>
+<span class="go">Parameter containing:</span>
+<span class="go">tensor([[-1.4677e+24,  4.5915e-41,  1.4013e-45,  0.0000e+00, -1.4677e+24,</span>
+<span class="go">          4.5915e-41]], requires_grad=True)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

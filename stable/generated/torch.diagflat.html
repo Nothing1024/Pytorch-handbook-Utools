@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.diagflat — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-diagflat">
+         <h1>
+          torch.diagflat
+          <a class="headerlink" href="#torch-diagflat" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.diagflat">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             diagflat
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              offset
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.diagflat" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <ul class="simple">
+            <li>
+             <p>
+              If
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              is a vector (1-D tensor), then returns a 2-D square tensor
+with the elements of
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              as the diagonal.
+             </p>
+            </li>
+            <li>
+             <p>
+              If
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              is a tensor with more than one dimension, then returns a
+2-D tensor with diagonal elements equal to a flattened
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              .
+             </p>
+            </li>
+           </ul>
+           <p>
+            The argument
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              offset
+             </span>
+            </code>
+            controls which diagonal to consider:
+           </p>
+           <ul class="simple">
+            <li>
+             <p>
+              If
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                offset
+               </span>
+              </code>
+              = 0, it is the main diagonal.
+             </p>
+            </li>
+            <li>
+             <p>
+              If
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                offset
+               </span>
+              </code>
+              &gt; 0, it is above the main diagonal.
+             </p>
+            </li>
+            <li>
+             <p>
+              If
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                offset
+               </span>
+              </code>
+              &lt; 0, it is below the main diagonal.
+             </p>
+            </li>
+           </ul>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 offset
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the diagonal to consider. Default: 0 (main
+diagonal).
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([-0.2956, -0.9068,  0.1695])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">diagflat</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">tensor([[-0.2956,  0.0000,  0.0000],</span>
+<span class="go">        [ 0.0000, -0.9068,  0.0000],</span>
+<span class="go">        [ 0.0000,  0.0000,  0.1695]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">diagflat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([[ 0.0000, -0.2956,  0.0000,  0.0000],</span>
+<span class="go">        [ 0.0000,  0.0000, -0.9068,  0.0000],</span>
+<span class="go">        [ 0.0000,  0.0000,  0.0000,  0.1695],</span>
+<span class="go">        [ 0.0000,  0.0000,  0.0000,  0.0000]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[ 0.2094, -0.3018],</span>
+<span class="go">        [-0.1516,  1.9342]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">diagflat</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">tensor([[ 0.2094,  0.0000,  0.0000,  0.0000],</span>
+<span class="go">        [ 0.0000, -0.3018,  0.0000,  0.0000],</span>
+<span class="go">        [ 0.0000,  0.0000, -0.1516,  0.0000],</span>
+<span class="go">        [ 0.0000,  0.0000,  0.0000,  1.9342]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.utils.prune.random_structured — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-utils-prune-random-structured">
+         <h1>
+          torch.nn.utils.prune.random_structured
+          <a class="headerlink" href="#torch-nn-utils-prune-random-structured" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.utils.prune.random_structured">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.prune.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             random_structured
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              module
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              name
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              amount
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/prune.html#random_structured">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.prune.random_structured" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Prunes tensor corresponding to parameter called
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              name
+             </span>
+            </code>
+            in
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              module
+             </span>
+            </code>
+            by removing the specified
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              amount
+             </span>
+            </code>
+            of (currently unpruned) channels
+along the specified
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            selected at random.
+Modifies module in place (and also return the modified module)
+by:
+           </p>
+           <ol class="arabic simple">
+            <li>
+             <p>
+              adding a named buffer called
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name+'_mask'
+               </span>
+              </code>
+              corresponding to the
+binary mask applied to the parameter
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name
+               </span>
+              </code>
+              by the pruning method.
+             </p>
+            </li>
+            <li>
+             <p>
+              replacing the parameter
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name
+               </span>
+              </code>
+              by its pruned version, while the
+original (unpruned) parameter is stored in a new parameter named
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name+'_orig'
+               </span>
+              </code>
+              .
+             </p>
+            </li>
+           </ol>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 module
+                </strong>
+                (
+                <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                 <em>
+                  nn.Module
+                 </em>
+                </a>
+                ) – module containing the tensor to prune
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 name
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                ) – parameter name within
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  module
+                 </span>
+                </code>
+                on which pruning
+will act.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 amount
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                ) – quantity of parameters to prune.
+If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  float
+                 </span>
+                </code>
+                , should be between 0.0 and 1.0 and represent the
+fraction of parameters to prune. If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  int
+                 </span>
+                </code>
+                , it represents the
+absolute number of parameters to prune.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – index of the dim along which we define channels to prune.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              modified (i.e. pruned) version of the input module
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Return type
+            </dt>
+            <dd class="field-odd">
+             <p>
+              module (
+              <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+               nn.Module
+              </a>
+              )
+             </p>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Examples
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">prune</span><span class="o">.</span><span class="n">random_structured</span><span class="p">(</span>
+<span class="go">        nn.Linear(5, 3), 'weight', amount=3, dim=1</span>
+<span class="go">    )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">columns_pruned</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">columns_pruned</span><span class="p">)</span>
+<span class="go">3</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

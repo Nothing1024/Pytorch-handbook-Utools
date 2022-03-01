@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.functional.cosine_similarity — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-functional-cosine-similarity">
+         <h1>
+          torch.nn.functional.cosine_similarity
+          <a class="headerlink" href="#torch-nn-functional-cosine-similarity" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.functional.cosine_similarity">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.functional.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             cosine_similarity
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              x1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              x2
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              eps
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1e-08
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.nn.functional.cosine_similarity" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns cosine similarity between
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              x1
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              x2
+             </span>
+            </code>
+            , computed along dim.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              x1
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              x2
+             </span>
+            </code>
+            must be broadcastable
+to a common shape.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            refers to the dimension in this common shape. Dimension
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            of the output is
+squeezed (see
+            <a class="reference internal" href="torch.squeeze.html#torch.squeeze" title="torch.squeeze">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.squeeze()
+              </span>
+             </code>
+            </a>
+            ), resulting in the
+output tensor having 1 fewer dimension.
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   similarity
+                  </mtext>
+                  <mo>
+                   =
+                  </mo>
+                  <mfrac>
+                   <mrow>
+                    <msub>
+                     <mi>
+                      x
+                     </mi>
+                     <mn>
+                      1
+                     </mn>
+                    </msub>
+                    <mo>
+                     ⋅
+                    </mo>
+                    <msub>
+                     <mi>
+                      x
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msub>
+                   </mrow>
+                   <mrow>
+                    <mi>
+                     max
+                    </mi>
+                    <mo>
+                     ⁡
+                    </mo>
+                    <mo stretchy="false">
+                     (
+                    </mo>
+                    <mi mathvariant="normal">
+                     ∥
+                    </mi>
+                    <msub>
+                     <mi>
+                      x
+                     </mi>
+                     <mn>
+                      1
+                     </mn>
+                    </msub>
+                    <msub>
+                     <mi mathvariant="normal">
+                      ∥
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msub>
+                    <mo>
+                     ⋅
+                    </mo>
+                    <mi mathvariant="normal">
+                     ∥
+                    </mi>
+                    <msub>
+                     <mi>
+                      x
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msub>
+                    <msub>
+                     <mi mathvariant="normal">
+                      ∥
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msub>
+                    <mo separator="true">
+                     ,
+                    </mo>
+                    <mi>
+                     ϵ
+                    </mi>
+                    <mo stretchy="false">
+                     )
+                    </mo>
+                   </mrow>
+                  </mfrac>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{similarity} = \dfrac{x_1 \cdot x_2}{\max(\Vert x_1 \Vert _2 \cdot \Vert x_2 \Vert _2, \epsilon)}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  similarity
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:2.0574500000000002em;vertical-align:-0.936em;">
+                </span>
+                <span class="mord">
+                 <span class="mopen nulldelimiter">
+                 </span>
+                 <span class="mfrac">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:1.12145em;">
+                     <span style="top:-2.314em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="mord">
+                       <span class="mop">
+                        max
+                       </span>
+                       <span class="mopen">
+                        (
+                       </span>
+                       <span class="mord">
+                        ∥
+                       </span>
+                       <span class="mord">
+                        <span class="mord mathnormal">
+                         x
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               1
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="mord">
+                        <span class="mord">
+                         ∥
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="mspace" style="margin-right:0.2222222222222222em;">
+                       </span>
+                       <span class="mbin">
+                        ⋅
+                       </span>
+                       <span class="mspace" style="margin-right:0.2222222222222222em;">
+                       </span>
+                       <span class="mord">
+                        ∥
+                       </span>
+                       <span class="mord">
+                        <span class="mord mathnormal">
+                         x
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="mord">
+                        <span class="mord">
+                         ∥
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="mpunct">
+                        ,
+                       </span>
+                       <span class="mspace" style="margin-right:0.16666666666666666em;">
+                       </span>
+                       <span class="mord mathnormal">
+                        ϵ
+                       </span>
+                       <span class="mclose">
+                        )
+                       </span>
+                      </span>
+                     </span>
+                     <span style="top:-3.23em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="frac-line" style="border-bottom-width:0.04em;">
+                      </span>
+                     </span>
+                     <span style="top:-3.677em;">
+                      <span class="pstrut" style="height:3em;">
+                      </span>
+                      <span class="mord">
+                       <span class="mord">
+                        <span class="mord mathnormal">
+                         x
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               1
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="mspace" style="margin-right:0.2222222222222222em;">
+                       </span>
+                       <span class="mbin">
+                        ⋅
+                       </span>
+                       <span class="mspace" style="margin-right:0.2222222222222222em;">
+                       </span>
+                       <span class="mord">
+                        <span class="mord mathnormal">
+                         x
+                        </span>
+                        <span class="msupsub">
+                         <span class="vlist-t vlist-t2">
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.30110799999999993em;">
+                            <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="pstrut" style="height:2.7em;">
+                             </span>
+                             <span class="sizing reset-size6 size3 mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span class="vlist-s">
+                            ​
+                           </span>
+                          </span>
+                          <span class="vlist-r">
+                           <span class="vlist" style="height:0.15em;">
+                            <span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.936em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            Supports
+            <a class="reference internal" href="../tensor_attributes.html#type-promotion-doc">
+             <span class="std std-ref">
+              type promotion
+             </span>
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 x1
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – First input.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 x2
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – Second input.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – Dimension along which cosine similarity is computed. Default: 1
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 eps
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – Small value to avoid division by zero.
+Default: 1e-8
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

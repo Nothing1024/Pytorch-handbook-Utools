@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.optimize_for_inference — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-optimize-for-inference">
+         <h1>
+          torch.jit.optimize_for_inference
+          <a class="headerlink" href="#torch-jit-optimize-for-inference" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.optimize_for_inference">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             optimize_for_inference
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              mod
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit/_freeze.html#optimize_for_inference">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.optimize_for_inference" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Performs a set of optimization passes to optimize a model for the
+purposes of inference. If the model is not already frozen, optimize_for_inference
+will invoke
+            <cite>
+             torch.jit.freeze
+            </cite>
+            automatically.
+           </p>
+           <p>
+            In addition to generic optimizations that should speed up your model regardless
+of environment, prepare for inference will also bake in build specific settings
+such as the presence of CUDNN or MKLDNN, and may in the future make transformations
+which speed things up on one machine but slow things down on another. Accordingly,
+serialization is not implemented following invoking
+            <cite>
+             optimize_for_inference
+            </cite>
+            and
+is not guaranteed.
+           </p>
+           <p>
+            This is still in prototype, and may have the potential to slow down your model.
+Primary use cases that have been targeted so far have been vision models on cpu
+and gpu to a lesser extent.
+           </p>
+           <p>
+            Example (optimizing a module with Conv-&gt;Batchnorm):
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">.001</span><span class="p">)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">conv</span><span class="p">,</span> <span class="n">bn</span><span class="p">)</span>
+<span class="n">frozen_mod</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">optimize_for_inference</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">eval</span><span class="p">()))</span>
+<span class="k">assert</span> <span class="s2">"batch_norm"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">frozen_mod</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+<span class="c1"># if built with MKLDNN, convolution will be run with MKLDNN weights</span>
+<span class="k">assert</span> <span class="s2">"MKLDNN"</span> <span class="ow">in</span> <span class="n">frozen_mod</span><span class="o">.</span><span class="n">graph</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

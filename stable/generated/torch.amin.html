@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.amin — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-amin">
+         <h1>
+          torch.amin
+          <a class="headerlink" href="#torch-amin" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.amin">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             amin
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              keepdim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.amin" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the minimum value of each slice of the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            tensor in the given
+dimension(s)
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            .
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <dl class="simple">
+             <dt>
+              The difference between
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                max
+               </span>
+              </code>
+              /
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                min
+               </span>
+              </code>
+              and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                amax
+               </span>
+              </code>
+              /
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                amin
+               </span>
+              </code>
+              is:
+             </dt>
+             <dd>
+              <ul class="simple">
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   amax
+                  </span>
+                 </code>
+                 /
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   amin
+                  </span>
+                 </code>
+                 supports reducing on multiple dimensions,
+                </p>
+               </li>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   amax
+                  </span>
+                 </code>
+                 /
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   amin
+                  </span>
+                 </code>
+                 does not return indices,
+                </p>
+               </li>
+               <li>
+                <p>
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   amax
+                  </span>
+                 </code>
+                 /
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   amin
+                  </span>
+                 </code>
+                 evenly distributes gradient between equal values,
+while
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   max(dim)
+                  </span>
+                 </code>
+                 /
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   min(dim)
+                  </span>
+                 </code>
+                 propagates gradient only to a single
+index in the source tensor.
+                </p>
+               </li>
+              </ul>
+             </dd>
+            </dl>
+           </div>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              keepdim
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            , the output tensor is of the same size
+as
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            except in the dimension(s)
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            where it is of size 1.
+Otherwise,
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            is squeezed (see
+            <a class="reference internal" href="torch.squeeze.html#torch.squeeze" title="torch.squeeze">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.squeeze()
+              </span>
+             </code>
+            </a>
+            ), resulting in the
+output tensor having 1 (or
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              len(dim)
+             </span>
+            </code>
+            ) fewer dimension(s).
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 tuple of python:ints
+                </em>
+                ) – the dimension or dimensions to reduce.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 keepdim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – whether the output tensor has
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                retained or not.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[ 0.6451, -0.4866,  0.2987, -1.3312],</span>
+<span class="go">        [-0.5744,  1.2980,  1.8397, -0.2713],</span>
+<span class="go">        [ 0.9128,  0.9214, -1.7268, -0.2995],</span>
+<span class="go">        [ 0.9023,  0.4853,  0.9075, -1.6165]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([-1.3312, -0.5744, -1.7268, -1.6165])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

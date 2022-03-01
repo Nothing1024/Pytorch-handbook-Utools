@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.narrow_copy — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-narrow-copy">
+         <h1>
+          torch.Tensor.narrow_copy
+          <a class="headerlink" href="#torch-tensor-narrow-copy" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.narrow_copy">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             narrow_copy
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dimension
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              start
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              length
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.narrow_copy" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Same as
+            <a class="reference internal" href="torch.Tensor.narrow.html#torch.Tensor.narrow" title="torch.Tensor.narrow">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               Tensor.narrow()
+              </span>
+             </code>
+            </a>
+            except returning a copy rather
+than shared storage.  This is primarily for sparse tensors, which
+do not have a shared-storage narrow method.  Calling
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              narrow_copy
+             </span>
+            </code>
+            with
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              dimemsion
+             </span>
+             <span class="pre">
+              &gt;
+             </span>
+             <span class="pre">
+              self.sparse_dim()
+             </span>
+            </code>
+            will return a copy with the
+relevant dense dimension narrowed, and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              self.shape
+             </span>
+            </code>
+            updated accordingly.
+           </p>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

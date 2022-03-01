@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.where — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-where">
+         <h1>
+          torch.where
+          <a class="headerlink" href="#torch-where" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.where">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             where
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              condition
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              x
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              y
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.where" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Return a tensor of elements selected from either
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              x
+             </span>
+            </code>
+            or
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              y
+             </span>
+            </code>
+            , depending on
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              condition
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            The operation is defined as:
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mtext>
+                    out
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   =
+                  </mo>
+                  <mrow>
+                   <mo fence="true">
+                    {
+                   </mo>
+                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <msub>
+                        <mtext>
+                         x
+                        </mtext>
+                        <mi>
+                         i
+                        </mi>
+                       </msub>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mtext>
+                         if
+                        </mtext>
+                        <msub>
+                         <mtext>
+                          condition
+                         </mtext>
+                         <mi>
+                          i
+                         </mi>
+                        </msub>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <msub>
+                        <mtext>
+                         y
+                        </mtext>
+                        <mi>
+                         i
+                        </mi>
+                       </msub>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mtext>
+                        otherwise
+                       </mtext>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                   </mtable>
+                  </mrow>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{out}_i = \begin{cases}
+    \text{x}_i &amp; \text{if } \text{condition}_i \\
+    \text{y}_i &amp; \text{otherwise} \\
+\end{cases}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.76508em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   out
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        i
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;">
+                </span>
+                <span class="minner">
+                 <span class="mopen delimcenter" style="top:0em;">
+                  <span class="delimsizing size4">
+                   {
+                  </span>
+                 </span>
+                 <span class="mord">
+                  <span class="mtable">
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.69em;">
+                       <span style="top:-3.69em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord">
+                          <span class="mord text">
+                           <span class="mord">
+                            x
+                           </span>
+                          </span>
+                          <span class="msupsub">
+                           <span class="vlist-t vlist-t2">
+                            <span class="vlist-r">
+                             <span class="vlist" style="height:0.31166399999999994em;">
+                              <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                               <span class="pstrut" style="height:2.7em;">
+                               </span>
+                               <span class="sizing reset-size6 size3 mtight">
+                                <span class="mord mathnormal mtight">
+                                 i
+                                </span>
+                               </span>
+                              </span>
+                             </span>
+                             <span class="vlist-s">
+                              ​
+                             </span>
+                            </span>
+                            <span class="vlist-r">
+                             <span class="vlist" style="height:0.15em;">
+                              <span>
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.25em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord">
+                          <span class="mord text">
+                           <span class="mord">
+                            y
+                           </span>
+                          </span>
+                          <span class="msupsub">
+                           <span class="vlist-t vlist-t2">
+                            <span class="vlist-r">
+                             <span class="vlist" style="height:0.21752399999999997em;">
+                              <span style="top:-2.4558600000000004em;margin-right:0.05em;">
+                               <span class="pstrut" style="height:2.7em;">
+                               </span>
+                               <span class="sizing reset-size6 size3 mtight">
+                                <span class="mord mathnormal mtight">
+                                 i
+                                </span>
+                               </span>
+                              </span>
+                             </span>
+                             <span class="vlist-s">
+                              ​
+                             </span>
+                            </span>
+                            <span class="vlist-r">
+                             <span class="vlist" style="height:0.24414em;">
+                              <span>
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.19em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                   <span class="arraycolsep" style="width:1em;">
+                   </span>
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.69em;">
+                       <span style="top:-3.69em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           if
+                          </span>
+                         </span>
+                         <span class="mord">
+                          <span class="mord text">
+                           <span class="mord">
+                            condition
+                           </span>
+                          </span>
+                          <span class="msupsub">
+                           <span class="vlist-t vlist-t2">
+                            <span class="vlist-r">
+                             <span class="vlist" style="height:0.31166399999999994em;">
+                              <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                               <span class="pstrut" style="height:2.7em;">
+                               </span>
+                               <span class="sizing reset-size6 size3 mtight">
+                                <span class="mord mathnormal mtight">
+                                 i
+                                </span>
+                               </span>
+                              </span>
+                             </span>
+                             <span class="vlist-s">
+                              ​
+                             </span>
+                            </span>
+                            <span class="vlist-r">
+                             <span class="vlist" style="height:0.15em;">
+                              <span>
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.25em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           otherwise
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.19em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             The tensors
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               condition
+              </span>
+             </code>
+             ,
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               x
+              </span>
+             </code>
+             ,
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               y
+              </span>
+             </code>
+             must be
+             <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+              <span class="std std-ref">
+               broadcastable
+              </span>
+             </a>
+             .
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Currently valid scalar and tensor combination are
+1. Scalar of floating dtype and torch.double
+2. Scalar of integral dtype and torch.long
+3. Scalar of complex dtype and torch.complex128
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 condition
+                </strong>
+                (
+                <em>
+                 BoolTensor
+                </em>
+                ) – When True (nonzero), yield x, otherwise yield y
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 Scalar
+                </em>
+                ) – value (if
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  x
+                 </span>
+                </code>
+                is a scalar) or values selected at indices
+where
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  condition
+                 </span>
+                </code>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 Scalar
+                </em>
+                ) – value (if
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  y
+                 </span>
+                </code>
+                is a scalar) or values selected at indices
+where
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  condition
+                 </span>
+                </code>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              A tensor of shape equal to the broadcasted shape of
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                condition
+               </span>
+              </code>
+              ,
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                x
+               </span>
+              </code>
+              ,
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                y
+               </span>
+              </code>
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Return type
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               Tensor
+              </a>
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[-0.4620,  0.3139],</span>
+<span class="go">        [ 0.3898, -0.7197],</span>
+<span class="go">        [ 0.0478, -0.1657]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">tensor([[ 1.0000,  0.3139],</span>
+<span class="go">        [ 0.3898,  1.0000],</span>
+<span class="go">        [ 0.0478,  1.0000]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[ 1.0779,  0.0383],</span>
+<span class="go">        [-0.8785, -1.1089]], dtype=torch.float64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+<span class="go">tensor([[1.0779, 0.0383],</span>
+<span class="go">        [0.0000, 0.0000]], dtype=torch.float64)</span>
+</pre>
+            </div>
+           </div>
+           <dl class="py function">
+            <dt>
+             <code class="sig-prename descclassname">
+              <span class="pre">
+               torch.
+              </span>
+             </code>
+             <code class="sig-name descname">
+              <span class="pre">
+               where
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                condition
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             →
+             <span class="pre">
+              tuple
+             </span>
+             <span class="pre">
+              of
+             </span>
+             <span class="pre">
+              LongTensor
+             </span>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch.where(condition)
+             </span>
+            </code>
+            is identical to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch.nonzero(condition,
+             </span>
+             <span class="pre">
+              as_tuple=True)
+             </span>
+            </code>
+            .
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             See also
+             <a class="reference internal" href="torch.nonzero.html#torch.nonzero" title="torch.nonzero">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.nonzero()
+               </span>
+              </code>
+             </a>
+             .
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

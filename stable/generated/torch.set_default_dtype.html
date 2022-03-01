@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.set_default_dtype — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-set-default-dtype">
+         <h1>
+          torch.set_default_dtype
+          <a class="headerlink" href="#torch-set-default-dtype" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.set_default_dtype">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             set_default_dtype
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              d
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch.html#set_default_dtype">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.set_default_dtype" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Sets the default floating point dtype to
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              d
+             </span>
+            </code>
+            . Supports torch.float32
+and torch.float64 as inputs. Other dtypes may be accepted without complaint
+but are not supported and are unlikely to work as expected.
+           </p>
+           <p>
+            When PyTorch is initialized its default floating point dtype is torch.float32,
+and the intent of set_default_dtype(torch.float64) is to facilitate NumPy-like
+type inference. The default floating point dtype is used to:
+           </p>
+           <ol class="arabic simple">
+            <li>
+             <p>
+              Implicitly determine the default complex dtype. When the default floating point
+type is float32 the default complex dtype is complex64, and when the default
+floating point type is float64 the default complex type is complex128.
+             </p>
+            </li>
+            <li>
+             <p>
+              Infer the dtype for tensors constructed using Python floats or complex Python
+numbers. See examples below.
+             </p>
+            </li>
+            <li>
+             <p>
+              Determine the result of type promotion between bool and integer tensors and
+Python floats and complex Python numbers.
+             </p>
+            </li>
+           </ol>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               d
+              </strong>
+              (
+              <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 torch.dtype
+                </span>
+               </code>
+              </a>
+              ) – the floating point dtype to make the default.
+Either torch.float32 or torch.float64.
+             </p>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Example
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># initial default for floating point is torch.float32</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Python floats are interpreted as float32</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">torch.float32</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># initial default for floating point is torch.complex64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Complex Python numbers are interpreted as complex64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">torch.complex64</span>
+</pre>
+            </div>
+           </div>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">set_default_dtype</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Python floats are now interpreted as float64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span>    <span class="c1"># a new floating point tensor</span>
+<span class="go">torch.float64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Complex Python numbers are now interpreted as complex128</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span>   <span class="c1"># a new complex tensor</span>
+<span class="go">torch.complex128</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.addr — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-addr">
+         <h1>
+          torch.addr
+          <a class="headerlink" href="#torch-addr" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.addr">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             addr
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              vec1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              vec2
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              beta
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              alpha
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.addr" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Performs the outer-product of vectors
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              vec1
+             </span>
+            </code>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              vec2
+             </span>
+            </code>
+            and adds it to the matrix
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            Optional values
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              beta
+             </span>
+            </code>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              alpha
+             </span>
+            </code>
+            are scaling factors on the
+outer product between
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              vec1
+             </span>
+            </code>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              vec2
+             </span>
+            </code>
+            and the added matrix
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            respectively.
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   out
+                  </mtext>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   β
+                  </mi>
+                  <mtext>
+                   input
+                  </mtext>
+                  <mo>
+                   +
+                  </mo>
+                  <mi>
+                   α
+                  </mi>
+                  <mtext>
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext>
+                   vec1
+                  </mtext>
+                  <mo>
+                   ⊗
+                  </mo>
+                  <mtext>
+                   vec2
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{out} = \beta\ \text{input} + \alpha\ (\text{vec1} \otimes \text{vec2})
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.61508em;vertical-align:0em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  out
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.05278em;">
+                 β
+                </span>
+                <span class="mspace">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  input
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.0037em;">
+                 α
+                </span>
+                <span class="mspace">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  vec1
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ⊗
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  vec2
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              beta
+             </span>
+            </code>
+            is 0, then
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            will be ignored, and
+            <cite>
+             nan
+            </cite>
+            and
+            <cite>
+             inf
+            </cite>
+            in
+it will not be propagated.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              vec1
+             </span>
+            </code>
+            is a vector of size
+            <cite>
+             n
+            </cite>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              vec2
+             </span>
+            </code>
+            is a vector
+of size
+            <cite>
+             m
+            </cite>
+            , then
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            must be
+            <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+             <span class="std std-ref">
+              broadcastable
+             </span>
+            </a>
+            with a matrix of size
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   n
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   m
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  (n \times m)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 n
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord mathnormal">
+                 m
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              out
+             </span>
+            </code>
+            will be a matrix of size
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   n
+                  </mi>
+                  <mo>
+                   ×
+                  </mo>
+                  <mi>
+                   m
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  (n \times m)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 n
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord mathnormal">
+                 m
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – matrix to be added
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 vec1
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the first vector of the outer product
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 vec2
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the second vector of the outer product
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 beta
+                </strong>
+                (
+                <em>
+                 Number
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – multiplier for
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                (
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       β
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      \beta
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.05278em;">
+                     β
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                )
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 alpha
+                </strong>
+                (
+                <em>
+                 Number
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – multiplier for
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mtext>
+                       vec1
+                      </mtext>
+                      <mo>
+                       ⊗
+                      </mo>
+                      <mtext>
+                       vec2
+                      </mtext>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      \text{vec1} \otimes \text{vec2}
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.72777em;vertical-align:-0.08333em;">
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      vec1
+                     </span>
+                    </span>
+                    <span class="mspace" style="margin-right:0.2222222222222222em;">
+                    </span>
+                    <span class="mbin">
+                     ⊗
+                    </span>
+                    <span class="mspace" style="margin-right:0.2222222222222222em;">
+                    </span>
+                   </span>
+                   <span class="base">
+                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      vec2
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                (
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       α
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      \alpha
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.0037em;">
+                     α
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                )
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output tensor.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vec1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">addr</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">)</span>
+<span class="go">tensor([[ 1.,  2.],</span>
+<span class="go">        [ 2.,  4.],</span>
+<span class="go">        [ 3.,  6.]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

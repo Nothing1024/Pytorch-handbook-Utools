@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.fork — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-fork">
+         <h1>
+          torch.jit.fork
+          <a class="headerlink" href="#torch-jit-fork" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.fork">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             fork
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              func
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit/_async.html#fork">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.fork" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Creates an asynchronous task executing
+            <cite>
+             func
+            </cite>
+            and a reference to the value
+of the result of this execution.
+            <cite>
+             fork
+            </cite>
+            will return immediately,
+so the return value of
+            <cite>
+             func
+            </cite>
+            may not have been computed yet. To force completion
+of the task and access the return value invoke
+            <cite>
+             torch.jit.wait
+            </cite>
+            on the Future.
+            <cite>
+             fork
+            </cite>
+            invoked
+with a
+            <cite>
+             func
+            </cite>
+            which returns
+            <cite>
+             T
+            </cite>
+            is typed as
+            <cite>
+             torch.jit.Future[T]
+            </cite>
+            .
+            <cite>
+             fork
+            </cite>
+            calls can be arbitrarily
+nested, and may be invoked with positional and keyword arguments.
+Asynchronous execution will only occur when run in TorchScript. If run in pure python,
+            <cite>
+             fork
+            </cite>
+            will not execute in parallel.
+            <cite>
+             fork
+            </cite>
+            will also not execute in parallel when invoked
+while tracing, however the
+            <cite>
+             fork
+            </cite>
+            and
+            <cite>
+             wait
+            </cite>
+            calls will be captured in the exported IR Graph.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             <cite>
+              fork
+             </cite>
+             tasks will execute non-deterministically. We recommend only spawning
+parallel fork tasks for pure functions that do not modify their inputs,
+module attributes, or global state.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 func
+                </strong>
+                (
+                <em>
+                 callable
+                </em>
+                <em>
+                 or
+                </em>
+                <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                 <em>
+                  torch.nn.Module
+                 </em>
+                </a>
+                ) – A Python function or
+                <cite>
+                 torch.nn.Module
+                </cite>
+                that will be invoked. If executed in TorchScript, it will execute asynchronously,
+otherwise it will not. Traced invocations of fork will be captured in the IR.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 *args
+                </strong>
+                – arguments to invoke
+                <cite>
+                 func
+                </cite>
+                with.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 **kwargs
+                </strong>
+                – arguments to invoke
+                <cite>
+                 func
+                </cite>
+                with.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              a reference to the execution of
+              <cite>
+               func
+              </cite>
+              . The value
+              <cite>
+               T
+              </cite>
+              can only be accessed by forcing completion of
+              <cite>
+               func
+              </cite>
+              through
+              <cite>
+               torch.jit.wait
+              </cite>
+              .
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Return type
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <cite>
+               torch.jit.Future[T]
+              </cite>
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example (fork a free function):
+           </p>
+           <div class="highlight-python notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">fut</span> <span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">Future</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">fork</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">fut</span><span class="p">)</span>
+<span class="n">script_bar</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># only the scripted version executes asynchronously</span>
+<span class="k">assert</span> <span class="n">script_bar</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">bar</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="c1"># trace is not run asynchronously, but fork is captured in IR</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,))</span><span class="o">.</span><span class="n">graph</span>
+<span class="k">assert</span> <span class="s2">"fork"</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            Example (fork a module method):
+           </p>
+           <div class="highlight-python notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+<span class="k">class</span> <span class="nc">AddMod</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">class</span> <span class="nc">Mod</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mod</span> <span class="o">=</span> <span class="n">AddMod</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">fut</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">fork</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mod</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">fut</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">Mod</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">mod</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   FractionalMaxPool3d — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="fractionalmaxpool3d">
+         <h1>
+          FractionalMaxPool3d
+          <a class="headerlink" href="#fractionalmaxpool3d" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.FractionalMaxPool3d">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             FractionalMaxPool3d
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              kernel_size
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              output_size
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              output_ratio
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              return_indices
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              _random_samples
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/pooling.html#FractionalMaxPool3d">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.FractionalMaxPool3d" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applies a 3D fractional max pooling over an input signal composed of several input planes.
+           </p>
+           <p>
+            Fractional MaxPooling is described in detail in the paper
+            <a class="reference external" href="https://arxiv.org/abs/1412.6071">
+             Fractional MaxPooling
+            </a>
+            by Ben Graham
+           </p>
+           <p>
+            The max-pooling operation is applied in
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   k
+                  </mi>
+                  <mi>
+                   T
+                  </mi>
+                  <mi>
+                   x
+                  </mi>
+                  <mi>
+                   k
+                  </mi>
+                  <mi>
+                   H
+                  </mi>
+                  <mi>
+                   x
+                  </mi>
+                  <mi>
+                   k
+                  </mi>
+                  <mi>
+                   W
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  kTxkHxkW
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03148em;">
+                 k
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 T
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03148em;">
+                 k
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.08125em;">
+                 H
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.13889em;">
+                 kW
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            regions by a stochastic
+step size determined by the target output size.
+The number of output features is equal to the number of input planes.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 kernel_size
+                </strong>
+                – the size of the window to take a max over.
+Can be a single number k (for a square kernel of k x k x k) or a tuple
+                <cite>
+                 (kt x kh x kw)
+                </cite>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 output_size
+                </strong>
+                – the target output size of the image of the form
+                <cite>
+                 oT x oH x oW
+                </cite>
+                .
+Can be a tuple
+                <cite>
+                 (oT, oH, oW)
+                </cite>
+                or a single number oH for a square image
+                <cite>
+                 oH x oH x oH
+                </cite>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 output_ratio
+                </strong>
+                – If one wants to have an output size as a ratio of the input size, this option can be given.
+This has to be a number or tuple in the range (0, 1)
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 return_indices
+                </strong>
+                – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , will return the indices along with the outputs.
+Useful to pass to
+                <code class="xref py py-meth docutils literal notranslate">
+                 <span class="pre">
+                  nn.MaxUnpool3d()
+                 </span>
+                </code>
+                . Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Examples
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># pool of cubic window of size=3, and target output size 13x12x11</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">FractionalMaxPool3d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pool of cubic window and target output size being half of input size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">FractionalMaxPool3d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">output_ratio</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

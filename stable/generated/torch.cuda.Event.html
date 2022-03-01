@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Event — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="event">
+         <h1>
+          Event
+          <a class="headerlink" href="#event" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.cuda.Event">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             Event
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              enable_timing
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              blocking
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              interprocess
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.Event" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Wrapper around a CUDA event.
+           </p>
+           <p>
+            CUDA events are synchronization markers that can be used to monitor the
+device’s progress, to accurately measure timing, and to synchronize CUDA
+streams.
+           </p>
+           <p>
+            The underlying CUDA events are lazily initialized when the event is first
+recorded or exported to another process. After creation, only streams on the
+same device may record the event. However, streams on any device can wait on
+the event.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 enable_timing
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – indicates if the event should measure time
+(default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                )
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 blocking
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                ,
+                <a class="reference internal" href="#torch.cuda.Event.wait" title="torch.cuda.Event.wait">
+                 <code class="xref py py-meth docutils literal notranslate">
+                  <span class="pre">
+                   wait()
+                  </span>
+                 </code>
+                </a>
+                will be blocking (default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                )
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 interprocess
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , the event can be shared between processes
+(default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                )
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.cuda.Event.elapsed_time">
+             <code class="sig-name descname">
+              <span class="pre">
+               elapsed_time
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                end_event
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event.elapsed_time">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.cuda.Event.elapsed_time" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Returns the time elapsed in milliseconds after the event was
+recorded and before the end_event was recorded.
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.cuda.Event.from_ipc_handle">
+             <em class="property">
+              <span class="pre">
+               classmethod
+              </span>
+             </em>
+             <code class="sig-name descname">
+              <span class="pre">
+               from_ipc_handle
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                device
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                handle
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event.from_ipc_handle">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.cuda.Event.from_ipc_handle" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Reconstruct an event from an IPC handle on the given device.
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.cuda.Event.ipc_handle">
+             <code class="sig-name descname">
+              <span class="pre">
+               ipc_handle
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event.ipc_handle">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.cuda.Event.ipc_handle" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Returns an IPC handle of this event. If not recorded yet, the event
+will use the current device.
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.cuda.Event.query">
+             <code class="sig-name descname">
+              <span class="pre">
+               query
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event.query">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.cuda.Event.query" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Checks if all work currently captured by event has completed.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Returns
+              </dt>
+              <dd class="field-odd">
+               <p>
+                A boolean indicating if all work currently captured by event has
+completed.
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.cuda.Event.record">
+             <code class="sig-name descname">
+              <span class="pre">
+               record
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                stream
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event.record">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.cuda.Event.record" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Records the event in a given stream.
+             </p>
+             <p>
+              Uses
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                torch.cuda.current_stream()
+               </span>
+              </code>
+              if no stream is specified. The
+stream’s device must match the event’s device.
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.cuda.Event.synchronize">
+             <code class="sig-name descname">
+              <span class="pre">
+               synchronize
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event.synchronize">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.cuda.Event.synchronize" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Waits for the event to complete.
+             </p>
+             <p>
+              Waits until the completion of all work currently captured in this event.
+This prevents the CPU thread from proceeding until the event completes.
+             </p>
+             <blockquote>
+              <div>
+               <div class="admonition note">
+                <p class="admonition-title">
+                 Note
+                </p>
+                <p>
+                 This is a wrapper around
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   cudaEventSynchronize()
+                  </span>
+                 </code>
+                 : see
+                 <a class="reference external" href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__EVENT.html">
+                  CUDA Event documentation
+                 </a>
+                 for more info.
+                </p>
+               </div>
+              </div>
+             </blockquote>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.cuda.Event.wait">
+             <code class="sig-name descname">
+              <span class="pre">
+               wait
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                stream
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/cuda/streams.html#Event.wait">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.cuda.Event.wait" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Makes all future work submitted to the given stream wait for this
+event.
+             </p>
+             <p>
+              Use
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                torch.cuda.current_stream()
+               </span>
+              </code>
+              if no stream is specified.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

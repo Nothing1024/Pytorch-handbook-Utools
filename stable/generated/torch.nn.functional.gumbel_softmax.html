@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.functional.gumbel_softmax — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-functional-gumbel-softmax">
+         <h1>
+          torch.nn.functional.gumbel_softmax
+          <a class="headerlink" href="#torch-nn-functional-gumbel-softmax" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.functional.gumbel_softmax">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.functional.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             gumbel_softmax
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              logits
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              tau
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              hard
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              eps
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1e-10
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              -
+             </span>
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/functional.html#gumbel_softmax">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.functional.gumbel_softmax" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Samples from the Gumbel-Softmax distribution (
+            <a class="reference external" href="https://arxiv.org/abs/1611.00712">
+             Link 1
+            </a>
+            <a class="reference external" href="https://arxiv.org/abs/1611.01144">
+             Link 2
+            </a>
+            ) and optionally discretizes.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 logits
+                </strong>
+                –
+                <cite>
+                 […, num_features]
+                </cite>
+                unnormalized log probabilities
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 tau
+                </strong>
+                – non-negative scalar temperature
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 hard
+                </strong>
+                – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , the returned samples will be discretized as one-hot vectors,
+but will be differentiated as if it is the soft sample in autograd
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – A dimension along which softmax will be computed. Default: -1.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Sampled tensor of same shape as
+              <cite>
+               logits
+              </cite>
+              from the Gumbel-Softmax distribution.
+If
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                hard=True
+               </span>
+              </code>
+              , the returned samples will be one-hot, otherwise they will
+be probability distributions that sum to 1 across
+              <cite>
+               dim
+              </cite>
+              .
+             </p>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function is here for legacy reasons, may be removed from nn.Functional in the future.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             The main trick for
+             <cite>
+              hard
+             </cite>
+             is to do
+             <cite>
+              y_hard - y_soft.detach() + y_soft
+             </cite>
+            </p>
+            <p>
+             It achieves two things:
+- makes the output value exactly one-hot
+(since we add then subtract y_soft value)
+- makes the gradient equal to y_soft gradient
+(since we strip all other gradients)
+            </p>
+           </div>
+           <dl>
+            <dt>
+             Examples::
+            </dt>
+            <dd>
+             <div class="doctest highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample soft categorical using reparametrization trick:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span><span class="o">.</span><span class="n">gumbel_softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hard</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample hard categorical using "Straight-through" trick:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span><span class="o">.</span><span class="n">gumbel_softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

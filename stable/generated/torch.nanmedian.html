@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nanmedian — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nanmedian">
+         <h1>
+          torch.nanmedian
+          <a class="headerlink" href="#torch-nanmedian" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nanmedian">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             nanmedian
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nanmedian" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the median of the values in
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            , ignoring
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            values.
+           </p>
+           <p>
+            This function is identical to
+            <a class="reference internal" href="torch.median.html#torch.median" title="torch.median">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.median()
+              </span>
+             </code>
+            </a>
+            when there are no
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            values in
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            .
+When
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            has one or more
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            values,
+            <a class="reference internal" href="torch.median.html#torch.median" title="torch.median">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.median()
+              </span>
+             </code>
+            </a>
+            will always return
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            ,
+while this function will return the median of the non-
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            elements in
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            .
+If all the elements in
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            are
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            it will also return
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               input
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – the input tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'nan'</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="go">tensor(nan)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">()</span>
+<span class="go">tensor(2.)</span>
+</pre>
+            </div>
+           </div>
+           <dl class="py function">
+            <dt>
+             <code class="sig-prename descclassname">
+              <span class="pre">
+               torch.
+              </span>
+             </code>
+             <code class="sig-name descname">
+              <span class="pre">
+               nanmedian
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                input
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                dim
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                -
+               </span>
+               <span class="pre">
+                1
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                keepdim
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                False
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                *
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                out
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <p>
+            Returns a namedtuple
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              (values,
+             </span>
+             <span class="pre">
+              indices)
+             </span>
+            </code>
+            where
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              values
+             </span>
+            </code>
+            contains the median of each row of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            in the dimension
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            , ignoring
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            values, and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              indices
+             </span>
+            </code>
+            contains the index of the median values
+found in the dimension
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            This function is identical to
+            <a class="reference internal" href="torch.median.html#torch.median" title="torch.median">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.median()
+              </span>
+             </code>
+            </a>
+            when there are no
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            values in a reduced row. When a reduced row has
+one or more
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            values,
+            <a class="reference internal" href="torch.median.html#torch.median" title="torch.median">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.median()
+              </span>
+             </code>
+            </a>
+            will always reduce it to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            , while this function will reduce it to the
+median of the non-
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            elements. If all the elements in a reduced row are
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            then it will be reduced to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            , too.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – the dimension to reduce.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 keepdim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – whether the output tensor has
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                retained or not.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <em>
+               (
+              </em>
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               )
+              </em>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – The first tensor will be populated with the median values and the second
+tensor, which must have dtype long, with their indices in the dimension
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                dim
+               </span>
+              </code>
+              of
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s1">'nan'</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'nan'</span><span class="p">)]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[2., 3., 1.],</span>
+<span class="go">        [nan, 1., nan]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">torch.return_types.median(values=tensor([nan, 1., nan]), indices=tensor([1, 1, 1]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">torch.return_types.nanmedian(values=tensor([2., 1., 1.]), indices=tensor([0, 1, 0]))</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

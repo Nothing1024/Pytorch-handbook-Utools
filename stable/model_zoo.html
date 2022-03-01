@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.utils.model_zoo — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-utils-model-zoo">
+         <h1>
+          torch.utils.model_zoo
+          <a class="headerlink" href="#torch-utils-model-zoo" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <p>
+          Moved to
+          <cite>
+           torch.hub
+          </cite>
+          .
+         </p>
+         <span class="target" id="module-torch.utils.model_zoo">
+         </span>
+         <dl class="py function">
+          <dt id="torch.utils.model_zoo.load_url">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.utils.model_zoo.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             load_url
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              url
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              model_dir
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              map_location
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              progress
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              check_hash
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              file_name
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.utils.model_zoo.load_url" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Loads the Torch serialized object at the given URL.
+           </p>
+           <p>
+            If downloaded file is a zip file, it will be automatically
+decompressed.
+           </p>
+           <p>
+            If the object is already present in
+            <cite>
+             model_dir
+            </cite>
+            , it’s deserialized and
+returned.
+The default value of
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              model_dir
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              &lt;hub_dir&gt;/checkpoints
+             </span>
+            </code>
+            where
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              hub_dir
+             </span>
+            </code>
+            is the directory returned by
+            <a class="reference internal" href="hub.html#torch.hub.get_dir" title="torch.hub.get_dir">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               get_dir()
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 url
+                </strong>
+                (
+                <em>
+                 string
+                </em>
+                ) – URL of the object to download
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 model_dir
+                </strong>
+                (
+                <em>
+                 string
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – directory in which to save the object
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 map_location
+                </strong>
+                (
+                <em>
+                 optional
+                </em>
+                ) – a function or a dict specifying how to remap storage locations (see torch.load)
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 progress
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether or not to display a progress bar to stderr.
+Default: True
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 check_hash
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If True, the filename part of the URL should follow the naming convention
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  filename-&lt;sha256&gt;.ext
+                 </span>
+                </code>
+                where
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  &lt;sha256&gt;
+                 </span>
+                </code>
+                is the first eight or more
+digits of the SHA256 hash of the contents of the file. The hash is used to
+ensure unique names and to verify the contents of the file.
+Default: False
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 file_name
+                </strong>
+                (
+                <em>
+                 string
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – name for the downloaded file. Filename from
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  url
+                 </span>
+                </code>
+                will be used if not set.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Example
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">state_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="s1">'https://s3.amazonaws.com/pytorch/models/resnet18-5c106cde.pth'</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   PReLU — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="prelu">
+         <h1>
+          PReLU
+          <a class="headerlink" href="#prelu" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.PReLU">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             PReLU
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              num_parameters
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              init
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0.25
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/activation.html#PReLU">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.PReLU" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applies the element-wise function:
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   PReLU
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   max
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mn>
+                   0
+                  </mn>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   +
+                  </mo>
+                  <mi>
+                   a
+                  </mi>
+                  <mo>
+                   ∗
+                  </mo>
+                  <mi>
+                   min
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mn>
+                   0
+                  </mn>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{PReLU}(x) = \max(0,x) + a * \min(0,x)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  PReLU
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mop">
+                 max
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 0
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 a
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ∗
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mop">
+                 min
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 0
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            or
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   PReLU
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   x
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   =
+                  </mo>
+                  <mrow>
+                   <mo fence="true">
+                    {
+                   </mo>
+                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mi>
+                         x
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mtext>
+                         if
+                        </mtext>
+                        <mi>
+                         x
+                        </mi>
+                        <mo>
+                         ≥
+                        </mo>
+                        <mn>
+                         0
+                        </mn>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mi>
+                         a
+                        </mi>
+                        <mi>
+                         x
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mtext>
+                        otherwise
+                       </mtext>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                   </mtable>
+                  </mrow>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{PReLU}(x) =
+\begin{cases}
+x, &amp; \text{ if } x \geq 0 \\
+ax, &amp; \text{ otherwise }
+\end{cases}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  PReLU
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 x
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;">
+                </span>
+                <span class="minner">
+                 <span class="mopen delimcenter" style="top:0em;">
+                  <span class="delimsizing size4">
+                   {
+                  </span>
+                 </span>
+                 <span class="mord">
+                  <span class="mtable">
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.69em;">
+                       <span style="top:-3.69em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mpunct">
+                          ,
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.25em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord mathnormal">
+                          a
+                         </span>
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mpunct">
+                          ,
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.19em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                   <span class="arraycolsep" style="width:1em;">
+                   </span>
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.69em;">
+                       <span style="top:-3.69em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           if
+                          </span>
+                         </span>
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mrel">
+                          ≥
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mord">
+                          0
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.25em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           otherwise
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.19em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            Here
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   a
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  a
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 a
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is a learnable parameter. When called without arguments,
+            <cite>
+             nn.PReLU()
+            </cite>
+            uses a single
+parameter
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   a
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  a
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 a
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            across all input channels. If called with
+            <cite>
+             nn.PReLU(nChannels)
+            </cite>
+            ,
+a separate
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   a
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  a
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 a
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is used for each input channel.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             weight decay should not be used when learning
+             <span class="math">
+              <span class="katex">
+               <span class="katex-mathml">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                 <semantics>
+                  <mrow>
+                   <mi>
+                    a
+                   </mi>
+                  </mrow>
+                  <annotation encoding="application/x-tex">
+                   a
+                  </annotation>
+                 </semantics>
+                </math>
+               </span>
+               <span aria-hidden="true" class="katex-html">
+                <span class="base">
+                 <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                 </span>
+                 <span class="mord mathnormal">
+                  a
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+             for good performance.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Channel dim is the 2nd dim of input. When input has dims &lt; 2, then there is
+no channel dim and the number of channels = 1.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 num_parameters
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – number of
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       a
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      a
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                    </span>
+                    <span class="mord mathnormal">
+                     a
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                to learn.
+Although it takes an int as input, there is only two values are legitimate:
+1, or the number of channels at input. Default: 1
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 init
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                ) – the initial value of
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       a
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      a
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                    </span>
+                    <span class="mord mathnormal">
+                     a
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                . Default: 0.25
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="simple">
+            <dt>
+             Shape:
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <p>
+                Input:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      ( *)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                where
+                <cite>
+                 *
+                </cite>
+                means, any number of additional
+dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                Output:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , same shape as the input.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Variables
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               ~PReLU.weight
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – the learnable weights of shape (
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                num_parameters
+               </span>
+              </code>
+              ).
+             </p>
+            </dd>
+           </dl>
+           <img alt="../_images/PReLU.png" src="../_images/PReLU.png">
+            <p>
+             Examples:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+             </div>
+            </div>
+           </img>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

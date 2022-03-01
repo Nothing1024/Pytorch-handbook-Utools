@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   UninitializedParameter — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="uninitializedparameter">
+         <h1>
+          UninitializedParameter
+          <a class="headerlink" href="#uninitializedparameter" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.parameter.UninitializedParameter">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.parameter.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             UninitializedParameter
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              requires_grad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/parameter.html#UninitializedParameter">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.parameter.UninitializedParameter" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            A parameter that is not initialized.
+           </p>
+           <p>
+            Unitialized Parameters are a a special case of
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              torch.nn.Parameter
+             </span>
+            </code>
+            where the shape of the data is still unknown.
+           </p>
+           <p>
+            Unlike a
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              torch.nn.Parameter
+             </span>
+            </code>
+            , uninitialized parameters
+hold no data and attempting to access some properties, like their shape,
+will throw a runtime error. The only operations that can be performed on a uninitialized
+parameter are changing its datatype, moving it to a different device and
+converting it to a regular
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              torch.nn.Parameter
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            The default device or dtype to use when the parameter is materialized can be set
+during construction using e.g.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              device='cuda'
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="py attribute">
+            <dt id="torch.nn.parameter.UninitializedParameter.cls_to_become">
+             <code class="sig-name descname">
+              <span class="pre">
+               cls_to_become
+              </span>
+             </code>
+             <a class="headerlink" href="#torch.nn.parameter.UninitializedParameter.cls_to_become" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              alias of
+              <a class="reference internal" href="torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="torch.nn.parameter.Parameter">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 torch.nn.parameter.Parameter
+                </span>
+               </code>
+              </a>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

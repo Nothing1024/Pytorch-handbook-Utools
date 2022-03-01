@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.utils.rnn.pad_sequence — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-utils-rnn-pad-sequence">
+         <h1>
+          torch.nn.utils.rnn.pad_sequence
+          <a class="headerlink" href="#torch-nn-utils-rnn-pad-sequence" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.utils.rnn.pad_sequence">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.rnn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             pad_sequence
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              sequences
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              batch_first
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              padding_value
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0.0
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/rnn.html#pad_sequence">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.rnn.pad_sequence" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Pad a list of variable length Tensors with
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              padding_value
+             </span>
+            </code>
+           </p>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              pad_sequence
+             </span>
+            </code>
+            stacks a list of Tensors along a new dimension,
+and pads them to equal length. For example, if the input is list of
+sequences with size
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              L
+             </span>
+             <span class="pre">
+              x
+             </span>
+             <span class="pre">
+              *
+             </span>
+            </code>
+            and if batch_first is False, and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              T
+             </span>
+             <span class="pre">
+              x
+             </span>
+             <span class="pre">
+              B
+             </span>
+             <span class="pre">
+              x
+             </span>
+             <span class="pre">
+              *
+             </span>
+            </code>
+            otherwise.
+           </p>
+           <p>
+            <cite>
+             B
+            </cite>
+            is batch size. It is equal to the number of elements in
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              sequences
+             </span>
+            </code>
+            .
+            <cite>
+             T
+            </cite>
+            is length of the longest sequence.
+            <cite>
+             L
+            </cite>
+            is length of the sequence.
+            <cite>
+             *
+            </cite>
+            is any number of trailing dimensions, including none.
+           </p>
+           <p class="rubric">
+            Example
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">torch.nn.utils.rnn</span> <span class="kn">import</span> <span class="n">pad_sequence</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pad_sequence</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([25, 3, 300])</span>
+</pre>
+            </div>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function returns a Tensor of size
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               T
+              </span>
+              <span class="pre">
+               x
+              </span>
+              <span class="pre">
+               B
+              </span>
+              <span class="pre">
+               x
+              </span>
+              <span class="pre">
+               *
+              </span>
+             </code>
+             or
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               B
+              </span>
+              <span class="pre">
+               x
+              </span>
+              <span class="pre">
+               T
+              </span>
+              <span class="pre">
+               x
+              </span>
+              <span class="pre">
+               *
+              </span>
+             </code>
+             where
+             <cite>
+              T
+             </cite>
+             is the length of the longest sequence. This function assumes
+trailing dimensions and type of all the Tensors in sequences are same.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 sequences
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">
+                 <em>
+                  list
+                 </em>
+                </a>
+                <em>
+                 [
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                ) – list of variable length sequences.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 batch_first
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – output will be in
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  B
+                 </span>
+                 <span class="pre">
+                  x
+                 </span>
+                 <span class="pre">
+                  T
+                 </span>
+                 <span class="pre">
+                  x
+                 </span>
+                 <span class="pre">
+                  *
+                 </span>
+                </code>
+                if True, or in
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  T
+                 </span>
+                 <span class="pre">
+                  x
+                 </span>
+                 <span class="pre">
+                  B
+                 </span>
+                 <span class="pre">
+                  x
+                 </span>
+                 <span class="pre">
+                  *
+                 </span>
+                </code>
+                otherwise
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 padding_value
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – value for padded elements. Default: 0.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Tensor of size
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                T
+               </span>
+               <span class="pre">
+                x
+               </span>
+               <span class="pre">
+                B
+               </span>
+               <span class="pre">
+                x
+               </span>
+               <span class="pre">
+                *
+               </span>
+              </code>
+              if
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                batch_first
+               </span>
+              </code>
+              is
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                False
+               </span>
+              </code>
+              .
+Tensor of size
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                B
+               </span>
+               <span class="pre">
+                x
+               </span>
+               <span class="pre">
+                T
+               </span>
+               <span class="pre">
+                x
+               </span>
+               <span class="pre">
+                *
+               </span>
+              </code>
+              otherwise
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

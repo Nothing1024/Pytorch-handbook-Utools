@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.sparse_coo_tensor — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-sparse-coo-tensor">
+         <h1>
+          torch.sparse_coo_tensor
+          <a class="headerlink" href="#torch-sparse-coo-tensor" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.sparse_coo_tensor">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             sparse_coo_tensor
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              indices
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              values
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              size
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              requires_grad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.sparse_coo_tensor" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Constructs a
+            <a class="reference internal" href="../sparse.html#sparse-coo-docs">
+             <span class="std std-ref">
+              sparse tensor in COO(rdinate) format
+             </span>
+            </a>
+            with specified values at the given
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              indices
+             </span>
+            </code>
+            .
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function returns an
+             <a class="reference internal" href="../sparse.html#sparse-uncoalesced-coo-docs">
+              <span class="std std-ref">
+               uncoalesced tensor
+              </span>
+             </a>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 indices
+                </strong>
+                (
+                <em>
+                 array_like
+                </em>
+                ) – Initial data for the tensor. Can be a list, tuple,
+NumPy
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  ndarray
+                 </span>
+                </code>
+                , scalar, and other types. Will be cast to a
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  torch.LongTensor
+                 </span>
+                </code>
+                internally. The indices are the coordinates of the non-zero values in the matrix, and thus
+should be two-dimensional where the first dimension is the number of tensor dimensions and
+the second dimension is the number of non-zero values.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 values
+                </strong>
+                (
+                <em>
+                 array_like
+                </em>
+                ) – Initial values for the tensor. Can be a list, tuple,
+NumPy
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  ndarray
+                 </span>
+                </code>
+                , scalar, and other types.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 size
+                </strong>
+                (list, tuple, or
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  torch.Size
+                 </span>
+                </code>
+                , optional) – Size of the sparse tensor. If not
+provided the size will be inferred as the minimum size big enough to hold all non-zero
+elements.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired data type of returned tensor.
+Default: if None, infers data type from
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  values
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 device
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired device of returned tensor.
+Default: if None, uses the current device for the default tensor type
+(see
+                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.set_default_tensor_type()
+                  </span>
+                 </code>
+                </a>
+                ).
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  device
+                 </span>
+                </code>
+                will be the CPU
+for CPU tensor types and the current CUDA device for CUDA tensor types.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 requires_grad
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If autograd should record operations on the
+returned tensor. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">sparse_coo_tensor</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">tensor(indices=tensor([[0, 1, 1],</span>
+<span class="go">                       [2, 0, 2]]),</span>
+<span class="go">       values=tensor([3., 4., 5.]),</span>
+<span class="go">       size=(2, 4), nnz=3, layout=torch.sparse_coo)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">sparse_coo_tensor</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>  <span class="c1"># Shape inference</span>
+<span class="go">tensor(indices=tensor([[0, 1, 1],</span>
+<span class="go">                       [2, 0, 2]]),</span>
+<span class="go">       values=tensor([3., 4., 5.]),</span>
+<span class="go">       size=(2, 3), nnz=3, layout=torch.sparse_coo)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">sparse_coo_tensor</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>                        <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">))</span>
+<span class="go">tensor(indices=tensor([[0, 1, 1],</span>
+<span class="go">                       [2, 0, 2]]),</span>
+<span class="go">       values=tensor([3., 4., 5.]),</span>
+<span class="go">       device='cuda:0', size=(2, 4), nnz=3, dtype=torch.float64,</span>
+<span class="go">       layout=torch.sparse_coo)</span>
+
+<span class="go"># Create an empty sparse tensor with the following invariants:</span>
+<span class="go">#   1. sparse_dim + dense_dim = len(SparseTensor.shape)</span>
+<span class="go">#   2. SparseTensor._indices().shape = (sparse_dim, nnz)</span>
+<span class="go">#   3. SparseTensor._values().shape = (nnz, SparseTensor.shape[sparse_dim:])</span>
+<span class="go">#</span>
+<span class="go"># For instance, to create an empty sparse tensor with nnz = 0, dense_dim = 0 and</span>
+<span class="go"># sparse_dim = 1 (hence indices is a 2D tensor of shape = (1, 0))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse_coo_tensor</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">[],</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">tensor(indices=tensor([], size=(1, 0)),</span>
+<span class="go">       values=tensor([], size=(0,)),</span>
+<span class="go">       size=(1,), nnz=0, layout=torch.sparse_coo)</span>
+
+<span class="go"># and to create an empty sparse tensor with nnz = 0, dense_dim = 1 and</span>
+<span class="go"># sparse_dim = 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse_coo_tensor</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">tensor(indices=tensor([], size=(1, 0)),</span>
+<span class="go">       values=tensor([], size=(0, 2)),</span>
+<span class="go">       size=(1, 2), nnz=0, layout=torch.sparse_coo)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

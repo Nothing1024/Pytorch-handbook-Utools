@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.tensorsolve — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-tensorsolve">
+         <h1>
+          torch.linalg.tensorsolve
+          <a class="headerlink" href="#torch-linalg-tensorsolve" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.tensorsolve">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             tensorsolve
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              B
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dims
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.linalg.tensorsolve" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the solution
+            <cite>
+             X
+            </cite>
+            to the system
+            <cite>
+             torch.tensordot(A, X) = B
+            </cite>
+            .
+           </p>
+           <p>
+            If
+            <cite>
+             m
+            </cite>
+            is the product of the first
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              B
+             </span>
+            </code>
+            <cite>
+             .ndim
+            </cite>
+            dimensions of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            and
+            <cite>
+             n
+            </cite>
+            is the product of the rest of the dimensions, this function expects
+            <cite>
+             m
+            </cite>
+            and
+            <cite>
+             n
+            </cite>
+            to be equal.
+           </p>
+           <p>
+            The returned tensor
+            <cite>
+             x
+            </cite>
+            satisfies
+            <cite>
+             tensordot(
+            </cite>
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            <cite>
+             , x, dims=x.ndim) ==
+            </cite>
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              B
+             </span>
+            </code>
+            .
+            <cite>
+             x
+            </cite>
+            has shape
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            <cite>
+             [B.ndim:]
+            </cite>
+            .
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dims
+             </span>
+            </code>
+            is specified,
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            will be reshaped as
+           </p>
+           <div class="highlight-text notranslate">
+            <div class="highlight">
+             <pre><span></span>A = movedim(A, dims, range(len(dims) - A.ndim + 1, 0))
+</pre>
+            </div>
+           </div>
+           <p>
+            Supports inputs of float, double, cfloat and cdouble dtypes.
+           </p>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.tensorinv.html#torch.linalg.tensorinv" title="torch.linalg.tensorinv">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.tensorinv()
+               </span>
+              </code>
+             </a>
+             computes the multiplicative inverse of
+             <a class="reference internal" href="torch.tensordot.html#torch.tensordot" title="torch.tensordot">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.tensordot()
+               </span>
+              </code>
+             </a>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 A
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – tensor to solve for. Its shape must satisfy
+                <cite>
+                 prod(
+                </cite>
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                <cite>
+                 .shape[:
+                </cite>
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  B
+                 </span>
+                </code>
+                <cite>
+                 .ndim]) ==
+prod(
+                </cite>
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                <cite>
+                 .shape[
+                </cite>
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  B
+                 </span>
+                </code>
+                <cite>
+                 .ndim:])
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 B
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – tensor of shape
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                <cite>
+                 .shape[
+                </cite>
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  B
+                 </span>
+                </code>
+                <cite>
+                 .ndim]
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dims
+                </strong>
+                (
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – dimensions of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                to be moved.
+If
+                <cite>
+                 None
+                </cite>
+                , no dimensions are moved. Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – output tensor. Ignored if
+              <cite>
+               None
+              </cite>
+              . Default:
+              <cite>
+               None
+              </cite>
+              .
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Raises
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.10)">
+               <strong>
+                RuntimeError
+               </strong>
+              </a>
+              – if the reshaped
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                A
+               </span>
+              </code>
+              <cite>
+               .view(m, m)
+              </cite>
+              with
+              <cite>
+               m
+              </cite>
+              as above  is not
+    invertible or the product of the first
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                ind
+               </span>
+              </code>
+              dimensions is not equal
+    to the product of the rest of the dimensions.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">tensorsolve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">torch.Size([2, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">ndim</span><span class="p">),</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">tensorsolve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">torch.Size([6, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">B</span><span class="o">.</span><span class="n">ndim</span><span class="p">:]</span>
+<span class="go">torch.Size([6, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensordot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">ndim</span><span class="p">),</span> <span class="n">B</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="go">True</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

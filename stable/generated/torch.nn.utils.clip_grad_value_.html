@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.utils.clip_grad_value_ — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-utils-clip-grad-value">
+         <h1>
+          torch.nn.utils.clip_grad_value_
+          <a class="headerlink" href="#torch-nn-utils-clip-grad-value" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.utils.clip_grad_value_">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             clip_grad_value_
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              parameters
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              clip_value
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/clip_grad.html#clip_grad_value_">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.clip_grad_value_" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Clips gradient of an iterable of parameters at specified value.
+           </p>
+           <p>
+            Gradients are modified in-place.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 parameters
+                </strong>
+                (
+                <em>
+                 Iterable
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ] or
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – an iterable of Tensors or a
+single Tensor that will have gradients normalized
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 clip_value
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – maximum allowed value of the gradients.
+The gradients are clipped in the range
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo fence="true">
+                       [
+                      </mo>
+                      <mtext>
+                       -clip_value
+                      </mtext>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mtext>
+                       clip_value
+                      </mtext>
+                      <mo fence="true">
+                       ]
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      \left[\text{-clip\_value}, \text{clip\_value}\right]
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1.20001em;vertical-align:-0.35001em;">
+                    </span>
+                    <span class="minner">
+                     <span class="mopen delimcenter" style="top:0em;">
+                      <span class="delimsizing size1">
+                       [
+                      </span>
+                     </span>
+                     <span class="mord text">
+                      <span class="mord">
+                       -clip_value
+                      </span>
+                     </span>
+                     <span class="mpunct">
+                      ,
+                     </span>
+                     <span class="mspace" style="margin-right:0.16666666666666666em;">
+                     </span>
+                     <span class="mord text">
+                      <span class="mord">
+                       clip_value
+                      </span>
+                     </span>
+                     <span class="mclose delimcenter" style="top:0em;">
+                      <span class="delimsizing size1">
+                       ]
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   FeatureAlphaDropout — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="featurealphadropout">
+         <h1>
+          FeatureAlphaDropout
+          <a class="headerlink" href="#featurealphadropout" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.FeatureAlphaDropout">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             FeatureAlphaDropout
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              p
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0.5
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inplace
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/dropout.html#FeatureAlphaDropout">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.FeatureAlphaDropout" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Randomly masks out entire channels (a channel is a feature map,
+e.g. the
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   j
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  j
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.85396em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.05724em;">
+                 j
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            -th channel of the
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   i
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  i
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.65952em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            -th sample in the batch input
+is a tensor
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   input
+                  </mtext>
+                  <mo stretchy="false">
+                   [
+                  </mo>
+                  <mi>
+                   i
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   j
+                  </mi>
+                  <mo stretchy="false">
+                   ]
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{input}[i, j]
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  input
+                 </span>
+                </span>
+                <span class="mopen">
+                 [
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.05724em;">
+                 j
+                </span>
+                <span class="mclose">
+                 ]
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            ) of the input tensor). Instead of
+setting activations to zero, as in regular Dropout, the activations are set
+to the negative saturation value of the SELU activation function. More details
+can be found in the paper
+            <a class="reference external" href="https://arxiv.org/abs/1706.02515">
+             Self-Normalizing Neural Networks
+            </a>
+            .
+           </p>
+           <p>
+            Each element will be masked independently for each sample on every forward
+call with probability
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              p
+             </span>
+            </code>
+            using samples from a Bernoulli distribution.
+The elements to be masked are randomized on every forward call, and scaled
+and shifted to maintain zero mean and unit variance.
+           </p>
+           <p>
+            Usually the input comes from
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              nn.AlphaDropout
+             </span>
+            </code>
+            modules.
+           </p>
+           <p>
+            As described in the paper
+            <a class="reference external" href="https://arxiv.org/abs/1411.4280">
+             Efficient Object Localization Using Convolutional Networks
+            </a>
+            ,
+if adjacent pixels within feature maps are strongly correlated
+(as is normally the case in early convolution layers) then i.i.d. dropout
+will not regularize the activations and will otherwise just result
+in an effective learning rate decrease.
+           </p>
+           <p>
+            In this case,
+            <code class="xref py py-func docutils literal notranslate">
+             <span class="pre">
+              nn.AlphaDropout()
+             </span>
+            </code>
+            will help promote independence between
+feature maps and should be used instead.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 p
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – probability of an element to be zeroed. Default: 0.5
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 inplace
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , will do this operation
+in-place
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="simple">
+            <dt>
+             Shape:
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <p>
+                Input:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       N
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       D
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (N, C, D, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.10903em;">
+                     N
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.02778em;">
+                     D
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       D
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (C, D, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.02778em;">
+                     D
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                Output:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       N
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       D
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (N, C, D, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.10903em;">
+                     N
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.02778em;">
+                     D
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       D
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (C, D, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.02778em;">
+                     D
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                (same shape as input).
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">FeatureAlphaDropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

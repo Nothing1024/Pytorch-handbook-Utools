@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.functional.conv_transpose1d — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-functional-conv-transpose1d">
+         <h1>
+          torch.nn.functional.conv_transpose1d
+          <a class="headerlink" href="#torch-nn-functional-conv-transpose1d" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.functional.conv_transpose1d">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.functional.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             conv_transpose1d
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              weight
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              bias
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              stride
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              padding
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              output_padding
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              groups
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dilation
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.nn.functional.conv_transpose1d" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Applies a 1D transposed convolution operator over an input signal
+composed of several input planes, sometimes also called “deconvolution”.
+           </p>
+           <p>
+            This operator supports
+            <a class="reference internal" href="../notes/cuda.html#tf32-on-ampere">
+             <span class="std std-ref">
+              TensorFloat32
+             </span>
+            </a>
+            .
+           </p>
+           <p>
+            See
+            <a class="reference internal" href="torch.nn.ConvTranspose1d.html#torch.nn.ConvTranspose1d" title="torch.nn.ConvTranspose1d">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               ConvTranspose1d
+              </span>
+             </code>
+            </a>
+            for details and output shape.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             In some circumstances when given tensors on a CUDA device and using CuDNN, this operator may select a nondeterministic algorithm to increase performance. If this is undesirable, you can try to make the operation deterministic (potentially at a performance cost) by setting
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               torch.backends.cudnn.deterministic
+              </span>
+              <span class="pre">
+               =
+              </span>
+              <span class="pre">
+               True
+              </span>
+             </code>
+             . See
+             <a class="reference internal" href="../notes/randomness.html">
+              <span class="doc">
+               Reproducibility
+              </span>
+             </a>
+             for more information.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                – input tensor of shape
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mtext>
+                       minibatch
+                      </mtext>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mtext>
+                       in_channels
+                      </mtext>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       i
+                      </mi>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (\text{minibatch} , \text{in\_channels} , iW)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1.06em;vertical-align:-0.31em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      minibatch
+                     </span>
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      in_channels
+                     </span>
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     iW
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 weight
+                </strong>
+                – filters of shape
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mtext>
+                       in_channels
+                      </mtext>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mfrac>
+                       <mtext>
+                        out_channels
+                       </mtext>
+                       <mtext>
+                        groups
+                       </mtext>
+                      </mfrac>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       k
+                      </mi>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (\text{in\_channels} , \frac{\text{out\_channels}}{\text{groups}} , kW)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1.4942159999999998em;vertical-align:-0.481108em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      in_channels
+                     </span>
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord">
+                     <span class="mopen nulldelimiter">
+                     </span>
+                     <span class="mfrac">
+                      <span class="vlist-t vlist-t2">
+                       <span class="vlist-r">
+                        <span class="vlist" style="height:1.013108em;">
+                         <span style="top:-2.6550000000000002em;">
+                          <span class="pstrut" style="height:3em;">
+                          </span>
+                          <span class="sizing reset-size6 size3 mtight">
+                           <span class="mord mtight">
+                            <span class="mord text mtight">
+                             <span class="mord mtight">
+                              groups
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                         <span style="top:-3.23em;">
+                          <span class="pstrut" style="height:3em;">
+                          </span>
+                          <span class="frac-line" style="border-bottom-width:0.04em;">
+                          </span>
+                         </span>
+                         <span style="top:-3.527em;">
+                          <span class="pstrut" style="height:3em;">
+                          </span>
+                          <span class="sizing reset-size6 size3 mtight">
+                           <span class="mord mtight">
+                            <span class="mord text mtight">
+                             <span class="mord mtight">
+                              out_channels
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                        <span class="vlist-s">
+                         ​
+                        </span>
+                       </span>
+                       <span class="vlist-r">
+                        <span class="vlist" style="height:0.481108em;">
+                         <span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span class="mclose nulldelimiter">
+                     </span>
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     kW
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 bias
+                </strong>
+                – optional bias of shape
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mtext>
+                       out_channels
+                      </mtext>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (\text{out\_channels})
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1.06em;vertical-align:-0.31em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      out_channels
+                     </span>
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                . Default: None
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 stride
+                </strong>
+                – the stride of the convolving kernel. Can be a single number or a
+tuple
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  (sW,)
+                 </span>
+                </code>
+                . Default: 1
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 padding
+                </strong>
+                –
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  dilation
+                 </span>
+                 <span class="pre">
+                  *
+                 </span>
+                 <span class="pre">
+                  (kernel_size
+                 </span>
+                 <span class="pre">
+                  -
+                 </span>
+                 <span class="pre">
+                  1)
+                 </span>
+                 <span class="pre">
+                  -
+                 </span>
+                 <span class="pre">
+                  padding
+                 </span>
+                </code>
+                zero-padding will be added to both
+sides of each dimension in the input. Can be a single number or a tuple
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  (padW,)
+                 </span>
+                </code>
+                . Default: 0
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 output_padding
+                </strong>
+                – additional size added to one side of each dimension in the
+output shape. Can be a single number or a tuple
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  (out_padW)
+                 </span>
+                </code>
+                . Default: 0
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 groups
+                </strong>
+                – split input into groups,
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mtext>
+                       in_channels
+                      </mtext>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      \text{in\_channels}
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1.00444em;vertical-align:-0.31em;">
+                    </span>
+                    <span class="mord text">
+                     <span class="mord">
+                      in_channels
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                should be divisible by the
+number of groups. Default: 1
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dilation
+                </strong>
+                – the spacing between kernel elements. Can be a single number or
+a tuple
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  (dW,)
+                 </span>
+                </code>
+                . Default: 1
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span><span class="o">.</span><span class="n">conv_transpose1d</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

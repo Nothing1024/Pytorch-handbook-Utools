@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.remainder — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-remainder">
+         <h1>
+          torch.remainder
+          <a class="headerlink" href="#torch-remainder" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.remainder">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             remainder
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              other
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.remainder" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Like
+            <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.fmod()
+              </span>
+             </code>
+            </a>
+            this applies C++’s
+            <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/fmod">
+             std::fmod
+            </a>
+            for floating point tensors and the modulus operation for integer tensors.
+Unlike
+            <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.fmod()
+              </span>
+             </code>
+            </a>
+            , however, if the sign of the modulus is different
+than the sign of the divisor
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              other
+             </span>
+            </code>
+            then the divisor is added to the modulus.
+           </p>
+           <p>
+            Supports
+            <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+             <span class="std std-ref">
+              broadcasting to a common shape
+             </span>
+            </a>
+            ,
+            <a class="reference internal" href="../tensor_attributes.html#type-promotion-doc">
+             <span class="std std-ref">
+              type promotion
+             </span>
+            </a>
+            , and integer and float inputs.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Complex inputs are not supported. In some cases, it is not mathematically
+possible to satisfy the definition of a modulo operation with complex numbers.
+See
+             <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.fmod()
+               </span>
+              </code>
+             </a>
+             for how division by zero is handled.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This op, like NumPy’s
+             <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.remainder.html">
+              remainder
+             </a>
+             ,
+is equivalent to Python’s modulus operation, and different from Python’s
+             <a class="reference external" href="https://docs.python.org/dev/library/math.html#math.remainder">
+              math.remainder
+             </a>
+             and
+C++’s
+             <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/remainder">
+              std::remainder
+             </a>
+             which implement
+the IEEE remainder.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 Scalar
+                </em>
+                ) – the dividend
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 other
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 Scalar
+                </em>
+                ) – the divisor
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([ 1.,  0.,  1.,  1.,  0.,  1.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="go">tensor([ -0.5000, -1.0000,  0.0000, -0.5000, -1.0000 ])</span>
+</pre>
+            </div>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.fmod()
+               </span>
+              </code>
+             </a>
+             which just computes the modulus for integer inputs and
+applies C++’s
+             <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/fmod">
+              std::fmod
+             </a>
+             for floating point inputs.
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

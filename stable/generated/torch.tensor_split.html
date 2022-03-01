@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.tensor_split — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-split">
+         <h1>
+          torch.tensor_split
+          <a class="headerlink" href="#torch-tensor-split" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.tensor_split">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             tensor_split
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              indices_or_sections
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            List
+           </span>
+           <span class="pre">
+            of
+           </span>
+           <span class="pre">
+            Tensors
+           </span>
+           <a class="headerlink" href="#torch.tensor_split" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Splits a tensor into multiple sub-tensors, all of which are views of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            ,
+along dimension
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            according to the indices or number of sections specified
+by
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              indices_or_sections
+             </span>
+            </code>
+            . This function is based on NumPy’s
+            <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.array_split.html#numpy.array_split" title="(in NumPy v1.21)">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               numpy.array_split()
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor to split
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 indices_or_sections
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">
+                 <em>
+                  list
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 tuple of python:ints
+                </em>
+                ) –
+                <p>
+                 If
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   indices_or_sections
+                  </span>
+                 </code>
+                 is an integer
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   n
+                  </span>
+                 </code>
+                 or a zero dimensional long tensor
+with value
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   n
+                  </span>
+                 </code>
+                 ,
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   input
+                  </span>
+                 </code>
+                 is split into
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   n
+                  </span>
+                 </code>
+                 sections along dimension
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   dim
+                  </span>
+                 </code>
+                 .
+If
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   input
+                  </span>
+                 </code>
+                 is divisible by
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   n
+                  </span>
+                 </code>
+                 along dimension
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   dim
+                  </span>
+                 </code>
+                 , each
+section will be of equal size,
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   input.size(dim)
+                  </span>
+                  <span class="pre">
+                   /
+                  </span>
+                  <span class="pre">
+                   n
+                  </span>
+                 </code>
+                 . If
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   input
+                  </span>
+                 </code>
+                 is not divisible by
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   n
+                  </span>
+                 </code>
+                 , the sizes of the first
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   int(input.size(dim)
+                  </span>
+                  <span class="pre">
+                   %
+                  </span>
+                  <span class="pre">
+                   n)
+                  </span>
+                 </code>
+                 sections will have size
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   int(input.size(dim)
+                  </span>
+                  <span class="pre">
+                   /
+                  </span>
+                  <span class="pre">
+                   n)
+                  </span>
+                  <span class="pre">
+                   +
+                  </span>
+                  <span class="pre">
+                   1
+                  </span>
+                 </code>
+                 , and the rest will
+have size
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   int(input.size(dim)
+                  </span>
+                  <span class="pre">
+                   /
+                  </span>
+                  <span class="pre">
+                   n)
+                  </span>
+                 </code>
+                 .
+                </p>
+                <p>
+                 If
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   indices_or_sections
+                  </span>
+                 </code>
+                 is a list or tuple of ints, or a one-dimensional long
+tensor, then
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   input
+                  </span>
+                 </code>
+                 is split along dimension
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   dim
+                  </span>
+                 </code>
+                 at each of the indices
+in the list, tuple or tensor. For instance,
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   indices_or_sections=[2,
+                  </span>
+                  <span class="pre">
+                   3]
+                  </span>
+                 </code>
+                 and
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   dim=0
+                  </span>
+                 </code>
+                 would result in the tensors
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   input[:2]
+                  </span>
+                 </code>
+                 ,
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   input[2:3]
+                  </span>
+                 </code>
+                 , and
+                 <code class="code docutils literal notranslate">
+                  <span class="pre">
+                   input[3:]
+                  </span>
+                 </code>
+                 .
+                </p>
+                <p>
+                 If indices_or_sections is a tensor, it must be a zero-dimensional or one-dimensional
+long tensor on the CPU.
+                </p>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – dimension along which to split the tensor. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  0
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">(tensor([0, 1, 2]), tensor([3, 4, 5]), tensor([6, 7]))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">(tensor([0, 1, 2]), tensor([3, 4]), tensor([5, 6]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="go">(tensor([0]), tensor([1, 2, 3, 4, 5]), tensor([6]))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[ 0,  1,  2,  3,  4,  5,  6],</span>
+<span class="go">        [ 7,  8,  9, 10, 11, 12, 13]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">(tensor([[0, 1, 2],</span>
+<span class="go">        [7, 8, 9]]),</span>
+<span class="go"> tensor([[ 3,  4],</span>
+<span class="go">        [10, 11]]),</span>
+<span class="go"> tensor([[ 5,  6],</span>
+<span class="go">        [12, 13]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">(tensor([[0],</span>
+<span class="go">        [7]]),</span>
+<span class="go"> tensor([[ 1,  2,  3,  4,  5],</span>
+<span class="go">        [ 8,  9, 10, 11, 12]]),</span>
+<span class="go"> tensor([[ 6],</span>
+<span class="go">        [13]]))</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

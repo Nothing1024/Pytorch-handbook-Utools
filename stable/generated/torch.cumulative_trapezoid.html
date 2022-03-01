@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.cumulative_trapezoid — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-cumulative-trapezoid">
+         <h1>
+          torch.cumulative_trapezoid
+          <a class="headerlink" href="#torch-cumulative-trapezoid" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.cumulative_trapezoid">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             cumulative_trapezoid
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              y
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              x
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dx
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              -
+             </span>
+             <span class="pre">
+              1
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cumulative_trapezoid" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Cumulatively computes the
+            <a class="reference external" href="https://en.wikipedia.org/wiki/Trapezoidal_rule">
+             trapezoidal rule
+            </a>
+            along
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            . By default the spacing between elements is assumed to be 1, but
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dx
+             </span>
+            </code>
+            can be used to specify a different constant spacing, and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              x
+             </span>
+            </code>
+            can be
+used to specify arbitrary spacing along
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dim
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            For more details, please read
+            <a class="reference internal" href="torch.trapezoid.html#torch.trapezoid" title="torch.trapezoid">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.trapezoid()
+              </span>
+             </code>
+            </a>
+            . The difference between
+            <a class="reference internal" href="torch.trapezoid.html#torch.trapezoid" title="torch.trapezoid">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.trapezoid()
+              </span>
+             </code>
+            </a>
+            and this function is that,
+            <a class="reference internal" href="torch.trapezoid.html#torch.trapezoid" title="torch.trapezoid">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.trapezoid()
+              </span>
+             </code>
+            </a>
+            returns a value for each integration,
+where as this function returns a cumulative value for every spacing within the integration. This
+is analogous to how
+            <cite>
+             .sum
+            </cite>
+            returns a value and
+            <cite>
+             .cumsum
+            </cite>
+            returns a cumulative sum.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – Values to use when computing the trapezoidal rule.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – If specified, defines spacing between values as specified above.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 dx
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                ) – constant spacing between values. If neither
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  x
+                 </span>
+                </code>
+                or
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dx
+                 </span>
+                </code>
+                are specified then this defaults to 1. Effectively multiplies the result by its value.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – The dimension along which to compute the trapezoidal rule.
+The last (inner-most) dimension by default.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cumulatively computes the trapezoidal rule in 1D, spacing is implicitly 1.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">tensor([3., 10.5])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Computes the same trapezoidal rule directly up to each element to verify</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">10.5</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cumulatively computes the trapezoidal rule in 1D with constant spacing of 2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># NOTE: the result is the same as before, but multiplied by 2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([6., 21.])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cumulatively computes the trapezoidal rule in 1D with arbitrary spacing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">tensor([6., 28.5])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Computes the same trapezoidal rule directly up to each element to verify</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">((</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">6.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">((</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">10</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">28.5</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cumulatively computes the trapezoidal rule for each row of a 3x3 matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">tensor([[0, 1, 2],</span>
+<span class="go">        [3, 4, 5],</span>
+<span class="go">        [6, 7, 8]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">tensor([[ 0.5,  2.],</span>
+<span class="go">        [ 3.5,  8.],</span>
+<span class="go">        [ 6.5, 14.]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cumulatively computes the trapezoidal rule for each column of the matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">tensor([[ 1.5,  2.5,  3.5],</span>
+<span class="go">        [ 6.0,  8.0, 10.0]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cumulatively computes the trapezoidal rule for each row of a 3x3 ones matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   with the same arbitrary spacing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">tensor([[2., 5.],</span>
+<span class="go">        [2., 5.],</span>
+<span class="go">        [2., 5.]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cumulatively computes the trapezoidal rule for each row of a 3x3 ones matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   with different arbitrary spacing per row</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">tensor([[1., 2.],</span>
+<span class="go">        [2., 4.],</span>
+<span class="go">        [3., 6.]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

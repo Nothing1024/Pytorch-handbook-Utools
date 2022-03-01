@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.utils.rnn.pack_padded_sequence — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-utils-rnn-pack-padded-sequence">
+         <h1>
+          torch.nn.utils.rnn.pack_padded_sequence
+          <a class="headerlink" href="#torch-nn-utils-rnn-pack-padded-sequence" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.utils.rnn.pack_padded_sequence">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.rnn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             pack_padded_sequence
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              lengths
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              batch_first
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              enforce_sorted
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/rnn.html#pack_padded_sequence">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.rnn.pack_padded_sequence" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Packs a Tensor containing padded sequences of variable length.
+           </p>
+           <p>
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            can be of size
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              T
+             </span>
+             <span class="pre">
+              x
+             </span>
+             <span class="pre">
+              B
+             </span>
+             <span class="pre">
+              x
+             </span>
+             <span class="pre">
+              *
+             </span>
+            </code>
+            where
+            <cite>
+             T
+            </cite>
+            is the length of the
+longest sequence (equal to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              lengths[0]
+             </span>
+            </code>
+            ),
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              B
+             </span>
+            </code>
+            is the batch size, and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              *
+             </span>
+            </code>
+            is any number of dimensions (including 0). If
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              batch_first
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            ,
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              B
+             </span>
+             <span class="pre">
+              x
+             </span>
+             <span class="pre">
+              T
+             </span>
+             <span class="pre">
+              x
+             </span>
+             <span class="pre">
+              *
+             </span>
+            </code>
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            is expected.
+           </p>
+           <p>
+            For unsorted sequences, use
+            <cite>
+             enforce_sorted = False
+            </cite>
+            . If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              enforce_sorted
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            , the sequences should be sorted by length in a decreasing order, i.e.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              input[:,0]
+             </span>
+            </code>
+            should be the longest sequence, and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              input[:,B-1]
+             </span>
+            </code>
+            the shortest
+one.
+            <cite>
+             enforce_sorted = True
+            </cite>
+            is only necessary for ONNX export.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function accepts any input that has at least two dimensions. You
+can apply it to pack the labels, and use the output of the RNN with
+them to compute the loss directly. A Tensor can be retrieved from
+a
+             <a class="reference internal" href="torch.nn.utils.rnn.PackedSequence.html#torch.nn.utils.rnn.PackedSequence" title="torch.nn.utils.rnn.PackedSequence">
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                PackedSequence
+               </span>
+              </code>
+             </a>
+             object by accessing its
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               .data
+              </span>
+             </code>
+             attribute.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – padded batch of variable length sequences.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 lengths
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)">
+                 <em>
+                  list
+                 </em>
+                </a>
+                <em>
+                 (
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 )
+                </em>
+                ) – list of sequence lengths of each batch
+element (must be on the CPU if provided as a tensor).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 batch_first
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , the input is expected in
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  B
+                 </span>
+                 <span class="pre">
+                  x
+                 </span>
+                 <span class="pre">
+                  T
+                 </span>
+                 <span class="pre">
+                  x
+                 </span>
+                 <span class="pre">
+                  *
+                 </span>
+                </code>
+                format.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 enforce_sorted
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , the input is expected to
+contain sequences sorted by length in a decreasing order. If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , the input will get sorted unconditionally. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              a
+              <a class="reference internal" href="torch.nn.utils.rnn.PackedSequence.html#torch.nn.utils.rnn.PackedSequence" title="torch.nn.utils.rnn.PackedSequence">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 PackedSequence
+                </span>
+               </code>
+              </a>
+              object
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

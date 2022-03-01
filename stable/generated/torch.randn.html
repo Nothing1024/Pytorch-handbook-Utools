@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.randn — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-randn">
+         <h1>
+          torch.randn
+          <a class="headerlink" href="#torch-randn" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.randn">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             randn
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="pre">
+             *size
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             *
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             out=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             dtype=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             layout=torch.strided
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             device=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             requires_grad=False
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.randn" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns a tensor filled with random numbers from a normal distribution
+with mean
+            <cite>
+             0
+            </cite>
+            and variance
+            <cite>
+             1
+            </cite>
+            (also called the standard normal
+distribution).
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mtext>
+                    out
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   ∼
+                  </mo>
+                  <mi mathvariant="script">
+                   N
+                  </mi>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mn>
+                   0
+                  </mn>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mn>
+                   1
+                  </mn>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{out}_{i} \sim \mathcal{N}(0, 1)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.76508em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   out
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         i
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 ∼
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord mathcal" style="margin-right:0.14736em;">
+                 N
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord">
+                 0
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord">
+                 1
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            The shape of the tensor is defined by the variable argument
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              size
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               size
+              </strong>
+              (
+              <em>
+               int...
+              </em>
+              ) – a sequence of integers defining the shape of the output tensor.
+Can be a variable number of arguments or a collection like a list or tuple.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 generator
+                </strong>
+                (
+                <a class="reference internal" href="torch.Generator.html#torch.Generator" title="torch.Generator">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.Generator
+                  </span>
+                 </code>
+                </a>
+                , optional) – a pseudorandom number generator for sampling
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired data type of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , uses a global default (see
+                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.set_default_tensor_type()
+                  </span>
+                 </code>
+                </a>
+                ).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 layout
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.layout" title="torch.torch.layout">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.layout
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired layout of returned Tensor.
+Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.strided
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 device
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired device of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , uses the current device for the default tensor type
+(see
+                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.set_default_tensor_type()
+                  </span>
+                 </code>
+                </a>
+                ).
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  device
+                 </span>
+                </code>
+                will be the CPU
+for CPU tensor types and the current CUDA device for CUDA tensor types.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 requires_grad
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If autograd should record operations on the
+returned tensor. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">tensor([-2.1436,  0.9966,  2.3426, -0.6366])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">tensor([[ 1.5954,  2.8929, -1.0923],</span>
+<span class="go">        [ 1.1719, -0.4709, -0.1996]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

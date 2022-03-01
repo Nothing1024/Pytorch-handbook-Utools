@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.pinv — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-pinv">
+         <h1>
+          torch.linalg.pinv
+          <a class="headerlink" href="#torch-linalg-pinv" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.pinv">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             pinv
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              rcond
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1e-15
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              hermitian
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.linalg.pinv" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the pseudoinverse (Moore-Penrose inverse) of a matrix.
+           </p>
+           <p>
+            The pseudoinverse may be
+            <a class="reference external" href="https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse#Existence_and_uniqueness">
+             defined algebraically
+            </a>
+            but it is more computationally convenient to understand it
+            <a class="reference external" href="https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse#Singular_value_decomposition_(SVD)">
+             through the SVD
+            </a>
+           </p>
+           <p>
+            Supports input of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a batch of matrices then
+the output has the same batch dimensions.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              hermitian
+             </span>
+            </code>
+            <cite>
+             = True
+            </cite>
+            ,
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is assumed to be Hermitian if complex or
+symmetric if real, but this is not checked internally. Instead, just the lower
+triangular part of the matrix is used in the computations.
+           </p>
+           <p>
+            The singular values (or the norm of the eigenvalues when
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              hermitian
+             </span>
+            </code>
+            <cite>
+             = True
+            </cite>
+            )
+that are below the specified
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              rcond
+             </span>
+            </code>
+            threshold are treated as zero and discarded in the computation.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function uses
+             <a class="reference internal" href="torch.linalg.svd.html#torch.linalg.svd" title="torch.linalg.svd">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.svd()
+               </span>
+              </code>
+             </a>
+             if
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               hermitian
+              </span>
+             </code>
+             <cite>
+              = False
+             </cite>
+             and
+             <a class="reference internal" href="torch.linalg.eigh.html#torch.linalg.eigh" title="torch.linalg.eigh">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.eigh()
+               </span>
+              </code>
+             </a>
+             if
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               hermitian
+              </span>
+             </code>
+             <cite>
+              = True
+             </cite>
+             .
+For CUDA inputs, this function synchronizes that device with the CPU.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Consider using
+             <a class="reference internal" href="torch.linalg.lstsq.html#torch.linalg.lstsq" title="torch.linalg.lstsq">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.lstsq()
+               </span>
+              </code>
+             </a>
+             if possible for multiplying a matrix on the left by
+the pseudoinverse, as:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">solution</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">pinv</span><span class="p">()</span> <span class="o">@</span> <span class="n">B</span>
+</pre>
+             </div>
+            </div>
+            <p>
+             It is always prefered to use
+             <a class="reference internal" href="torch.linalg.lstsq.html#torch.linalg.lstsq" title="torch.linalg.lstsq">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                lstsq()
+               </span>
+              </code>
+             </a>
+             when possible, as it is faster and more
+numerically stable than computing the pseudoinverse explicitly.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This function uses internally
+             <a class="reference internal" href="torch.linalg.svd.html#torch.linalg.svd" title="torch.linalg.svd">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.svd()
+               </span>
+              </code>
+             </a>
+             (or
+             <a class="reference internal" href="torch.linalg.eigh.html#torch.linalg.eigh" title="torch.linalg.eigh">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.eigh()
+               </span>
+              </code>
+             </a>
+             when
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               hermitian
+              </span>
+             </code>
+             <cite>
+              = True
+             </cite>
+             ), so its derivative has the same problems as those of these
+functions. See the warnings in
+             <a class="reference internal" href="torch.linalg.svd.html#torch.linalg.svd" title="torch.linalg.svd">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.svd()
+               </span>
+              </code>
+             </a>
+             and
+             <a class="reference internal" href="torch.linalg.eigh.html#torch.linalg.eigh" title="torch.linalg.eigh">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.eigh()
+               </span>
+              </code>
+             </a>
+             for
+more details.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.inv.html#torch.linalg.inv" title="torch.linalg.inv">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.inv()
+               </span>
+              </code>
+             </a>
+             computes the inverse of a square matrix.
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.lstsq.html#torch.linalg.lstsq" title="torch.linalg.lstsq">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.lstsq()
+               </span>
+              </code>
+             </a>
+             computes
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               A
+              </span>
+             </code>
+             <cite>
+              .pinv() @
+             </cite>
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               B
+              </span>
+             </code>
+             with a
+numerically stable algorithm.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 A
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – tensor of shape
+                <cite>
+                 (*, m, n)
+                </cite>
+                where
+                <cite>
+                 *
+                </cite>
+                is zero or more batch dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 rcond
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the tolerance value to determine when is a singular value zero
+If it is a
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.Tensor
+                  </span>
+                 </code>
+                </a>
+                , its shape must be
+broadcastable to that of the singular values of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                as returned by
+                <a class="reference internal" href="torch.svd.html#torch.svd" title="torch.svd">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.svd()
+                  </span>
+                 </code>
+                </a>
+                .
+Default:
+                <cite>
+                 1e-15
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 hermitian
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – indicates whether
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                is Hermitian if complex
+or symmetric if real. Default:
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – output tensor. Ignored if
+              <cite>
+               None
+              </cite>
+              . Default:
+              <cite>
+               None
+              </cite>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">tensor([[ 0.5495,  0.0979, -1.4092, -0.1128,  0.4132],</span>
+<span class="go">        [-1.1143, -0.3662,  0.3042,  1.6374, -0.9294],</span>
+<span class="go">        [-0.3269, -0.5745, -0.0382, -0.5922, -0.6759]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">tensor([[ 0.0600, -0.1933, -0.2090],</span>
+<span class="go">        [-0.0903, -0.0817, -0.4752],</span>
+<span class="go">        [-0.7124, -0.1631, -0.2272],</span>
+<span class="go">        [ 0.1356,  0.3933, -0.5023],</span>
+<span class="go">        [-0.0308, -0.1725, -0.5216]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Apinv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">Apinv</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="go">tensor(8.5633e-07)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>  <span class="c1"># creates a Hermitian matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Apinv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">hermitian</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">Apinv</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="go">tensor(1.0830e-06)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

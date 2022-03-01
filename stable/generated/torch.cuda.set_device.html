@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.cuda.set_device — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-cuda-set-device">
+         <h1>
+          torch.cuda.set_device
+          <a class="headerlink" href="#torch-cuda-set-device" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.cuda.set_device">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             set_device
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/cuda.html#set_device">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.set_device" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Sets the current device.
+           </p>
+           <p>
+            Usage of this function is discouraged in favor of
+            <a class="reference internal" href="torch.cuda.device.html#torch.cuda.device" title="torch.cuda.device">
+             <code class="xref any py py-class docutils literal notranslate">
+              <span class="pre">
+               device
+              </span>
+             </code>
+            </a>
+            . In most
+cases it’s better to use
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              CUDA_VISIBLE_DEVICES
+             </span>
+            </code>
+            environmental variable.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               device
+              </strong>
+              (
+              <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+               <em>
+                torch.device
+               </em>
+              </a>
+              <em>
+               or
+              </em>
+              <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+               <em>
+                int
+               </em>
+              </a>
+              ) – selected device. This function is a no-op
+if this argument is negative.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

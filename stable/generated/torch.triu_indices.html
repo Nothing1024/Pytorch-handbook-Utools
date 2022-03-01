@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.triu_indices — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-triu-indices">
+         <h1>
+          torch.triu_indices
+          <a class="headerlink" href="#torch-triu-indices" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.triu_indices">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             triu_indices
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              row
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              col
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              offset
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              torch.long
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'cpu'
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              layout
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              torch.strided
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.triu_indices" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the indices of the upper triangular part of a
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              row
+             </span>
+            </code>
+            by
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              col
+             </span>
+            </code>
+            matrix in a 2-by-N Tensor, where the first row contains row
+coordinates of all indices and the second row contains column coordinates.
+Indices are ordered based on rows and then columns.
+           </p>
+           <p>
+            The upper triangular part of the matrix is defined as the elements on and
+above the diagonal.
+           </p>
+           <p>
+            The argument
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              offset
+             </span>
+            </code>
+            controls which diagonal to consider. If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              offset
+             </span>
+            </code>
+            = 0, all elements on and above the main diagonal are
+retained. A positive value excludes just as many diagonals above the main
+diagonal, and similarly a negative value includes just as many diagonals below
+the main diagonal. The main diagonal are the set of indices
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo stretchy="false">
+                   {
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   i
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   i
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo stretchy="false">
+                   }
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \lbrace (i, i) \rbrace
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 {(
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mclose">
+                 )}
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            for
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   i
+                  </mi>
+                  <mo>
+                   ∈
+                  </mo>
+                  <mo stretchy="false">
+                   [
+                  </mo>
+                  <mn>
+                   0
+                  </mn>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   min
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   {
+                  </mo>
+                  <msub>
+                   <mi>
+                    d
+                   </mi>
+                   <mn>
+                    1
+                   </mn>
+                  </msub>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <msub>
+                   <mi>
+                    d
+                   </mi>
+                   <mn>
+                    2
+                   </mn>
+                  </msub>
+                  <mo stretchy="false">
+                   }
+                  </mo>
+                  <mo>
+                   −
+                  </mo>
+                  <mn>
+                   1
+                  </mn>
+                  <mo stretchy="false">
+                   ]
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  i \in [0, \min\{d_{1}, d_{2}\} - 1]
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.69862em;vertical-align:-0.0391em;">
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 ∈
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 [
+                </span>
+                <span class="mord">
+                 0
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mop">
+                 min
+                </span>
+                <span class="mopen">
+                 {
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  d
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.30110799999999993em;">
+                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         1
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  d
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.30110799999999993em;">
+                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         2
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mclose">
+                 }
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 −
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord">
+                 1
+                </span>
+                <span class="mclose">
+                 ]
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            where
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mi>
+                    d
+                   </mi>
+                   <mn>
+                    1
+                   </mn>
+                  </msub>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <msub>
+                   <mi>
+                    d
+                   </mi>
+                   <mn>
+                    2
+                   </mn>
+                  </msub>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  d_{1}, d_{2}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  d
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.30110799999999993em;">
+                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         1
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  d
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.30110799999999993em;">
+                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         2
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            are the dimensions of the matrix.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When running on CUDA,
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               row
+              </span>
+              <span class="pre">
+               *
+              </span>
+              <span class="pre">
+               col
+              </span>
+             </code>
+             must be less than
+             <span class="math">
+              <span class="katex">
+               <span class="katex-mathml">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                 <semantics>
+                  <mrow>
+                   <msup>
+                    <mn>
+                     2
+                    </mn>
+                    <mn>
+                     59
+                    </mn>
+                   </msup>
+                  </mrow>
+                  <annotation encoding="application/x-tex">
+                   2^{59}
+                  </annotation>
+                 </semantics>
+                </math>
+               </span>
+               <span aria-hidden="true" class="katex-html">
+                <span class="base">
+                 <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;">
+                 </span>
+                 <span class="mord">
+                  <span class="mord">
+                   2
+                  </span>
+                  <span class="msupsub">
+                   <span class="vlist-t">
+                    <span class="vlist-r">
+                     <span class="vlist" style="height:0.8141079999999999em;">
+                      <span style="top:-3.063em;margin-right:0.05em;">
+                       <span class="pstrut" style="height:2.7em;">
+                       </span>
+                       <span class="sizing reset-size6 size3 mtight">
+                        <span class="mord mtight">
+                         <span class="mord mtight">
+                          59
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+             to
+prevent overflow during calculation.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 row
+                </strong>
+                (
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  int
+                 </span>
+                </code>
+                ) – number of rows in the 2-D matrix.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 col
+                </strong>
+                (
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  int
+                 </span>
+                </code>
+                ) – number of columns in the 2-D matrix.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 offset
+                </strong>
+                (
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  int
+                 </span>
+                </code>
+                ) – diagonal offset from the main diagonal.
+Default: if not provided, 0.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired data type of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.long
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 device
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired device of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , uses the current device for the default tensor type
+(see
+                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.set_default_tensor_type()
+                  </span>
+                 </code>
+                </a>
+                ).
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  device
+                 </span>
+                </code>
+                will be the CPU
+for CPU tensor types and the current CUDA device for CUDA tensor types.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 layout
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.layout" title="torch.torch.layout">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.layout
+                  </span>
+                 </code>
+                </a>
+                , optional) – currently only support
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.strided
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[0, 0, 0, 1, 1, 2],</span>
+<span class="go">        [0, 1, 2, 1, 2, 2]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[0, 0, 0, 1, 1, 1, 2, 2, 3],</span>
+<span class="go">        [0, 1, 2, 0, 1, 2, 1, 2, 2]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[0, 0, 1],</span>
+<span class="go">        [1, 2, 2]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

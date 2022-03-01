@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.cuda.comm.scatter — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-cuda-comm-scatter">
+         <h1>
+          torch.cuda.comm.scatter
+          <a class="headerlink" href="#torch-cuda-comm-scatter" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.cuda.comm.scatter">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.comm.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             scatter
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              tensor
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              devices
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              chunk_sizes
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              streams
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/parallel/comm.html#scatter">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.comm.scatter" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Scatters tensor across multiple GPUs.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 tensor
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – tensor to scatter. Can be on CPU or GPU.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 devices
+                </strong>
+                (
+                <em>
+                 Iterable
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <em>
+                  torch.device
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – an iterable of
+GPU devices, among which to scatter.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 chunk_sizes
+                </strong>
+                (
+                <em>
+                 Iterable
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – sizes of chunks to be placed on
+each device. It should match
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  devices
+                 </span>
+                </code>
+                in length and sums to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  tensor.size(dim)
+                 </span>
+                </code>
+                . If not specified,
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  tensor
+                 </span>
+                </code>
+                will be divided
+into equal chunks.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – A dimension along which to chunk
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  tensor
+                 </span>
+                </code>
+                .
+Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  0
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 streams
+                </strong>
+                (
+                <em>
+                 Iterable
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference internal" href="torch.cuda.Stream.html#torch.cuda.Stream" title="torch.cuda.Stream">
+                 <em>
+                  Stream
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – an iterable of Streams, among
+which to execute the scatter. If not specified, the default stream will
+be utilized.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <em>
+                 Sequence
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 keyword-only
+                </em>
+                ) – the GPU tensors to
+store output results. Sizes of these tensors must match that of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  tensor
+                 </span>
+                </code>
+                , except for
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                , where the total size must
+sum to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  tensor.size(dim)
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Exactly one of
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               devices
+              </span>
+             </code>
+             and
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               out
+              </span>
+             </code>
+             must be specified. When
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               out
+              </span>
+             </code>
+             is specified,
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               chunk_sizes
+              </span>
+             </code>
+             must not be specified and
+will be inferred from sizes of
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               out
+              </span>
+             </code>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <ul class="simple">
+               <li>
+                <dl class="simple">
+                 <dt>
+                  If
+                  <code class="xref py py-attr docutils literal notranslate">
+                   <span class="pre">
+                    devices
+                   </span>
+                  </code>
+                  is specified,
+                 </dt>
+                 <dd>
+                  <p>
+                   a tuple containing chunks of
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     tensor
+                    </span>
+                   </code>
+                   , placed on
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     devices
+                    </span>
+                   </code>
+                   .
+                  </p>
+                 </dd>
+                </dl>
+               </li>
+               <li>
+                <dl class="simple">
+                 <dt>
+                  If
+                  <code class="xref py py-attr docutils literal notranslate">
+                   <span class="pre">
+                    out
+                   </span>
+                  </code>
+                  is specified,
+                 </dt>
+                 <dd>
+                  <p>
+                   a tuple containing
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     out
+                    </span>
+                   </code>
+                   tensors, each containing a chunk of
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     tensor
+                    </span>
+                   </code>
+                   .
+                  </p>
+                 </dd>
+                </dl>
+               </li>
+              </ul>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

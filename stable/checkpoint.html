@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.utils.checkpoint — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-utils-checkpoint">
+         <h1>
+          torch.utils.checkpoint
+          <a class="headerlink" href="#torch-utils-checkpoint" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <div class="admonition note">
+          <p class="admonition-title">
+           Note
+          </p>
+          <p>
+           Checkpointing is implemented by rerunning a forward-pass segment for
+each checkpointed segment during backward.  This can cause persistent
+states like the RNG state to be advanced than they would without
+checkpointing.  By default, checkpointing includes logic to juggle
+the RNG state such that checkpointed passes making use of RNG
+(through dropout for example) have deterministic output as
+compared to non-checkpointed passes.  The logic to stash and restore
+RNG states can incur a moderate performance hit depending on the runtime
+of checkpointed operations.  If deterministic output compared to
+non-checkpointed passes is not required, supply
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             preserve_rng_state=False
+            </span>
+           </code>
+           to
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             checkpoint
+            </span>
+           </code>
+           or
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             checkpoint_sequential
+            </span>
+           </code>
+           to omit stashing and
+restoring the RNG state during each checkpoint.
+          </p>
+          <p>
+           The stashing logic saves and restores the RNG state for the current device
+and the device of all cuda Tensor arguments to the
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             run_fn
+            </span>
+           </code>
+           .
+However, the logic has no way to anticipate if the user will move
+Tensors to a new device within the
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             run_fn
+            </span>
+           </code>
+           itself.  Therefore, if you move
+Tensors to a new device (“new” meaning not belonging to the set of
+[current device + devices of Tensor arguments]) within
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             run_fn
+            </span>
+           </code>
+           , deterministic
+output compared to non-checkpointed passes is never guaranteed.
+          </p>
+         </div>
+         <dl class="py function">
+          <dt id="torch.utils.checkpoint.checkpoint">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.utils.checkpoint.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             checkpoint
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              function
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/torch/utils/checkpoint.html#checkpoint">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.utils.checkpoint.checkpoint" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Checkpoint a model or part of the model
+           </p>
+           <p>
+            Checkpointing works by trading compute for memory. Rather than storing all
+intermediate activations of the entire computation graph for computing
+backward, the checkpointed part does
+            <strong>
+             not
+            </strong>
+            save intermediate activations,
+and instead recomputes them in backward pass. It can be applied on any part
+of a model.
+           </p>
+           <p>
+            Specifically, in the forward pass,
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              function
+             </span>
+            </code>
+            will run in
+            <a class="reference internal" href="generated/torch.no_grad.html#torch.no_grad" title="torch.no_grad">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.no_grad()
+              </span>
+             </code>
+            </a>
+            manner, i.e., not storing the intermediate
+activations. Instead, the forward pass saves the inputs tuple and the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              function
+             </span>
+            </code>
+            parameter. In the backwards pass, the saved inputs and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              function
+             </span>
+            </code>
+            is retrieved, and the forward pass is computed on
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              function
+             </span>
+            </code>
+            again, now tracking the intermediate activations, and then
+the gradients are calculated using these activation values.
+           </p>
+           <p>
+            The output of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              function
+             </span>
+            </code>
+            can contain non-Tensor values and gradient
+recording is only performed for the Tensor values. Note that if the output
+consists of nested structures (ex: custom objects, lists, dicts etc.)
+consisting of Tensors, these Tensors nested in custom structures will not
+be considered as part of autograd.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             Checkpointing currently only supports
+             <a class="reference internal" href="generated/torch.autograd.backward.html#torch.autograd.backward" title="torch.autograd.backward">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.autograd.backward()
+               </span>
+              </code>
+             </a>
+             and only if its
+             <cite>
+              inputs
+             </cite>
+             argument is not passed.
+             <a class="reference internal" href="generated/torch.autograd.grad.html#torch.autograd.grad" title="torch.autograd.grad">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.autograd.grad()
+               </span>
+              </code>
+             </a>
+             is not supported.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             If
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               function
+              </span>
+             </code>
+             invocation during backward does anything different
+than the one during forward, e.g., due to some global variable, the
+checkpointed version won’t be equivalent, and unfortunately it can’t be
+detected.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             If checkpointed segment contains tensors detached from the computational
+graph by
+             <cite>
+              detach()
+             </cite>
+             or
+             <cite>
+              torch.no_grad()
+             </cite>
+             , the backward pass will raise an
+error. This is because
+             <cite>
+              checkpoint
+             </cite>
+             makes all the outputs require
+gradients which causes issues when a tensor is defined to have no
+gradient in the model. To circumvent this, detach the tensors outside of
+the
+             <cite>
+              checkpoint
+             </cite>
+             function.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             At least one of the inputs needs to have
+             <code class="code docutils literal notranslate">
+              <span class="pre">
+               requires_grad=True
+              </span>
+             </code>
+             if
+grads are needed for model inputs, otherwise the checkpointed part of the
+model won’t have gradients. At least one of the outputs needs to have
+             <code class="code docutils literal notranslate">
+              <span class="pre">
+               requires_grad=True
+              </span>
+             </code>
+             as well.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 function
+                </strong>
+                – describes what to run in the forward pass of the model or
+part of the model. It should also know how to handle the inputs
+passed as the tuple. For example, in LSTM, if user passes
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  (activation,
+                 </span>
+                 <span class="pre">
+                  hidden)
+                 </span>
+                </code>
+                ,
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  function
+                 </span>
+                </code>
+                should correctly use the
+first input as
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  activation
+                 </span>
+                </code>
+                and the second input as
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  hidden
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 preserve_rng_state
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default=True
+                </em>
+                ) – Omit stashing and restoring
+the RNG state during each checkpoint.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 args
+                </strong>
+                – tuple containing inputs to the
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  function
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Output of running
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                function
+               </span>
+              </code>
+              on
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                *args
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py function">
+          <dt id="torch.utils.checkpoint.checkpoint_sequential">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.utils.checkpoint.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             checkpoint_sequential
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              functions
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              segments
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/torch/utils/checkpoint.html#checkpoint_sequential">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.utils.checkpoint.checkpoint_sequential" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            A helper function for checkpointing sequential models.
+           </p>
+           <p>
+            Sequential models execute a list of modules/functions in order
+(sequentially). Therefore, we can divide such a model in various segments
+and checkpoint each segment. All segments except the last will run in
+            <a class="reference internal" href="generated/torch.no_grad.html#torch.no_grad" title="torch.no_grad">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.no_grad()
+              </span>
+             </code>
+            </a>
+            manner, i.e., not storing the intermediate
+activations. The inputs of each checkpointed segment will be saved for
+re-running the segment in the backward pass.
+           </p>
+           <p>
+            See
+            <a class="reference internal" href="#torch.utils.checkpoint.checkpoint" title="torch.utils.checkpoint.checkpoint">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               checkpoint()
+              </span>
+             </code>
+            </a>
+            on how checkpointing works.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             Checkpointing currently only supports
+             <a class="reference internal" href="generated/torch.autograd.backward.html#torch.autograd.backward" title="torch.autograd.backward">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.autograd.backward()
+               </span>
+              </code>
+             </a>
+             and only if its
+             <cite>
+              inputs
+             </cite>
+             argument is not passed.
+             <a class="reference internal" href="generated/torch.autograd.grad.html#torch.autograd.grad" title="torch.autograd.grad">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.autograd.grad()
+               </span>
+              </code>
+             </a>
+             is not supported.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 functions
+                </strong>
+                – A
+                <a class="reference internal" href="generated/torch.nn.Sequential.html#torch.nn.Sequential" title="torch.nn.Sequential">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.nn.Sequential
+                  </span>
+                 </code>
+                </a>
+                or the list of modules or
+functions (comprising the model) to run sequentially.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 segments
+                </strong>
+                – Number of chunks to create in the model
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                – A Tensor that is input to
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  functions
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 preserve_rng_state
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default=True
+                </em>
+                ) – Omit stashing and restoring
+the RNG state during each checkpoint.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Output of running
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                functions
+               </span>
+              </code>
+              sequentially on
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                *inputs
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Example
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_var</span> <span class="o">=</span> <span class="n">checkpoint_sequential</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">chunks</span><span class="p">,</span> <span class="n">input_var</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.load — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-load">
+         <h1>
+          torch.jit.load
+          <a class="headerlink" href="#torch-jit-load" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.load">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             load
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              f
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              map_location
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              _extra_files
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit/_serialization.html#load">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.load" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Load a
+            <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               ScriptModule
+              </span>
+             </code>
+            </a>
+            or
+            <a class="reference internal" href="torch.jit.ScriptFunction.html#torch.jit.ScriptFunction" title="torch.jit.ScriptFunction">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               ScriptFunction
+              </span>
+             </code>
+            </a>
+            previously
+saved with
+            <a class="reference internal" href="torch.jit.save.html#torch.jit.save" title="torch.jit.save">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.jit.save
+              </span>
+             </code>
+            </a>
+           </p>
+           <p>
+            All previously saved modules, no matter their device, are first loaded onto CPU,
+and then are moved to the devices they were saved from. If this fails (e.g.
+because the run time system doesn’t have certain devices), an exception is
+raised.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 f
+                </strong>
+                – a file-like object (has to implement read, readline, tell, and seek),
+or a string containing a file name
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 map_location
+                </strong>
+                (
+                <em>
+                 string
+                </em>
+                <em>
+                 or
+                </em>
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <em>
+                  torch.device
+                 </em>
+                </a>
+                ) – A simplified version of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  map_location
+                 </span>
+                </code>
+                in
+                <cite>
+                 torch.jit.save
+                </cite>
+                used to dynamically remap
+storages to an alternative set of devices.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 _extra_files
+                </strong>
+                (
+                <em>
+                 dictionary of filename to content
+                </em>
+                ) – The extra
+filenames given in the map would be loaded and their content
+would be stored in the provided map.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              A
+              <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptModule
+                </span>
+               </code>
+              </a>
+              object.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-python3 notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'scriptmodule.pt'</span><span class="p">)</span>
+
+<span class="c1"># Load ScriptModule from io.BytesIO object</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'scriptmodule.pt'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># Load all tensors to the original device</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+
+<span class="c1"># Load all tensors onto CPU, using a device</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">))</span>
+
+<span class="c1"># Load all tensors onto CPU, using a string</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s1">'cpu'</span><span class="p">)</span>
+
+<span class="c1"># Load with extra files.</span>
+<span class="n">extra_files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo.txt'</span><span class="p">:</span> <span class="s1">''</span><span class="p">}</span>  <span class="c1"># values will be replaced with data</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'scriptmodule.pt'</span><span class="p">,</span> <span class="n">_extra_files</span><span class="o">=</span><span class="n">extra_files</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">extra_files</span><span class="p">[</span><span class="s1">'foo.txt'</span><span class="p">])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.fft — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-fft">
+         <h1>
+          torch.fft
+          <a class="headerlink" href="#torch-fft" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <p>
+          Discrete Fourier transforms and related functions.
+         </p>
+         <div class="section" id="fast-fourier-transforms">
+          <h2>
+           Fast Fourier Transforms
+           <a class="headerlink" href="#fast-fourier-transforms" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.fft">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.fft.html#torch.fft.fft" title="torch.fft.fft">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  fft
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the one dimensional discrete Fourier transform of
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.ifft">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.ifft.html#torch.fft.ifft" title="torch.fft.ifft">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ifft
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the one dimensional inverse discrete Fourier transform of
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.fft2">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.fft2.html#torch.fft.fft2" title="torch.fft.fft2">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  fft2
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the 2 dimensional discrete Fourier transform of
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.ifft2">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.ifft2.html#torch.fft.ifft2" title="torch.fft.ifft2">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ifft2
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the 2 dimensional inverse discrete Fourier transform of
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.fftn">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.fftn.html#torch.fft.fftn" title="torch.fft.fftn">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  fftn
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the N dimensional discrete Fourier transform of
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.ifftn">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.ifftn.html#torch.fft.ifftn" title="torch.fft.ifftn">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ifftn
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the N dimensional inverse discrete Fourier transform of
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.rfft">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.rfft.html#torch.fft.rfft" title="torch.fft.rfft">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  rfft
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the one dimensional Fourier transform of real-valued
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.irfft">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.irfft.html#torch.fft.irfft" title="torch.fft.irfft">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  irfft
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the inverse of
+               <a class="reference internal" href="generated/torch.fft.rfft.html#torch.fft.rfft" title="torch.fft.rfft">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  rfft()
+                 </span>
+                </code>
+               </a>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.rfft2">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.rfft2.html#torch.fft.rfft2" title="torch.fft.rfft2">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  rfft2
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the 2-dimensional discrete Fourier transform of real
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.irfft2">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.irfft2.html#torch.fft.irfft2" title="torch.fft.irfft2">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  irfft2
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the inverse of
+               <a class="reference internal" href="generated/torch.fft.rfft2.html#torch.fft.rfft2" title="torch.fft.rfft2">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  rfft2()
+                 </span>
+                </code>
+               </a>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.rfftn">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.rfftn.html#torch.fft.rfftn" title="torch.fft.rfftn">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  rfftn
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the N-dimensional discrete Fourier transform of real
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.irfftn">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.irfftn.html#torch.fft.irfftn" title="torch.fft.irfftn">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  irfftn
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the inverse of
+               <a class="reference internal" href="generated/torch.fft.rfftn.html#torch.fft.rfftn" title="torch.fft.rfftn">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  rfftn()
+                 </span>
+                </code>
+               </a>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.hfft">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.hfft.html#torch.fft.hfft" title="torch.fft.hfft">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  hfft
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the one dimensional discrete Fourier transform of a Hermitian symmetric
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               signal.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.ihfft">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.ihfft.html#torch.fft.ihfft" title="torch.fft.ihfft">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ihfft
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the inverse of
+               <a class="reference internal" href="generated/torch.fft.hfft.html#torch.fft.hfft" title="torch.fft.hfft">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  hfft()
+                 </span>
+                </code>
+               </a>
+               .
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="helper-functions">
+          <h2>
+           Helper Functions
+           <a class="headerlink" href="#helper-functions" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.fftfreq">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.fftfreq.html#torch.fft.fftfreq" title="torch.fft.fftfreq">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  fftfreq
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the discrete Fourier Transform sample frequencies for a signal of size
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 n
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.rfftfreq">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.rfftfreq.html#torch.fft.rfftfreq" title="torch.fft.rfftfreq">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  rfftfreq
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the sample frequencies for
+               <a class="reference internal" href="generated/torch.fft.rfft.html#torch.fft.rfft" title="torch.fft.rfft">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  rfft()
+                 </span>
+                </code>
+               </a>
+               with a signal of size
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 n
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.fft.fftshift">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.fftshift.html#torch.fft.fftshift" title="torch.fft.fftshift">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  fftshift
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Reorders n-dimensional FFT data, as provided by
+               <a class="reference internal" href="generated/torch.fft.fftn.html#torch.fft.fftn" title="torch.fft.fftn">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  fftn()
+                 </span>
+                </code>
+               </a>
+               , to have negative frequency terms first.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.fft.ifftshift">
+               </p>
+               <a class="reference internal" href="generated/torch.fft.ifftshift.html#torch.fft.ifftshift" title="torch.fft.ifftshift">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ifftshift
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Inverse of
+               <a class="reference internal" href="generated/torch.fft.fftshift.html#torch.fft.fftshift" title="torch.fft.fftshift">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  fftshift()
+                 </span>
+                </code>
+               </a>
+               .
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

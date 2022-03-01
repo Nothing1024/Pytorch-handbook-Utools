@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.inv — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-inv">
+         <h1>
+          torch.linalg.inv
+          <a class="headerlink" href="#torch-linalg-inv" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.inv">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             inv
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.linalg.inv" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the inverse of a square matrix if it exists.
+Throws a
+            <cite>
+             RuntimeError
+            </cite>
+            if the matrix is not invertible.
+           </p>
+           <p>
+            Letting
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi mathvariant="double-struck">
+                   K
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathbb{K}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.68889em;vertical-align:0em;">
+                </span>
+                <span class="mord mathbb">
+                 K
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            be
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi mathvariant="double-struck">
+                   R
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathbb{R}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.68889em;vertical-align:0em;">
+                </span>
+                <span class="mord mathbb">
+                 R
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            or
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi mathvariant="double-struck">
+                   C
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathbb{C}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.68889em;vertical-align:0em;">
+                </span>
+                <span class="mord mathbb">
+                 C
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            ,
+for a matrix
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   A
+                  </mi>
+                  <mo>
+                   ∈
+                  </mo>
+                  <msup>
+                   <mi mathvariant="double-struck">
+                    K
+                   </mi>
+                   <mrow>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     n
+                    </mi>
+                   </mrow>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  A \in \mathbb{K}^{n \times n}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.72243em;vertical-align:-0.0391em;">
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 ∈
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.771331em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathbb">
+                  K
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.771331em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                        <span class="mbin mtight">
+                         ×
+                        </span>
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            ,
+its
+            <strong>
+             inverse matrix
+            </strong>
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msup>
+                   <mi>
+                    A
+                   </mi>
+                   <mrow>
+                    <mo>
+                     −
+                    </mo>
+                    <mn>
+                     1
+                    </mn>
+                   </mrow>
+                  </msup>
+                  <mo>
+                   ∈
+                  </mo>
+                  <msup>
+                   <mi mathvariant="double-struck">
+                    K
+                   </mi>
+                   <mrow>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     n
+                    </mi>
+                   </mrow>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  A^{-1} \in \mathbb{K}^{n \times n}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.853208em;vertical-align:-0.0391em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  A
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.8141079999999999em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         −
+                        </span>
+                        <span class="mord mtight">
+                         1
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 ∈
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.771331em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathbb">
+                  K
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.771331em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                        <span class="mbin mtight">
+                         ×
+                        </span>
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            (if it exists) is defined as
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msup>
+                   <mi>
+                    A
+                   </mi>
+                   <mrow>
+                    <mo>
+                     −
+                    </mo>
+                    <mn>
+                     1
+                    </mn>
+                   </mrow>
+                  </msup>
+                  <mi>
+                   A
+                  </mi>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   A
+                  </mi>
+                  <msup>
+                   <mi>
+                    A
+                   </mi>
+                   <mrow>
+                    <mo>
+                     −
+                    </mo>
+                    <mn>
+                     1
+                    </mn>
+                   </mrow>
+                  </msup>
+                  <mo>
+                   =
+                  </mo>
+                  <msub>
+                   <mi mathvariant="normal">
+                    I
+                   </mi>
+                   <mi>
+                    n
+                   </mi>
+                  </msub>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  A^{-1}A = AA^{-1} = \mathrm{I}_n
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.864108em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  A
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.864108em;">
+                     <span style="top:-3.113em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         −
+                        </span>
+                        <span class="mord mtight">
+                         1
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.864108em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  A
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.864108em;">
+                     <span style="top:-3.113em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         −
+                        </span>
+                        <span class="mord mtight">
+                         1
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.83333em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathrm">
+                  I
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.151392em;">
+                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        n
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            where
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mi mathvariant="normal">
+                    I
+                   </mi>
+                   <mi>
+                    n
+                   </mi>
+                  </msub>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathrm{I}_n
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.83333em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathrm">
+                  I
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.151392em;">
+                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight">
+                        n
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is the
+            <cite>
+             n
+            </cite>
+            -dimensional identity matrix.
+           </p>
+           <p>
+            The inverse matrix exists if and only if
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   A
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  A
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is
+            <a class="reference external" href="https://en.wikipedia.org/wiki/Invertible_matrix#The_invertible_matrix_theorem">
+             invertible
+            </a>
+            . In this case,
+the inverse is unique.
+           </p>
+           <p>
+            Supports input of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a batch of matrices
+then the output has the same batch dimensions.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When inputs are on a CUDA device, this function synchronizes that device with the CPU.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Consider using
+             <a class="reference internal" href="torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.solve()
+               </span>
+              </code>
+             </a>
+             if possible for multiplying a matrix on the left by
+the inverse, as:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="o">==</span> <span class="n">A</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span> <span class="o">@</span> <span class="n">B</span>
+</pre>
+             </div>
+            </div>
+            <p>
+             It is always prefered to use
+             <a class="reference internal" href="torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                solve()
+               </span>
+              </code>
+             </a>
+             when possible, as it is faster and more
+numerically stable than computing the inverse explicitly.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.pinv.html#torch.linalg.pinv" title="torch.linalg.pinv">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.pinv()
+               </span>
+              </code>
+             </a>
+             computes the pseudoinverse (Moore-Penrose inverse) of matrices
+of any shape.
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.solve()
+               </span>
+              </code>
+             </a>
+             computes
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               A
+              </span>
+             </code>
+             <cite>
+              .inv() @
+             </cite>
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               B
+              </span>
+             </code>
+             with a
+numerically stable algorithm.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               A
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – tensor of shape
+              <cite>
+               (*, n, n)
+              </cite>
+              where
+              <cite>
+               *
+              </cite>
+              is zero or more batch dimensions
+consisting of invertible matrices.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – output tensor. Ignored if
+              <cite>
+               None
+              </cite>
+              . Default:
+              <cite>
+               None
+              </cite>
+              .
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Raises
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.10)">
+               <strong>
+                RuntimeError
+               </strong>
+              </a>
+              – if the matrix
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                A
+               </span>
+              </code>
+              or any matrix in the batch of matrices
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                A
+               </span>
+              </code>
+              is not invertible.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">Ainv</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="go">tensor(1.1921e-07)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># Batch of matrices</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">Ainv</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)))</span>
+<span class="go">tensor(1.9073e-06)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>  <span class="c1"># Complex matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">Ainv</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="go">tensor(7.5107e-16, dtype=torch.float64)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

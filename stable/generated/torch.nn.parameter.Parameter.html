@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Parameter — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="parameter">
+         <h1>
+          Parameter
+          <a class="headerlink" href="#parameter" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.parameter.Parameter">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.parameter.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             Parameter
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              data
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              requires_grad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/parameter.html#Parameter">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.parameter.Parameter" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            A kind of Tensor that is to be considered a module parameter.
+           </p>
+           <p>
+            Parameters are
+            <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               Tensor
+              </span>
+             </code>
+            </a>
+            subclasses, that have a
+very special property when used with
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              Module
+             </span>
+            </code>
+            s - when they’re
+assigned as Module attributes they are automatically added to the list of
+its parameters, and will appear e.g. in
+            <code class="xref py py-meth docutils literal notranslate">
+             <span class="pre">
+              parameters()
+             </span>
+            </code>
+            iterator.
+Assigning a Tensor doesn’t have such effect. This is because one might
+want to cache some temporary state, like last hidden state of the RNN, in
+the model. If there was no such class as
+            <a class="reference internal" href="#torch.nn.parameter.Parameter" title="torch.nn.parameter.Parameter">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               Parameter
+              </span>
+             </code>
+            </a>
+            , these
+temporaries would get registered too.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 data
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – parameter tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 requires_grad
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if the parameter requires gradient. See
+                <a class="reference internal" href="../notes/autograd.html#locally-disable-grad-doc">
+                 <span class="std std-ref">
+                  Locally disabling gradient computation
+                 </span>
+                </a>
+                for more details. Default:
+                <cite>
+                 True
+                </cite>
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

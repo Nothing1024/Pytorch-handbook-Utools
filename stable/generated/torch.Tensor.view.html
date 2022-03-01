@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.view — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-view">
+         <h1>
+          torch.Tensor.view
+          <a class="headerlink" href="#torch-tensor-view" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.view">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             view
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              shape
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.view" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns a new tensor with the same data as the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            tensor but of a
+different
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              shape
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            The returned tensor shares the same data and must have the same number
+of elements, but may have a different size. For a tensor to be viewed, the new
+view size must be compatible with its original size and stride, i.e., each new
+view dimension must either be a subspace of an original dimension, or only span
+across original dimensions
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   d
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   d
+                  </mi>
+                  <mo>
+                   +
+                  </mo>
+                  <mn>
+                   1
+                  </mn>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mo>
+                   …
+                  </mo>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   d
+                  </mi>
+                  <mo>
+                   +
+                  </mo>
+                  <mi>
+                   k
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  d, d+1, \dots, d+k
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord mathnormal">
+                 d
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal">
+                 d
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord">
+                 1
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="minner">
+                 …
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal">
+                 d
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03148em;">
+                 k
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            that satisfy the following
+contiguity-like condition that
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi mathvariant="normal">
+                   ∀
+                  </mi>
+                  <mi>
+                   i
+                  </mi>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   d
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mo>
+                   …
+                  </mo>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   d
+                  </mi>
+                  <mo>
+                   +
+                  </mo>
+                  <mi>
+                   k
+                  </mi>
+                  <mo>
+                   −
+                  </mo>
+                  <mn>
+                   1
+                  </mn>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \forall i = d, \dots, d+k-1
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 ∀
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord mathnormal">
+                 d
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="minner">
+                 …
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                </span>
+                <span class="mord mathnormal">
+                 d
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.77777em;vertical-align:-0.08333em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03148em;">
+                 k
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 −
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                </span>
+                <span class="mord">
+                 1
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            ,
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   stride
+                  </mtext>
+                  <mo stretchy="false">
+                   [
+                  </mo>
+                  <mi>
+                   i
+                  </mi>
+                  <mo stretchy="false">
+                   ]
+                  </mo>
+                  <mo>
+                   =
+                  </mo>
+                  <mtext>
+                   stride
+                  </mtext>
+                  <mo stretchy="false">
+                   [
+                  </mo>
+                  <mi>
+                   i
+                  </mi>
+                  <mo>
+                   +
+                  </mo>
+                  <mn>
+                   1
+                  </mn>
+                  <mo stretchy="false">
+                   ]
+                  </mo>
+                  <mo>
+                   ×
+                  </mo>
+                  <mtext>
+                   size
+                  </mtext>
+                  <mo stretchy="false">
+                   [
+                  </mo>
+                  <mi>
+                   i
+                  </mi>
+                  <mo>
+                   +
+                  </mo>
+                  <mn>
+                   1
+                  </mn>
+                  <mo stretchy="false">
+                   ]
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{stride}[i] = \text{stride}[i+1] \times \text{size}[i+1]
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  stride
+                 </span>
+                </span>
+                <span class="mopen">
+                 [
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mclose">
+                 ]
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  stride
+                 </span>
+                </span>
+                <span class="mopen">
+                 [
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord">
+                 1
+                </span>
+                <span class="mclose">
+                 ]
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 ×
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  size
+                 </span>
+                </span>
+                <span class="mopen">
+                 [
+                </span>
+                <span class="mord mathnormal">
+                 i
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord">
+                 1
+                </span>
+                <span class="mclose">
+                 ]
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            Otherwise, it will not be possible to view
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            tensor as
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              shape
+             </span>
+            </code>
+            without copying it (e.g., via
+            <a class="reference internal" href="torch.Tensor.contiguous.html#torch.Tensor.contiguous" title="torch.Tensor.contiguous">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               contiguous()
+              </span>
+             </code>
+            </a>
+            ). When it is unclear whether a
+            <a class="reference internal" href="#torch.Tensor.view" title="torch.Tensor.view">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               view()
+              </span>
+             </code>
+            </a>
+            can be performed, it is advisable to use
+            <a class="reference internal" href="torch.reshape.html#torch.reshape" title="torch.reshape">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               reshape()
+              </span>
+             </code>
+            </a>
+            , which
+returns a view if the shapes are compatible, and copies (equivalent to calling
+            <a class="reference internal" href="torch.Tensor.contiguous.html#torch.Tensor.contiguous" title="torch.Tensor.contiguous">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               contiguous()
+              </span>
+             </code>
+            </a>
+            ) otherwise.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               shape
+              </strong>
+              (
+              <em>
+               torch.Size
+              </em>
+              <em>
+               or
+              </em>
+              <em>
+               int...
+              </em>
+              ) – the desired size
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([4, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([16])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># the size -1 is inferred from other dimensions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([2, 8])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([1, 2, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Swaps 2nd and 3rd dimension</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([1, 3, 2, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># Does not change tensor layout in memory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([1, 3, 2, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="go">False</span>
+</pre>
+            </div>
+           </div>
+           <dl class="py method">
+            <dt>
+             <code class="sig-name descname">
+              <span class="pre">
+               view
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                dtype
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             →
+             <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+              <span class="pre">
+               Tensor
+              </span>
+             </a>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <p>
+            Returns a new tensor with the same data as the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            tensor but of a
+different
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dtype
+             </span>
+            </code>
+            .
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dtype
+             </span>
+            </code>
+            must have the same number of bytes per
+element as
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            ’s dtype.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This overload is not supported by TorchScript, and using it in a Torchscript
+program will cause undefined behavior.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               dtype
+              </strong>
+              (
+              <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 torch.dtype
+                </span>
+               </code>
+              </a>
+              ) – the desired dtype
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[ 0.9482, -0.0310,  1.4999, -0.5316],</span>
+<span class="go">        [-0.1520,  0.7472,  0.5617, -0.8649],</span>
+<span class="go">        [-2.4724, -0.0334, -0.2976, -0.8499],</span>
+<span class="go">        [-0.2109,  1.9913, -0.9607, -0.6123]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">torch.float32</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">tensor([[ 1064483442, -1124191867,  1069546515, -1089989247],</span>
+<span class="go">        [-1105482831,  1061112040,  1057999968, -1084397505],</span>
+<span class="go">        [-1071760287, -1123489973, -1097310419, -1084649136],</span>
+<span class="go">        [-1101533110,  1073668768, -1082790149, -1088634448]],</span>
+<span class="go">    dtype=torch.int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000000000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[ 0.0047, -0.0310,  1.4999, -0.5316],</span>
+<span class="go">        [-0.1520,  0.7472,  0.5617, -0.8649],</span>
+<span class="go">        [-2.4724, -0.0334, -0.2976, -0.8499],</span>
+<span class="go">        [-0.2109,  1.9913, -0.9607, -0.6123]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">RuntimeError</span>: <span class="n">Viewing a tensor as a new dtype with a different number of bytes per element is not supported.</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.autograd.grad — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-autograd-grad">
+         <h1>
+          torch.autograd.grad
+          <a class="headerlink" href="#torch-autograd-grad" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.autograd.grad">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.autograd.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             grad
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              outputs
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inputs
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              grad_outputs
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              retain_graph
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              create_graph
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              only_inputs
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              allow_unused
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/autograd.html#grad">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.autograd.grad" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes and returns the sum of gradients of outputs with respect to
+the inputs.
+           </p>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              grad_outputs
+             </span>
+            </code>
+            should be a sequence of length matching
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              output
+             </span>
+            </code>
+            containing the “vector” in Jacobian-vector product, usually the pre-computed
+gradients w.r.t. each of the outputs. If an output doesn’t require_grad,
+then the gradient can be
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              None
+             </span>
+            </code>
+            ).
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If you run any forward ops, create
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               grad_outputs
+              </span>
+             </code>
+             , and/or call
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               grad
+              </span>
+             </code>
+             in a user-specified CUDA stream context, see
+             <a class="reference internal" href="../notes/cuda.html#bwd-cuda-stream-semantics">
+              <span class="std std-ref">
+               Stream semantics of backward passes
+              </span>
+             </a>
+             .
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               only_inputs
+              </span>
+             </code>
+             argument is deprecated and is ignored now (defaults to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               True
+              </span>
+             </code>
+             ).
+To accumulate gradient for other parts of the graph, please use
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               torch.autograd.backward
+              </span>
+             </code>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 outputs
+                </strong>
+                (
+                <em>
+                 sequence of Tensor
+                </em>
+                ) – outputs of the differentiated function.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 inputs
+                </strong>
+                (
+                <em>
+                 sequence of Tensor
+                </em>
+                ) – Inputs w.r.t. which the gradient will be
+returned (and not accumulated into
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  .grad
+                 </span>
+                </code>
+                ).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 grad_outputs
+                </strong>
+                (
+                <em>
+                 sequence of Tensor
+                </em>
+                ) – The “vector” in the Jacobian-vector product.
+Usually gradients w.r.t. each output. None values can be specified for scalar
+Tensors or ones that don’t require grad. If a None value would be acceptable
+for all grad_tensors, then this argument is optional. Default: None.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 retain_graph
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , the graph used to compute the grad
+will be freed. Note that in nearly all cases setting this option to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                is not needed and often can be worked around in a much more efficient
+way. Defaults to the value of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  create_graph
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 create_graph
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , graph of the derivative will
+be constructed, allowing to compute higher order derivative products.
+Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 allow_unused
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , specifying inputs that were not
+used when computing outputs (and therefore their grad is always zero)
+is an error. Defaults to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

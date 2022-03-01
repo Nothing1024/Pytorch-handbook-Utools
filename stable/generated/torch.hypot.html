@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.hypot — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-hypot">
+         <h1>
+          torch.hypot
+          <a class="headerlink" href="#torch-hypot" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.hypot">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             hypot
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              other
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.hypot" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Given the legs of a right triangle, return its hypotenuse.
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mtext>
+                    out
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   =
+                  </mo>
+                  <msqrt>
+                   <mrow>
+                    <msubsup>
+                     <mtext>
+                      input
+                     </mtext>
+                     <mi>
+                      i
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msubsup>
+                    <mo>
+                     +
+                    </mo>
+                    <msubsup>
+                     <mtext>
+                      other
+                     </mtext>
+                     <mi>
+                      i
+                     </mi>
+                     <mn>
+                      2
+                     </mn>
+                    </msubsup>
+                   </mrow>
+                  </msqrt>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{out}_{i} = \sqrt{\text{input}_{i}^{2} + \text{other}_{i}^{2}}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.76508em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   out
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         i
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1.8400000000000003em;vertical-align:-0.48040099999999997em;">
+                </span>
+                <span class="mord sqrt">
+                 <span class="vlist-t vlist-t2">
+                  <span class="vlist-r">
+                   <span class="vlist" style="height:1.3595990000000002em;">
+                    <span class="svg-align" style="top:-3.8em;">
+                     <span class="pstrut" style="height:3.8em;">
+                     </span>
+                     <span class="mord" style="padding-left:1em;">
+                      <span class="mord">
+                       <span class="mord text">
+                        <span class="mord">
+                         input
+                        </span>
+                       </span>
+                       <span class="msupsub">
+                        <span class="vlist-t vlist-t2">
+                         <span class="vlist-r">
+                          <span class="vlist" style="height:0.871868em;">
+                           <span style="top:-2.4530000000000003em;margin-right:0.05em;">
+                            <span class="pstrut" style="height:2.7em;">
+                            </span>
+                            <span class="sizing reset-size6 size3 mtight">
+                             <span class="mord mtight">
+                              <span class="mord mathnormal mtight">
+                               i
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span style="top:-3.12076em;margin-right:0.05em;">
+                            <span class="pstrut" style="height:2.7em;">
+                            </span>
+                            <span class="sizing reset-size6 size3 mtight">
+                             <span class="mord mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                          <span class="vlist-s">
+                           ​
+                          </span>
+                         </span>
+                         <span class="vlist-r">
+                          <span class="vlist" style="height:0.247em;">
+                           <span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="mspace" style="margin-right:0.2222222222222222em;">
+                      </span>
+                      <span class="mbin">
+                       +
+                      </span>
+                      <span class="mspace" style="margin-right:0.2222222222222222em;">
+                      </span>
+                      <span class="mord">
+                       <span class="mord text">
+                        <span class="mord">
+                         other
+                        </span>
+                       </span>
+                       <span class="msupsub">
+                        <span class="vlist-t vlist-t2">
+                         <span class="vlist-r">
+                          <span class="vlist" style="height:0.8984479999999999em;">
+                           <span style="top:-2.4530000000000003em;margin-right:0.05em;">
+                            <span class="pstrut" style="height:2.7em;">
+                            </span>
+                            <span class="sizing reset-size6 size3 mtight">
+                             <span class="mord mtight">
+                              <span class="mord mathnormal mtight">
+                               i
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                           <span style="top:-3.1473400000000002em;margin-right:0.05em;">
+                            <span class="pstrut" style="height:2.7em;">
+                            </span>
+                            <span class="sizing reset-size6 size3 mtight">
+                             <span class="mord mtight">
+                              <span class="mord mtight">
+                               2
+                              </span>
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                          <span class="vlist-s">
+                           ​
+                          </span>
+                         </span>
+                         <span class="vlist-r">
+                          <span class="vlist" style="height:0.247em;">
+                           <span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span style="top:-3.3195989999999997em;">
+                     <span class="pstrut" style="height:3.8em;">
+                     </span>
+                     <span class="hide-tail" style="min-width:1.02em;height:1.8800000000000001em;">
+                      <svg height="1.8800000000000001em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 1944" width="400em" xmlns="http://www.w3.org/2000/svg">
+                       <path d="M983 90
+l0 -0
+c4,-6.7,10,-10,18,-10 H400000v40
+H1013.1s-83.4,268,-264.1,840c-180.7,572,-277,876.3,-289,913c-4.7,4.7,-12.7,7,-24,7
+s-12,0,-12,0c-1.3,-3.3,-3.7,-11.7,-7,-25c-35.3,-125.3,-106.7,-373.3,-214,-744
+c-10,12,-21,25,-33,39s-32,39,-32,39c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30
+c26.7,-32.7,52,-63,76,-91s52,-60,52,-60s208,722,208,722
+c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,-658.5
+c53.7,-170.3,84.5,-266.8,92.5,-289.5z
+M1001 80h400000v40h-400000z">
+                       </path>
+                      </svg>
+                     </span>
+                    </span>
+                   </span>
+                   <span class="vlist-s">
+                    ​
+                   </span>
+                  </span>
+                  <span class="vlist-r">
+                   <span class="vlist" style="height:0.48040099999999997em;">
+                    <span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            The shapes of
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              other
+             </span>
+            </code>
+            must be
+            <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+             <span class="std std-ref">
+              broadcastable
+             </span>
+            </a>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the first input tensor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 other
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the second input tensor
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">4.0</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]))</span>
+<span class="go">tensor([5.0000, 5.6569, 6.4031])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

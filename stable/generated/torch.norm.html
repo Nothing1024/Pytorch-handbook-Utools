@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.norm — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-norm">
+         <h1>
+          torch.norm
+          <a class="headerlink" href="#torch-norm" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.norm">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             norm
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              p
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'fro'
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              keepdim
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/functional.html#norm">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.norm" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the matrix norm or vector norm of a given tensor.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             torch.norm is deprecated and may be removed in a future PyTorch release.
+Its documentation and behavior may be incorrect, and it is no longer
+actively maintained.
+            </p>
+            <p>
+             Use
+             <a class="reference internal" href="torch.linalg.norm.html#torch.linalg.norm" title="torch.linalg.norm">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.norm()
+               </span>
+              </code>
+             </a>
+             , instead, or
+             <a class="reference internal" href="torch.linalg.vector_norm.html#torch.linalg.vector_norm" title="torch.linalg.vector_norm">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.vector_norm()
+               </span>
+              </code>
+             </a>
+             when computing vector norms and
+             <a class="reference internal" href="torch.linalg.matrix_norm.html#torch.linalg.matrix_norm" title="torch.linalg.matrix_norm">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.matrix_norm()
+               </span>
+              </code>
+             </a>
+             when
+computing matrix norms. Note, however, the signature for these functions
+is slightly different than the signature for torch.norm.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – The input tensor. Its data type must be either a floating
+point or complex type. For complex inputs, the norm is calculated using the
+absolute value of each element. If the input is complex and neither
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dtype
+                 </span>
+                </code>
+                nor
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  out
+                 </span>
+                </code>
+                is specified, the result’s data type will
+be the corresponding floating point type (e.g. float if
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                is
+complexfloat).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 p
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 inf
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 -inf
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 'fro'
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 'nuc'
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) –
+                <p>
+                 the order of norm. Default:
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   'fro'
+                  </span>
+                 </code>
+                 The following norms can be calculated:
+                </p>
+                <table class="docutils colwidths-auto align-default">
+                 <thead>
+                  <tr class="row-odd">
+                   <th class="head">
+                    <p>
+                     ord
+                    </p>
+                   </th>
+                   <th class="head">
+                    <p>
+                     matrix norm
+                    </p>
+                   </th>
+                   <th class="head">
+                    <p>
+                     vector norm
+                    </p>
+                   </th>
+                  </tr>
+                 </thead>
+                 <tbody>
+                  <tr class="row-even">
+                   <td>
+                    <p>
+                     ’fro’
+                    </p>
+                   </td>
+                   <td>
+                    <p>
+                     Frobenius norm
+                    </p>
+                   </td>
+                   <td>
+                    <p>
+                     –
+                    </p>
+                   </td>
+                  </tr>
+                  <tr class="row-odd">
+                   <td>
+                    <p>
+                     ‘nuc’
+                    </p>
+                   </td>
+                   <td>
+                    <p>
+                     nuclear norm
+                    </p>
+                   </td>
+                   <td>
+                    <p>
+                     –
+                    </p>
+                   </td>
+                  </tr>
+                  <tr class="row-even">
+                   <td>
+                    <p>
+                     Number
+                    </p>
+                   </td>
+                   <td>
+                    <p>
+                     –
+                    </p>
+                   </td>
+                   <td>
+                    <p>
+                     sum(abs(x)**ord)**(1./ord)
+                    </p>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+                <p>
+                 The vector norm can be calculated across any number of dimensions.
+The corresponding dimensions of
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   input
+                  </span>
+                 </code>
+                 are flattened into
+one dimension, and the norm is calculated on the flattened
+dimension.
+                </p>
+                <p>
+                 Frobenius norm produces the same result as
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   p=2
+                  </span>
+                 </code>
+                 in all cases
+except when
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   dim
+                  </span>
+                 </code>
+                 is a list of three or more dims, in which
+case Frobenius norm throws an error.
+                </p>
+                <p>
+                 Nuclear norm can only be calculated across exactly two dimensions.
+                </p>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 tuple of python:ints
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 list of python:ints
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – Specifies which dimension or dimensions of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                to
+calculate the norm across. If
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , the norm will
+be calculated across all dimensions of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                . If the norm
+type indicated by
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  p
+                 </span>
+                </code>
+                does not support the specified number of
+dimensions, an error will occur.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 keepdim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether the output tensors have
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                retained or not. Ignored if
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                =
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                and
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  out
+                 </span>
+                </code>
+                =
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                . Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output tensor. Ignored if
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dim
+                 </span>
+                </code>
+                =
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                and
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  out
+                 </span>
+                </code>
+                =
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired data type of
+returned tensor. If specified, the input tensor is casted to
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dtype
+                 </span>
+                </code>
+                while performing the operation. Default: None.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Even though
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               p='fro'
+              </span>
+             </code>
+             supports any number of dimensions, the true
+mathematical definition of Frobenius norm only applies to tensors with
+exactly two dimensions.
+             <a class="reference internal" href="torch.linalg.norm.html#torch.linalg.norm" title="torch.linalg.norm">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.norm()
+               </span>
+              </code>
+             </a>
+             with
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               ord='fro'
+              </span>
+             </code>
+             aligns
+with the mathematical definition, since it can only be applied across
+exactly two dimensions.
+            </p>
+           </div>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">tensor(7.7460)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">tensor(7.7460)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">))</span>
+<span class="go">tensor(4.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">))</span>
+<span class="go">tensor(4.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span> <span class="p">,</span> <span class="n">dtype</span><span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">tensor([1.4142, 2.2361, 5.0000])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([3.7417, 4.2426])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([6., 6.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">tensor([ 3.7417, 11.2250])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
+<span class="go">(tensor(3.7417), tensor(11.2250))</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

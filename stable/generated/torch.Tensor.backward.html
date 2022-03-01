@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.backward — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-backward">
+         <h1>
+          torch.Tensor.backward
+          <a class="headerlink" href="#torch-tensor-backward" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.backward">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             backward
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              gradient
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              retain_graph
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              create_graph
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inputs
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/_tensor.html#Tensor.backward">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.backward" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the gradient of current tensor w.r.t. graph leaves.
+           </p>
+           <p>
+            The graph is differentiated using the chain rule. If the tensor is
+non-scalar (i.e. its data has more than one element) and requires
+gradient, the function additionally requires specifying
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              gradient
+             </span>
+            </code>
+            .
+It should be a tensor of matching type and location, that contains
+the gradient of the differentiated function w.r.t.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            This function accumulates gradients in the leaves - you might need to zero
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              .grad
+             </span>
+            </code>
+            attributes or set them to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              None
+             </span>
+            </code>
+            before calling it.
+See
+            <a class="reference internal" href="../autograd.html#default-grad-layouts">
+             <span class="std std-ref">
+              Default gradient layouts
+             </span>
+            </a>
+            for details on the memory layout of accumulated gradients.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If you run any forward ops, create
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               gradient
+              </span>
+             </code>
+             , and/or call
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               backward
+              </span>
+             </code>
+             in a user-specified CUDA stream context, see
+             <a class="reference internal" href="../notes/cuda.html#bwd-cuda-stream-semantics">
+              <span class="std std-ref">
+               Stream semantics of backward passes
+              </span>
+             </a>
+             .
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               inputs
+              </span>
+             </code>
+             are provided and a given input is not a leaf,
+the current implementation will call its grad_fn (though it is not strictly needed to get this gradients).
+It is an implementation detail on which the user should not rely.
+See
+             <a class="reference external" href="https://github.com/pytorch/pytorch/pull/60521#issuecomment-867061780">
+              https://github.com/pytorch/pytorch/pull/60521#issuecomment-867061780
+             </a>
+             for more details.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 gradient
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">
+                 <em>
+                  None
+                 </em>
+                </a>
+                ) – Gradient w.r.t. the
+tensor. If it is a tensor, it will be automatically converted
+to a Tensor that does not require grad unless
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  create_graph
+                 </span>
+                </code>
+                is True.
+None values can be specified for scalar Tensors or ones that
+don’t require grad. If a None value would be acceptable then
+this argument is optional.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 retain_graph
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , the graph used to compute
+the grads will be freed. Note that in nearly all cases setting
+this option to True is not needed and often can be worked around
+in a much more efficient way. Defaults to the value of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  create_graph
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 create_graph
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , graph of the derivative will
+be constructed, allowing to compute higher order derivative
+products. Defaults to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 inputs
+                </strong>
+                (
+                <em>
+                 sequence of Tensor
+                </em>
+                ) – Inputs w.r.t. which the gradient will be
+accumulated into
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  .grad
+                 </span>
+                </code>
+                . All other Tensors will be ignored. If not
+provided, the gradient is accumulated into all the leaf Tensors that were
+used to compute the attr::tensors.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

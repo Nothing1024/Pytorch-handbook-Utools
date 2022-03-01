@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.normal — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-normal">
+         <h1>
+          torch.normal
+          <a class="headerlink" href="#torch-normal" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.normal">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             normal
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              mean
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              std
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              generator
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.normal" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns a tensor of random numbers drawn from separate normal distributions
+whose mean and standard deviation are given.
+           </p>
+           <p>
+            The
+            <a class="reference internal" href="torch.mean.html#torch.mean" title="torch.mean">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               mean
+              </span>
+             </code>
+            </a>
+            is a tensor with the mean of
+each output element’s normal distribution
+           </p>
+           <p>
+            The
+            <a class="reference internal" href="torch.std.html#torch.std" title="torch.std">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               std
+              </span>
+             </code>
+            </a>
+            is a tensor with the standard deviation of
+each output element’s normal distribution
+           </p>
+           <p>
+            The shapes of
+            <a class="reference internal" href="torch.mean.html#torch.mean" title="torch.mean">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               mean
+              </span>
+             </code>
+            </a>
+            and
+            <a class="reference internal" href="torch.std.html#torch.std" title="torch.std">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               std
+              </span>
+             </code>
+            </a>
+            don’t need to match, but the
+total number of elements in each tensor need to be the same.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When the shapes do not match, the shape of
+             <a class="reference internal" href="torch.mean.html#torch.mean" title="torch.mean">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                mean
+               </span>
+              </code>
+             </a>
+             is used as the shape for the returned output tensor
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When
+             <a class="reference internal" href="torch.std.html#torch.std" title="torch.std">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                std
+               </span>
+              </code>
+             </a>
+             is a CUDA tensor, this function synchronizes
+its device with the CPU.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 mean
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor of per-element means
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 std
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor of per-element standard deviations
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 generator
+                </strong>
+                (
+                <a class="reference internal" href="torch.Generator.html#torch.Generator" title="torch.Generator">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.Generator
+                  </span>
+                 </code>
+                </a>
+                , optional) – a pseudorandom number generator for sampling
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output tensor.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="go">tensor([  1.0425,   3.5672,   2.7969,   4.2925,   4.7229,   6.2134,</span>
+<span class="go">          8.0505,   8.1408,   9.0563,  10.0566])</span>
+</pre>
+            </div>
+           </div>
+           <dl class="py function">
+            <dt>
+             <code class="sig-prename descclassname">
+              <span class="pre">
+               torch.
+              </span>
+             </code>
+             <code class="sig-name descname">
+              <span class="pre">
+               normal
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="pre">
+               mean=0.0
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="pre">
+               std
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="pre">
+               *
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="pre">
+               out=None
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             →
+             <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+              <span class="pre">
+               Tensor
+              </span>
+             </a>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <p>
+            Similar to the function above, but the means are shared among all drawn
+elements.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 mean
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the mean for all distributions
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 std
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor of per-element standard deviations
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">))</span>
+<span class="go">tensor([-1.2793, -1.0732, -2.0687,  5.1177, -1.2303])</span>
+</pre>
+            </div>
+           </div>
+           <dl class="py function">
+            <dt>
+             <code class="sig-prename descclassname">
+              <span class="pre">
+               torch.
+              </span>
+             </code>
+             <code class="sig-name descname">
+              <span class="pre">
+               normal
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                mean
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                std
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                1.0
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                *
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                out
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             →
+             <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+              <span class="pre">
+               Tensor
+              </span>
+             </a>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <p>
+            Similar to the function above, but the standard deviations are shared among
+all drawn elements.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 mean
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the tensor of per-element means
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 std
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the standard deviation for all distributions
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">))</span>
+<span class="go">tensor([ 1.1552,  2.6148,  2.6535,  5.8318,  4.2361])</span>
+</pre>
+            </div>
+           </div>
+           <dl class="py function">
+            <dt>
+             <code class="sig-prename descclassname">
+              <span class="pre">
+               torch.
+              </span>
+             </code>
+             <code class="sig-name descname">
+              <span class="pre">
+               normal
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                mean
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                std
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                size
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                *
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                out
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             →
+             <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+              <span class="pre">
+               Tensor
+              </span>
+             </a>
+            </dt>
+            <dd>
+            </dd>
+           </dl>
+           <p>
+            Similar to the function above, but the means and standard deviations are shared
+among all drawn elements. The resulting tensor has size given by
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              size
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 mean
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                ) – the mean for all distributions
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 std
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                ) – the standard deviation for all distributions
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 size
+                </strong>
+                (
+                <em>
+                 int...
+                </em>
+                ) – a sequence of integers defining the shape of the output tensor.
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="go">tensor([[-1.3987, -1.9544,  3.6048,  0.7909]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

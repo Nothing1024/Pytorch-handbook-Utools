@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.aminmax — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-aminmax">
+         <h1>
+          torch.aminmax
+          <a class="headerlink" href="#torch-aminmax" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.aminmax">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             aminmax
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="pre">
+             input
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             *
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             dim=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             keepdim=False
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             out=None)
+            </span>
+            <span class="pre">
+             -&gt;
+            </span>
+            <span class="pre">
+             (Tensor
+            </span>
+            <span class="pre">
+             min
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             Tensor
+            </span>
+            <span class="pre">
+             max
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.aminmax" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the minimum and maximum values of the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            tensor.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               input
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – The input tensor
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <em>
+                 Optional
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                ) – The dimension along which to compute the values. If
+                <cite>
+                 None
+                </cite>
+                ,
+computes the values over the entire
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                tensor.
+Default is
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 keepdim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – If
+                <cite>
+                 True
+                </cite>
+                , the reduced dimensions will be kept in the output
+tensor as dimensions with size 1 for broadcasting, otherwise
+they will be removed, as if calling (
+                <a class="reference internal" href="torch.squeeze.html#torch.squeeze" title="torch.squeeze">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.squeeze()
+                  </span>
+                 </code>
+                </a>
+                ).
+Default is
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <em>
+                 Optional
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 Tuple
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ]
+                </em>
+                ) – Optional tensors on which to write the result. Must have the same
+shape and dtype as the expected output.
+Default is
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              A named tuple
+              <cite>
+               (min, max)
+              </cite>
+              containing the minimum and maximum values.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Raises
+            </dt>
+            <dd class="field-even">
+             <p>
+              <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.10)">
+               <strong>
+                RuntimeError
+               </strong>
+              </a>
+              – If any of the dimensions to compute the values over has size 0.
+             </p>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             NaN values are propagated to the output if at least one value is NaN.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.amin.html#torch.amin" title="torch.amin">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.amin()
+               </span>
+              </code>
+             </a>
+             computes just the minimum value
+             <a class="reference internal" href="torch.amax.html#torch.amax" title="torch.amax">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.amax()
+               </span>
+              </code>
+             </a>
+             computes just the maximum value
+            </p>
+           </div>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">aminmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<span class="go">torch.return_types.aminmax(</span>
+<span class="go">min=tensor(-3),</span>
+<span class="go">max=tensor(5))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># aminmax propagates NaNs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">aminmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nan</span><span class="p">]))</span>
+<span class="go">torch.return_types.aminmax(</span>
+<span class="go">min=tensor(nan),</span>
+<span class="go">max=tensor(nan))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">tensor([[0, 1, 2, 3, 4],</span>
+<span class="go">        [5, 6, 7, 8, 9]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">aminmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">torch.return_types.aminmax(</span>
+<span class="go">min=tensor([[0, 1, 2, 3, 4]]),</span>
+<span class="go">max=tensor([[5, 6, 7, 8, 9]]))</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

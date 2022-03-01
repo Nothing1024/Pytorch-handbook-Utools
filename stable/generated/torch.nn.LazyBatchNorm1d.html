@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   LazyBatchNorm1d — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="lazybatchnorm1d">
+         <h1>
+          LazyBatchNorm1d
+          <a class="headerlink" href="#lazybatchnorm1d" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.LazyBatchNorm1d">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             LazyBatchNorm1d
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              eps
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1e-05
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              momentum
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0.1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              affine
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              track_running_stats
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              device
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/batchnorm.html#LazyBatchNorm1d">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.LazyBatchNorm1d" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            A
+            <a class="reference internal" href="torch.nn.BatchNorm1d.html#torch.nn.BatchNorm1d" title="torch.nn.BatchNorm1d">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.nn.BatchNorm1d
+              </span>
+             </code>
+            </a>
+            module with lazy initialization of
+the
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              num_features
+             </span>
+            </code>
+            argument of the
+            <a class="reference internal" href="torch.nn.BatchNorm1d.html#torch.nn.BatchNorm1d" title="torch.nn.BatchNorm1d">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               BatchNorm1d
+              </span>
+             </code>
+            </a>
+            that is inferred
+from the
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              input.size(1)
+             </span>
+            </code>
+            .
+The attributes that will be lazily initialized are
+            <cite>
+             weight
+            </cite>
+            ,
+            <cite>
+             bias
+            </cite>
+            ,
+            <cite>
+             running_mean
+            </cite>
+            and
+            <cite>
+             running_var
+            </cite>
+            .
+           </p>
+           <p>
+            Check the
+            <a class="reference internal" href="torch.nn.modules.lazy.LazyModuleMixin.html#torch.nn.modules.lazy.LazyModuleMixin" title="torch.nn.modules.lazy.LazyModuleMixin">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.nn.modules.lazy.LazyModuleMixin
+              </span>
+             </code>
+            </a>
+            for further documentation
+on lazy modules and their limitations.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 eps
+                </strong>
+                – a value added to the denominator for numerical stability.
+Default: 1e-5
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 momentum
+                </strong>
+                – the value used for the running_mean and running_var
+computation. Can be set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                for cumulative moving average
+(i.e. simple average). Default: 0.1
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 affine
+                </strong>
+                – a boolean value that when set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , this module has
+learnable affine parameters. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 track_running_stats
+                </strong>
+                – a boolean value that when set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , this
+module tracks the running mean and variance, and when set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                ,
+this module does not track such statistics, and initializes statistics
+buffers
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  running_mean
+                 </span>
+                </code>
+                and
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  running_var
+                 </span>
+                </code>
+                as
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                .
+When these buffers are
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , this module always uses batch statistics.
+in both training and eval modes. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="py attribute">
+            <dt id="torch.nn.LazyBatchNorm1d.cls_to_become">
+             <code class="sig-name descname">
+              <span class="pre">
+               cls_to_become
+              </span>
+             </code>
+             <a class="headerlink" href="#torch.nn.LazyBatchNorm1d.cls_to_become" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              alias of
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                torch.nn.modules.batchnorm.BatchNorm1d
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

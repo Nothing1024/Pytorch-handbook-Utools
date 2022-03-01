@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.type — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-type">
+         <h1>
+          torch.Tensor.type
+          <a class="headerlink" href="#torch-tensor-type" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.type">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             type
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dtype
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              non_blocking
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            str
+           </span>
+           <span class="pre">
+            or
+           </span>
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.Tensor.type" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the type if
+            <cite>
+             dtype
+            </cite>
+            is not provided, else casts this object to
+the specified type.
+           </p>
+           <p>
+            If this is already of the correct type, no copy is performed and the
+original object is returned.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.10)">
+                 <em>
+                  type
+                 </em>
+                </a>
+                <em>
+                 or
+                </em>
+                <em>
+                 string
+                </em>
+                ) – The desired type
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 non_blocking
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , and the source is in pinned memory
+and destination is on the GPU or vice versa, the copy is performed
+asynchronously with respect to the host. Otherwise, the argument
+has no effect.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 **kwargs
+                </strong>
+                – For compatibility, may contain the key
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  async
+                 </span>
+                </code>
+                in place of
+the
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  non_blocking
+                 </span>
+                </code>
+                argument. The
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  async
+                 </span>
+                </code>
+                arg is deprecated.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.diag — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-diag">
+         <h1>
+          torch.diag
+          <a class="headerlink" href="#torch-diag" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.diag">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             diag
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              diagonal
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.diag" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <ul class="simple">
+            <li>
+             <p>
+              If
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              is a vector (1-D tensor), then returns a 2-D square tensor
+with the elements of
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              as the diagonal.
+             </p>
+            </li>
+            <li>
+             <p>
+              If
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              is a matrix (2-D tensor), then returns a 1-D tensor with
+the diagonal elements of
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                input
+               </span>
+              </code>
+              .
+             </p>
+            </li>
+           </ul>
+           <p>
+            The argument
+            <a class="reference internal" href="torch.diagonal.html#torch.diagonal" title="torch.diagonal">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               diagonal
+              </span>
+             </code>
+            </a>
+            controls which diagonal to consider:
+           </p>
+           <ul class="simple">
+            <li>
+             <p>
+              If
+              <a class="reference internal" href="torch.diagonal.html#torch.diagonal" title="torch.diagonal">
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 diagonal
+                </span>
+               </code>
+              </a>
+              = 0, it is the main diagonal.
+             </p>
+            </li>
+            <li>
+             <p>
+              If
+              <a class="reference internal" href="torch.diagonal.html#torch.diagonal" title="torch.diagonal">
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 diagonal
+                </span>
+               </code>
+              </a>
+              &gt; 0, it is above the main diagonal.
+             </p>
+            </li>
+            <li>
+             <p>
+              If
+              <a class="reference internal" href="torch.diagonal.html#torch.diagonal" title="torch.diagonal">
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 diagonal
+                </span>
+               </code>
+              </a>
+              &lt; 0, it is below the main diagonal.
+             </p>
+            </li>
+           </ul>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 diagonal
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the diagonal to consider
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.diagonal.html#torch.diagonal" title="torch.diagonal">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.diagonal()
+               </span>
+              </code>
+             </a>
+             always returns the diagonal of its input.
+            </p>
+            <p>
+             <a class="reference internal" href="torch.diagflat.html#torch.diagflat" title="torch.diagflat">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.diagflat()
+               </span>
+              </code>
+             </a>
+             always constructs a tensor with diagonal elements
+specified by the input.
+            </p>
+           </div>
+           <p>
+            Examples:
+           </p>
+           <p>
+            Get the square matrix where the input vector is the diagonal:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([ 0.5950,-0.0872, 2.3298])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">tensor([[ 0.5950, 0.0000, 0.0000],</span>
+<span class="go">        [ 0.0000,-0.0872, 0.0000],</span>
+<span class="go">        [ 0.0000, 0.0000, 2.3298]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([[ 0.0000, 0.5950, 0.0000, 0.0000],</span>
+<span class="go">        [ 0.0000, 0.0000,-0.0872, 0.0000],</span>
+<span class="go">        [ 0.0000, 0.0000, 0.0000, 2.3298],</span>
+<span class="go">        [ 0.0000, 0.0000, 0.0000, 0.0000]])</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            Get the k-th diagonal of a given matrix:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([[-0.4264, 0.0255,-0.1064],</span>
+<span class="go">        [ 0.8795,-0.2429, 0.1374],</span>
+<span class="go">        [ 0.1029,-0.6482,-1.6300]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">tensor([-0.4264,-0.2429,-1.6300])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([ 0.0255, 0.1374])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

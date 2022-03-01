@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.matrix_rank — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-matrix-rank">
+         <h1>
+          torch.matrix_rank
+          <a class="headerlink" href="#torch-matrix-rank" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.matrix_rank">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             matrix_rank
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              tol
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              symmetric
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.matrix_rank" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the numerical rank of a 2-D tensor. The method to compute the
+matrix rank is done using SVD by default. If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              symmetric
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            ,
+then
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            is assumed to be symmetric, and the computation of the
+rank is done by obtaining the eigenvalues.
+           </p>
+           <p>
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              tol
+             </span>
+            </code>
+            is the threshold below which the singular values (or the eigenvalues
+when
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              symmetric
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            ) are considered to be 0. If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              tol
+             </span>
+            </code>
+            is not
+specified,
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              tol
+             </span>
+            </code>
+            is set to
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              S.max()
+             </span>
+             <span class="pre">
+              *
+             </span>
+             <span class="pre">
+              max(S.size())
+             </span>
+             <span class="pre">
+              *
+             </span>
+             <span class="pre">
+              eps
+             </span>
+            </code>
+            where
+            <cite>
+             S
+            </cite>
+            is the
+singular values (or the eigenvalues when
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              symmetric
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            ), and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              eps
+             </span>
+            </code>
+            is the epsilon value for the datatype of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            .
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             <a class="reference internal" href="#torch.matrix_rank" title="torch.matrix_rank">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.matrix_rank()
+               </span>
+              </code>
+             </a>
+             is deprecated in favor of
+             <a class="reference internal" href="torch.linalg.matrix_rank.html#torch.linalg.matrix_rank" title="torch.linalg.matrix_rank">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.matrix_rank()
+               </span>
+              </code>
+             </a>
+             and will be removed in a future PyTorch release. The parameter
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               symmetric
+              </span>
+             </code>
+             was
+renamed in
+             <a class="reference internal" href="torch.linalg.matrix_rank.html#torch.linalg.matrix_rank" title="torch.linalg.matrix_rank">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.matrix_rank()
+               </span>
+              </code>
+             </a>
+             to
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               hermitian
+              </span>
+             </code>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input 2-D tensor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 tol
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the tolerance value. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 symmetric
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – indicates whether
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                is symmetric.
+Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the output tensor.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">tensor(10)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">tensor(9)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

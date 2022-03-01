@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.inner — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-inner">
+         <h1>
+          torch.inner
+          <a class="headerlink" href="#torch-inner" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.inner">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             inner
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              other
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.inner" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the dot product for 1D tensors. For higher dimensions, sums the product
+of elements from
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              other
+             </span>
+            </code>
+            along their last dimension.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If either
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               input
+              </span>
+             </code>
+             or
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               other
+              </span>
+             </code>
+             is a scalar, the result is equivalent
+to
+             <cite>
+              torch.mul(input, other)
+             </cite>
+             .
+            </p>
+            <p>
+             If both
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               input
+              </span>
+             </code>
+             and
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               other
+              </span>
+             </code>
+             are non-scalars, the size of their last
+dimension must match and the result is equivalent to
+             <cite>
+              torch.tensordot(input,
+other, dims=([-1], [-1]))
+             </cite>
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – First input tensor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 other
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – Second input tensor
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               out
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – Optional output tensor to write result into. The output
+shape is
+              <cite>
+               input.shape[:-1] + other.shape[:-1]
+              </cite>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="c1"># Dot product</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># Multidimensional input tensors</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">0.8173</span><span class="p">,</span> <span class="mf">1.0874</span><span class="p">,</span> <span class="mf">1.1784</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3279</span><span class="p">,</span> <span class="mf">0.1234</span><span class="p">,</span> <span class="mf">2.7894</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="o">-</span><span class="mf">0.4682</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7159</span><span class="p">,</span>  <span class="mf">0.1506</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.4034</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3657</span><span class="p">,</span>  <span class="mf">1.0387</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.9892</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6684</span><span class="p">,</span>  <span class="mf">0.1774</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.9482</span><span class="p">,</span>  <span class="mf">1.3261</span><span class="p">,</span>  <span class="mf">0.3917</span><span class="p">]],</span>
+
+        <span class="p">[[</span> <span class="mf">0.4537</span><span class="p">,</span>  <span class="mf">0.7493</span><span class="p">,</span>  <span class="mf">1.1724</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.2291</span><span class="p">,</span>  <span class="mf">0.5749</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2267</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">0.7920</span><span class="p">,</span>  <span class="mf">0.3607</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3701</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.3666</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5850</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7242</span><span class="p">]]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">([[[</span><span class="o">-</span><span class="mf">0.9837</span><span class="p">,</span>  <span class="mf">1.1560</span><span class="p">,</span>  <span class="mf">0.2907</span><span class="p">,</span>  <span class="mf">2.6785</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">2.5671</span><span class="p">,</span>  <span class="mf">0.5452</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6912</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5509</span><span class="p">]],</span>
+
+        <span class="p">[[</span> <span class="mf">0.1782</span><span class="p">,</span>  <span class="mf">2.9843</span><span class="p">,</span>  <span class="mf">0.7366</span><span class="p">,</span>  <span class="mf">1.5672</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">3.5115</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4864</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2476</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.4337</span><span class="p">]]])</span>
+
+<span class="c1"># Scalar input</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="mf">1.6347</span><span class="p">,</span> <span class="mf">2.1748</span><span class="p">,</span> <span class="mf">2.3567</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6558</span><span class="p">,</span> <span class="mf">0.2469</span><span class="p">,</span> <span class="mf">5.5787</span><span class="p">]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   PruningContainer — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="pruningcontainer">
+         <h1>
+          PruningContainer
+          <a class="headerlink" href="#pruningcontainer" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.utils.prune.PruningContainer">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.utils.prune.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             PruningContainer
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/utils/prune.html#PruningContainer">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.utils.prune.PruningContainer" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Container holding a sequence of pruning methods for iterative pruning.
+Keeps track of the order in which pruning methods are applied and handles
+combining successive pruning calls.
+           </p>
+           <p>
+            Accepts as argument an instance of a BasePruningMethod or an iterable of
+them.
+           </p>
+           <dl class="py method">
+            <dt id="torch.nn.utils.prune.PruningContainer.add_pruning_method">
+             <code class="sig-name descname">
+              <span class="pre">
+               add_pruning_method
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                method
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/utils/prune.html#PruningContainer.add_pruning_method">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.utils.prune.PruningContainer.add_pruning_method" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Adds a child pruning
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                method
+               </span>
+              </code>
+              to the container.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <strong>
+                 method
+                </strong>
+                (
+                <em>
+                 subclass of BasePruningMethod
+                </em>
+                ) – child pruning method
+to be added to the container.
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.utils.prune.PruningContainer.apply">
+             <em class="property">
+              <span class="pre">
+               classmethod
+              </span>
+             </em>
+             <code class="sig-name descname">
+              <span class="pre">
+               apply
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                module
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                name
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                *
+               </span>
+              </span>
+              <span class="n">
+               <span class="pre">
+                args
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                importance_scores
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                **
+               </span>
+              </span>
+              <span class="n">
+               <span class="pre">
+                kwargs
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="headerlink" href="#torch.nn.utils.prune.PruningContainer.apply" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Adds the forward pre-hook that enables pruning on the fly and
+the reparametrization of a tensor in terms of the original tensor
+and the pruning mask.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   module
+                  </strong>
+                  (
+                  <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                   <em>
+                    nn.Module
+                   </em>
+                  </a>
+                  ) – module containing the tensor to prune
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   name
+                  </strong>
+                  (
+                  <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                   <em>
+                    str
+                   </em>
+                  </a>
+                  ) – parameter name within
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    module
+                   </span>
+                  </code>
+                  on which pruning
+will act.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   args
+                  </strong>
+                  – arguments passed on to a subclass of
+                  <a class="reference internal" href="torch.nn.utils.prune.BasePruningMethod.html#torch.nn.utils.prune.BasePruningMethod" title="torch.nn.utils.prune.BasePruningMethod">
+                   <code class="xref py py-class docutils literal notranslate">
+                    <span class="pre">
+                     BasePruningMethod
+                    </span>
+                   </code>
+                  </a>
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   importance_scores
+                  </strong>
+                  (
+                  <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                   <em>
+                    torch.Tensor
+                   </em>
+                  </a>
+                  ) – tensor of importance scores (of
+same shape as module parameter) used to compute mask for pruning.
+The values in this tensor indicate the importance of the
+corresponding elements in the parameter being pruned.
+If unspecified or None, the parameter will be used in its place.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   kwargs
+                  </strong>
+                  – keyword arguments passed on to a subclass of a
+                  <a class="reference internal" href="torch.nn.utils.prune.BasePruningMethod.html#torch.nn.utils.prune.BasePruningMethod" title="torch.nn.utils.prune.BasePruningMethod">
+                   <code class="xref py py-class docutils literal notranslate">
+                    <span class="pre">
+                     BasePruningMethod
+                    </span>
+                   </code>
+                  </a>
+                 </p>
+                </li>
+               </ul>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.utils.prune.PruningContainer.apply_mask">
+             <code class="sig-name descname">
+              <span class="pre">
+               apply_mask
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                module
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="headerlink" href="#torch.nn.utils.prune.PruningContainer.apply_mask" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Simply handles the multiplication between the parameter being
+pruned and the generated mask.
+Fetches the mask and the original tensor from the module
+and returns the pruned version of the tensor.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <strong>
+                 module
+                </strong>
+                (
+                <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                 <em>
+                  nn.Module
+                 </em>
+                </a>
+                ) – module containing the tensor to prune
+               </p>
+              </dd>
+              <dt class="field-even">
+               Returns
+              </dt>
+              <dd class="field-even">
+               <p>
+                pruned version of the input tensor
+               </p>
+              </dd>
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                pruned_tensor (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 torch.Tensor
+                </a>
+                )
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.utils.prune.PruningContainer.compute_mask">
+             <code class="sig-name descname">
+              <span class="pre">
+               compute_mask
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                t
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                default_mask
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/utils/prune.html#PruningContainer.compute_mask">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.utils.prune.PruningContainer.compute_mask" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Applies the latest
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                method
+               </span>
+              </code>
+              by computing the new partial masks
+and returning its combination with the
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                default_mask
+               </span>
+              </code>
+              .
+The new partial mask should be computed on the entries or channels
+that were not zeroed out by the
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                default_mask
+               </span>
+              </code>
+              .
+Which portions of the tensor
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                t
+               </span>
+              </code>
+              the new mask will be calculated from
+depends on the
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                PRUNING_TYPE
+               </span>
+              </code>
+              (handled by the type handler):
+             </p>
+             <ul class="simple">
+              <li>
+               <p>
+                for ‘unstructured’, the mask will be computed from the raveled
+list of nonmasked entries;
+               </p>
+              </li>
+              <li>
+               <p>
+                for ‘structured’, the mask will be computed from the nonmasked
+channels in the tensor;
+               </p>
+              </li>
+              <li>
+               <p>
+                for ‘global’, the mask will be computed across all entries.
+               </p>
+              </li>
+             </ul>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   t
+                  </strong>
+                  (
+                  <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                   <em>
+                    torch.Tensor
+                   </em>
+                  </a>
+                  ) – tensor representing the parameter to prune
+(of same dimensions as
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    default_mask
+                   </span>
+                  </code>
+                  ).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   default_mask
+                  </strong>
+                  (
+                  <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                   <em>
+                    torch.Tensor
+                   </em>
+                  </a>
+                  ) – mask from previous pruning iteration.
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Returns
+              </dt>
+              <dd class="field-even">
+               <p>
+                new mask that combines the effects
+of the
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  default_mask
+                 </span>
+                </code>
+                and the new mask from the current
+pruning
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  method
+                 </span>
+                </code>
+                (of same dimensions as
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  default_mask
+                 </span>
+                </code>
+                and
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  t
+                 </span>
+                </code>
+                ).
+               </p>
+              </dd>
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
+               <p>
+                mask (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 torch.Tensor
+                </a>
+                )
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.utils.prune.PruningContainer.prune">
+             <code class="sig-name descname">
+              <span class="pre">
+               prune
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                t
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                default_mask
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                importance_scores
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="headerlink" href="#torch.nn.utils.prune.PruningContainer.prune" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Computes and returns a pruned version of input tensor
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                t
+               </span>
+              </code>
+              according to the pruning rule specified in
+              <a class="reference internal" href="#torch.nn.utils.prune.PruningContainer.compute_mask" title="torch.nn.utils.prune.PruningContainer.compute_mask">
+               <code class="xref py py-meth docutils literal notranslate">
+                <span class="pre">
+                 compute_mask()
+                </span>
+               </code>
+              </a>
+              .
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   t
+                  </strong>
+                  (
+                  <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                   <em>
+                    torch.Tensor
+                   </em>
+                  </a>
+                  ) – tensor to prune (of same dimensions as
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    default_mask
+                   </span>
+                  </code>
+                  ).
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   importance_scores
+                  </strong>
+                  (
+                  <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                   <em>
+                    torch.Tensor
+                   </em>
+                  </a>
+                  ) – tensor of importance scores (of
+same shape as
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    t
+                   </span>
+                  </code>
+                  ) used to compute mask for pruning
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    t
+                   </span>
+                  </code>
+                  .
+The values in this tensor indicate the importance of the
+corresponding elements in the
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    t
+                   </span>
+                  </code>
+                  that is being pruned.
+If unspecified or None, the tensor
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    t
+                   </span>
+                  </code>
+                  will be used in its place.
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   default_mask
+                  </strong>
+                  (
+                  <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                   <em>
+                    torch.Tensor
+                   </em>
+                  </a>
+                  <em>
+                   ,
+                  </em>
+                  <em>
+                   optional
+                  </em>
+                  ) – mask from previous pruning
+iteration, if any. To be considered when determining what
+portion of the tensor that pruning should act on. If None,
+default to a mask of ones.
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Returns
+              </dt>
+              <dd class="field-even">
+               <p>
+                pruned version of tensor
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  t
+                 </span>
+                </code>
+                .
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.utils.prune.PruningContainer.remove">
+             <code class="sig-name descname">
+              <span class="pre">
+               remove
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                module
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="headerlink" href="#torch.nn.utils.prune.PruningContainer.remove" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Removes the pruning reparameterization from a module. The pruned
+parameter named
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name
+               </span>
+              </code>
+              remains permanently pruned, and the parameter
+named
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name+'_orig'
+               </span>
+              </code>
+              is removed from the parameter list. Similarly,
+the buffer named
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                name+'_mask'
+               </span>
+              </code>
+              is removed from the buffers.
+             </p>
+             <div class="admonition note">
+              <p class="admonition-title">
+               Note
+              </p>
+              <p>
+               Pruning itself is NOT undone or reversed!
+              </p>
+             </div>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.script_if_tracing — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-script-if-tracing">
+         <h1>
+          torch.jit.script_if_tracing
+          <a class="headerlink" href="#torch-jit-script-if-tracing" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.script_if_tracing">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             script_if_tracing
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              fn
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit.html#script_if_tracing">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.script_if_tracing" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Compiles
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              fn
+             </span>
+            </code>
+            when it is first called during tracing.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch.jit.script
+             </span>
+            </code>
+            has a non-negligible start up time when it is first called due to
+lazy-initializations of many compiler builtins. Therefore you should not use
+it in library code. However, you may want to have parts of your library work
+in tracing even if they use control flow. In these cases, you should use
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              @torch.jit.script_if_tracing
+             </span>
+            </code>
+            to substitute for
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              torch.jit.script
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               fn
+              </strong>
+              – A function to compile.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              If called during tracing, a
+              <a class="reference internal" href="torch.jit.ScriptFunction.html#torch.jit.ScriptFunction" title="torch.jit.ScriptFunction">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptFunction
+                </span>
+               </code>
+              </a>
+              created by
+              <cite>
+               torch.jit.script
+              </cite>
+              is returned.
+Otherwise, the original function
+              <cite>
+               fn
+              </cite>
+              is returned.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

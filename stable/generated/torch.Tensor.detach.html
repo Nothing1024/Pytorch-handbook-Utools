@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.detach — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-detach">
+         <h1>
+          torch.Tensor.detach
+          <a class="headerlink" href="#torch-tensor-detach" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.detach">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             detach
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.Tensor.detach" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns a new Tensor, detached from the current graph.
+           </p>
+           <p>
+            The result will never require gradient.
+           </p>
+           <p>
+            This method also affects forward mode AD gradients and the result will never
+have forward mode AD gradients.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Returned Tensor shares the same storage with the original one.
+In-place modifications on either of them will be seen, and may trigger
+errors in correctness checks.
+IMPORTANT NOTE: Previously, in-place size / stride / storage changes
+(such as
+             <cite>
+              resize_
+             </cite>
+             /
+             <cite>
+              resize_as_
+             </cite>
+             /
+             <cite>
+              set_
+             </cite>
+             /
+             <cite>
+              transpose_
+             </cite>
+             ) to the returned tensor
+also update the original tensor. Now, these in-place changes will not update the
+original tensor anymore, and will instead trigger an error.
+For sparse tensors:
+In-place indices / values changes (such as
+             <cite>
+              zero_
+             </cite>
+             /
+             <cite>
+              copy_
+             </cite>
+             /
+             <cite>
+              add_
+             </cite>
+             ) to the
+returned tensor will not update the original tensor anymore, and will instead
+trigger an error.
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

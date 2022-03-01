@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.arange — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-arange">
+         <h1>
+          torch.arange
+          <a class="headerlink" href="#torch-arange" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.arange">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             arange
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="pre">
+             start=0
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             end
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             step=1
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             *
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             out=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             dtype=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             layout=torch.strided
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             device=None
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             requires_grad=False
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.arange" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns a 1-D tensor of size
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo fence="true">
+                   ⌈
+                  </mo>
+                  <mfrac>
+                   <mrow>
+                    <mtext>
+                     end
+                    </mtext>
+                    <mo>
+                     −
+                    </mo>
+                    <mtext>
+                     start
+                    </mtext>
+                   </mrow>
+                   <mtext>
+                    step
+                   </mtext>
+                  </mfrac>
+                  <mo fence="true">
+                   ⌉
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \left\lceil \frac{\text{end} - \text{start}}{\text{step}} \right\rceil
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1.80002em;vertical-align:-0.65002em;">
+                </span>
+                <span class="minner">
+                 <span class="mopen delimcenter" style="top:0em;">
+                  <span class="delimsizing size2">
+                   ⌈
+                  </span>
+                 </span>
+                 <span class="mord">
+                  <span class="mopen nulldelimiter">
+                  </span>
+                  <span class="mfrac">
+                   <span class="vlist-t vlist-t2">
+                    <span class="vlist-r">
+                     <span class="vlist" style="height:0.8801079999999999em;">
+                      <span style="top:-2.6550000000000002em;">
+                       <span class="pstrut" style="height:3em;">
+                       </span>
+                       <span class="sizing reset-size6 size3 mtight">
+                        <span class="mord mtight">
+                         <span class="mord text mtight">
+                          <span class="mord mtight">
+                           step
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span style="top:-3.23em;">
+                       <span class="pstrut" style="height:3em;">
+                       </span>
+                       <span class="frac-line" style="border-bottom-width:0.04em;">
+                       </span>
+                      </span>
+                      <span style="top:-3.394em;">
+                       <span class="pstrut" style="height:3em;">
+                       </span>
+                       <span class="sizing reset-size6 size3 mtight">
+                        <span class="mord mtight">
+                         <span class="mord text mtight">
+                          <span class="mord mtight">
+                           end
+                          </span>
+                         </span>
+                         <span class="mbin mtight">
+                          −
+                         </span>
+                         <span class="mord text mtight">
+                          <span class="mord mtight">
+                           start
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span class="vlist-s">
+                      ​
+                     </span>
+                    </span>
+                    <span class="vlist-r">
+                     <span class="vlist" style="height:0.481108em;">
+                      <span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  <span class="mclose nulldelimiter">
+                  </span>
+                 </span>
+                 <span class="mclose delimcenter" style="top:0em;">
+                  <span class="delimsizing size2">
+                   ⌉
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            with values from the interval
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              [start,
+             </span>
+             <span class="pre">
+              end)
+             </span>
+            </code>
+            taken with common difference
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              step
+             </span>
+            </code>
+            beginning from
+            <cite>
+             start
+            </cite>
+            .
+           </p>
+           <p>
+            Note that non-integer
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              step
+             </span>
+            </code>
+            is subject to floating point rounding errors when
+comparing against
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              end
+             </span>
+            </code>
+            ; to avoid inconsistency, we advise adding a small epsilon to
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              end
+             </span>
+            </code>
+            in such cases.
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mtext>
+                    out
+                   </mtext>
+                   <mrow>
+                    <mi>
+                     i
+                    </mi>
+                    <mo>
+                     +
+                    </mo>
+                    <mn>
+                     1
+                    </mn>
+                   </mrow>
+                  </msub>
+                  <mo>
+                   =
+                  </mo>
+                  <msub>
+                   <mtext>
+                    out
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
+                  <mo>
+                   +
+                  </mo>
+                  <mtext>
+                   step
+                  </mtext>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{out}_{{i+1}} = \text{out}_{i} + \text{step}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.8234109999999999em;vertical-align:-0.208331em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   out
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.311664em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         <span class="mord mathnormal mtight">
+                          i
+                         </span>
+                         <span class="mbin mtight">
+                          +
+                         </span>
+                         <span class="mord mtight">
+                          1
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.208331em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.76508em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord text">
+                  <span class="mord">
+                   out
+                  </span>
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.31166399999999994em;">
+                     <span style="top:-2.5500000000000003em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         i
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.80952em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  step
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 start
+                </strong>
+                (
+                <em>
+                 Number
+                </em>
+                ) – the starting value for the set of points. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  0
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 end
+                </strong>
+                (
+                <em>
+                 Number
+                </em>
+                ) – the ending value for the set of points
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 step
+                </strong>
+                (
+                <em>
+                 Number
+                </em>
+                ) – the gap between each pair of adjacent points. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  1
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired data type of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , uses a global default (see
+                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.set_default_tensor_type()
+                  </span>
+                 </code>
+                </a>
+                ). If
+                <cite>
+                 dtype
+                </cite>
+                is not given, infer the data type from the other input
+arguments. If any of
+                <cite>
+                 start
+                </cite>
+                ,
+                <cite>
+                 end
+                </cite>
+                , or
+                <cite>
+                 stop
+                </cite>
+                are floating-point, the
+                <cite>
+                 dtype
+                </cite>
+                is inferred to be the default dtype, see
+                <a class="reference internal" href="torch.get_default_dtype.html#torch.get_default_dtype" title="torch.get_default_dtype">
+                 <code class="xref py py-meth docutils literal notranslate">
+                  <span class="pre">
+                   get_default_dtype()
+                  </span>
+                 </code>
+                </a>
+                . Otherwise, the
+                <cite>
+                 dtype
+                </cite>
+                is inferred to
+be
+                <cite>
+                 torch.int64
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 layout
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.layout" title="torch.torch.layout">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.layout
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired layout of returned Tensor.
+Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.strided
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 device
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired device of returned tensor.
+Default: if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , uses the current device for the default tensor type
+(see
+                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.set_default_tensor_type()
+                  </span>
+                 </code>
+                </a>
+                ).
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  device
+                 </span>
+                </code>
+                will be the CPU
+for CPU tensor types and the current CUDA device for CUDA tensor types.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 requires_grad
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – If autograd should record operations on the
+returned tensor. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">tensor([ 0,  1,  2,  3,  4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">tensor([ 1,  2,  3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="go">tensor([ 1.0000,  1.5000,  2.0000])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

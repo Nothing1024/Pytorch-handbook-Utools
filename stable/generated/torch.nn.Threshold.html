@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Threshold — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="threshold">
+         <h1>
+          Threshold
+          <a class="headerlink" href="#threshold" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.nn.Threshold">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             Threshold
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              threshold
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              value
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              inplace
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/activation.html#Threshold">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.Threshold" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Thresholds each element of the input Tensor.
+           </p>
+           <p>
+            Threshold is defined as:
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   y
+                  </mi>
+                  <mo>
+                   =
+                  </mo>
+                  <mrow>
+                   <mo fence="true">
+                    {
+                   </mo>
+                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mi>
+                         x
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mtext>
+                         if
+                        </mtext>
+                        <mi>
+                         x
+                        </mi>
+                        <mo>
+                         &gt;
+                        </mo>
+                        <mtext>
+                         threshold
+                        </mtext>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mrow>
+                        <mtext>
+                         value
+                        </mtext>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="false" scriptlevel="0">
+                       <mtext>
+                        otherwise
+                       </mtext>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                   </mtable>
+                  </mrow>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  y =
+\begin{cases}
+x, &amp;\text{ if } x &gt; \text{threshold} \\
+\text{value}, &amp;\text{ otherwise }
+\end{cases}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.03588em;">
+                 y
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;">
+                </span>
+                <span class="minner">
+                 <span class="mopen delimcenter" style="top:0em;">
+                  <span class="delimsizing size4">
+                   {
+                  </span>
+                 </span>
+                 <span class="mord">
+                  <span class="mtable">
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.69em;">
+                       <span style="top:-3.69em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mpunct">
+                          ,
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.25em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           value
+                          </span>
+                         </span>
+                         <span class="mpunct">
+                          ,
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.19em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                   <span class="arraycolsep" style="width:1em;">
+                   </span>
+                   <span class="col-align-l">
+                    <span class="vlist-t vlist-t2">
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.69em;">
+                       <span style="top:-3.69em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           if
+                          </span>
+                         </span>
+                         <span class="mord mathnormal">
+                          x
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mrel">
+                          &gt;
+                         </span>
+                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         </span>
+                         <span class="mord text">
+                          <span class="mord">
+                           threshold
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span style="top:-2.25em;">
+                        <span class="pstrut" style="height:3.008em;">
+                        </span>
+                        <span class="mord">
+                         <span class="mord text">
+                          <span class="mord">
+                           otherwise
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                      <span class="vlist-s">
+                       ​
+                      </span>
+                     </span>
+                     <span class="vlist-r">
+                      <span class="vlist" style="height:1.19em;">
+                       <span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                 <span class="mclose nulldelimiter">
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 threshold
+                </strong>
+                – The value to threshold at
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 value
+                </strong>
+                – The value to replace with
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 inplace
+                </strong>
+                – can optionally do the operation in-place. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="simple">
+            <dt>
+             Shape:
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <p>
+                Input:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , where
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo>
+                       ∗
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      *
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                means any number of dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                Output:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo>
+                       ∗
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (*)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord">
+                     ∗
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                , same shape as the input.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Threshold</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.autograd.Function.backward — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-autograd-function-backward">
+         <h1>
+          torch.autograd.Function.backward
+          <a class="headerlink" href="#torch-autograd-function-backward" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.autograd.Function.backward">
+           <em class="property">
+            <span class="pre">
+             static
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Function.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             backward
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              ctx
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              grad_outputs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/autograd/function.html#Function.backward">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.autograd.Function.backward" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Defines a formula for differentiating the operation with backward mode
+automatic differentiation.
+           </p>
+           <p>
+            This function is to be overridden by all subclasses.
+           </p>
+           <p>
+            It must accept a context
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              ctx
+             </span>
+            </code>
+            as the first argument, followed by
+as many outputs as the
+            <a class="reference internal" href="torch.autograd.Function.forward.html#torch.autograd.Function.forward" title="torch.autograd.Function.forward">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               forward()
+              </span>
+             </code>
+            </a>
+            returned (None will be passed in
+for non tensor outputs of the forward function),
+and it should return as many tensors, as there were inputs to
+            <a class="reference internal" href="torch.autograd.Function.forward.html#torch.autograd.Function.forward" title="torch.autograd.Function.forward">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               forward()
+              </span>
+             </code>
+            </a>
+            . Each argument is the gradient w.r.t the given output,
+and each returned value should be the gradient w.r.t. the
+corresponding input. If an input is not a Tensor or is a Tensor not
+requiring grads, you can just pass None as a gradient for that input.
+           </p>
+           <p>
+            The context can be used to retrieve tensors saved during the forward
+pass. It also has an attribute
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              ctx.needs_input_grad
+             </span>
+            </code>
+            as a tuple
+of booleans representing whether each input needs gradient. E.g.,
+            <a class="reference internal" href="torch.autograd.backward.html#torch.autograd.backward" title="torch.autograd.backward">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               backward()
+              </span>
+             </code>
+            </a>
+            will have
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              ctx.needs_input_grad[0]
+             </span>
+             <span class="pre">
+              =
+             </span>
+             <span class="pre">
+              True
+             </span>
+            </code>
+            if the
+first input to
+            <a class="reference internal" href="torch.autograd.Function.forward.html#torch.autograd.Function.forward" title="torch.autograd.Function.forward">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               forward()
+              </span>
+             </code>
+            </a>
+            needs gradient computated w.r.t. the
+output.
+           </p>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

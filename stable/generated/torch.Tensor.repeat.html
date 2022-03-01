@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.repeat — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-repeat">
+         <h1>
+          torch.Tensor.repeat
+          <a class="headerlink" href="#torch-tensor-repeat" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.repeat">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             repeat
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              sizes
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.repeat" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Repeats this tensor along the specified dimensions.
+           </p>
+           <p>
+            Unlike
+            <a class="reference internal" href="torch.Tensor.expand.html#torch.Tensor.expand" title="torch.Tensor.expand">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               expand()
+              </span>
+             </code>
+            </a>
+            , this function copies the tensor’s data.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             <a class="reference internal" href="#torch.Tensor.repeat" title="torch.Tensor.repeat">
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                repeat()
+               </span>
+              </code>
+             </a>
+             behaves differently from
+             <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.repeat.html">
+              numpy.repeat
+             </a>
+             ,
+but is more similar to
+             <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.tile.html">
+              numpy.tile
+             </a>
+             .
+For the operator similar to
+             <cite>
+              numpy.repeat
+             </cite>
+             , see
+             <a class="reference internal" href="torch.repeat_interleave.html#torch.repeat_interleave" title="torch.repeat_interleave">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.repeat_interleave()
+               </span>
+              </code>
+             </a>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               sizes
+              </strong>
+              (
+              <em>
+               torch.Size
+              </em>
+              <em>
+               or
+              </em>
+              <em>
+               int...
+              </em>
+              ) – The number of times to repeat this tensor along each
+dimension
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([[ 1,  2,  3,  1,  2,  3],</span>
+<span class="go">        [ 1,  2,  3,  1,  2,  3],</span>
+<span class="go">        [ 1,  2,  3,  1,  2,  3],</span>
+<span class="go">        [ 1,  2,  3,  1,  2,  3]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([4, 2, 3])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

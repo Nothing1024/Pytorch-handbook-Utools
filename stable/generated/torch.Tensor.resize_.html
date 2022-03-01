@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.resize_ — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-resize">
+         <h1>
+          torch.Tensor.resize_
+          <a class="headerlink" href="#torch-tensor-resize" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.resize_">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             resize_
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              sizes
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              memory_format
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              torch.contiguous_format
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.resize_" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Resizes
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            tensor to the specified size. If the number of elements is
+larger than the current storage size, then the underlying storage is resized
+to fit the new number of elements. If the number of elements is smaller, the
+underlying storage is not changed. Existing elements are preserved but any new
+memory is uninitialized.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This is a low-level method. The storage is reinterpreted as C-contiguous,
+ignoring the current strides (unless the target size equals the current
+size, in which case the tensor is left unchanged). For most purposes, you
+will instead want to use
+             <a class="reference internal" href="torch.Tensor.view.html#torch.Tensor.view" title="torch.Tensor.view">
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                view()
+               </span>
+              </code>
+             </a>
+             , which checks for
+contiguity, or
+             <a class="reference internal" href="torch.Tensor.reshape.html#torch.Tensor.reshape" title="torch.Tensor.reshape">
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                reshape()
+               </span>
+              </code>
+             </a>
+             , which copies data if needed. To
+change the size in-place with custom strides, see
+             <a class="reference internal" href="torch.Tensor.set_.html#torch.Tensor.set_" title="torch.Tensor.set_">
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                set_()
+               </span>
+              </code>
+             </a>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 sizes
+                </strong>
+                (
+                <em>
+                 torch.Size
+                </em>
+                <em>
+                 or
+                </em>
+                <em>
+                 int...
+                </em>
+                ) – the desired size
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 memory_format
+                </strong>
+                (
+                <a class="reference internal" href="../tensor_attributes.html#torch.torch.memory_format" title="torch.torch.memory_format">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.memory_format
+                  </span>
+                 </code>
+                </a>
+                , optional) – the desired memory format of
+Tensor. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.contiguous_format
+                 </span>
+                </code>
+                . Note that memory format of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  self
+                 </span>
+                </code>
+                is going to be unaffected if
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  self.size()
+                 </span>
+                </code>
+                matches
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  sizes
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">resize_</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([[ 1,  2],</span>
+<span class="go">        [ 3,  4]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

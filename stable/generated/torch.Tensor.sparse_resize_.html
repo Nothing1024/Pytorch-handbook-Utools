@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.Tensor.sparse_resize_ — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-tensor-sparse-resize">
+         <h1>
+          torch.Tensor.sparse_resize_
+          <a class="headerlink" href="#torch-tensor-sparse-resize" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py method">
+          <dt id="torch.Tensor.sparse_resize_">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             Tensor.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             sparse_resize_
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              size
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              sparse_dim
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              dense_dim
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+            <span class="pre">
+             Tensor
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.Tensor.sparse_resize_" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Resizes
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            <a class="reference internal" href="../sparse.html#sparse-docs">
+             <span class="std std-ref">
+              sparse tensor
+             </span>
+            </a>
+            to the desired
+size and the number of sparse and dense dimensions.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If the number of specified elements in
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               self
+              </span>
+             </code>
+             is zero, then
+             <a class="reference internal" href="torch.Tensor.size.html#torch.Tensor.size" title="torch.Tensor.size">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                size
+               </span>
+              </code>
+             </a>
+             ,
+             <a class="reference internal" href="torch.Tensor.sparse_dim.html#torch.Tensor.sparse_dim" title="torch.Tensor.sparse_dim">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                sparse_dim
+               </span>
+              </code>
+             </a>
+             , and
+             <a class="reference internal" href="torch.Tensor.dense_dim.html#torch.Tensor.dense_dim" title="torch.Tensor.dense_dim">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                dense_dim
+               </span>
+              </code>
+             </a>
+             can be any
+size and positive integers such that
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               len(size)
+              </span>
+              <span class="pre">
+               ==
+              </span>
+              <span class="pre">
+               sparse_dim
+              </span>
+              <span class="pre">
+               +
+              </span>
+              <span class="pre">
+               dense_dim
+              </span>
+             </code>
+             .
+            </p>
+            <p>
+             If
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               self
+              </span>
+             </code>
+             specifies one or more elements, however, then each
+dimension in
+             <a class="reference internal" href="torch.Tensor.size.html#torch.Tensor.size" title="torch.Tensor.size">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                size
+               </span>
+              </code>
+             </a>
+             must not be smaller than the corresponding
+dimension of
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               self
+              </span>
+             </code>
+             ,
+             <a class="reference internal" href="torch.Tensor.sparse_dim.html#torch.Tensor.sparse_dim" title="torch.Tensor.sparse_dim">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                sparse_dim
+               </span>
+              </code>
+             </a>
+             must equal the number
+of sparse dimensions in
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               self
+              </span>
+             </code>
+             , and
+             <a class="reference internal" href="torch.Tensor.dense_dim.html#torch.Tensor.dense_dim" title="torch.Tensor.dense_dim">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                dense_dim
+               </span>
+              </code>
+             </a>
+             must
+equal the number of dense dimensions in
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               self
+              </span>
+             </code>
+             .
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             Throws an error if
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               self
+              </span>
+             </code>
+             is not a sparse tensor.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 size
+                </strong>
+                (
+                <em>
+                 torch.Size
+                </em>
+                ) – the desired size. If
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  self
+                 </span>
+                </code>
+                is non-empty
+sparse tensor, the desired size cannot be smaller than the
+original size.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 sparse_dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – the number of sparse dimensions
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dense_dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – the number of dense dimensions
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

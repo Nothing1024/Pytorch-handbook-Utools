@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.freeze — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-freeze">
+         <h1>
+          torch.jit.freeze
+          <a class="headerlink" href="#torch-jit-freeze" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.freeze">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             freeze
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              mod
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              preserved_attrs
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              optimize_numerics
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit/_freeze.html#freeze">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.freeze" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Freezing a
+            <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               ScriptModule
+              </span>
+             </code>
+            </a>
+            will clone it and attempt to inline the cloned
+module’s submodules, parameters, and attributes as constants in the TorchScript IR Graph.
+By default,
+            <cite>
+             forward
+            </cite>
+            will be preserved, as well as attributes &amp; methods specified in
+            <cite>
+             preserved_attrs
+            </cite>
+            . Additionally, any attribute that is modified within a preserved
+method will be preserved.
+           </p>
+           <p>
+            Freezing currently only accepts ScriptModules that are in eval mode.
+           </p>
+           <p>
+            Freezing applies generic optimization that will speed up your model regardless of machine.
+To further optimize using server-specific settings, run
+            <cite>
+             optimize_for_inference
+            </cite>
+            after
+freezing.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 mod
+                </strong>
+                (
+                <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   ScriptModule
+                  </span>
+                 </code>
+                </a>
+                ) – a module to be frozen
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 preserved_attrs
+                </strong>
+                (
+                <em>
+                 Optional
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 List
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ]
+                </em>
+                ) – a list of attributes to preserve in addition to the forward method.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 modified in preserved methods will also be preserved.
+                </strong>
+                (
+                <em>
+                 Attributes
+                </em>
+                ) –
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 optimize_numerics
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , a set of optimization passes will be run that does not strictly
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 numerics. Full details of optimization can be found at torch.jit.run_frozen_optimizations.
+                </strong>
+                (
+                <em>
+                 preserve
+                </em>
+                ) –
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Frozen
+              <a class="reference internal" href="torch.jit.ScriptModule.html#torch.jit.ScriptModule" title="torch.jit.ScriptModule">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ScriptModule
+                </span>
+               </code>
+              </a>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example (Freezing a simple module with a Parameter):
+           </p>
+           <div class="highlight-python3 notranslate">
+            <div class="highlight">
+             <pre><span></span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+<span class="n">scripted_module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+<span class="n">frozen_module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">freeze</span><span class="p">(</span><span class="n">scripted_module</span><span class="p">)</span>
+<span class="c1"># parameters have been removed and inlined into the Graph as constants</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">frozen_module</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()))</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="c1"># See the compiled graph as Python code</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">frozen_module</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            Example (Freezing a module with preserved attributes)
+           </p>
+           <div class="highlight-python3 notranslate">
+            <div class="highlight">
+             <pre><span></span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modified_tensor</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">modified_tensor</span>
+
+<span class="n">scripted_module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule2</span><span class="p">()</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+<span class="n">frozen_module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">freeze</span><span class="p">(</span><span class="n">scripted_module</span><span class="p">,</span> <span class="n">preserved_attrs</span><span class="o">=</span><span class="p">[</span><span class="s2">"version"</span><span class="p">])</span>
+<span class="c1"># we've manually preserved `version`, so it still exists on the frozen module and can be modified</span>
+<span class="k">assert</span> <span class="n">frozen_module</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">frozen_module</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="c1"># `modified_tensor` is detected as being mutated in the forward, so freezing preserves</span>
+<span class="c1"># it to retain model semantics</span>
+<span class="k">assert</span> <span class="n">frozen_module</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="c1"># now that we've run it once, the next result will be incremented by one</span>
+<span class="k">assert</span> <span class="n">frozen_module</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             If you’re not sure why an attribute is not being inlined as a constant, you can run
+             <cite>
+              dump_alias_db
+             </cite>
+             on frozen_module.forward.graph to see if freezing has detected the
+attribute is being modified.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Because freezing makes weights constants and removes module hierarchy,
+             <cite>
+              to
+             </cite>
+             and other
+nn.Module methods to manipulate device or dtype no longer work. As a workaround,
+You can remap devices by specifying
+             <cite>
+              map_location
+             </cite>
+             in
+             <cite>
+              torch.jit.load
+             </cite>
+             , however
+device-specific logic may have been baked into the model.
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

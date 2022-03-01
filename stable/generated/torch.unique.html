@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.unique — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-unique">
+         <h1>
+          torch.unique
+          <a class="headerlink" href="#torch-unique" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.unique">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             unique
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              args
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.unique" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Returns the unique elements of the input tensor.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function is different from
+             <a class="reference internal" href="torch.unique_consecutive.html#torch.unique_consecutive" title="torch.unique_consecutive">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.unique_consecutive()
+               </span>
+              </code>
+             </a>
+             in the sense that
+this function also eliminates non-consecutive duplicate values.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Currently in the CUDA implementation and the CPU implementation when dim is specified,
+             <cite>
+              torch.unique
+             </cite>
+             always sort the tensor at the beginning regardless of the
+             <cite>
+              sort
+             </cite>
+             argument.
+Sorting could be slow, so if your input tensor is already sorted, it is recommended to use
+             <a class="reference internal" href="torch.unique_consecutive.html#torch.unique_consecutive" title="torch.unique_consecutive">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.unique_consecutive()
+               </span>
+              </code>
+             </a>
+             which avoids the sorting.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – the input tensor
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 sorted
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – Whether to sort the unique elements in ascending order
+before returning as output.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 return_inverse
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – Whether to also return the indices for where
+elements in the original input ended up in the returned unique list.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 return_counts
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – Whether to also return the counts for each unique
+element.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dim
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                ) – the dimension to apply unique. If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                , the unique of the
+flattened input is returned. default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              <p>
+               A tensor or a tuple of tensors containing
+              </p>
+              <blockquote>
+               <div>
+                <ul class="simple">
+                 <li>
+                  <p>
+                   <strong>
+                    output
+                   </strong>
+                   (
+                   <em>
+                    Tensor
+                   </em>
+                   ): the output list of unique scalar elements.
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   <strong>
+                    inverse_indices
+                   </strong>
+                   (
+                   <em>
+                    Tensor
+                   </em>
+                   ): (optional) if
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     return_inverse
+                    </span>
+                   </code>
+                   is True, there will be an additional
+returned tensor (same shape as input) representing the indices
+for where elements in the original input map to in the output;
+otherwise, this function will only return a single tensor.
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   <strong>
+                    counts
+                   </strong>
+                   (
+                   <em>
+                    Tensor
+                   </em>
+                   ): (optional) if
+                   <code class="xref py py-attr docutils literal notranslate">
+                    <span class="pre">
+                     return_counts
+                    </span>
+                   </code>
+                   is True, there will be an additional
+returned tensor (same shape as output or output.size(dim),
+if dim was specified) representing the number of occurrences
+for each unique value or tensor.
+                  </p>
+                 </li>
+                </ul>
+               </div>
+              </blockquote>
+             </p>
+            </dd>
+            <dt class="field-odd">
+             Return type
+            </dt>
+            <dd class="field-odd">
+             <p>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               Tensor
+              </a>
+              ,
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               Tensor
+              </a>
+              (optional),
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               Tensor
+              </a>
+              (optional))
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
+<span class="go">tensor([ 2,  3,  1])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="p">,</span> <span class="n">inverse_indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">),</span> <span class="nb">sorted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
+<span class="go">tensor([ 1,  2,  3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inverse_indices</span>
+<span class="go">tensor([ 0,  2,  1,  2])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="p">,</span> <span class="n">inverse_indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">),</span> <span class="nb">sorted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
+<span class="go">tensor([ 1,  2,  3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inverse_indices</span>
+<span class="go">tensor([[ 0,  2],</span>
+<span class="go">        [ 1,  2]])</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

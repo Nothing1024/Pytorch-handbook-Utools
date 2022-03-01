@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nn.modules.module.register_module_forward_pre_hook — PyTorch 1.10 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-nn-modules-module-register-module-forward-pre-hook">
+         <h1>
+          torch.nn.modules.module.register_module_forward_pre_hook
+          <a class="headerlink" href="#torch-nn-modules-module-register-module-forward-pre-hook" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.nn.modules.module.register_module_forward_pre_hook">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.nn.modules.module.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             register_module_forward_pre_hook
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              hook
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/nn/modules/module.html#register_module_forward_pre_hook">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.nn.modules.module.register_module_forward_pre_hook" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Registers a forward pre-hook common to all modules.
+           </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This adds global state to the
+             <cite>
+              nn.module
+             </cite>
+             module
+and it is only intended for debugging/profiling purposes.
+            </p>
+           </div>
+           <p>
+            The hook will be called every time before
+            <code class="xref py py-func docutils literal notranslate">
+             <span class="pre">
+              forward()
+             </span>
+            </code>
+            is invoked.
+It should have the following signature:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="n">hook</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">modified</span> <span class="nb">input</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            The input contains only the positional arguments given to the module.
+Keyword arguments won’t be passed to the hooks and only to the
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              forward
+             </span>
+            </code>
+            .
+The hook can modify the input. User can either return a tuple or a
+single modified value in the hook. We will wrap the value into a tuple
+if a single value is returned(unless that value is already a tuple).
+           </p>
+           <p>
+            This hook has precedence over the specific module hooks registered with
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              register_forward_pre_hook
+             </span>
+            </code>
+            .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              a handle that can be used to remove the added hook by calling
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                handle.remove()
+               </span>
+              </code>
+             </p>
+            </dd>
+            <dt class="field-even">
+             Return type
+            </dt>
+            <dd class="field-even">
+             <p>
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                torch.utils.hooks.RemovableHandle
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>
