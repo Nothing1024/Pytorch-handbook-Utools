@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   dual_level — PyTorch 1.11.0 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="dual-level">
+         <h1>
+          dual_level
+          <a class="headerlink" href="#dual-level" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.autograd.forward_ad.dual_level">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.autograd.forward_ad.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             dual_level
+            </span>
+           </code>
+           <a class="reference internal" href="../_modules/torch/autograd/forward_ad.html#dual_level">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.autograd.forward_ad.dual_level" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Context-manager that enables forward AD. All forward AD computation must
+be performed in a
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              dual_level
+             </span>
+            </code>
+            context.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             The
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               dual_level
+              </span>
+             </code>
+             context appropriately enters and exit the dual level to
+controls the current forward AD level, which is used by default by the other
+functions in this API.
+            </p>
+            <p>
+             We currently don’t plan to support nested
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               dual_level
+              </span>
+             </code>
+             contexts, however, so
+only a single forward AD level is supported. To compute higher-order
+forward grads, one can use
+             <a class="reference external" href="https://github.com/pytorch/functorch#jvp">
+              functorch’s jvp
+             </a>
+             .
+            </p>
+           </div>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">dual_level</span><span class="p">():</span>
+<span class="gp">... </span>  <span class="n">inp</span> <span class="o">=</span> <span class="n">make_dual</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_t</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="c1"># Do computations with inp</span>
+<span class="gp">... </span>  <span class="n">out</span> <span class="o">=</span> <span class="n">your_fn</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="n">_</span><span class="p">,</span> <span class="n">grad</span> <span class="o">=</span> <span class="n">unpack_dual</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># After exiting the level, the grad is deleted</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">grad_after</span> <span class="o">=</span> <span class="n">unpack_dual</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            Please see the
+            <a class="reference external" href="https://pytorch.org/tutorials/intermediate/forward_ad_usage.html">
+             forward-mode AD tutorial
+            </a>
+            for detailed steps on how to use this API.
+           </p>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

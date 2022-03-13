@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.empty_strided — PyTorch 1.10 documentation
+   torch.empty_strided — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -171,8 +172,7 @@
           </dt>
           <dd>
            <p>
-            Returns a tensor filled with uninitialized data. The shape and strides of the tensor is
-defined by the variable argument
+            Creates a tensor with the specified
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               size
@@ -184,35 +184,15 @@ defined by the variable argument
               stride
              </span>
             </code>
-            respectively.
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              torch.empty_strided(size,
-             </span>
-             <span class="pre">
-              stride)
-             </span>
-            </code>
-            is equivalent to
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              torch.empty(size).as_strided(size,
-             </span>
-             <span class="pre">
-              stride)
-             </span>
-            </code>
-            .
+            and filled with undefined data.
            </p>
            <div class="admonition warning">
             <p class="admonition-title">
              Warning
             </p>
             <p>
-             More than one element of the created tensor may refer to a single memory
-location. As a result, in-place operations (especially ones that are
-vectorized) may result in incorrect behavior. If you need to write to
-the tensors, please clone them first.
+             If the constructed tensor is “overlapped” (with multiple indices referring to the same element
+in memory) its behavior is undefined.
             </p>
            </div>
            <dl class="field-list simple">

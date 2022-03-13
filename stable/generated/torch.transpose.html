@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.transpose — PyTorch 1.10 documentation
+   torch.transpose — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -103,7 +104,13 @@ The given dimensions
             are swapped.
            </p>
            <p>
-            The resulting
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            is a strided tensor then the resulting
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               out
@@ -115,8 +122,41 @@ The given dimensions
               input
              </span>
             </code>
-            tensor, so changing the content of one would change the content
-of the other.
+            tensor, so
+changing the content of one would change the content of the other.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            is a
+            <a class="reference internal" href="../sparse.html#sparse-docs">
+             <span class="std std-ref">
+              sparse tensor
+             </span>
+            </a>
+            then the
+resulting
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              out
+             </span>
+            </code>
+            tensor
+            <em>
+             does not
+            </em>
+            share the underlying storage
+with the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            tensor.
            </p>
            <dl class="field-list simple">
             <dt class="field-odd">

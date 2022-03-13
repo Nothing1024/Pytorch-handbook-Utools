@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.autograd.functional.jvp — PyTorch 1.10 documentation
+   torch.autograd.functional.jvp — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -351,6 +352,31 @@ the same shape as the output.
              </p>
             </dd>
            </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               autograd.functional.jvp
+              </span>
+             </code>
+             computes the jvp by using the backward of
+the backward (sometimes called the double backwards trick). This is not
+the most performant way of computing the jvp. Please consider using
+             <a class="reference external" href="https://github.com/pytorch/functorch#jvp">
+              functorch’s jvp
+             </a>
+             or the
+             <a class="reference internal" href="../autograd.html#forward-mode-ad">
+              <span class="std std-ref">
+               low-level forward-mode AD API
+              </span>
+             </a>
+             instead.
+            </p>
+           </div>
            <p class="rubric">
             Example
            </p>
@@ -385,16 +411,6 @@ the same shape as the output.
 <span class="go"> tensor([5., 5.]))</span>
 </pre>
             </div>
-           </div>
-           <div class="admonition note">
-            <p class="admonition-title">
-             Note
-            </p>
-            <p>
-             The jvp is currently computed by using the backward of the backward
-(sometimes called the double backwards trick) as we don’t have support
-for forward mode AD in PyTorch at the moment.
-            </p>
            </div>
           </dd>
          </dl>

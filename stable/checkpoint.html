@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.utils.checkpoint — PyTorch 1.10 documentation
+   torch.utils.checkpoint — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -128,6 +129,24 @@ output compared to non-checkpointed passes is never guaranteed.
            </em>
            ,
            <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              use_reentrant
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
             <span class="o">
              <span class="pre">
               **
@@ -223,7 +242,110 @@ be considered as part of autograd.
              Warning
             </p>
             <p>
-             Checkpointing currently only supports
+             If
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               function
+              </span>
+             </code>
+             invocation during backward does anything different
+than the one during forward, e.g., due to some global variable, the
+checkpointed version won’t be equivalent, and unfortunately it can’t be
+detected.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             If
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               use_reentrant=True
+              </span>
+             </code>
+             is specified, then if the checkpointed segment
+contains tensors detached from the computational graph by
+             <cite>
+              detach()
+             </cite>
+             or
+             <cite>
+              torch.no_grad()
+             </cite>
+             , the backward pass will raise an error. This is
+because
+             <cite>
+              checkpoint
+             </cite>
+             makes all the outputs require gradients which
+causes issues when a tensor is defined to have no gradient in the model.
+To circumvent this, detach the tensors outside of the
+             <cite>
+              checkpoint
+             </cite>
+             function. Note that the checkpointed segment can contain tensors
+detached from the computational graph if
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               use_reentrant=False
+              </span>
+             </code>
+             is
+specified.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             If
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               use_reentrant=True
+              </span>
+             </code>
+             is specified, at least one of the inputs needs
+to have
+             <code class="code docutils literal notranslate">
+              <span class="pre">
+               requires_grad=True
+              </span>
+             </code>
+             if grads are needed for model inputs,
+otherwise the checkpointed part of the model won’t have gradients. At
+least one of the outputs needs to have
+             <code class="code docutils literal notranslate">
+              <span class="pre">
+               requires_grad=True
+              </span>
+             </code>
+             as
+well. Note that this does not apply if
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               use_reentrant=False
+              </span>
+             </code>
+             is
+specified.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             If
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               use_reentrant=True
+              </span>
+             </code>
+             is specified, checkpointing currently only
+supports
              <a class="reference internal" href="generated/torch.autograd.backward.html#torch.autograd.backward" title="torch.autograd.backward">
               <code class="xref py py-func docutils literal notranslate">
                <span class="pre">
@@ -243,75 +365,22 @@ be considered as part of autograd.
                </span>
               </code>
              </a>
-             is not supported.
-            </p>
-           </div>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             If
-             <code class="xref py py-attr docutils literal notranslate">
+             is not supported. If
+             <code class="docutils literal notranslate">
               <span class="pre">
-               function
+               use_reentrant=False
               </span>
              </code>
-             invocation during backward does anything different
-than the one during forward, e.g., due to some global variable, the
-checkpointed version won’t be equivalent, and unfortunately it can’t be
-detected.
-            </p>
-           </div>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             If checkpointed segment contains tensors detached from the computational
-graph by
-             <cite>
-              detach()
-             </cite>
-             or
-             <cite>
-              torch.no_grad()
-             </cite>
-             , the backward pass will raise an
-error. This is because
-             <cite>
-              checkpoint
-             </cite>
-             makes all the outputs require
-gradients which causes issues when a tensor is defined to have no
-gradient in the model. To circumvent this, detach the tensors outside of
-the
-             <cite>
-              checkpoint
-             </cite>
-             function.
-            </p>
-           </div>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             At least one of the inputs needs to have
-             <code class="code docutils literal notranslate">
-              <span class="pre">
-               requires_grad=True
-              </span>
-             </code>
-             if
-grads are needed for model inputs, otherwise the checkpointed part of the
-model won’t have gradients. At least one of the outputs needs to have
-             <code class="code docutils literal notranslate">
-              <span class="pre">
-               requires_grad=True
-              </span>
-             </code>
-             as well.
+             is specified, checkpointing
+will work with
+             <a class="reference internal" href="generated/torch.autograd.grad.html#torch.autograd.grad" title="torch.autograd.grad">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.autograd.grad()
+               </span>
+              </code>
+             </a>
+             .
             </p>
            </div>
            <dl class="field-list simple">
@@ -382,6 +451,68 @@ first input as
                 </em>
                 ) – Omit stashing and restoring
 the RNG state during each checkpoint.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 use_reentrant
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 default=True
+                </em>
+                ) – Use checkpointing
+implementation that requires re-entrant autograd.
+If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  use_reentrant=False
+                 </span>
+                </code>
+                is specified,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  checkpoint
+                 </span>
+                </code>
+                will use an
+implementation that does not require re-entrant autograd. This
+allows
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  checkpoint
+                 </span>
+                </code>
+                to support additional functionality, such as
+working as expected with
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.autograd.grad
+                 </span>
+                </code>
+                . Note that future
+versions of PyTorch will default to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  use_reentrant=False
+                 </span>
+                </code>
+                .
                </p>
               </li>
               <li>

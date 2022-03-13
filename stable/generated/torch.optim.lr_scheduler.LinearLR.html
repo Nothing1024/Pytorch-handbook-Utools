@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   LinearLR — PyTorch 1.10 documentation
+   LinearLR — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -289,7 +290,7 @@ each update. Default:
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># lr = 0.03125  if epoch == 1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># lr = 0.0375   if epoch == 2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># lr = 0.04375  if epoch == 3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># lr = 0.005    if epoch &gt;= 4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># lr = 0.05    if epoch &gt;= 4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scheduler</span> <span class="o">=</span> <span class="n">LinearLR</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="p">,</span> <span class="n">start_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">total_iters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">train</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>

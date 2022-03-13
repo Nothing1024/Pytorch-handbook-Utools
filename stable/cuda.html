@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.cuda — PyTorch 1.10 documentation
+   torch.cuda — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -454,6 +455,26 @@ function as CPU tensors, but they utilize GPUs for computation.
            <tr class="row-even">
             <td>
              <p>
+              <p id="torch.cuda.memory_usage">
+              </p>
+              <a class="reference internal" href="generated/torch.cuda.memory_usage.html#torch.cuda.memory_usage" title="torch.cuda.memory_usage">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 memory_usage
+                </span>
+               </code>
+              </a>
+             </p>
+            </td>
+            <td>
+             <p>
+              Returns the percent of time over the past sample period during which global (device) memory was being read or written.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
               <p id="torch.cuda.set_device">
               </p>
               <a class="reference internal" href="generated/torch.cuda.set_device.html#torch.cuda.set_device" title="torch.cuda.set_device">
@@ -471,7 +492,7 @@ function as CPU tensors, but they utilize GPUs for computation.
              </p>
             </td>
            </tr>
-           <tr class="row-odd">
+           <tr class="row-even">
             <td>
              <p>
               <p id="torch.cuda.set_stream">
@@ -491,7 +512,7 @@ function as CPU tensors, but they utilize GPUs for computation.
              </p>
             </td>
            </tr>
-           <tr class="row-even">
+           <tr class="row-odd">
             <td>
              <p>
               <p id="torch.cuda.set_sync_debug_mode">
@@ -511,7 +532,7 @@ function as CPU tensors, but they utilize GPUs for computation.
              </p>
             </td>
            </tr>
-           <tr class="row-odd">
+           <tr class="row-even">
             <td>
              <p>
               <p id="torch.cuda.stream">
@@ -531,7 +552,7 @@ function as CPU tensors, but they utilize GPUs for computation.
              </p>
             </td>
            </tr>
-           <tr class="row-even">
+           <tr class="row-odd">
             <td>
              <p>
               <p id="torch.cuda.synchronize">
@@ -548,6 +569,30 @@ function as CPU tensors, but they utilize GPUs for computation.
             <td>
              <p>
               Waits for all kernels in all streams on a CUDA device to complete.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <p id="torch.cuda.utilization">
+              </p>
+              <a class="reference internal" href="generated/torch.cuda.utilization.html#torch.cuda.utilization" title="torch.cuda.utilization">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 utilization
+                </span>
+               </code>
+              </a>
+             </p>
+            </td>
+            <td>
+             <p>
+              Returns the percent of time over the past sample period during which one or more kernels was executing on the GPU as given by
+              <cite>
+               nvidia-smi
+              </cite>
+              .
              </p>
             </td>
            </tr>
@@ -879,6 +924,26 @@ function as CPU tensors, but they utilize GPUs for computation.
             <tr class="row-even">
              <td>
               <p>
+               <p id="torch.cuda.ExternalStream">
+               </p>
+               <a class="reference internal" href="generated/torch.cuda.ExternalStream.html#torch.cuda.ExternalStream" title="torch.cuda.ExternalStream">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ExternalStream
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Wrapper around an externally allocated CUDA stream.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <p id="torch.cuda.Event">
                </p>
                <a class="reference internal" href="generated/torch.cuda.Event.html#torch.cuda.Event" title="torch.cuda.Event">
@@ -1063,6 +1128,26 @@ function as CPU tensors, but they utilize GPUs for computation.
             <tr class="row-odd">
              <td>
               <p>
+               <p id="torch.cuda.mem_get_info">
+               </p>
+               <a class="reference internal" href="generated/torch.cuda.mem_get_info.html#torch.cuda.mem_get_info" title="torch.cuda.mem_get_info">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  mem_get_info
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Returns the global free and total GPU memory occupied for a given device using cudaMemGetInfo.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
                <p id="torch.cuda.memory_stats">
                </p>
                <a class="reference internal" href="generated/torch.cuda.memory_stats.html#torch.cuda.memory_stats" title="torch.cuda.memory_stats">
@@ -1080,7 +1165,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.memory_summary">
@@ -1100,7 +1185,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.cuda.memory_snapshot">
@@ -1120,7 +1205,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.memory_allocated">
@@ -1140,7 +1225,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.cuda.max_memory_allocated">
@@ -1160,7 +1245,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.reset_max_memory_allocated">
@@ -1180,7 +1265,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.cuda.memory_reserved">
@@ -1200,7 +1285,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.max_memory_reserved">
@@ -1220,7 +1305,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.cuda.set_per_process_memory_fraction">
@@ -1240,7 +1325,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.memory_cached">
@@ -1268,7 +1353,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.cuda.max_memory_cached">
@@ -1296,7 +1381,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.reset_max_memory_cached">
@@ -1316,7 +1401,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.cuda.reset_peak_memory_stats">
@@ -1333,6 +1418,46 @@ function as CPU tensors, but they utilize GPUs for computation.
              <td>
               <p>
                Resets the “peak” stats tracked by the CUDA memory allocator.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.cuda.caching_allocator_alloc">
+               </p>
+               <a class="reference internal" href="generated/torch.cuda.caching_allocator_alloc.html#torch.cuda.caching_allocator_alloc" title="torch.cuda.caching_allocator_alloc">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  caching_allocator_alloc
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Performs a memory allocation using the CUDA memory allocator.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.cuda.caching_allocator_delete">
+               </p>
+               <a class="reference internal" href="generated/torch.cuda.caching_allocator_delete.html#torch.cuda.caching_allocator_delete" title="torch.cuda.caching_allocator_delete">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  caching_allocator_delete
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Deletes memory allocated using the CUDA memory allocator.
               </p>
              </td>
             </tr>

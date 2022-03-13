@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   PackedSequence — PyTorch 1.10 documentation
+   PackedSequence — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -398,45 +399,27 @@ and all functions that construct a
               (
              </span>
              <em class="sig-param">
-              <span class="n">
-               <span class="pre">
-                value
-               </span>
+              <span class="pre">
+               value
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="pre">
+               /
               </span>
              </em>
              <span class="sig-paren">
               )
-             </span>
-             →
-             <span class="pre">
-              integer
-             </span>
-             <span class="pre">
-              –
-             </span>
-             <span class="pre">
-              return
-             </span>
-             <span class="pre">
-              number
-             </span>
-             <span class="pre">
-              of
-             </span>
-             <span class="pre">
-              occurrences
-             </span>
-             <span class="pre">
-              of
-             </span>
-             <span class="pre">
-              value
              </span>
              <a class="headerlink" href="#torch.nn.utils.rnn.PackedSequence.count" title="Permalink to this definition">
               ¶
              </a>
             </dt>
             <dd>
+             <p>
+              Return number of occurrences of value.
+             </p>
             </dd>
            </dl>
            <dl class="py method">
@@ -476,60 +459,35 @@ and all functions that construct a
                value
               </span>
              </em>
-             <span class="optional">
-              [
-             </span>
              ,
              <em class="sig-param">
               <span class="pre">
-               start
+               start=0
               </span>
              </em>
-             <span class="optional">
-              [
-             </span>
              ,
              <em class="sig-param">
               <span class="pre">
-               stop
+               stop=9223372036854775807
               </span>
              </em>
-             <span class="optional">
-              ]
-             </span>
-             <span class="optional">
-              ]
-             </span>
+             ,
+             <em class="sig-param">
+              <span class="pre">
+               /
+              </span>
+             </em>
              <span class="sig-paren">
               )
-             </span>
-             →
-             <span class="pre">
-              integer
-             </span>
-             <span class="pre">
-              –
-             </span>
-             <span class="pre">
-              return
-             </span>
-             <span class="pre">
-              first
-             </span>
-             <span class="pre">
-              index
-             </span>
-             <span class="pre">
-              of
-             </span>
-             <span class="pre">
-              value.
              </span>
              <a class="headerlink" href="#torch.nn.utils.rnn.PackedSequence.index" title="Permalink to this definition">
               ¶
              </a>
             </dt>
             <dd>
+             <p>
+              Return first index of value.
+             </p>
              <p>
               Raises ValueError if the value is not present.
              </p>

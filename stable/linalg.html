@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.linalg — PyTorch 1.10 documentation
+   torch.linalg — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -105,6 +106,52 @@
             <tr class="row-even">
              <td>
               <p>
+               <p id="torch.linalg.diagonal">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.diagonal.html#torch.linalg.diagonal" title="torch.linalg.diagonal">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  diagonal
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Alias for
+               <a class="reference internal" href="generated/torch.diagonal.html#torch.diagonal" title="torch.diagonal">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.diagonal()
+                 </span>
+                </code>
+               </a>
+               with defaults
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 dim1
+                </span>
+               </code>
+               <cite>
+                = -2
+               </cite>
+               ,
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 dim2
+                </span>
+               </code>
+               <cite>
+                = -1
+               </cite>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <p id="torch.linalg.det">
                </p>
                <a class="reference internal" href="generated/torch.linalg.det.html#torch.linalg.det" title="torch.linalg.det">
@@ -122,7 +169,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.linalg.slogdet">
@@ -142,7 +189,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.cond">
@@ -162,7 +209,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.linalg.matrix_rank">
@@ -237,6 +284,26 @@
             <tr class="row-odd">
              <td>
               <p>
+               <p id="torch.linalg.lu_factor">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.lu_factor.html#torch.linalg.lu_factor" title="torch.linalg.lu_factor">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  lu_factor
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes a compact representation of the LU factorization with partial pivoting of a matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
                <p id="torch.linalg.eig">
                </p>
                <a class="reference internal" href="generated/torch.linalg.eig.html#torch.linalg.eig" title="torch.linalg.eig">
@@ -254,7 +321,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.eigvals">
@@ -274,7 +341,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.linalg.eigh">
@@ -294,7 +361,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.eigvalsh">
@@ -314,7 +381,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.linalg.svd">
@@ -334,7 +401,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.svdvals">
@@ -387,6 +454,26 @@
              </td>
             </tr>
             <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.solve_triangular">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.solve_triangular.html#torch.linalg.solve_triangular" title="torch.linalg.solve_triangular">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  solve_triangular
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the solution of a triangular system of linear equations with a unique solution.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.lstsq">
@@ -461,10 +548,10 @@
            </tbody>
           </table>
          </div>
-         <div class="section" id="matrix-products">
+         <div class="section" id="matrix-functions">
           <h2>
-           Matrix Products
-           <a class="headerlink" href="#matrix-products" title="Permalink to this headline">
+           Matrix Functions
+           <a class="headerlink" href="#matrix-functions" title="Permalink to this headline">
             ¶
            </a>
           </h2>
@@ -473,12 +560,12 @@
             <tr class="row-odd">
              <td>
               <p>
-               <p id="torch.linalg.matmul">
+               <p id="torch.linalg.matrix_exp">
                </p>
-               <a class="reference internal" href="generated/torch.linalg.matmul.html#torch.linalg.matmul" title="torch.linalg.matmul">
+               <a class="reference internal" href="generated/torch.linalg.matrix_exp.html#torch.linalg.matrix_exp" title="torch.linalg.matrix_exp">
                 <code class="xref py py-obj docutils literal notranslate">
                  <span class="pre">
-                  matmul
+                  matrix_exp
                  </span>
                 </code>
                </a>
@@ -486,14 +573,7 @@
              </td>
              <td>
               <p>
-               Alias for
-               <a class="reference internal" href="generated/torch.matmul.html#torch.matmul" title="torch.matmul">
-                <code class="xref py py-func docutils literal notranslate">
-                 <span class="pre">
-                  torch.matmul()
-                 </span>
-                </code>
-               </a>
+               Computes the matrix exponential of a square matrix.
               </p>
              </td>
             </tr>
@@ -522,6 +602,65 @@
                 n
                </cite>
                .
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="matrix-products">
+          <h2>
+           Matrix Products
+           <a class="headerlink" href="#matrix-products" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.cross">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.cross.html#torch.linalg.cross" title="torch.linalg.cross">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  cross
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the cross product of two 3-dimensional vectors.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.matmul">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.matmul.html#torch.linalg.matmul" title="torch.linalg.matmul">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  matmul
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Alias for
+               <a class="reference internal" href="generated/torch.matmul.html#torch.matmul" title="torch.matmul">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.matmul()
+                 </span>
+                </code>
+               </a>
               </p>
              </td>
             </tr>
@@ -686,6 +825,43 @@
              <td>
               <p>
                Computes the inverse of a square matrix if it is invertible.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.lu_factor_ex">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.lu_factor_ex.html#torch.linalg.lu_factor_ex" title="torch.linalg.lu_factor_ex">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  lu_factor_ex
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               This is a version of
+               <a class="reference internal" href="generated/torch.linalg.lu_factor.html#torch.linalg.lu_factor" title="torch.linalg.lu_factor">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  lu_factor()
+                 </span>
+                </code>
+               </a>
+               that does not perform error checks unless
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 check_errors
+                </span>
+               </code>
+               <cite>
+                = True
+               </cite>
+               .
               </p>
              </td>
             </tr>

@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.qr — PyTorch 1.10 documentation
+   torch.qr — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -138,23 +139,23 @@ and returns a namedtuple (Q, R) of tensors such that
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.8623em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord text">
                  <span class="mord">
                   input
                  </span>
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.8778em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.00773em;">
                  QR
@@ -182,7 +183,7 @@ and returns a namedtuple (Q, R) of tensors such that
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.8778em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal">
                  Q
@@ -210,7 +211,7 @@ and returns a namedtuple (Q, R) of tensors such that
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.00773em;">
                  R
@@ -504,7 +505,7 @@ is only well-defined when the first
                  <span class="mpunct">
                   ,
                  </span>
-                 <span class="mspace" style="margin-right:0.16666666666666666em;">
+                 <span class="mspace" style="margin-right:0.1667em;">
                  </span>
                  <span class="mord mathnormal">
                   in
@@ -631,7 +632,7 @@ or different platforms.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -639,7 +640,7 @@ or different platforms.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      n
@@ -681,21 +682,21 @@ batch dimensions consisting of matrices of dimension
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.66666em;vertical-align:-0.08333em;">
+                    <span class="strut" style="height:0.6667em;vertical-align:-0.0833em;">
                     </span>
                     <span class="mord mathnormal">
                      m
                     </span>
-                    <span class="mspace" style="margin-right:0.2222222222222222em;">
+                    <span class="mspace" style="margin-right:0.2222em;">
                     </span>
                     <span class="mbin">
                      ×
                     </span>
-                    <span class="mspace" style="margin-right:0.2222222222222222em;">
+                    <span class="mspace" style="margin-right:0.2222em;">
                     </span>
                    </span>
                    <span class="base">
-                    <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4306em;">
                     </span>
                     <span class="mord mathnormal">
                      n
@@ -857,7 +858,7 @@ The dimensions of
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">some</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">a</span><span class="p">)</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">q</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">mT</span><span class="p">,</span> <span class="n">q</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="go">True</span>
 </pre>
             </div>

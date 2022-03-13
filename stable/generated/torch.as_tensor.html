@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.as_tensor — PyTorch 1.10 documentation
+   torch.as_tensor — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -101,54 +102,51 @@
           </dt>
           <dd>
            <p>
-            Convert the data into a
-            <cite>
-             torch.Tensor
-            </cite>
-            . If the data is already a
-            <cite>
-             Tensor
-            </cite>
-            with the same
-            <cite>
-             dtype
-            </cite>
-            and
-            <cite>
-             device
-            </cite>
-            ,
-no copy will be performed, otherwise a new
-            <cite>
-             Tensor
-            </cite>
-            will be returned with computational graph retained if data
-            <cite>
-             Tensor
-            </cite>
-            has
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              requires_grad=True
-             </span>
-            </code>
-            . Similarly, if the data is an
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              ndarray
-             </span>
-            </code>
-            of the corresponding
-            <cite>
-             dtype
-            </cite>
-            and
-the
-            <cite>
-             device
-            </cite>
-            is the cpu, no copy will be performed.
+            Converts data into a tensor, sharing data and preserving autograd
+history if possible.
            </p>
+           <p>
+            If data is already a tensor with the requeseted dtype and device
+then data itself is returned, but if data is a
+tensor with a different dtype or device then it’s copied as if using
+            <cite>
+             data.to(dtype=dtype, device=device)
+            </cite>
+            .
+           </p>
+           <p>
+            If data is a NumPy array (an ndarray) with the same dtype and device then a
+tensor is constructed using
+            <a class="reference internal" href="torch.from_numpy.html#torch.from_numpy" title="torch.from_numpy">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.from_numpy()
+              </span>
+             </code>
+            </a>
+            .
+           </p>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.tensor()
+               </span>
+              </code>
+             </a>
+             never shares its data and creates a new “leaf tensor” (see
+             <a class="reference internal" href="../notes/autograd.html">
+              <span class="doc">
+               Autograd mechanics
+              </span>
+             </a>
+             ).
+            </p>
+           </div>
            <dl class="field-list simple">
             <dt class="field-odd">
              Parameters
@@ -216,30 +214,9 @@ Default: if
                   </span>
                  </code>
                 </a>
-                , optional) – the desired device of returned tensor.
-Default: if
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  None
-                 </span>
-                </code>
-                , uses the current device for the default tensor type
-(see
-                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
-                 <code class="xref py py-func docutils literal notranslate">
-                  <span class="pre">
-                   torch.set_default_tensor_type()
-                  </span>
-                 </code>
-                </a>
-                ).
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  device
-                 </span>
-                </code>
-                will be the CPU
-for CPU tensor types and the current CUDA device for CUDA tensor types.
+                , optional) – the device of the constructed tensor. If None and data is a tensor
+then the device of data is used. If None and data is not a tensor then
+the result tensor is constructed on the CPU.
                </p>
               </li>
              </ul>

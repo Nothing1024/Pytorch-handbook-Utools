@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.autograd.functional.jacobian — PyTorch 1.10 documentation
+   torch.autograd.functional.jacobian — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -109,6 +110,24 @@
             <span class="default_value">
              <span class="pre">
               False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              strategy
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'reverse-mode'
              </span>
             </span>
            </em>
@@ -280,8 +299,13 @@ Defaults to
                 <em>
                  optional
                 </em>
-                ) – This feature is experimental, please use at
-your own risk. When computing the jacobian, usually we invoke
+                ) – This feature is experimental.
+Please consider using
+                <a class="reference external" href="https://github.com/pytorch/functorch#what-are-the-transforms">
+                 functorch’s jacrev or jacfwd
+                </a>
+                instead if you are looking for something less experimental and more performant.
+When computing the jacobian, usually we invoke
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   autograd.grad
@@ -293,26 +317,107 @@ your own risk. When computing the jacobian, usually we invoke
                   True
                  </span>
                 </code>
-                , we use the vmap prototype feature as the backend to
-vectorize calls to
+                , we perform only a single
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   autograd.grad
                  </span>
                 </code>
-                so we only invoke it once
-instead of once per row. This should lead to performance
-improvements in many use cases, however, due to this feature
-being incomplete, there may be performance cliffs. Please
-use
-                <cite>
-                 torch._C._debug_only_display_vmap_fallback_warnings(True)
-                </cite>
-                to show any performance warnings and file us issues if
-warnings exist for your use case. Defaults to
+                call with
                 <code class="docutils literal notranslate">
                  <span class="pre">
-                  False
+                  batched_grad=True
+                 </span>
+                </code>
+                which uses the vmap prototype feature.
+Though this should lead to performance improvements in many cases,
+because this feature is still experimental, there may be performance
+cliffs. See
+                <a class="reference internal" href="torch.autograd.grad.html#torch.autograd.grad" title="torch.autograd.grad">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.autograd.grad()
+                  </span>
+                 </code>
+                </a>
+                ’s
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  batched_grad
+                 </span>
+                </code>
+                parameter for
+more information.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 strategy
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – Set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "forward-mode"
+                 </span>
+                </code>
+                or
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "reverse-mode"
+                 </span>
+                </code>
+                to
+determine whether the Jacobian will be computed with forward or reverse
+mode AD. Currently,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "forward-mode"
+                 </span>
+                </code>
+                requires
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  vectorized=True
+                 </span>
+                </code>
+                .
+Defaults to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "reverse-mode"
+                 </span>
+                </code>
+                . If
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  func
+                 </span>
+                </code>
+                has more outputs than
+inputs,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "forward-mode"
+                 </span>
+                </code>
+                tends to be more performant. Otherwise,
+prefer to use
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "reverse-mode"
                  </span>
                 </code>
                 .
@@ -351,7 +456,14 @@ Tensors where
               th input and will have as size the
 concatenation of the sizes of the corresponding output and the
 corresponding input and will have same dtype and device as the
-corresponding input.
+corresponding input. If strategy is
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                forward-mode
+               </span>
+              </code>
+              , the dtype will be
+that of the output; otherwise, the input.
              </p>
             </dd>
             <dt class="field-odd">

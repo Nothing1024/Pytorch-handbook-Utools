@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.Tensor.select — PyTorch 1.10 documentation
+   torch.Tensor.select — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -73,97 +74,15 @@
           </dt>
           <dd>
            <p>
-            Slices the
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              self
-             </span>
-            </code>
-            tensor along the selected dimension at the given index.
-This function returns a view of the original tensor with the given dimension removed.
+            See
+            <a class="reference internal" href="torch.select.html#torch.select" title="torch.select">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.select()
+              </span>
+             </code>
+            </a>
            </p>
-           <dl class="field-list simple">
-            <dt class="field-odd">
-             Parameters
-            </dt>
-            <dd class="field-odd">
-             <ul class="simple">
-              <li>
-               <p>
-                <strong>
-                 dim
-                </strong>
-                (
-                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
-                 <em>
-                  int
-                 </em>
-                </a>
-                ) – the dimension to slice
-               </p>
-              </li>
-              <li>
-               <p>
-                <strong>
-                 index
-                </strong>
-                (
-                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
-                 <em>
-                  int
-                 </em>
-                </a>
-                ) – the index to select with
-               </p>
-              </li>
-             </ul>
-            </dd>
-           </dl>
-           <div class="admonition note">
-            <p class="admonition-title">
-             Note
-            </p>
-            <p>
-             <a class="reference internal" href="#torch.Tensor.select" title="torch.Tensor.select">
-              <code class="xref py py-meth docutils literal notranslate">
-               <span class="pre">
-                select()
-               </span>
-              </code>
-             </a>
-             is equivalent to slicing. For example,
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               tensor.select(0,
-              </span>
-              <span class="pre">
-               index)
-              </span>
-             </code>
-             is equivalent to
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               tensor[index]
-              </span>
-             </code>
-             and
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               tensor.select(2,
-              </span>
-              <span class="pre">
-               index)
-              </span>
-             </code>
-             is equivalent to
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               tensor[:,:,index]
-              </span>
-             </code>
-             .
-            </p>
-           </div>
           </dd>
          </dl>
         </div>

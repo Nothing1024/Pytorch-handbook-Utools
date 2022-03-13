@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.futures — PyTorch 1.10 documentation
+   torch.futures — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -274,40 +275,31 @@ registration API under the hood.
                Parameters
               </dt>
               <dd class="field-odd">
-               <ul class="simple">
-                <li>
-                 <p>
-                  <strong>
-                   callback
-                  </strong>
-                  (
-                  <code class="docutils literal notranslate">
-                   <span class="pre">
-                    Future
-                   </span>
-                  </code>
-                  ) – a
-                  <code class="docutils literal notranslate">
-                   <span class="pre">
-                    Callable
-                   </span>
-                  </code>
-                  that takes in one argument,
-                 </p>
-                </li>
-                <li>
-                 <p>
-                  <strong>
-                   is the reference to this Future.
-                  </strong>
-                  (
-                  <em>
-                   which
-                  </em>
-                  ) –
-                 </p>
-                </li>
-               </ul>
+               <p>
+                <strong>
+                 callback
+                </strong>
+                (
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Future
+                 </span>
+                </code>
+                ) – a
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Callable
+                 </span>
+                </code>
+                that takes in one argument,
+which is the reference to this
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  Future
+                 </span>
+                </code>
+                .
+               </p>
               </dd>
              </dl>
              <div class="admonition note">

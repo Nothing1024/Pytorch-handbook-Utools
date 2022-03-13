@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.fx — PyTorch 1.10 documentation
+   torch.fx — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -1240,6 +1241,7 @@ on them and append them to the
     <span class="n">graph</span> <span class="p">:</span> <span class="n">fx</span><span class="o">.</span><span class="n">Graph</span> <span class="o">=</span> <span class="n">tracer_class</span><span class="p">()</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
     <span class="n">new_graph</span> <span class="o">=</span> <span class="n">fx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="n">env</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">tracer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">fx</span><span class="o">.</span><span class="n">proxy</span><span class="o">.</span><span class="n">GraphAppendingTracer</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">op</span> <span class="o">==</span> <span class="s1">'call_function'</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">target</span> <span class="ow">in</span> <span class="n">decomposition_rules</span><span class="p">:</span>
             <span class="c1"># By wrapping the arguments with proxies,</span>
@@ -1247,7 +1249,7 @@ on them and append them to the
             <span class="c1"># decomposition rule and implicitly add it</span>
             <span class="c1"># to the Graph by symbolically tracing it.</span>
             <span class="n">proxy_args</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">fx</span><span class="o">.</span><span class="n">Proxy</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">])</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="o">.</span><span class="n">Node</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+                <span class="n">fx</span><span class="o">.</span><span class="n">Proxy</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="n">tracer</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="o">.</span><span class="n">Node</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
             <span class="n">output_proxy</span> <span class="o">=</span> <span class="n">decomposition_rules</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">target</span><span class="p">](</span><span class="o">*</span><span class="n">proxy_args</span><span class="p">)</span>
 
             <span class="c1"># Operations on `Proxy` always yield new `Proxy`s, and the</span>
@@ -1278,7 +1280,41 @@ on them and append them to the
 also allows you to specify your rewrite rules as native Python code.
 For transformations that require a large amount of rewrite rules
 (such as vmap or grad), this can often improve readability and
-maintainability of the rules.
+maintainability of the rules. Note that while calling
+            <a class="reference internal" href="#torch.fx.Proxy" title="torch.fx.Proxy">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               Proxy
+              </span>
+             </code>
+            </a>
+            we also
+passed a tracer pointing to the underlying variable
+            <cite>
+             graph
+            </cite>
+            . This is done so
+if in case the operations in graph are n-ary (e.g. add is a binary operator)
+the call to
+            <a class="reference internal" href="#torch.fx.Proxy" title="torch.fx.Proxy">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               Proxy
+              </span>
+             </code>
+            </a>
+            does not create multiple instances of a graph
+tracer which can lead to unexpected runtime errors. We recommend this method
+of using
+            <a class="reference internal" href="#torch.fx.Proxy" title="torch.fx.Proxy">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               Proxy
+              </span>
+             </code>
+            </a>
+            especially when the underlying operators can not be
+safely assumed to be unary.
            </p>
            <p>
             A worked example of using
@@ -2049,28 +2085,31 @@ examine our traced module:
 <span class="c1"># The generated `forward` function is:</span>
 <span class="sd">"""</span>
 <span class="sd">def forward(self, x, y):</span>
-<span class="sd">    add_1 = x + y;  x = y = None</span>
-<span class="sd">    return add_1</span>
+<span class="sd">    add = x + y;  x = y = None</span>
+<span class="sd">    return add</span>
 <span class="sd">"""</span>
 
 <span class="c1"># Print the internal Graph.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">traced</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
 <span class="c1"># This print-out returns:</span>
 <span class="sd">"""</span>
-<span class="sd">graph(x, y):</span>
-<span class="sd">    %add_1 : [#users=1] = call_function[target=&lt;built-in function add&gt;](args = (%x, %y), kwargs = {})</span>
-<span class="sd">    return add_1</span>
+<span class="sd">graph():</span>
+<span class="sd">    %x : [#users=1] = placeholder[target=x]</span>
+<span class="sd">    %y : [#users=1] = placeholder[target=y]</span>
+<span class="sd">    %add : [#users=1] = call_function[target=operator.add](args = (%x, %y), kwargs = {})</span>
+<span class="sd">    return add</span>
 <span class="sd">"""</span>
 
 <span class="c1"># Print a tabular representation of the internal Graph.</span>
 <span class="n">traced</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">print_tabular</span><span class="p">()</span>
 <span class="c1"># This gives us:</span>
 <span class="sd">"""</span>
-<span class="sd">opcode         name    target                   args      kwargs</span>
-<span class="sd">-------------  ------  -----------------------  --------  --------</span>
-<span class="sd">placeholder    x       x                        ()        {}</span>
-<span class="sd">placeholder    y       y                        ()        {}</span>
-<span class="sd">call_function  add_1   &lt;built-in function add&gt;  (x, y)    {}</span>
+<span class="sd">opcode         name    target                   args    kwargs</span>
+<span class="sd">-------------  ------  -----------------------  ------  --------</span>
+<span class="sd">placeholder    x       x                        ()      {}</span>
+<span class="sd">placeholder    y       y                        ()      {}</span>
+<span class="sd">call_function  add     &lt;built-in function add&gt;  (x, y)  {}</span>
+<span class="sd">output         output  output                   (add,)  {}</span>
 <span class="sd">"""</span>
 </pre>
             </div>
@@ -3041,7 +3080,138 @@ supported.
               </li>
              </ul>
             </li>
+            <li>
+             <p>
+              Gotcha around
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                training
+               </span>
+              </code>
+              flag and submodules
+             </p>
+             <ul class="simple">
+              <li>
+               <p>
+                When using functionals like
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.nn.functional.dropout
+                 </span>
+                </code>
+                , it will be common for the training argument to be passed in as
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  self.training
+                 </span>
+                </code>
+                . During FX tracing, this will likely be baked in as a constant value.
+               </p>
+              </li>
+             </ul>
+             <blockquote>
+              <div>
+               <div class="highlight-default notranslate">
+                <div class="highlight">
+                 <pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.fx</span>
+
+<span class="k">class</span> <span class="nc">DropoutRepro</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+
+
+<span class="n">traced</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">fx</span><span class="o">.</span><span class="n">symbolic_trace</span><span class="p">(</span><span class="n">DropoutRepro</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traced</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+<span class="sd">"""</span>
+<span class="sd">def forward(self, x):</span>
+<span class="sd">  dropout = torch.nn.functional.dropout(x, p = 0.5, training = True, inplace = False);  x = None</span>
+<span class="sd">  return dropout</span>
+<span class="sd">"""</span>
+
+<span class="n">traced</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">traced</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+<span class="sd">"""</span>
+<span class="sd">AssertionError: Tensor-likes are not close!</span>
+
+<span class="sd">Mismatched elements: 15 / 15 (100.0%)</span>
+<span class="sd">Greatest absolute difference: 1.6207983493804932 at index (0, 2) (up to 1e-05 allowed)</span>
+<span class="sd">Greatest relative difference: 1.0 at index (0, 0) (up to 0.0001 allowed)</span>
+<span class="sd">"""</span>
+</pre>
+                </div>
+               </div>
+              </div>
+             </blockquote>
+             <ul class="simple">
+              <li>
+               <p>
+                However, when the standard
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  nn.Dropout()
+                 </span>
+                </code>
+                submodule is used, the training flag is encapsulated and–because of the preservation of the
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  nn.Module
+                 </span>
+                </code>
+                object model–can be changed.
+               </p>
+              </li>
+             </ul>
+             <blockquote>
+              <div>
+               <div class="highlight-default notranslate">
+                <div class="highlight">
+                 <pre><span></span><span class="k">class</span> <span class="nc">DropoutRepro2</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">drop</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">traced</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">fx</span><span class="o">.</span><span class="n">symbolic_trace</span><span class="p">(</span><span class="n">DropoutRepro2</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traced</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+<span class="sd">"""</span>
+<span class="sd">def forward(self, x):</span>
+<span class="sd">  drop = self.drop(x);  x = None</span>
+<span class="sd">  return drop</span>
+<span class="sd">"""</span>
+
+<span class="n">traced</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">traced</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+</pre>
+                </div>
+               </div>
+              </div>
+             </blockquote>
+            </li>
            </ul>
+           <blockquote>
+            <div>
+             <ul class="simple">
+              <li>
+               <p>
+                Because of this difference, consider marking modules that interact with the
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  training
+                 </span>
+                </code>
+                flag dynamically as leaf modules.
+               </p>
+              </li>
+             </ul>
+            </div>
+           </blockquote>
           </div>
          </div>
          <div class="section" id="api-reference">
@@ -3088,24 +3258,6 @@ supported.
              <span class="default_value">
               <span class="pre">
                None
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               enable_cpatching
-              </span>
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               False
               </span>
              </span>
             </em>
@@ -3300,18 +3452,6 @@ into a Graph representation.
                   ]
                  </em>
                  ) – Inputs to be partially specialized
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
-                  enable_cpatching
-                 </strong>
-                 – Enables C-level patching of functions (captures things like
-                 <cite>
-                  torch.randn
-                 </cite>
-                 )
                 </p>
                </li>
               </ul>
@@ -4784,12 +4924,6 @@ represents a call to a Python callable, specified by
                 </span>
                </code>
                .
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 the_function
-                </span>
-               </code>
-               can be
               </p>
               <dl class="field-list simple">
                <dt class="field-odd">
@@ -4937,12 +5071,10 @@ Python type the output of this node will have.
                  </li>
                 </ul>
                </dd>
-              </dl>
-              <p>
-               Returns
-              </p>
-              <blockquote>
-               <div>
+               <dt class="field-even">
+                Returns
+               </dt>
+               <dd class="field-even">
                 <p>
                  The newly created and inserted
                  <code class="docutils literal notranslate">
@@ -4952,8 +5084,8 @@ Python type the output of this node will have.
                  </code>
                  node.
                 </p>
-               </div>
-              </blockquote>
+               </dd>
+              </dl>
               <div class="admonition note">
                <p class="admonition-title">
                 Note
@@ -6664,11 +6796,11 @@ then restore it when the with statement exits:
 </pre>
                  </div>
                 </div>
-                <dl class="simple">
-                 <dt>
-                  Args:
-                 </dt>
-                 <dd>
+                <p>
+                 Args:
+                </p>
+                <blockquote>
+                 <div>
                   <dl class="simple">
                    <dt>
                     n (Optional[Node]): The node before which to insert. If None this will insert after
@@ -6679,7 +6811,9 @@ then restore it when the with statement exits:
                     </p>
                    </dd>
                   </dl>
-                 </dd>
+                 </div>
+                </blockquote>
+                <dl class="simple">
                  <dt>
                   Returns:
                  </dt>
@@ -6767,11 +6901,11 @@ then restore it when the with statement exits:
 </pre>
                  </div>
                 </div>
-                <dl class="simple">
-                 <dt>
-                  Args:
-                 </dt>
-                 <dd>
+                <p>
+                 Args:
+                </p>
+                <blockquote>
+                 <div>
                   <dl class="simple">
                    <dt>
                     n (Optional[Node]): The node before which to insert. If None this will insert before
@@ -6782,7 +6916,9 @@ then restore it when the with statement exits:
                     </p>
                    </dd>
                   </dl>
-                 </dd>
+                 </div>
+                </blockquote>
+                <dl class="simple">
                  <dt>
                   Returns:
                  </dt>
@@ -7070,6 +7206,157 @@ this list to switch iteration order.
              </dd>
             </dl>
             <dl class="py method">
+             <dt id="torch.fx.Graph.on_generate_code">
+              <code class="sig-name descname">
+               <span class="pre">
+                on_generate_code
+               </span>
+              </code>
+              <span class="sig-paren">
+               (
+              </span>
+              <em class="sig-param">
+               <span class="n">
+                <span class="pre">
+                 make_transformer
+                </span>
+               </span>
+              </em>
+              <span class="sig-paren">
+               )
+              </span>
+              <a class="reference internal" href="_modules/torch/fx/graph.html#Graph.on_generate_code">
+               <span class="viewcode-link">
+                <span class="pre">
+                 [source]
+                </span>
+               </span>
+              </a>
+              <a class="headerlink" href="#torch.fx.Graph.on_generate_code" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Register a transformer function when python code is generated
+              </p>
+              <blockquote>
+               <div>
+                <dl>
+                 <dt>
+                  Args:
+                 </dt>
+                 <dd>
+                  <dl>
+                   <dt>
+                    make_transformer (Callable[[Optional[TransformCodeFunc]], TransformCodeFunc]):
+                   </dt>
+                   <dd>
+                    <p>
+                     a function that returns a code transformer to be registered.
+This function is called by
+                     <cite>
+                      on_generate_code
+                     </cite>
+                     to obtain the
+code transformer.
+                    </p>
+                    <p>
+                     This function is also given as its input the currently
+registered code transformer (or None if nothing is registered),
+in case it is not desirable to overwrite it. This is useful to
+chain code transformers together.
+                    </p>
+                   </dd>
+                  </dl>
+                 </dd>
+                 <dt>
+                  Returns:
+                 </dt>
+                 <dd>
+                  <p>
+                   a context manager that when used in a
+                   <cite>
+                    with
+                   </cite>
+                   statement, to automatically
+restore the previously registered code transformer.
+                  </p>
+                 </dd>
+                </dl>
+                <p>
+                 Example:
+                </p>
+                <div class="highlight-python notranslate">
+                 <div class="highlight">
+                  <pre><span></span><span class="n">gm</span><span class="p">:</span> <span class="n">fx</span><span class="o">.</span><span class="n">GraphModule</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># This is a code transformer we want to register. This code</span>
+<span class="c1"># transformer prepends a pdb import and trace statement at the very</span>
+<span class="c1"># beginning of the generated torch.fx code to allow for manual</span>
+<span class="c1"># debugging with the PDB library.</span>
+<span class="k">def</span> <span class="nf">insert_pdb</span><span class="p">(</span><span class="n">body</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s2">"import pdb; pdb.set_trace()</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="o">*</span><span class="n">body</span><span class="p">]</span>
+
+<span class="c1"># Registers `insert_pdb`, and overwrites the current registered</span>
+<span class="c1"># code transformer (given by `_` to the lambda):</span>
+<span class="n">gm</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">on_generate_code</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">insert_pdb</span>
+<span class="p">)</span>
+
+<span class="c1"># Or alternatively, registers a code transformer which first</span>
+<span class="c1"># runs `body` through existing registered transformer, then</span>
+<span class="c1"># through `insert_pdb`:</span>
+<span class="n">gm</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">on_generate_code</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">current_trans</span><span class="p">:</span> <span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">body</span><span class="p">:</span> <span class="n">insert_pdb</span><span class="p">(</span>
+            <span class="n">current_trans</span><span class="p">(</span><span class="n">body</span><span class="p">)</span> <span class="k">if</span> <span class="n">current_trans</span>
+            <span class="k">else</span> <span class="n">body</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">gm</span><span class="o">.</span><span class="n">recompile</span><span class="p">()</span>
+<span class="n">gm</span><span class="p">(</span><span class="o">*</span><span class="n">inputs</span><span class="p">)</span>  <span class="c1"># drops into pdb</span>
+</pre>
+                 </div>
+                </div>
+                <p>
+                 This function can also be used as a context manager, with the benefit to
+automatically restores the previously registered code transformer:
+                </p>
+                <div class="highlight-python notranslate">
+                 <div class="highlight">
+                  <pre><span></span><span class="c1"># ... continue from previous example</span>
+
+<span class="k">with</span> <span class="n">gm</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">on_generate_code</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">insert_pdb</span><span class="p">):</span>
+    <span class="c1"># do more stuff with `gm`...</span>
+    <span class="n">gm</span><span class="o">.</span><span class="n">recompile</span><span class="p">()</span>
+    <span class="n">gm</span><span class="p">(</span><span class="o">*</span><span class="n">inputs</span><span class="p">)</span>  <span class="c1"># drops into pdb</span>
+
+<span class="c1"># now previous code transformer is restored (but `gm`'s code with pdb</span>
+<span class="c1"># remains - that means you can run `gm` with pdb here too, until you</span>
+<span class="c1"># run next `recompile()`).</span>
+</pre>
+                 </div>
+                </div>
+               </div>
+              </blockquote>
+              <div class="admonition warning">
+               <p class="admonition-title">
+                Warning
+               </p>
+               <p>
+                This API is experimental and is
+                <em>
+                 NOT
+                </em>
+                backward-compatible.
+               </p>
+              </div>
+             </dd>
+            </dl>
+            <dl class="py method">
              <dt id="torch.fx.Graph.output">
               <code class="sig-name descname">
                <span class="pre">
@@ -7273,28 +7560,20 @@ modules.
                (
               </span>
               <em class="sig-param">
-               <span class="n">
-                <span class="pre">
-                 name
-                </span>
+               <span class="pre">
+                name
                </span>
               </em>
               ,
               <em class="sig-param">
-               <span class="n">
-                <span class="pre">
-                 type_expr
-                </span>
+               <span class="pre">
+                type_expr=None
                </span>
-               <span class="o">
-                <span class="pre">
-                 =
-                </span>
-               </span>
-               <span class="default_value">
-                <span class="pre">
-                 None
-                </span>
+              </em>
+              ,
+              <em class="sig-param">
+               <span class="pre">
+                default_value
                </span>
               </em>
               <span class="sig-paren">
@@ -7377,6 +7656,28 @@ of the positional argument to the function this
 Python type the output of this node will have. This is needed in some
 cases for proper code generation (e.g. when the function is used
 subsequently in TorchScript compilation).
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   <strong>
+                    default_value
+                   </strong>
+                   (
+                   <em>
+                    Any
+                   </em>
+                   ) – The default value this function argument should take
+on. NOTE: to allow for
+                   <cite>
+                    None
+                   </cite>
+                   as a default value,
+                   <cite>
+                    inspect.Signature.empty
+                   </cite>
+                   should be passed as this argument to specify that the parameter does _not_
+have a default value.
                   </p>
                  </li>
                 </ul>
@@ -8067,8 +8368,14 @@ are Nodes.
              </dt>
              <dd>
               <p>
-               Insert x after this node in the list of nodes in the graph.
-Equvalent to
+               Insert
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 x
+                </span>
+               </code>
+               after this node in the list of nodes in the graph.
+Equivalent to
                <code class="docutils literal notranslate">
                 <span class="pre">
                  self.next.prepend(x)
@@ -9416,24 +9723,6 @@ stack traces during tracing for debug purposes, set
              <span class="default_value">
               <span class="pre">
                ()
-              </span>
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="n">
-              <span class="pre">
-               enable_cpatching
-              </span>
-             </span>
-             <span class="o">
-              <span class="pre">
-               =
-              </span>
-             </span>
-             <span class="default_value">
-              <span class="pre">
-               False
               </span>
              </span>
             </em>

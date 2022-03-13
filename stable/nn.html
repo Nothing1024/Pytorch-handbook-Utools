@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nn — PyTorch 1.10 documentation
+   torch.nn — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -1478,7 +1479,11 @@
              </td>
              <td>
               <p>
-               Applies the element-wise function:
+               Applies the Exponential Linear Unit (ELU) function, element-wise, as described in the paper:
+               <a class="reference external" href="https://arxiv.org/abs/1511.07289">
+                Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)
+               </a>
+               .
               </p>
              </td>
             </tr>
@@ -1496,7 +1501,7 @@
              </td>
              <td>
               <p>
-               Applies the hard shrinkage function element-wise:
+               Applies the Hard Shrinkage (Hardshrink) function element-wise.
               </p>
              </td>
             </tr>
@@ -1514,7 +1519,7 @@
              </td>
              <td>
               <p>
-               Applies the element-wise function:
+               Applies the Hardsigmoid function element-wise.
               </p>
              </td>
             </tr>
@@ -1532,7 +1537,7 @@
              </td>
              <td>
               <p>
-               Applies the HardTanh function element-wise
+               Applies the HardTanh function element-wise.
               </p>
              </td>
             </tr>
@@ -1604,7 +1609,11 @@
              </td>
              <td>
               <p>
-               Allows the model to jointly attend to information from different representation subspaces.
+               Allows the model to jointly attend to information from different representation subspaces as described in the paper:
+               <a class="reference external" href="https://arxiv.org/abs/1706.03762">
+                Attention Is All You Need
+               </a>
+               .
               </p>
              </td>
             </tr>
@@ -1802,7 +1811,230 @@
              </td>
              <td>
               <p>
-               Applies the element-wise function:
+               Applies the Softplus function
+               <span class="math">
+                <span class="katex">
+                 <span class="katex-mathml">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                   <semantics>
+                    <mrow>
+                     <mtext>
+                      Softplus
+                     </mtext>
+                     <mo stretchy="false">
+                      (
+                     </mo>
+                     <mi>
+                      x
+                     </mi>
+                     <mo stretchy="false">
+                      )
+                     </mo>
+                     <mo>
+                      =
+                     </mo>
+                     <mfrac>
+                      <mn>
+                       1
+                      </mn>
+                      <mi>
+                       β
+                      </mi>
+                     </mfrac>
+                     <mo>
+                      ∗
+                     </mo>
+                     <mi>
+                      log
+                     </mi>
+                     <mo>
+                      ⁡
+                     </mo>
+                     <mo stretchy="false">
+                      (
+                     </mo>
+                     <mn>
+                      1
+                     </mn>
+                     <mo>
+                      +
+                     </mo>
+                     <mi>
+                      exp
+                     </mi>
+                     <mo>
+                      ⁡
+                     </mo>
+                     <mo stretchy="false">
+                      (
+                     </mo>
+                     <mi>
+                      β
+                     </mi>
+                     <mo>
+                      ∗
+                     </mo>
+                     <mi>
+                      x
+                     </mi>
+                     <mo stretchy="false">
+                      )
+                     </mo>
+                     <mo stretchy="false">
+                      )
+                     </mo>
+                    </mrow>
+                    <annotation encoding="application/x-tex">
+                     \text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))
+                    </annotation>
+                   </semantics>
+                  </math>
+                 </span>
+                 <span aria-hidden="true" class="katex-html">
+                  <span class="base">
+                   <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                   </span>
+                   <span class="mord text">
+                    <span class="mord">
+                     Softplus
+                    </span>
+                   </span>
+                   <span class="mopen">
+                    (
+                   </span>
+                   <span class="mord mathnormal">
+                    x
+                   </span>
+                   <span class="mclose">
+                    )
+                   </span>
+                   <span class="mspace" style="margin-right:0.2778em;">
+                   </span>
+                   <span class="mrel">
+                    =
+                   </span>
+                   <span class="mspace" style="margin-right:0.2778em;">
+                   </span>
+                  </span>
+                  <span class="base">
+                   <span class="strut" style="height:1.3262em;vertical-align:-0.4811em;">
+                   </span>
+                   <span class="mord">
+                    <span class="mopen nulldelimiter">
+                    </span>
+                    <span class="mfrac">
+                     <span class="vlist-t vlist-t2">
+                      <span class="vlist-r">
+                       <span class="vlist" style="height:0.8451em;">
+                        <span style="top:-2.655em;">
+                         <span class="pstrut" style="height:3em;">
+                         </span>
+                         <span class="sizing reset-size6 size3 mtight">
+                          <span class="mord mtight">
+                           <span class="mord mathnormal mtight" style="margin-right:0.05278em;">
+                            β
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                        <span style="top:-3.23em;">
+                         <span class="pstrut" style="height:3em;">
+                         </span>
+                         <span class="frac-line" style="border-bottom-width:0.04em;">
+                         </span>
+                        </span>
+                        <span style="top:-3.394em;">
+                         <span class="pstrut" style="height:3em;">
+                         </span>
+                         <span class="sizing reset-size6 size3 mtight">
+                          <span class="mord mtight">
+                           <span class="mord mtight">
+                            1
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="vlist-s">
+                        ​
+                       </span>
+                      </span>
+                      <span class="vlist-r">
+                       <span class="vlist" style="height:0.4811em;">
+                        <span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="mclose nulldelimiter">
+                    </span>
+                   </span>
+                   <span class="mspace" style="margin-right:0.2222em;">
+                   </span>
+                   <span class="mbin">
+                    ∗
+                   </span>
+                   <span class="mspace" style="margin-right:0.2222em;">
+                   </span>
+                  </span>
+                  <span class="base">
+                   <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                   </span>
+                   <span class="mop">
+                    lo
+                    <span style="margin-right:0.01389em;">
+                     g
+                    </span>
+                   </span>
+                   <span class="mopen">
+                    (
+                   </span>
+                   <span class="mord">
+                    1
+                   </span>
+                   <span class="mspace" style="margin-right:0.2222em;">
+                   </span>
+                   <span class="mbin">
+                    +
+                   </span>
+                   <span class="mspace" style="margin-right:0.2222em;">
+                   </span>
+                  </span>
+                  <span class="base">
+                   <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                   </span>
+                   <span class="mop">
+                    exp
+                   </span>
+                   <span class="mopen">
+                    (
+                   </span>
+                   <span class="mord mathnormal" style="margin-right:0.05278em;">
+                    β
+                   </span>
+                   <span class="mspace" style="margin-right:0.2222em;">
+                   </span>
+                   <span class="mbin">
+                    ∗
+                   </span>
+                   <span class="mspace" style="margin-right:0.2222em;">
+                   </span>
+                  </span>
+                  <span class="base">
+                   <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                   </span>
+                   <span class="mord mathnormal">
+                    x
+                   </span>
+                   <span class="mclose">
+                    ))
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+               element-wise.
               </p>
              </td>
             </tr>
@@ -1856,7 +2088,7 @@
              </td>
              <td>
               <p>
-               Applies the element-wise function:
+               Applies the Hyperbolic Tangent (Tanh) function element-wise.
               </p>
              </td>
             </tr>
@@ -1992,7 +2224,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal">
                     b
@@ -2000,26 +2232,26 @@
                    <span class="mclose">
                     )
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                    <span class="mrel">
                     =
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.66666em;vertical-align:-0.08333em;">
+                   <span class="strut" style="height:0.6667em;vertical-align:-0.0833em;">
                    </span>
                    <span class="mord mathnormal">
                     a
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     ⊗
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
@@ -2060,7 +2292,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     a
@@ -2088,7 +2320,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6944em;">
                    </span>
                    <span class="mord mathnormal">
                     b
@@ -2310,7 +2542,7 @@
              </td>
              <td>
               <p>
-               Applies Batch Normalization over a 2D or 3D input (a mini-batch of 1D inputs with optional additional channel dimension) as described in the paper
+               Applies Batch Normalization over a 2D or 3D input as described in the paper
                <a class="reference external" href="https://arxiv.org/abs/1502.03167">
                 Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
                </a>
@@ -2551,7 +2783,7 @@
              </td>
              <td>
               <p>
-               Applies Instance Normalization over a 3D input (a mini-batch of 1D inputs with optional additional channel dimension) as described in the paper
+               Applies Instance Normalization over a 2D (unbatched) or 3D (batched) input as described in the paper
                <a class="reference external" href="https://arxiv.org/abs/1607.08022">
                 Instance Normalization: The Missing Ingredient for Fast Stylization
                </a>
@@ -2841,7 +3073,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6944em;">
                    </span>
                    <span class="mop">
                     tanh
@@ -2869,7 +3101,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6833em;">
                    </span>
                    <span class="mord text">
                     <span class="mord">
@@ -3163,21 +3395,21 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                    <span class="mrel">
                     =
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.924661em;vertical-align:-0.08333em;">
+                   <span class="strut" style="height:0.9247em;vertical-align:-0.0833em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -3189,7 +3421,7 @@
                     <span class="msupsub">
                      <span class="vlist-t">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.8413309999999999em;">
+                       <span class="vlist" style="height:0.8413em;">
                         <span style="top:-3.063em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
@@ -3204,16 +3436,16 @@
                      </span>
                     </span>
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     +
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6944em;">
                    </span>
                    <span class="mord mathnormal">
                     b
@@ -3289,21 +3521,21 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                    <span class="mrel">
                     =
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:1.0894389999999998em;vertical-align:-0.24810799999999997em;">
+                   <span class="strut" style="height:1.0894em;vertical-align:-0.2481em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal">
@@ -3312,8 +3544,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.8413309999999999em;">
-                        <span style="top:-2.4518920000000004em;margin-left:0em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.8413em;">
+                        <span style="top:-2.4519em;margin-left:0em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -3337,7 +3569,7 @@
                        </span>
                       </span>
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.24810799999999997em;">
+                       <span class="vlist" style="height:0.2481em;">
                         <span>
                         </span>
                        </span>
@@ -3355,8 +3587,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.30110799999999993em;">
-                        <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.3011em;">
+                        <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -3379,16 +3611,16 @@
                      </span>
                     </span>
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     +
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6944em;">
                    </span>
                    <span class="mord mathnormal">
                     b
@@ -3501,7 +3733,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.85396em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.854em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.05724em;">
                     j
@@ -3529,7 +3761,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.65952em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6595em;">
                    </span>
                    <span class="mord mathnormal">
                     i
@@ -3588,7 +3820,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.05724em;">
                     j
@@ -3637,7 +3869,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.85396em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.854em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.05724em;">
                     j
@@ -3665,7 +3897,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.65952em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6595em;">
                    </span>
                    <span class="mord mathnormal">
                     i
@@ -3724,7 +3956,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.05724em;">
                     j
@@ -3878,7 +4110,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.58056em;vertical-align:-0.15em;">
+                   <span class="strut" style="height:0.5806em;vertical-align:-0.15em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal">
@@ -3887,8 +4119,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.30110799999999993em;">
-                        <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.3011em;">
+                        <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -3939,7 +4171,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.58056em;vertical-align:-0.15em;">
+                   <span class="strut" style="height:0.5806em;vertical-align:-0.15em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal">
@@ -3948,8 +4180,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.30110799999999993em;">
-                        <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.3011em;">
+                        <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -4022,7 +4254,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.58056em;vertical-align:-0.15em;">
+                   <span class="strut" style="height:0.5806em;vertical-align:-0.15em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal" style="margin-right:0.03588em;">
@@ -4031,8 +4263,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.30110799999999993em;">
-                        <span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.3011em;">
+                        <span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -4083,7 +4315,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.58056em;vertical-align:-0.15em;">
+                   <span class="strut" style="height:0.5806em;vertical-align:-0.15em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal" style="margin-right:0.03588em;">
@@ -4092,8 +4324,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.30110799999999993em;">
-                        <span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.3011em;">
+                        <span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -4171,7 +4403,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4199,7 +4431,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -4245,7 +4477,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4273,7 +4505,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -4390,7 +4622,7 @@
              </td>
              <td>
               <p>
-               The Kullback-Leibler divergence loss measure
+               The Kullback-Leibler divergence loss.
               </p>
              </td>
             </tr>
@@ -4474,7 +4706,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6444em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4508,7 +4740,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6444em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4520,11 +4752,14 @@
                  </span>
                 </span>
                </span>
-               , two 1D mini-batch
+               , two 1D mini-batch or 0D
                <cite>
                 Tensors
                </cite>
-               , and a label 1D mini-batch tensor
+               , and a label 1D mini-batch or 0D
+               <cite>
+                Tensor
+               </cite>
                <span class="math">
                 <span class="katex">
                  <span class="katex-mathml">
@@ -4543,7 +4778,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -4589,7 +4824,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4617,7 +4852,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -4663,7 +4898,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4695,7 +4930,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -4781,7 +5016,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4809,7 +5044,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -4855,7 +5090,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -4883,7 +5118,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -4934,7 +5169,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.07153em;">
                     C
@@ -4988,7 +5223,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.58056em;vertical-align:-0.15em;">
+                   <span class="strut" style="height:0.5806em;vertical-align:-0.15em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal">
@@ -4997,8 +5232,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.30110799999999993em;">
-                        <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.3011em;">
+                        <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -5049,7 +5284,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.58056em;vertical-align:-0.15em;">
+                   <span class="strut" style="height:0.5806em;vertical-align:-0.15em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal">
@@ -5058,8 +5293,8 @@
                     <span class="msupsub">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.30110799999999993em;">
-                        <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                       <span class="vlist" style="height:0.3011em;">
+                        <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -5109,7 +5344,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -5155,7 +5390,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -5187,7 +5422,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
@@ -5242,31 +5477,31 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.78041em;vertical-align:-0.13597em;">
+                   <span class="strut" style="height:0.7804em;vertical-align:-0.136em;">
                    </span>
                    <span class="mord">
                     0
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                    <span class="mrel">
                     ≤
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.8304100000000001em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.8304em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     y
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                    <span class="mrel">
                     ≤
                    </span>
-                   <span class="mspace" style="margin-right:0.2777777777777778em;">
+                   <span class="mspace" style="margin-right:0.2778em;">
                    </span>
                   </span>
                   <span class="base">
@@ -5286,16 +5521,16 @@
                    <span class="mclose">
                     )
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     −
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6444em;">
                    </span>
                    <span class="mord">
                     1
@@ -5344,7 +5579,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6444em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -5378,7 +5613,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6444em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -5412,7 +5647,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6444em;">
                    </span>
                    <span class="mord mathnormal">
                     x
@@ -5443,7 +5678,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                   <span class="strut" style="height:0.6444em;">
                    </span>
                    <span class="mord">
                     0
@@ -5489,7 +5724,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     a
@@ -5517,7 +5752,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal">
                     p
@@ -5545,7 +5780,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal">
                     n
@@ -5651,21 +5886,21 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.07153em;">
                     C
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     ×
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:1.064108em;vertical-align:-0.25em;">
+                   <span class="strut" style="height:1.0641em;vertical-align:-0.25em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal" style="margin-right:0.02778em;">
@@ -5674,7 +5909,7 @@
                     <span class="msupsub">
                      <span class="vlist-t">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.8141079999999999em;">
+                       <span class="vlist" style="height:0.8141em;">
                         <span style="top:-3.063em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
@@ -5692,7 +5927,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.08125em;">
                     H
@@ -5700,7 +5935,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.13889em;">
                     W
@@ -5778,7 +6013,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.07153em;">
                     C
@@ -5786,21 +6021,21 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.08125em;">
                     H
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     ×
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.8778em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.02778em;">
                     r
@@ -5808,17 +6043,17 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.13889em;">
                     W
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     ×
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
@@ -5926,7 +6161,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.07153em;">
                     C
@@ -5934,21 +6169,21 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.08125em;">
                     H
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     ×
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.8778em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.02778em;">
                     r
@@ -5956,17 +6191,17 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.13889em;">
                     W
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     ×
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
@@ -6047,21 +6282,21 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.07153em;">
                     C
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                    <span class="mbin">
                     ×
                    </span>
-                   <span class="mspace" style="margin-right:0.2222222222222222em;">
+                   <span class="mspace" style="margin-right:0.2222em;">
                    </span>
                   </span>
                   <span class="base">
-                   <span class="strut" style="height:1.064108em;vertical-align:-0.25em;">
+                   <span class="strut" style="height:1.0641em;vertical-align:-0.25em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal" style="margin-right:0.02778em;">
@@ -6070,7 +6305,7 @@
                     <span class="msupsub">
                      <span class="vlist-t">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.8141079999999999em;">
+                       <span class="vlist" style="height:0.8141em;">
                         <span style="top:-3.063em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
@@ -6088,7 +6323,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.08125em;">
                     H
@@ -6096,7 +6331,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.13889em;">
                     W
@@ -6248,7 +6483,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.07153em;">
                     C
@@ -6256,7 +6491,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.08125em;">
                     H
@@ -6264,7 +6499,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.13889em;">
                     W
@@ -6330,7 +6565,7 @@
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:1.2311079999999999em;vertical-align:-0.481108em;">
+                   <span class="strut" style="height:1.2311em;vertical-align:-0.4811em;">
                    </span>
                    <span class="mopen">
                     (
@@ -6341,7 +6576,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.07153em;">
                     C
@@ -6353,7 +6588,7 @@
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
                        <span class="vlist" style="height:0.7475em;">
-                        <span style="top:-2.6550000000000002em;">
+                        <span style="top:-2.655em;">
                          <span class="pstrut" style="height:3em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -6370,7 +6605,7 @@
                          <span class="frac-line" style="border-bottom-width:0.04em;">
                          </span>
                         </span>
-                        <span style="top:-3.446108em;">
+                        <span style="top:-3.4461em;">
                          <span class="pstrut" style="height:3em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -6387,7 +6622,7 @@
                        </span>
                       </span>
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.481108em;">
+                       <span class="vlist" style="height:0.4811em;">
                         <span>
                         </span>
                        </span>
@@ -6403,7 +6638,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.08125em;">
                     H
@@ -6411,7 +6646,7 @@
                    <span class="mpunct">
                     ,
                    </span>
-                   <span class="mspace" style="margin-right:0.16666666666666666em;">
+                   <span class="mspace" style="margin-right:0.1667em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.13889em;">
                     W

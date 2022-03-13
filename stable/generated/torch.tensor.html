@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.tensor — PyTorch 1.10 documentation
+   torch.tensor — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -145,7 +146,13 @@
           </dt>
           <dd>
            <p>
-            Constructs a tensor with
+            Constructs a tensor with no autograd history (also known as a “leaf tensor”, see
+            <a class="reference internal" href="../notes/autograd.html">
+             <span class="doc">
+              Autograd mechanics
+             </span>
+            </a>
+            ) by copying
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               data
@@ -158,34 +165,15 @@
              Warning
             </p>
             <p>
-             <a class="reference internal" href="#torch.tensor" title="torch.tensor">
+             When working with tensors prefer using
+             <a class="reference internal" href="torch.Tensor.clone.html#torch.Tensor.clone" title="torch.Tensor.clone">
               <code class="xref py py-func docutils literal notranslate">
                <span class="pre">
-                torch.tensor()
+                torch.Tensor.clone()
                </span>
               </code>
              </a>
-             always copies
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               data
-              </span>
-             </code>
-             . If you have a Tensor
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               data
-              </span>
-             </code>
-             and want to avoid a copy, use
-             <a class="reference internal" href="torch.Tensor.requires_grad_.html#torch.Tensor.requires_grad_" title="torch.Tensor.requires_grad_">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                torch.Tensor.requires_grad_()
-               </span>
-              </code>
-             </a>
-             or
+             ,
              <a class="reference internal" href="torch.Tensor.detach.html#torch.Tensor.detach" title="torch.Tensor.detach">
               <code class="xref py py-func docutils literal notranslate">
                <span class="pre">
@@ -193,58 +181,35 @@
                </span>
               </code>
              </a>
-             .
-If you have a NumPy
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               ndarray
-              </span>
-             </code>
-             and want to avoid a copy, use
-             <a class="reference internal" href="torch.as_tensor.html#torch.as_tensor" title="torch.as_tensor">
+             , and
+             <a class="reference internal" href="torch.Tensor.requires_grad_.html#torch.Tensor.requires_grad_" title="torch.Tensor.requires_grad_">
               <code class="xref py py-func docutils literal notranslate">
                <span class="pre">
-                torch.as_tensor()
+                torch.Tensor.requires_grad_()
                </span>
               </code>
              </a>
-             .
-            </p>
-           </div>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             When data is a tensor
+             for
+readability. Letting
              <cite>
-              x
+              t
              </cite>
-             ,
-             <a class="reference internal" href="#torch.tensor" title="torch.tensor">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                torch.tensor()
-               </span>
-              </code>
-             </a>
-             reads out ‘the data’ from whatever it is passed,
-and constructs a leaf variable. Therefore
+             be a tensor,
              <code class="docutils literal notranslate">
               <span class="pre">
-               torch.tensor(x)
+               torch.tensor(t)
               </span>
              </code>
              is equivalent to
              <code class="docutils literal notranslate">
               <span class="pre">
-               x.clone().detach()
+               t.clone().detach()
               </span>
              </code>
-             and
+             , and
              <code class="docutils literal notranslate">
               <span class="pre">
-               torch.tensor(x,
+               torch.tensor(t,
               </span>
               <span class="pre">
                requires_grad=True)
@@ -253,23 +218,33 @@ and constructs a leaf variable. Therefore
              is equivalent to
              <code class="docutils literal notranslate">
               <span class="pre">
-               x.clone().detach().requires_grad_(True)
+               t.clone().detach().requires_grad_(True)
               </span>
              </code>
              .
-The equivalents using
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               clone()
-              </span>
-             </code>
-             and
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               detach()
-              </span>
-             </code>
-             are recommended.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.as_tensor.html#torch.as_tensor" title="torch.as_tensor">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.as_tensor()
+               </span>
+              </code>
+             </a>
+             preserves autograd history and avoids copies where possible.
+             <a class="reference internal" href="torch.from_numpy.html#torch.from_numpy" title="torch.from_numpy">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.from_numpy()
+               </span>
+              </code>
+             </a>
+             creates a tensor that shares storage with a NumPy array.
             </p>
            </div>
            <dl class="field-list simple">
@@ -342,30 +317,9 @@ Default: if
                   </span>
                  </code>
                 </a>
-                , optional) – the desired device of returned tensor.
-Default: if
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  None
-                 </span>
-                </code>
-                , uses the current device for the default tensor type
-(see
-                <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
-                 <code class="xref py py-func docutils literal notranslate">
-                  <span class="pre">
-                   torch.set_default_tensor_type()
-                  </span>
-                 </code>
-                </a>
-                ).
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  device
-                 </span>
-                </code>
-                will be the CPU
-for CPU tensor types and the current CUDA device for CUDA tensor types.
+                , optional) – the device of the constructed tensor. If None and data is a tensor
+then the device of data is used. If None and data is not a tensor then
+the result tensor is constructed on the CPU.
                </p>
               </li>
               <li>
@@ -440,10 +394,10 @@ the pinned memory. Works only for CPU tensors. Default:
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.11111</span><span class="p">,</span> <span class="mf">0.222222</span><span class="p">,</span> <span class="mf">0.3333333</span><span class="p">]],</span>
 <span class="gp">... </span>             <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
-<span class="gp">... </span>             <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">))</span>  <span class="c1"># creates a torch.cuda.DoubleTensor</span>
+<span class="gp">... </span>             <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">))</span>  <span class="c1"># creates a double tensor on a CUDA device</span>
 <span class="go">tensor([[ 0.1111,  0.2222,  0.3333]], dtype=torch.float64, device='cuda:0')</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>  <span class="c1"># Create a scalar (zero-dimensional tensor)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>  <span class="c1"># Create a zero-dimensional (scalar) tensor</span>
 <span class="go">tensor(3.1416)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([])</span>  <span class="c1"># Create an empty tensor (of size (0,))</span>

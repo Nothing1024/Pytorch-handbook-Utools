@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.autograd.functional.hessian — PyTorch 1.10 documentation
+   torch.autograd.functional.hessian — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -109,6 +110,24 @@
             <span class="default_value">
              <span class="pre">
               False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              outer_jacobian_strategy
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'reverse-mode'
              </span>
             </span>
            </em>
@@ -280,8 +299,13 @@ Defaults to
                 <em>
                  optional
                 </em>
-                ) – This feature is experimental, please use at
-your own risk. When computing the hessian, usually we invoke
+                ) – This feature is experimental.
+Please consider using
+                <a class="reference external" href="https://github.com/pytorch/functorch#what-are-the-transforms">
+                 functorch
+                </a>
+                instead if you are looking for something less experimental and more performant.
+When computing the hessian, usually we invoke
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   autograd.grad
@@ -313,6 +337,61 @@ warnings exist for your use case. Defaults to
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   False
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 outer_jacobian_strategy
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – The Hessian is computed by
+computing the Jacobian of a Jacobian. The inner Jacobian is always
+computed in reverse-mode AD. Setting strategy to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "forward-mode"
+                 </span>
+                </code>
+                or
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "reverse-mode"
+                 </span>
+                </code>
+                determines whether the outer Jacobian will be
+computed with forward or reverse mode AD. Currently, computing the outer
+Jacobian in
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "forward-mode"
+                 </span>
+                </code>
+                requires
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  vectorized=True
+                 </span>
+                </code>
+                . Defaults
+to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  "reverse-mode"
                  </span>
                 </code>
                 .

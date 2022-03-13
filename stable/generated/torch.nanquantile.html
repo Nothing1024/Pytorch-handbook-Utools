@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nanquantile — PyTorch 1.10 documentation
+   torch.nanquantile — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -99,6 +100,24 @@
             <span class="o">
              <span class="pre">
               *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              interpolation
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'linear'
              </span>
             </span>
            </em>
@@ -274,24 +293,80 @@ that reduction will be
              Keyword Arguments
             </dt>
             <dd class="field-even">
-             <p>
-              <strong>
-               out
-              </strong>
-              (
-              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
-               <em>
-                Tensor
-               </em>
-              </a>
-              <em>
-               ,
-              </em>
-              <em>
-               optional
-              </em>
-              ) – the output tensor.
-             </p>
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 interpolation
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.10)">
+                 <em>
+                  string
+                 </em>
+                </a>
+                ) – interpolation method to use when the desired quantile lies between two data points.
+Can be
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  linear
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  lower
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  higher
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  midpoint
+                 </span>
+                </code>
+                and
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  nearest
+                 </span>
+                </code>
+                .
+Default is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  linear
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output tensor.
+               </p>
+              </li>
+             </ul>
             </dd>
            </dl>
            <p>

@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   MarginRankingLoss — PyTorch 1.10 documentation
+   MarginRankingLoss — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -158,7 +159,7 @@ inputs
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6444em;">
                 </span>
                 <span class="mord mathnormal">
                  x
@@ -192,7 +193,7 @@ inputs
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6444em;">
                 </span>
                 <span class="mord mathnormal">
                  x
@@ -204,12 +205,15 @@ inputs
               </span>
              </span>
             </span>
-            , two 1D mini-batch
+            , two 1D mini-batch or 0D
             <cite>
              Tensors
             </cite>
             ,
-and a label 1D mini-batch tensor
+and a label 1D mini-batch or 0D
+            <cite>
+             Tensor
+            </cite>
             <span class="math">
              <span class="katex">
               <span class="katex-mathml">
@@ -228,7 +232,7 @@ and a label 1D mini-batch tensor
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.03588em;">
                  y
@@ -265,21 +269,21 @@ and a label 1D mini-batch tensor
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.03588em;">
                  y
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6444em;">
                 </span>
                 <span class="mord">
                  1
@@ -317,21 +321,21 @@ and a label 1D mini-batch tensor
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.03588em;">
                  y
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.72777em;vertical-align:-0.08333em;">
+                <span class="strut" style="height:0.7278em;vertical-align:-0.0833em;">
                 </span>
                 <span class="mord">
                  −
@@ -470,7 +474,7 @@ and a label 1D mini-batch tensor
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord mathnormal">
                  x
@@ -481,7 +485,7 @@ and a label 1D mini-batch tensor
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.03588em;">
                  y
@@ -489,12 +493,12 @@ and a label 1D mini-batch tensor
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
@@ -512,7 +516,7 @@ and a label 1D mini-batch tensor
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  −
@@ -520,12 +524,12 @@ and a label 1D mini-batch tensor
                 <span class="mord mathnormal" style="margin-right:0.03588em;">
                  y
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  ∗
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -540,12 +544,12 @@ and a label 1D mini-batch tensor
                 <span class="mord">
                  1
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  −
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -560,12 +564,12 @@ and a label 1D mini-batch tensor
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  +
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -626,7 +630,7 @@ and a label 1D mini-batch tensor
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6444em;">
                     </span>
                     <span class="mord">
                      0
@@ -884,6 +888,40 @@ specifying either of those two args will override
                   </span>
                  </span>
                 </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      ()
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
                 where
                 <cite>
                  N
@@ -925,6 +963,40 @@ specifying either of those two args will override
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.10903em;">
                      N
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      ()
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
                     </span>
                     <span class="mclose">
                      )
@@ -978,6 +1050,40 @@ specifying either of those two args will override
                   </span>
                  </span>
                 </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      ()
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
                 , same shape as the inputs.
                </p>
               </li>
@@ -995,6 +1101,40 @@ specifying either of those two args will override
                   'none'
                  </span>
                 </code>
+                and Input size is not
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      ()
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
                 , then
                 <span class="math">
                  <span class="katex">

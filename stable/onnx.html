@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.onnx — PyTorch 1.10 documentation
+   torch.onnx — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -65,46 +66,53 @@
                </a>
               </p>
              </li>
+             <li>
+              <p>
+               <a class="reference internal" href="#avoid-in-place-operations-when-using-tensor-shape-in-tracing-mode" id="id9">
+                Avoid in-place operations when using tensor.shape in tracing mode
+               </a>
+              </p>
+             </li>
             </ul>
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#limitations" id="id9">
+             <a class="reference internal" href="#limitations" id="id10">
               Limitations
              </a>
             </p>
             <ul>
              <li>
               <p>
-               <a class="reference internal" href="#types" id="id10">
+               <a class="reference internal" href="#types" id="id11">
                 Types
                </a>
               </p>
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#differences-in-operator-implementations" id="id11">
+               <a class="reference internal" href="#differences-in-operator-implementations" id="id12">
                 Differences in Operator Implementations
                </a>
               </p>
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#unsupported-tensor-indexing-patterns" id="id12">
+               <a class="reference internal" href="#unsupported-tensor-indexing-patterns" id="id13">
                 Unsupported Tensor Indexing Patterns
                </a>
               </p>
               <ul>
                <li>
                 <p>
-                 <a class="reference internal" href="#reads-gets" id="id13">
+                 <a class="reference internal" href="#reads-gets" id="id14">
                   Reads / Gets
                  </a>
                 </p>
                </li>
                <li>
                 <p>
-                 <a class="reference internal" href="#writes-sets" id="id14">
+                 <a class="reference internal" href="#writes-sets" id="id15">
                   Writes / Sets
                  </a>
                 </p>
@@ -115,35 +123,35 @@
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#adding-support-for-operators" id="id15">
+             <a class="reference internal" href="#adding-support-for-operators" id="id16">
               Adding support for operators
              </a>
             </p>
             <ul>
              <li>
               <p>
-               <a class="reference internal" href="#aten-operators" id="id16">
+               <a class="reference internal" href="#aten-operators" id="id17">
                 ATen operators
                </a>
               </p>
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#torch-autograd-functions" id="id17">
+               <a class="reference internal" href="#torch-autograd-functions" id="id18">
                 torch.autograd.Functions
                </a>
               </p>
               <ul>
                <li>
                 <p>
-                 <a class="reference internal" href="#static-symbolic-method" id="id18">
+                 <a class="reference internal" href="#static-symbolic-method" id="id19">
                   Static Symbolic Method
                  </a>
                 </p>
                </li>
                <li>
                 <p>
-                 <a class="reference internal" href="#pythonop-symbolic" id="id19">
+                 <a class="reference internal" href="#pythonop-symbolic" id="id20">
                   PythonOp Symbolic
                  </a>
                 </p>
@@ -152,8 +160,15 @@
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#custom-operators" id="id20">
+               <a class="reference internal" href="#custom-operators" id="id21">
                 Custom operators
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a class="reference internal" href="#discovering-all-unconvertible-aten-ops-at-once" id="id22">
+                Discovering all unconvertible ATen ops at once
                </a>
               </p>
              </li>
@@ -161,14 +176,14 @@
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#frequently-asked-questions" id="id21">
+             <a class="reference internal" href="#frequently-asked-questions" id="id23">
               Frequently Asked Questions
              </a>
             </p>
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#functions" id="id22">
+             <a class="reference internal" href="#functions" id="id24">
               Functions
              </a>
             </p>
@@ -646,10 +661,58 @@ Use
             ).
            </p>
           </div>
+          <div class="section" id="avoid-in-place-operations-when-using-tensor-shape-in-tracing-mode">
+           <h3>
+            <a class="toc-backref" href="#id9">
+             Avoid in-place operations when using tensor.shape in tracing mode
+            </a>
+            <a class="headerlink" href="#avoid-in-place-operations-when-using-tensor-shape-in-tracing-mode" title="Permalink to this headline">
+             ¶
+            </a>
+           </h3>
+           <p>
+            In tracing mode, shape values obtained from tensor.shape are traced as tensors,
+and share the same memory. This might cause a mismatch in values of the final outputs.
+As a workaround, avoid use of inplace operations in these scenarios.
+For example, in the model:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+      <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_length</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+      <span class="n">real_seq_length</span> <span class="o">=</span> <span class="n">seq_length</span>
+      <span class="n">real_seq_length</span> <span class="o">+=</span> <span class="mi">2</span>
+      <span class="k">return</span> <span class="n">real_seq_length</span> <span class="o">+</span> <span class="n">seq_length</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              real_seq_length
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              seq_length
+             </span>
+            </code>
+            share the same memory in tracing mode.
+This could be avoided by rewriting the inplace operation:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="n">real_seq_length</span> <span class="o">=</span> <span class="n">real_seq_length</span> <span class="o">+</span> <span class="mi">2</span>
+</pre>
+            </div>
+           </div>
+          </div>
          </div>
          <div class="section" id="limitations">
           <h2>
-           <a class="toc-backref" href="#id9">
+           <a class="toc-backref" href="#id10">
             Limitations
            </a>
            <a class="headerlink" href="#limitations" title="Permalink to this headline">
@@ -658,7 +721,7 @@ Use
           </h2>
           <div class="section" id="types">
            <h3>
-            <a class="toc-backref" href="#id10">
+            <a class="toc-backref" href="#id11">
              Types
             </a>
             <a class="headerlink" href="#types" title="Permalink to this headline">
@@ -739,7 +802,7 @@ will be flattened automatically during the tracing.
           </div>
           <div class="section" id="differences-in-operator-implementations">
            <h3>
-            <a class="toc-backref" href="#id11">
+            <a class="toc-backref" href="#id12">
              Differences in Operator Implementations
             </a>
             <a class="headerlink" href="#differences-in-operator-implementations" title="Permalink to this headline">
@@ -757,7 +820,7 @@ small differences.
            <span id="tensor-indexing">
            </span>
            <h3>
-            <a class="toc-backref" href="#id12">
+            <a class="toc-backref" href="#id13">
              Unsupported Tensor Indexing Patterns
             </a>
             <a class="headerlink" href="#unsupported-tensor-indexing-patterns" title="Permalink to this headline">
@@ -778,7 +841,7 @@ the latest
            </p>
            <div class="section" id="reads-gets">
             <h4>
-             <a class="toc-backref" href="#id13">
+             <a class="toc-backref" href="#id14">
               Reads / Gets
              </a>
              <a class="headerlink" href="#reads-gets" title="Permalink to this headline">
@@ -792,13 +855,14 @@ the latest
              <div class="highlight">
               <pre><span></span><span class="c1"># Tensor indices that includes negative values.</span>
 <span class="n">data</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span>
+<span class="c1"># Workarounds: use positive index values.</span>
 </pre>
              </div>
             </div>
            </div>
            <div class="section" id="writes-sets">
             <h4>
-             <a class="toc-backref" href="#id14">
+             <a class="toc-backref" href="#id15">
               Writes / Sets
              </a>
              <a class="headerlink" href="#writes-sets" title="Permalink to this headline">
@@ -812,12 +876,24 @@ the latest
              <div class="highlight">
               <pre><span></span><span class="c1"># Multiple tensor indices if any has rank &gt;= 2</span>
 <span class="n">data</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new_data</span>
+<span class="c1"># Workarounds: use single tensor index with rank &gt;= 2,</span>
+<span class="c1">#              or multiple consecutive tensor indices with rank == 1.</span>
 
 <span class="c1"># Multiple tensor indices that are not consecutive</span>
 <span class="n">data</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="p">:,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new_data</span>
+<span class="c1"># Workarounds: transpose `data` such that tensor indices are consecutive.</span>
 
 <span class="c1"># Tensor indices that includes negative values.</span>
 <span class="n">data</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span> <span class="o">=</span> <span class="n">new_data</span>
+<span class="c1"># Workarounds: use positive index values.</span>
+
+<span class="c1"># Implicit broadcasting required for new_data.</span>
+<span class="n">data</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]),</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_data</span>
+<span class="c1"># Workarounds: expand new_data explicitly.</span>
+<span class="c1"># Example:</span>
+<span class="c1">#   data shape: [3, 4, 5]</span>
+<span class="c1">#   new_data shape: [5]</span>
+<span class="c1">#   expected new_data shape after broadcasting: [2, 2, 2, 5]</span>
 </pre>
              </div>
             </div>
@@ -826,7 +902,7 @@ the latest
          </div>
          <div class="section" id="adding-support-for-operators">
           <h2>
-           <a class="toc-backref" href="#id15">
+           <a class="toc-backref" href="#id16">
             Adding support for operators
            </a>
            <a class="headerlink" href="#adding-support-for-operators" title="Permalink to this headline">
@@ -913,7 +989,7 @@ an op named
            <span id="adding-support-aten">
            </span>
            <h3>
-            <a class="toc-backref" href="#id16">
+            <a class="toc-backref" href="#id17">
              ATen operators
             </a>
             <a class="headerlink" href="#aten-operators" title="Permalink to this headline">
@@ -1126,7 +1202,7 @@ and confirm that
           </div>
           <div class="section" id="torch-autograd-functions">
            <h3>
-            <a class="toc-backref" href="#id17">
+            <a class="toc-backref" href="#id18">
              torch.autograd.Functions
             </a>
             <a class="headerlink" href="#torch-autograd-functions" title="Permalink to this headline">
@@ -1147,7 +1223,7 @@ to export it.
            </p>
            <div class="section" id="static-symbolic-method">
             <h4>
-             <a class="toc-backref" href="#id18">
+             <a class="toc-backref" href="#id19">
               Static Symbolic Method
              </a>
              <a class="headerlink" href="#static-symbolic-method" title="Permalink to this headline">
@@ -1181,7 +1257,7 @@ ONNX operators that represent the function’s behavior in ONNX. For example:
            </div>
            <div class="section" id="pythonop-symbolic">
             <h4>
-             <a class="toc-backref" href="#id19">
+             <a class="toc-backref" href="#id20">
               PythonOp Symbolic
              </a>
              <a class="headerlink" href="#pythonop-symbolic" title="Permalink to this headline">
@@ -1234,30 +1310,6 @@ symbolic function should use the
               </span>
              </code>
              kwarg which gets set to the name of the class.
-            </p>
-            <p>
-             <a class="reference internal" href="#torch.onnx.register_custom_op_symbolic" title="torch.onnx.register_custom_op_symbolic">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                register_custom_op_symbolic()
-               </span>
-              </code>
-             </a>
-             does not allow registration for ops in
-the
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               prim
-              </span>
-             </code>
-             namespace, so for this use case, there’s a back door: register the
-symbolic for
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               "::prim_PythonOp"
-              </span>
-             </code>
-             .
             </p>
             <p>
              Custom symbolic functions should add type and shape information by calling
@@ -1320,7 +1372,7 @@ shape and type inference for down-stream nodes. For a non-trivial example of
         <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">input</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">symbolic_pythonop</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">Graph</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">Node</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">symbolic_python_op</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">Graph</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">Node</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"original node: "</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">out</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">outputs</span><span class="p">()):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"original output </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">, requires grad: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">requiresGrad</span><span class="p">()))</span>
@@ -1332,7 +1384,7 @@ shape and type inference for down-stream nodes. For a non-trivial example of
     <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"MyClip"</span><span class="p">:</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="s2">"Clip"</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">min_f</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="s2">"Clip"</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"MyRelu"</span><span class="p">:</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="s2">"Relu"</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1343,7 +1395,7 @@ shape and type inference for down-stream nodes. For a non-trivial example of
     <span class="k">return</span> <span class="n">ret</span>
 
 <span class="kn">from</span> <span class="nn">torch.onnx</span> <span class="kn">import</span> <span class="n">register_custom_op_symbolic</span>
-<span class="n">register_custom_op_symbolic</span><span class="p">(</span><span class="s2">"::prim_PythonOp"</span><span class="p">,</span> <span class="n">symbolic_pythonop</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">register_custom_op_symbolic</span><span class="p">(</span><span class="s2">"prim::PythonOp"</span><span class="p">,</span> <span class="n">symbolic_python_op</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre>
              </div>
             </div>
@@ -1351,7 +1403,7 @@ shape and type inference for down-stream nodes. For a non-trivial example of
           </div>
           <div class="section" id="custom-operators">
            <h3>
-            <a class="toc-backref" href="#id20">
+            <a class="toc-backref" href="#id21">
              Custom operators
             </a>
             <a class="headerlink" href="#custom-operators" title="Permalink to this headline">
@@ -1409,22 +1461,51 @@ When exporting a custom operator, you can specify the custom domain version usin
              </span>
             </code>
             dictionary at export. If not specified, the custom opset version defaults to 1.
-The runtime that conumes the model needs to support the custom op. See
+The runtime that consumes the model needs to support the custom op. See
             <a class="reference external" href="https://caffe2.ai/docs/custom-operators.html">
              Caffe2 custom ops
             </a>
             ,
-            <a class="reference external" href="https://github.com/microsoft/onnxruntime/blob/master/docs/AddingCustomOp.md">
+            <a class="reference external" href="https://onnxruntime.ai/docs/reference/operators/add-custom-op.html">
              ONNX Runtime custom ops
             </a>
             ,
 or your runtime of choice’s documentation.
            </p>
           </div>
+          <div class="section" id="discovering-all-unconvertible-aten-ops-at-once">
+           <h3>
+            <a class="toc-backref" href="#id22">
+             Discovering all unconvertible ATen ops at once
+            </a>
+            <a class="headerlink" href="#discovering-all-unconvertible-aten-ops-at-once" title="Permalink to this headline">
+             ¶
+            </a>
+           </h3>
+           <p>
+            When export fails due to an unconvertible ATen op, there may in fact be more
+than one such op but the error message only mentions the first. To discover
+all of the unconvertible ops in one go you can:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="kn">from</span> <span class="nn">torch.onnx</span> <span class="kn">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">onnx_utils</span>
+
+<span class="c1"># prepare model, args, opset_version</span>
+<span class="o">...</span>
+
+<span class="n">torch_script_graph</span><span class="p">,</span> <span class="n">unconvertible_ops</span> <span class="o">=</span> <span class="n">onnx_utils</span><span class="o">.</span><span class="n">unconvertible_ops</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">opset_version</span><span class="o">=</span><span class="n">opset_version</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">unconvertible_ops</span><span class="p">))</span>
+</pre>
+            </div>
+           </div>
+          </div>
          </div>
          <div class="section" id="frequently-asked-questions">
           <h2>
-           <a class="toc-backref" href="#id21">
+           <a class="toc-backref" href="#id23">
             Frequently Asked Questions
            </a>
            <a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">
@@ -1536,7 +1617,7 @@ is supported in more cases.
          </div>
          <div class="section" id="functions">
           <h2>
-           <a class="toc-backref" href="#id22">
+           <a class="toc-backref" href="#id24">
             Functions
            </a>
            <a class="headerlink" href="#functions" title="Permalink to this headline">
@@ -1623,25 +1704,7 @@ is supported in more cases.
             ,
             <em class="sig-param">
              <span class="pre">
-              _retain_param_name=None
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="pre">
               do_constant_folding=True
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="pre">
-              example_outputs=None
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="pre">
-              strip_doc_string=None
              </span>
             </em>
             ,
@@ -1665,13 +1728,7 @@ is supported in more cases.
             ,
             <em class="sig-param">
              <span class="pre">
-              enable_onnx_checker=None
-             </span>
-            </em>
-            ,
-            <em class="sig-param">
-             <span class="pre">
-              use_external_data_format=None
+              export_modules_as_functions=False
              </span>
             </em>
             <span class="sig-paren">
@@ -2212,9 +2269,15 @@ For example:
                     </div>
                    </div>
                    <p>
-                    If an op is in the TorchScript namespace “quantized”, it will be exported
-in the ONNX opset domain “caffe2”. These ops are produced by
-the modules described in
+                    If PyTorch was built with Caffe2 (i.e. with
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      BUILD_CAFFE2=1
+                     </span>
+                    </code>
+                    ), then
+Caffe2-specific behavior will be enabled, including special support
+for ops are produced by the modules described in
                     <a class="reference external" href="https://pytorch.org/docs/stable/quantization.html">
                      Quantization
                     </a>
@@ -2249,47 +2312,11 @@ the modules described in
                  <em>
                   default 9
                  </em>
-                 ) – Must be
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   ==
-                  </span>
-                  <span class="pre">
-                   _onnx_main_opset
-                  </span>
-                  <span class="pre">
-                   or
-                  </span>
-                  <span class="pre">
-                   in
-                  </span>
-                  <span class="pre">
-                   _onnx_stable_opsets
-                  </span>
-                 </code>
-                 ,
-defined in torch/onnx/symbolic_helper.py.
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
-                  _retain_param_name
-                 </strong>
-                 (
-                 <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
-                  <em>
-                   bool
-                  </em>
+                 ) – The version of the
+                 <a class="reference external" href="https://github.com/onnx/onnx/blob/master/docs/Operators.md">
+                  default (ai.onnx) opset
                  </a>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default True
-                 </em>
-                 ) – [Deprecated and ignored. Will be removed in next PyTorch
-release]
+                 to target. Must be &gt;= 7 and &lt;= 15.
                 </p>
                </li>
                <li>
@@ -2307,70 +2334,11 @@ release]
                   ,
                  </em>
                  <em>
-                  default False
+                  default True
                  </em>
                  ) – Apply the constant-folding optimization.
 Constant-folding will replace some of the ops that have all constant inputs
 with pre-computed constant nodes.
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
-                  example_outputs
-                 </strong>
-                 (
-                 <em>
-                  T
-                 </em>
-                 <em>
-                  or
-                 </em>
-                 <em>
-                  a tuple of T
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  where T is Tensor
-                 </em>
-                 <em>
-                  or
-                 </em>
-                 <em>
-                  convertible to Tensor
-                 </em>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default None
-                 </em>
-                 ) – [Deprecated and ignored. Will be removed in next PyTorch release],
-Must be provided when exporting a ScriptModule or ScriptFunction, ignored otherwise.
-Used to determine the type and shape of the outputs without tracing the execution of
-the model. A single object is treated as equivalent to a tuple of one element.
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
-                  strip_doc_string
-                 </strong>
-                 (
-                 <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
-                  <em>
-                   bool
-                  </em>
-                 </a>
-                 <em>
-                  ,
-                 </em>
-                 <em>
-                  default True
-                 </em>
-                 ) – [Deprecated and ignored. Will be removed in next PyTorch release]
                 </p>
                </li>
                <li>
@@ -2437,14 +2405,8 @@ set to exactly match those given in
                     args
                    </span>
                   </code>
-                  (and
-                  <code class="docutils literal notranslate">
-                   <span class="pre">
-                    example_outputs
-                   </span>
-                  </code>
-                  when that arg is
-required). To specify axes of tensors as dynamic (i.e. known only at run-time), set
+                  . To specify axes of tensors as
+dynamic (i.e. known only at run-time), set
                   <code class="docutils literal notranslate">
                    <span class="pre">
                     dynamic_axes
@@ -2592,8 +2554,14 @@ backends/runtimes.
                    <span class="pre">
                     opset_version
                    </span>
+                   <span class="pre">
+                    &lt;
+                   </span>
+                   <span class="pre">
+                    9
+                   </span>
                   </code>
-                  &lt; 9, initializers MUST be part of graph
+                  , initializers MUST be part of graph
 inputs and this argument will be ignored and the behavior will be
 equivalent to setting this argument to True.
                  </p>
@@ -2644,9 +2612,6 @@ to setting this argument to False.
                  </em>
                  ) –
                  <p>
-                  A dictionary to indicate
-                 </p>
-                 <p>
                   A dict with schema:
                  </p>
                  <ul>
@@ -2669,14 +2634,15 @@ to setting this argument to False.
                    </span>
                   </code>
                   but not mentioned in this dictionary,
-the opset version is set to 1.
+the opset version is set to 1. Only custom opset domain name and version should be
+indicated through this argument.
                  </p>
                 </p>
                </li>
                <li>
                 <p>
                  <strong>
-                  enable_onnx_checker
+                  export_modules_as_functions
                  </strong>
                  (
                  <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
@@ -2685,63 +2651,94 @@ the opset version is set to 1.
                   </em>
                  </a>
                  <em>
-                  ,
+                  or
                  </em>
                  <em>
-                  default True
+                  set of python:type of nn.Module
                  </em>
-                 ) – Deprecated and ignored. Will be removed in next
-Pytorch release.
-                </p>
-               </li>
-               <li>
-                <p>
-                 <strong>
-                  use_external_data_format
-                 </strong>
-                 (
-                 <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
-                  <em>
-                   bool
-                  </em>
-                 </a>
                  <em>
                   ,
                  </em>
                  <em>
                   default False
                  </em>
-                 ) – [Deprecated and ignored. Will be removed in
-next Pytorch release.]
-If True, then some of the model parameters are stored in external data files and not in
-the ONNX model file itself. Models larger than 2GB cannot be exported in one file because
-of size limits imposed by Protocol Buffers.
-For details see
-                 <a class="reference external" href="https://github.com/onnx/onnx/blob/32c7cb66/onnx/onnx.proto#L562">
-                  onnx.proto
-                 </a>
-                 .
-If True,  argument
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   f
-                  </span>
-                 </code>
-                 must be a string specifying the location of the model.
-The external data files will be stored in the same directory as
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   f
-                  </span>
-                 </code>
-                 .
-This argument is ignored unless
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   operator_export_type=OperatorExportTypes.ONNX
-                  </span>
-                 </code>
-                 .
+                 ) –
+                 <p>
+                  Flag to enable
+exporting all
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    nn.Module
+                   </span>
+                  </code>
+                  forward calls as local functions in ONNX. Or a set to indicate the
+particular types of modules to export as local functions in ONNX.
+This feature requires
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    opset_version
+                   </span>
+                  </code>
+                  &gt;= 15, otherwise the export will fail. This is because
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    opset_version
+                   </span>
+                  </code>
+                  &lt; 15 implies IR version &lt; 8, which means no local function support.
+                 </p>
+                 <ul>
+                  <li>
+                   <p>
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      False``(default):
+                     </span>
+                     <span class="pre">
+                      export
+                     </span>
+                     <span class="pre">
+                      ``nn.Module
+                     </span>
+                    </code>
+                    forward calls as fine grained nodes.
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      True
+                     </span>
+                    </code>
+                    : export all
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      nn.Module
+                     </span>
+                    </code>
+                    forward calls as local function nodes.
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    Set of type of nn.Module: export
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      nn.Module
+                     </span>
+                    </code>
+                    forward calls as local function nodes,
+only if the type of the
+                    <code class="docutils literal notranslate">
+                     <span class="pre">
+                      nn.Module
+                     </span>
+                    </code>
+                    is found in the set.
+                   </p>
+                  </li>
+                 </ul>
                 </p>
                </li>
               </ul>
@@ -2752,7 +2749,7 @@ This argument is ignored unless
              <dd class="field-even">
               <p>
                <strong>
-                ONNXCheckerError
+                CheckerError
                </strong>
                – If the ONNX checker detects an invalid ONNX graph. Will still export the
     model to the file
@@ -2849,15 +2846,6 @@ as
              </dt>
              <dd class="field-odd">
               <ul class="simple">
-               <li>
-                <p>
-                 <strong>
-                  f
-                 </strong>
-                 – Deprecated and ignored. Will be removed in the next release of
-PyTorch.
-                </p>
-               </li>
                <li>
                 <p>
                  <strong>

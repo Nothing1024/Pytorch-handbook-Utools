@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.triangular_solve — PyTorch 1.10 documentation
+   torch.triangular_solve — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -147,7 +148,7 @@
           </dt>
           <dd>
            <p>
-            Solves a system of equations with a triangular coefficient matrix
+            Solves a system of equations with a square upper or lower triangular invertible matrix
             <span class="math">
              <span class="katex">
               <span class="katex-mathml">
@@ -166,7 +167,7 @@
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal">
                  A
@@ -194,7 +195,7 @@
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6944em;">
                 </span>
                 <span class="mord mathnormal">
                  b
@@ -206,7 +207,7 @@
             .
            </p>
            <p>
-            In particular, solves
+            In symbols, it solves
             <span class="math">
              <span class="katex">
               <span class="katex-mathml">
@@ -234,7 +235,7 @@
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal">
                  A
@@ -242,16 +243,16 @@
                 <span class="mord mathnormal" style="margin-right:0.07847em;">
                  X
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6944em;">
                 </span>
                 <span class="mord mathnormal">
                  b
@@ -279,7 +280,7 @@
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal">
                  A
@@ -288,8 +289,17 @@
               </span>
              </span>
             </span>
-            is upper-triangular
-with the default keyword arguments.
+            is square upper-triangular
+(or lower-triangular if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              upper
+             </span>
+            </code>
+            <cite>
+             = False
+            </cite>
+            ) and does not have zeros on the diagonal.
            </p>
            <p>
             <cite>
@@ -332,6 +342,61 @@ the result may contain
            <p>
             Supports input of float, double, cfloat and cdouble data types.
            </p>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             <a class="reference internal" href="#torch.triangular_solve" title="torch.triangular_solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.triangular_solve()
+               </span>
+              </code>
+             </a>
+             is deprecated in favor of
+             <a class="reference internal" href="torch.linalg.solve_triangular.html#torch.linalg.solve_triangular" title="torch.linalg.solve_triangular">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.solve_triangular()
+               </span>
+              </code>
+             </a>
+             and will be removed in a future PyTorch release.
+             <a class="reference internal" href="torch.linalg.solve_triangular.html#torch.linalg.solve_triangular" title="torch.linalg.solve_triangular">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.solve_triangular()
+               </span>
+              </code>
+             </a>
+             has its arguments reversed and does not return a
+copy of one of the inputs.
+            </p>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               X
+              </span>
+              <span class="pre">
+               =
+              </span>
+              <span class="pre">
+               torch.triangular_solve(B,
+              </span>
+              <span class="pre">
+               A).solution
+              </span>
+             </code>
+             should be replaced with
+            </p>
+            <div class="highlight-python notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve_triangular</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre>
+             </div>
+            </div>
+           </div>
            <dl class="field-list simple">
             <dt class="field-odd">
              Parameters
@@ -397,7 +462,7 @@ the result may contain
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -405,7 +470,7 @@ the result may contain
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.03148em;">
                      k
@@ -436,7 +501,7 @@ the result may contain
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗
@@ -507,7 +572,7 @@ the result may contain
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -515,7 +580,7 @@ the result may contain
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -546,7 +611,7 @@ the result may contain
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗
@@ -562,33 +627,6 @@ the result may contain
                <p>
                 <strong>
                  upper
-                </strong>
-                (
-                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
-                 <em>
-                  bool
-                 </em>
-                </a>
-                <em>
-                 ,
-                </em>
-                <em>
-                 optional
-                </em>
-                ) – whether to solve the upper-triangular system
-of equations (default) or the lower-triangular system of equations. Default:
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  True
-                 </span>
-                </code>
-                .
-               </p>
-              </li>
-              <li>
-               <p>
-                <strong>
-                 transpose
                 </strong>
                 (
                 <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
@@ -621,7 +659,7 @@ of equations (default) or the lower-triangular system of equations. Default:
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6833em;">
                     </span>
                     <span class="mord mathnormal">
                      A
@@ -630,8 +668,58 @@ of equations (default) or the lower-triangular system of equations. Default:
                   </span>
                  </span>
                 </span>
-                should be transposed before
-being sent into the solver. Default:
+                is upper or lower triangular. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 transpose
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – solves
+                <cite>
+                 op(A)X = b
+                </cite>
+                where
+                <cite>
+                 op(A) = A^T
+                </cite>
+                if this flag is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                ,
+and
+                <cite>
+                 op(A) = A
+                </cite>
+                if it is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                . Default:
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   False
@@ -676,7 +764,7 @@ being sent into the solver. Default:
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6833em;">
                     </span>
                     <span class="mord mathnormal">
                      A
@@ -705,7 +793,7 @@ If True, the diagonal elements of
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6833em;">
                     </span>
                     <span class="mord mathnormal">
                      A
@@ -734,7 +822,7 @@ If True, the diagonal elements of
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6833em;">
                     </span>
                     <span class="mord mathnormal">
                      A
@@ -832,7 +920,7 @@ the output to. Ignored if
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal">
                    A
@@ -864,7 +952,7 @@ the output to. Ignored if
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.07847em;">
                    X
@@ -901,7 +989,7 @@ the output to. Ignored if
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal">
                    A
@@ -909,16 +997,16 @@ the output to. Ignored if
                   <span class="mord mathnormal" style="margin-right:0.07847em;">
                    X
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6944em;">
                   </span>
                   <span class="mord mathnormal">
                    b

@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.lu — PyTorch 1.10 documentation
+   torch.lu — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -111,20 +112,48 @@ pivots of
             <ul class="simple">
              <li>
               <p>
-               The pivots returned by the function are 1-indexed. If
-               <code class="xref py py-attr docutils literal notranslate">
-                <span class="pre">
-                 pivot
-                </span>
-               </code>
-               is
+               The returned permutation matrix for every matrix in the batch is
+represented by a 1-indexed vector of size
                <code class="docutils literal notranslate">
                 <span class="pre">
-                 False
+                 min(A.shape[-2],
+                </span>
+                <span class="pre">
+                 A.shape[-1])
                 </span>
                </code>
-               , then the returned pivots is a tensor filled with
-zeros of the appropriate size.
+               .
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 pivots[i]
+                </span>
+                <span class="pre">
+                 ==
+                </span>
+                <span class="pre">
+                 j
+                </span>
+               </code>
+               represents that in the
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 i
+                </span>
+               </code>
+               -th step of the algorithm,
+the
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 i
+                </span>
+               </code>
+               -th row was permuted with the
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 j-1
+                </span>
+               </code>
+               -th row.
               </p>
              </li>
              <li>
@@ -267,7 +296,7 @@ the gradient will be numerically unstable as it depends on the computation of
                </span>
                <span aria-hidden="true" class="katex-html">
                 <span class="base">
-                 <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;">
+                 <span class="strut" style="height:0.8141em;">
                  </span>
                  <span class="mord">
                   <span class="mord mathnormal">
@@ -276,7 +305,7 @@ the gradient will be numerically unstable as it depends on the computation of
                   <span class="msupsub">
                    <span class="vlist-t">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.8141079999999999em;">
+                     <span class="vlist" style="height:0.8141em;">
                       <span style="top:-3.063em;margin-right:0.05em;">
                        <span class="pstrut" style="height:2.7em;">
                        </span>
@@ -329,7 +358,7 @@ the gradient will be numerically unstable as it depends on the computation of
                </span>
                <span aria-hidden="true" class="katex-html">
                 <span class="base">
-                 <span class="strut" style="height:0.8141079999999999em;vertical-align:0em;">
+                 <span class="strut" style="height:0.8141em;">
                  </span>
                  <span class="mord">
                   <span class="mord mathnormal" style="margin-right:0.10903em;">
@@ -338,7 +367,7 @@ the gradient will be numerically unstable as it depends on the computation of
                   <span class="msupsub">
                    <span class="vlist-t">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.8141079999999999em;">
+                     <span class="vlist" style="height:0.8141em;">
                       <span style="top:-3.063em;margin-right:0.05em;">
                        <span class="pstrut" style="height:2.7em;">
                        </span>
@@ -430,7 +459,7 @@ the gradient will be numerically unstable as it depends on the computation of
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -438,7 +467,7 @@ the gradient will be numerically unstable as it depends on the computation of
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      n
@@ -631,7 +660,7 @@ elements in the tuple are Tensor, IntTensor. Default:
                        <span class="mpunct">
                         ,
                        </span>
-                       <span class="mspace" style="margin-right:0.16666666666666666em;">
+                       <span class="mspace" style="margin-right:0.1667em;">
                        </span>
                        <span class="mord mathnormal">
                         m
@@ -639,7 +668,7 @@ elements in the tuple are Tensor, IntTensor. Default:
                        <span class="mpunct">
                         ,
                        </span>
-                       <span class="mspace" style="margin-right:0.16666666666666666em;">
+                       <span class="mspace" style="margin-right:0.1667em;">
                        </span>
                        <span class="mord mathnormal">
                         n
@@ -719,7 +748,7 @@ elements in the tuple are Tensor, IntTensor. Default:
                        <span class="mpunct">
                         ,
                        </span>
-                       <span class="mspace" style="margin-right:0.16666666666666666em;">
+                       <span class="mspace" style="margin-right:0.1667em;">
                        </span>
                        <span class="mord text">
                         <span class="mord">
@@ -735,7 +764,7 @@ elements in the tuple are Tensor, IntTensor. Default:
                        <span class="mpunct">
                         ,
                        </span>
-                       <span class="mspace" style="margin-right:0.16666666666666666em;">
+                       <span class="mspace" style="margin-right:0.1667em;">
                        </span>
                        <span class="mord mathnormal">
                         n
@@ -826,7 +855,7 @@ where
                      </span>
                      <span aria-hidden="true" class="katex-html">
                       <span class="base">
-                       <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                       <span class="strut" style="height:0.4306em;">
                        </span>
                        <span class="mord mathnormal">
                         m

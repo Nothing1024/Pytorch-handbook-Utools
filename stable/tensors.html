@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.Tensor — PyTorch 1.10 documentation
+   torch.Tensor — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -241,26 +242,6 @@ a single data type.
             <tr class="row-even">
              <td>
               <p>
-               32-bit complex
-              </p>
-             </td>
-             <td>
-              <p>
-               <code class="docutils literal notranslate">
-                <span class="pre">
-                 torch.complex32
-                </span>
-               </code>
-              </p>
-             </td>
-             <td>
-             </td>
-             <td>
-             </td>
-            </tr>
-            <tr class="row-odd">
-             <td>
-              <p>
                64-bit complex
               </p>
              </td>
@@ -278,7 +259,7 @@ a single data type.
              <td>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                128-bit complex
@@ -304,7 +285,7 @@ a single data type.
              <td>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                8-bit integer (unsigned)
@@ -338,7 +319,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                8-bit integer (signed)
@@ -372,7 +353,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                16-bit integer (signed)
@@ -412,7 +393,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                32-bit integer (signed)
@@ -452,7 +433,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                64-bit integer (signed)
@@ -492,7 +473,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                Boolean
@@ -526,7 +507,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                quantized 8-bit integer (unsigned)
@@ -556,7 +537,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                quantized 8-bit integer (signed)
@@ -586,7 +567,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                quantized 32-bit integer (signed)
@@ -616,7 +597,7 @@ a single data type.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                quantized 4-bit integer (unsigned)
@@ -1191,7 +1172,7 @@ use
            </dt>
            <dd>
             <p>
-             Is this Tensor with its dimensions reversed.
+             Returns a view of this tensor with its dimensions reversed.
             </p>
             <p>
              If
@@ -1227,6 +1208,168 @@ use
                0)
               </span>
              </code>
+             .
+            </p>
+            <div class="admonition warning">
+             <p class="admonition-title">
+              Warning
+             </p>
+             <p>
+              The use of
+              <a class="reference internal" href="#torch.Tensor.T" title="torch.Tensor.T">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 Tensor.T()
+                </span>
+               </code>
+              </a>
+              on tensors of dimension other than 2 to reverse their shape
+is deprecated and it will throw an error in a future release. Consider
+              <a class="reference internal" href="#torch.Tensor.mT" title="torch.Tensor.mT">
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 mT
+                </span>
+               </code>
+              </a>
+              to transpose batches of matrices or
+              <cite>
+               x.permute(*torch.arange(x.ndim - 1, -1, -1))
+              </cite>
+              to reverse
+the dimensions of a tensor.
+             </p>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py attribute">
+           <dt id="torch.Tensor.H">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              Tensor.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              H
+             </span>
+            </code>
+            <a class="headerlink" href="#torch.Tensor.H" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Returns a view of a matrix (2-D tensor) conjugated and transposed.
+            </p>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               x.H
+              </span>
+             </code>
+             is equivalent to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               x.transpose(0,
+              </span>
+              <span class="pre">
+               1).conj()
+              </span>
+             </code>
+             for complex matrices and
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               x.transpose(0,
+              </span>
+              <span class="pre">
+               1)
+              </span>
+             </code>
+             for real matrices.
+            </p>
+            <div class="admonition seealso">
+             <p class="admonition-title">
+              See also
+             </p>
+             <p>
+              <a class="reference internal" href="#torch.Tensor.mH" title="torch.Tensor.mH">
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 mH
+                </span>
+               </code>
+              </a>
+              : An attribute that also works on batches of matrices.
+             </p>
+            </div>
+           </dd>
+          </dl>
+          <dl class="py attribute">
+           <dt id="torch.Tensor.mT">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              Tensor.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              mT
+             </span>
+            </code>
+            <a class="headerlink" href="#torch.Tensor.mT" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Returns a view of this tensor with the last two dimensions transposed.
+            </p>
+            <p>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               x.mT
+              </span>
+             </code>
+             is equivalent to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               x.transpose(-2,
+              </span>
+              <span class="pre">
+               -1)
+              </span>
+             </code>
+             .
+            </p>
+           </dd>
+          </dl>
+          <dl class="py attribute">
+           <dt id="torch.Tensor.mH">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              Tensor.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              mH
+             </span>
+            </code>
+            <a class="headerlink" href="#torch.Tensor.mH" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Accessing this property is equivalent to calling
+             <a class="reference internal" href="generated/torch.adjoint.html#torch.adjoint" title="torch.adjoint">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                adjoint()
+               </span>
+              </code>
+             </a>
              .
             </p>
            </dd>
@@ -1568,7 +1711,7 @@ use
                  self
                 </span>
                </code>
-               tensor.
+               tensor for a complex-valued input tensor.
               </p>
              </td>
             </tr>
@@ -2179,6 +2322,31 @@ use
             <tr class="row-odd">
              <td>
               <p>
+               <a class="reference internal" href="generated/torch.Tensor.adjoint.html#torch.Tensor.adjoint" title="torch.Tensor.adjoint">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.adjoint
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Alias for
+               <a class="reference internal" href="generated/torch.adjoint.html#torch.adjoint" title="torch.adjoint">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  adjoint()
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
                <a class="reference internal" href="generated/torch.Tensor.allclose.html#torch.Tensor.allclose" title="torch.Tensor.allclose">
                 <code class="xref py py-obj docutils literal notranslate">
                  <span class="pre">
@@ -2201,7 +2369,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.amax.html#torch.Tensor.amax" title="torch.Tensor.amax">
@@ -2226,7 +2394,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.amin.html#torch.Tensor.amin" title="torch.Tensor.amin">
@@ -2251,7 +2419,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.aminmax.html#torch.Tensor.aminmax" title="torch.Tensor.aminmax">
@@ -2276,7 +2444,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.angle.html#torch.Tensor.angle" title="torch.Tensor.angle">
@@ -2301,7 +2469,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.apply_.html#torch.Tensor.apply_" title="torch.Tensor.apply_">
@@ -2331,7 +2499,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.argmax.html#torch.Tensor.argmax" title="torch.Tensor.argmax">
@@ -2356,7 +2524,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.argmin.html#torch.Tensor.argmin" title="torch.Tensor.argmin">
@@ -2381,7 +2549,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.argsort.html#torch.Tensor.argsort" title="torch.Tensor.argsort">
@@ -2400,6 +2568,31 @@ use
                 <code class="xref py py-func docutils literal notranslate">
                  <span class="pre">
                   torch.argsort()
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.Tensor.argwhere.html#torch.Tensor.argwhere" title="torch.Tensor.argwhere">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.argwhere
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               See
+               <a class="reference internal" href="generated/torch.argwhere.html#torch.argwhere" title="torch.argwhere">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.argwhere()
                  </span>
                 </code>
                </a>
@@ -2684,6 +2877,49 @@ use
             <tr class="row-odd">
              <td>
               <p>
+               <a class="reference internal" href="generated/torch.Tensor.arctan2.html#torch.Tensor.arctan2" title="torch.Tensor.arctan2">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.arctan2
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               See
+               <a class="reference internal" href="generated/torch.arctan2.html#torch.arctan2" title="torch.arctan2">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.arctan2()
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.Tensor.arctan2_.html#torch.Tensor.arctan2_" title="torch.Tensor.arctan2_">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.arctan2_
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               atan2_(other) -&gt; Tensor
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <a class="reference internal" href="generated/torch.Tensor.all.html#torch.Tensor.all" title="torch.Tensor.all">
                 <code class="xref py py-obj docutils literal notranslate">
                  <span class="pre">
@@ -2832,7 +3068,7 @@ use
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.77777em;vertical-align:-0.08333em;">
+                   <span class="strut" style="height:0.7778em;vertical-align:-0.0833em;">
                    </span>
                    <span class="mord text">
                     <span class="mord texttt">
@@ -4750,6 +4986,24 @@ use
             <tr class="row-even">
              <td>
               <p>
+               <a class="reference internal" href="generated/torch.Tensor.diagonal_scatter.html#torch.Tensor.diagonal_scatter" title="torch.Tensor.diagonal_scatter">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.diagonal_scatter
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               diagonal(src, offset=0, dim1=0, dim2=1) -&gt; Tensor
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <a class="reference internal" href="generated/torch.Tensor.fill_diagonal_.html#torch.Tensor.fill_diagonal_" title="torch.Tensor.fill_diagonal_">
                 <code class="xref py py-obj docutils literal notranslate">
                  <span class="pre">
@@ -4765,7 +5019,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fmax.html#torch.Tensor.fmax" title="torch.Tensor.fmax">
@@ -4790,7 +5044,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fmin.html#torch.Tensor.fmin" title="torch.Tensor.fmin">
@@ -4815,7 +5069,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.diff.html#torch.Tensor.diff" title="torch.Tensor.diff">
@@ -4840,7 +5094,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.digamma.html#torch.Tensor.digamma" title="torch.Tensor.digamma">
@@ -4865,7 +5119,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.digamma_.html#torch.Tensor.digamma_" title="torch.Tensor.digamma_">
@@ -4890,7 +5144,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.dim.html#torch.Tensor.dim" title="torch.Tensor.dim">
@@ -4914,7 +5168,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.dist.html#torch.Tensor.dist" title="torch.Tensor.dist">
@@ -4939,7 +5193,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.div.html#torch.Tensor.div" title="torch.Tensor.div">
@@ -4964,7 +5218,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.div_.html#torch.Tensor.div_" title="torch.Tensor.div_">
@@ -4989,7 +5243,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.divide.html#torch.Tensor.divide" title="torch.Tensor.divide">
@@ -5014,7 +5268,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.divide_.html#torch.Tensor.divide_" title="torch.Tensor.divide_">
@@ -5039,7 +5293,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.dot.html#torch.Tensor.dot" title="torch.Tensor.dot">
@@ -5064,7 +5318,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.double.html#torch.Tensor.double" title="torch.Tensor.double">
@@ -5093,7 +5347,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.dsplit.html#torch.Tensor.dsplit" title="torch.Tensor.dsplit">
@@ -5118,7 +5372,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.eig.html#torch.Tensor.eig" title="torch.Tensor.eig">
@@ -5143,7 +5397,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.element_size.html#torch.Tensor.element_size" title="torch.Tensor.element_size">
@@ -5161,7 +5415,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.eq.html#torch.Tensor.eq" title="torch.Tensor.eq">
@@ -5186,7 +5440,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.eq_.html#torch.Tensor.eq_" title="torch.Tensor.eq_">
@@ -5211,7 +5465,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.equal.html#torch.Tensor.equal" title="torch.Tensor.equal">
@@ -5236,7 +5490,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.erf.html#torch.Tensor.erf" title="torch.Tensor.erf">
@@ -5261,7 +5515,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.erf_.html#torch.Tensor.erf_" title="torch.Tensor.erf_">
@@ -5286,7 +5540,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.erfc.html#torch.Tensor.erfc" title="torch.Tensor.erfc">
@@ -5311,7 +5565,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.erfc_.html#torch.Tensor.erfc_" title="torch.Tensor.erfc_">
@@ -5336,7 +5590,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.erfinv.html#torch.Tensor.erfinv" title="torch.Tensor.erfinv">
@@ -5361,7 +5615,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.erfinv_.html#torch.Tensor.erfinv_" title="torch.Tensor.erfinv_">
@@ -5386,7 +5640,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.exp.html#torch.Tensor.exp" title="torch.Tensor.exp">
@@ -5411,7 +5665,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.exp_.html#torch.Tensor.exp_" title="torch.Tensor.exp_">
@@ -5436,7 +5690,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.expm1.html#torch.Tensor.expm1" title="torch.Tensor.expm1">
@@ -5461,7 +5715,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.expm1_.html#torch.Tensor.expm1_" title="torch.Tensor.expm1_">
@@ -5486,7 +5740,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.expand.html#torch.Tensor.expand" title="torch.Tensor.expand">
@@ -5510,7 +5764,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.expand_as.html#torch.Tensor.expand_as" title="torch.Tensor.expand_as">
@@ -5534,7 +5788,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.exponential_.html#torch.Tensor.exponential_" title="torch.Tensor.exponential_">
@@ -5558,7 +5812,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fix.html#torch.Tensor.fix" title="torch.Tensor.fix">
@@ -5584,7 +5838,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fix_.html#torch.Tensor.fix_" title="torch.Tensor.fix_">
@@ -5609,7 +5863,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fill_.html#torch.Tensor.fill_" title="torch.Tensor.fill_">
@@ -5633,7 +5887,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.flatten.html#torch.Tensor.flatten" title="torch.Tensor.flatten">
@@ -5658,7 +5912,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.flip.html#torch.Tensor.flip" title="torch.Tensor.flip">
@@ -5683,7 +5937,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fliplr.html#torch.Tensor.fliplr" title="torch.Tensor.fliplr">
@@ -5708,7 +5962,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.flipud.html#torch.Tensor.flipud" title="torch.Tensor.flipud">
@@ -5733,7 +5987,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.float.html#torch.Tensor.float" title="torch.Tensor.float">
@@ -5762,7 +6016,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.float_power.html#torch.Tensor.float_power" title="torch.Tensor.float_power">
@@ -5787,7 +6041,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.float_power_.html#torch.Tensor.float_power_" title="torch.Tensor.float_power_">
@@ -5812,7 +6066,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.floor.html#torch.Tensor.floor" title="torch.Tensor.floor">
@@ -5837,7 +6091,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.floor_.html#torch.Tensor.floor_" title="torch.Tensor.floor_">
@@ -5862,7 +6116,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.floor_divide.html#torch.Tensor.floor_divide" title="torch.Tensor.floor_divide">
@@ -5887,7 +6141,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.floor_divide_.html#torch.Tensor.floor_divide_" title="torch.Tensor.floor_divide_">
@@ -5912,7 +6166,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fmod.html#torch.Tensor.fmod" title="torch.Tensor.fmod">
@@ -5937,7 +6191,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.fmod_.html#torch.Tensor.fmod_" title="torch.Tensor.fmod_">
@@ -5962,7 +6216,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.frac.html#torch.Tensor.frac" title="torch.Tensor.frac">
@@ -5987,7 +6241,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.frac_.html#torch.Tensor.frac_" title="torch.Tensor.frac_">
@@ -6012,7 +6266,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.frexp.html#torch.Tensor.frexp" title="torch.Tensor.frexp">
@@ -6037,7 +6291,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.gather.html#torch.Tensor.gather" title="torch.Tensor.gather">
@@ -6062,7 +6316,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.gcd.html#torch.Tensor.gcd" title="torch.Tensor.gcd">
@@ -6087,7 +6341,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.gcd_.html#torch.Tensor.gcd_" title="torch.Tensor.gcd_">
@@ -6112,7 +6366,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ge.html#torch.Tensor.ge" title="torch.Tensor.ge">
@@ -6138,7 +6392,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ge_.html#torch.Tensor.ge_" title="torch.Tensor.ge_">
@@ -6164,7 +6418,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.greater_equal.html#torch.Tensor.greater_equal" title="torch.Tensor.greater_equal">
@@ -6190,7 +6444,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.greater_equal_.html#torch.Tensor.greater_equal_" title="torch.Tensor.greater_equal_">
@@ -6216,7 +6470,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.geometric_.html#torch.Tensor.geometric_" title="torch.Tensor.geometric_">
@@ -6240,7 +6494,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.geqrf.html#torch.Tensor.geqrf" title="torch.Tensor.geqrf">
@@ -6265,7 +6519,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ger.html#torch.Tensor.ger" title="torch.Tensor.ger">
@@ -6290,7 +6544,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.get_device.html#torch.Tensor.get_device" title="torch.Tensor.get_device">
@@ -6308,7 +6562,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.gt.html#torch.Tensor.gt" title="torch.Tensor.gt">
@@ -6334,7 +6588,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.gt_.html#torch.Tensor.gt_" title="torch.Tensor.gt_">
@@ -6360,7 +6614,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.greater.html#torch.Tensor.greater" title="torch.Tensor.greater">
@@ -6386,7 +6640,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.greater_.html#torch.Tensor.greater_" title="torch.Tensor.greater_">
@@ -6412,7 +6666,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.half.html#torch.Tensor.half" title="torch.Tensor.half">
@@ -6441,7 +6695,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.hardshrink.html#torch.Tensor.hardshrink" title="torch.Tensor.hardshrink">
@@ -6466,7 +6720,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.heaviside.html#torch.Tensor.heaviside" title="torch.Tensor.heaviside">
@@ -6491,7 +6745,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.histc.html#torch.Tensor.histc" title="torch.Tensor.histc">
@@ -6516,7 +6770,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.histogram.html#torch.Tensor.histogram" title="torch.Tensor.histogram">
@@ -6541,7 +6795,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.hsplit.html#torch.Tensor.hsplit" title="torch.Tensor.hsplit">
@@ -6566,7 +6820,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.hypot.html#torch.Tensor.hypot" title="torch.Tensor.hypot">
@@ -6591,7 +6845,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.hypot_.html#torch.Tensor.hypot_" title="torch.Tensor.hypot_">
@@ -6616,7 +6870,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.i0.html#torch.Tensor.i0" title="torch.Tensor.i0">
@@ -6641,7 +6895,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.i0_.html#torch.Tensor.i0_" title="torch.Tensor.i0_">
@@ -6666,7 +6920,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.igamma.html#torch.Tensor.igamma" title="torch.Tensor.igamma">
@@ -6691,7 +6945,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.igamma_.html#torch.Tensor.igamma_" title="torch.Tensor.igamma_">
@@ -6716,7 +6970,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.igammac.html#torch.Tensor.igammac" title="torch.Tensor.igammac">
@@ -6741,7 +6995,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.igammac_.html#torch.Tensor.igammac_" title="torch.Tensor.igammac_">
@@ -6766,7 +7020,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_add_.html#torch.Tensor.index_add_" title="torch.Tensor.index_add_">
@@ -6787,13 +7041,11 @@ use
                 </span>
                </code>
                times
-               <a class="reference internal" href="generated/torch.tensor.html#torch.tensor" title="torch.tensor">
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  tensor
-                 </span>
-                </code>
-               </a>
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 source
+                </span>
+               </code>
                into the
                <code class="xref py py-attr docutils literal notranslate">
                 <span class="pre">
@@ -6810,7 +7062,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_add.html#torch.Tensor.index_add" title="torch.Tensor.index_add">
@@ -6836,7 +7088,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_copy_.html#torch.Tensor.index_copy_" title="torch.Tensor.index_copy_">
@@ -6874,7 +7126,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_copy.html#torch.Tensor.index_copy" title="torch.Tensor.index_copy">
@@ -6900,7 +7152,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_fill_.html#torch.Tensor.index_fill_" title="torch.Tensor.index_fill_">
@@ -6936,7 +7188,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_fill.html#torch.Tensor.index_fill" title="torch.Tensor.index_fill">
@@ -6962,7 +7214,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_put_.html#torch.Tensor.index_put_" title="torch.Tensor.index_put_">
@@ -6998,7 +7250,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_put.html#torch.Tensor.index_put" title="torch.Tensor.index_put">
@@ -7024,7 +7276,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.index_select.html#torch.Tensor.index_select" title="torch.Tensor.index_select">
@@ -7049,7 +7301,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.indices.html#torch.Tensor.indices" title="torch.Tensor.indices">
@@ -7073,7 +7325,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.inner.html#torch.Tensor.inner" title="torch.Tensor.inner">
@@ -7099,7 +7351,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.int.html#torch.Tensor.int" title="torch.Tensor.int">
@@ -7128,7 +7380,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.int_repr.html#torch.Tensor.int_repr" title="torch.Tensor.int_repr">
@@ -7152,7 +7404,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.inverse.html#torch.Tensor.inverse" title="torch.Tensor.inverse">
@@ -7177,7 +7429,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.isclose.html#torch.Tensor.isclose" title="torch.Tensor.isclose">
@@ -7202,7 +7454,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.isfinite.html#torch.Tensor.isfinite" title="torch.Tensor.isfinite">
@@ -7227,7 +7479,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.isinf.html#torch.Tensor.isinf" title="torch.Tensor.isinf">
@@ -7252,7 +7504,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.isposinf.html#torch.Tensor.isposinf" title="torch.Tensor.isposinf">
@@ -7277,7 +7529,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.isneginf.html#torch.Tensor.isneginf" title="torch.Tensor.isneginf">
@@ -7302,7 +7554,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.isnan.html#torch.Tensor.isnan" title="torch.Tensor.isnan">
@@ -7327,7 +7579,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_contiguous.html#torch.Tensor.is_contiguous" title="torch.Tensor.is_contiguous">
@@ -7351,7 +7603,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_complex.html#torch.Tensor.is_complex" title="torch.Tensor.is_complex">
@@ -7375,7 +7627,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_conj.html#torch.Tensor.is_conj" title="torch.Tensor.is_conj">
@@ -7399,7 +7651,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_floating_point.html#torch.Tensor.is_floating_point" title="torch.Tensor.is_floating_point">
@@ -7423,7 +7675,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_inference.html#torch.Tensor.is_inference" title="torch.Tensor.is_inference">
@@ -7446,7 +7698,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_leaf.html#torch.Tensor.is_leaf" title="torch.Tensor.is_leaf">
@@ -7476,7 +7728,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_pinned.html#torch.Tensor.is_pinned" title="torch.Tensor.is_pinned">
@@ -7494,7 +7746,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_set_to.html#torch.Tensor.is_set_to" title="torch.Tensor.is_set_to">
@@ -7512,7 +7764,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_shared.html#torch.Tensor.is_shared" title="torch.Tensor.is_shared">
@@ -7530,7 +7782,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_signed.html#torch.Tensor.is_signed" title="torch.Tensor.is_signed">
@@ -7554,7 +7806,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.is_sparse.html#torch.Tensor.is_sparse" title="torch.Tensor.is_sparse">
@@ -7584,7 +7836,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.istft.html#torch.Tensor.istft" title="torch.Tensor.istft">
@@ -7609,7 +7861,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.isreal.html#torch.Tensor.isreal" title="torch.Tensor.isreal">
@@ -7634,7 +7886,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.item.html#torch.Tensor.item" title="torch.Tensor.item">
@@ -7652,7 +7904,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.kthvalue.html#torch.Tensor.kthvalue" title="torch.Tensor.kthvalue">
@@ -7677,7 +7929,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lcm.html#torch.Tensor.lcm" title="torch.Tensor.lcm">
@@ -7702,7 +7954,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lcm_.html#torch.Tensor.lcm_" title="torch.Tensor.lcm_">
@@ -7727,7 +7979,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ldexp.html#torch.Tensor.ldexp" title="torch.Tensor.ldexp">
@@ -7752,7 +8004,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ldexp_.html#torch.Tensor.ldexp_" title="torch.Tensor.ldexp_">
@@ -7777,7 +8029,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.le.html#torch.Tensor.le" title="torch.Tensor.le">
@@ -7803,7 +8055,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.le_.html#torch.Tensor.le_" title="torch.Tensor.le_">
@@ -7829,7 +8081,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.less_equal.html#torch.Tensor.less_equal" title="torch.Tensor.less_equal">
@@ -7855,7 +8107,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.less_equal_.html#torch.Tensor.less_equal_" title="torch.Tensor.less_equal_">
@@ -7881,7 +8133,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lerp.html#torch.Tensor.lerp" title="torch.Tensor.lerp">
@@ -7906,7 +8158,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lerp_.html#torch.Tensor.lerp_" title="torch.Tensor.lerp_">
@@ -7931,7 +8183,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lgamma.html#torch.Tensor.lgamma" title="torch.Tensor.lgamma">
@@ -7956,7 +8208,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lgamma_.html#torch.Tensor.lgamma_" title="torch.Tensor.lgamma_">
@@ -7981,7 +8233,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log.html#torch.Tensor.log" title="torch.Tensor.log">
@@ -8006,7 +8258,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log_.html#torch.Tensor.log_" title="torch.Tensor.log_">
@@ -8031,7 +8283,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logdet.html#torch.Tensor.logdet" title="torch.Tensor.logdet">
@@ -8056,7 +8308,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log10.html#torch.Tensor.log10" title="torch.Tensor.log10">
@@ -8081,7 +8333,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log10_.html#torch.Tensor.log10_" title="torch.Tensor.log10_">
@@ -8106,7 +8358,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log1p.html#torch.Tensor.log1p" title="torch.Tensor.log1p">
@@ -8131,7 +8383,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log1p_.html#torch.Tensor.log1p_" title="torch.Tensor.log1p_">
@@ -8156,7 +8408,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log2.html#torch.Tensor.log2" title="torch.Tensor.log2">
@@ -8181,7 +8433,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log2_.html#torch.Tensor.log2_" title="torch.Tensor.log2_">
@@ -8206,7 +8458,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.log_normal_.html#torch.Tensor.log_normal_" title="torch.Tensor.log_normal_">
@@ -8245,7 +8497,7 @@ use
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                   <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                    </span>
                    <span class="mord mathnormal">
                     μ
@@ -8273,7 +8525,7 @@ use
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                   <span class="strut" style="height:0.4306em;">
                    </span>
                    <span class="mord mathnormal" style="margin-right:0.03588em;">
                     σ
@@ -8286,7 +8538,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logaddexp.html#torch.Tensor.logaddexp" title="torch.Tensor.logaddexp">
@@ -8311,7 +8563,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logaddexp2.html#torch.Tensor.logaddexp2" title="torch.Tensor.logaddexp2">
@@ -8336,7 +8588,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logsumexp.html#torch.Tensor.logsumexp" title="torch.Tensor.logsumexp">
@@ -8361,7 +8613,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_and.html#torch.Tensor.logical_and" title="torch.Tensor.logical_and">
@@ -8386,7 +8638,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_and_.html#torch.Tensor.logical_and_" title="torch.Tensor.logical_and_">
@@ -8411,7 +8663,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_not.html#torch.Tensor.logical_not" title="torch.Tensor.logical_not">
@@ -8436,7 +8688,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_not_.html#torch.Tensor.logical_not_" title="torch.Tensor.logical_not_">
@@ -8461,7 +8713,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_or.html#torch.Tensor.logical_or" title="torch.Tensor.logical_or">
@@ -8486,7 +8738,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_or_.html#torch.Tensor.logical_or_" title="torch.Tensor.logical_or_">
@@ -8511,7 +8763,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_xor.html#torch.Tensor.logical_xor" title="torch.Tensor.logical_xor">
@@ -8536,7 +8788,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logical_xor_.html#torch.Tensor.logical_xor_" title="torch.Tensor.logical_xor_">
@@ -8561,7 +8813,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logit.html#torch.Tensor.logit" title="torch.Tensor.logit">
@@ -8586,7 +8838,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.logit_.html#torch.Tensor.logit_" title="torch.Tensor.logit_">
@@ -8611,7 +8863,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.long.html#torch.Tensor.long" title="torch.Tensor.long">
@@ -8640,7 +8892,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lstsq.html#torch.Tensor.lstsq" title="torch.Tensor.lstsq">
@@ -8665,7 +8917,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lt.html#torch.Tensor.lt" title="torch.Tensor.lt">
@@ -8691,7 +8943,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lt_.html#torch.Tensor.lt_" title="torch.Tensor.lt_">
@@ -8717,7 +8969,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.less.html#torch.Tensor.less" title="torch.Tensor.less">
@@ -8735,7 +8987,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.less_.html#torch.Tensor.less_" title="torch.Tensor.less_">
@@ -8761,7 +9013,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lu.html#torch.Tensor.lu" title="torch.Tensor.lu">
@@ -8786,7 +9038,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.lu_solve.html#torch.Tensor.lu_solve" title="torch.Tensor.lu_solve">
@@ -8811,7 +9063,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.as_subclass.html#torch.Tensor.as_subclass" title="torch.Tensor.as_subclass">
@@ -8841,7 +9093,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.map_.html#torch.Tensor.map_" title="torch.Tensor.map_">
@@ -8885,7 +9137,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.masked_scatter_.html#torch.Tensor.masked_scatter_" title="torch.Tensor.masked_scatter_">
@@ -8921,7 +9173,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.masked_scatter.html#torch.Tensor.masked_scatter" title="torch.Tensor.masked_scatter">
@@ -8946,7 +9198,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.masked_fill_.html#torch.Tensor.masked_fill_" title="torch.Tensor.masked_fill_">
@@ -8982,7 +9234,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.masked_fill.html#torch.Tensor.masked_fill" title="torch.Tensor.masked_fill">
@@ -9007,7 +9259,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.masked_select.html#torch.Tensor.masked_select" title="torch.Tensor.masked_select">
@@ -9032,7 +9284,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.matmul.html#torch.Tensor.matmul" title="torch.Tensor.matmul">
@@ -9057,7 +9309,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.matrix_power.html#torch.Tensor.matrix_power" title="torch.Tensor.matrix_power">
@@ -9097,7 +9349,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.matrix_exp.html#torch.Tensor.matrix_exp" title="torch.Tensor.matrix_exp">
@@ -9122,7 +9374,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.max.html#torch.Tensor.max" title="torch.Tensor.max">
@@ -9147,7 +9399,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.maximum.html#torch.Tensor.maximum" title="torch.Tensor.maximum">
@@ -9172,7 +9424,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mean.html#torch.Tensor.mean" title="torch.Tensor.mean">
@@ -9197,7 +9449,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nanmean.html#torch.Tensor.nanmean" title="torch.Tensor.nanmean">
@@ -9222,7 +9474,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.median.html#torch.Tensor.median" title="torch.Tensor.median">
@@ -9247,7 +9499,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nanmedian.html#torch.Tensor.nanmedian" title="torch.Tensor.nanmedian">
@@ -9272,7 +9524,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.min.html#torch.Tensor.min" title="torch.Tensor.min">
@@ -9297,7 +9549,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.minimum.html#torch.Tensor.minimum" title="torch.Tensor.minimum">
@@ -9322,7 +9574,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mm.html#torch.Tensor.mm" title="torch.Tensor.mm">
@@ -9347,7 +9599,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.smm.html#torch.Tensor.smm" title="torch.Tensor.smm">
@@ -9372,7 +9624,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mode.html#torch.Tensor.mode" title="torch.Tensor.mode">
@@ -9397,7 +9649,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.movedim.html#torch.Tensor.movedim" title="torch.Tensor.movedim">
@@ -9422,7 +9674,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.moveaxis.html#torch.Tensor.moveaxis" title="torch.Tensor.moveaxis">
@@ -9447,7 +9699,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.msort.html#torch.Tensor.msort" title="torch.Tensor.msort">
@@ -9472,7 +9724,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mul.html#torch.Tensor.mul" title="torch.Tensor.mul">
@@ -9498,7 +9750,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mul_.html#torch.Tensor.mul_" title="torch.Tensor.mul_">
@@ -9524,7 +9776,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.multiply.html#torch.Tensor.multiply" title="torch.Tensor.multiply">
@@ -9550,7 +9802,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.multiply_.html#torch.Tensor.multiply_" title="torch.Tensor.multiply_">
@@ -9576,7 +9828,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.multinomial.html#torch.Tensor.multinomial" title="torch.Tensor.multinomial">
@@ -9601,7 +9853,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mv.html#torch.Tensor.mv" title="torch.Tensor.mv">
@@ -9626,7 +9878,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mvlgamma.html#torch.Tensor.mvlgamma" title="torch.Tensor.mvlgamma">
@@ -9651,7 +9903,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.mvlgamma_.html#torch.Tensor.mvlgamma_" title="torch.Tensor.mvlgamma_">
@@ -9676,7 +9928,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nansum.html#torch.Tensor.nansum" title="torch.Tensor.nansum">
@@ -9701,7 +9953,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.narrow.html#torch.Tensor.narrow" title="torch.Tensor.narrow">
@@ -9726,7 +9978,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.narrow_copy.html#torch.Tensor.narrow_copy" title="torch.Tensor.narrow_copy">
@@ -9752,7 +10004,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ndimension.html#torch.Tensor.ndimension" title="torch.Tensor.ndimension">
@@ -9777,7 +10029,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nan_to_num.html#torch.Tensor.nan_to_num" title="torch.Tensor.nan_to_num">
@@ -9803,7 +10055,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nan_to_num_.html#torch.Tensor.nan_to_num_" title="torch.Tensor.nan_to_num_">
@@ -9829,7 +10081,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ne.html#torch.Tensor.ne" title="torch.Tensor.ne">
@@ -9855,7 +10107,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ne_.html#torch.Tensor.ne_" title="torch.Tensor.ne_">
@@ -9881,7 +10133,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.not_equal.html#torch.Tensor.not_equal" title="torch.Tensor.not_equal">
@@ -9907,7 +10159,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.not_equal_.html#torch.Tensor.not_equal_" title="torch.Tensor.not_equal_">
@@ -9933,7 +10185,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.neg.html#torch.Tensor.neg" title="torch.Tensor.neg">
@@ -9958,7 +10210,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.neg_.html#torch.Tensor.neg_" title="torch.Tensor.neg_">
@@ -9983,7 +10235,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.negative.html#torch.Tensor.negative" title="torch.Tensor.negative">
@@ -10008,7 +10260,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.negative_.html#torch.Tensor.negative_" title="torch.Tensor.negative_">
@@ -10033,7 +10285,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nelement.html#torch.Tensor.nelement" title="torch.Tensor.nelement">
@@ -10058,7 +10310,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nextafter.html#torch.Tensor.nextafter" title="torch.Tensor.nextafter">
@@ -10083,7 +10335,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nextafter_.html#torch.Tensor.nextafter_" title="torch.Tensor.nextafter_">
@@ -10108,7 +10360,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nonzero.html#torch.Tensor.nonzero" title="torch.Tensor.nonzero">
@@ -10133,7 +10385,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.norm.html#torch.Tensor.norm" title="torch.Tensor.norm">
@@ -10158,7 +10410,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.normal_.html#torch.Tensor.normal_" title="torch.Tensor.normal_">
@@ -10198,7 +10450,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.numel.html#torch.Tensor.numel" title="torch.Tensor.numel">
@@ -10223,7 +10475,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.numpy.html#torch.Tensor.numpy" title="torch.Tensor.numpy">
@@ -10253,7 +10505,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.orgqr.html#torch.Tensor.orgqr" title="torch.Tensor.orgqr">
@@ -10278,7 +10530,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ormqr.html#torch.Tensor.ormqr" title="torch.Tensor.ormqr">
@@ -10303,7 +10555,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.outer.html#torch.Tensor.outer" title="torch.Tensor.outer">
@@ -10329,7 +10581,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.permute.html#torch.Tensor.permute" title="torch.Tensor.permute">
@@ -10354,7 +10606,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.pin_memory.html#torch.Tensor.pin_memory" title="torch.Tensor.pin_memory">
@@ -10372,7 +10624,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.pinverse.html#torch.Tensor.pinverse" title="torch.Tensor.pinverse">
@@ -10397,7 +10649,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.polygamma.html#torch.Tensor.polygamma" title="torch.Tensor.polygamma">
@@ -10422,7 +10674,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.polygamma_.html#torch.Tensor.polygamma_" title="torch.Tensor.polygamma_">
@@ -10447,7 +10699,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.positive.html#torch.Tensor.positive" title="torch.Tensor.positive">
@@ -10472,7 +10724,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.pow.html#torch.Tensor.pow" title="torch.Tensor.pow">
@@ -10497,7 +10749,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.pow_.html#torch.Tensor.pow_" title="torch.Tensor.pow_">
@@ -10522,7 +10774,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.prod.html#torch.Tensor.prod" title="torch.Tensor.prod">
@@ -10547,7 +10799,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.put_.html#torch.Tensor.put_" title="torch.Tensor.put_">
@@ -10577,7 +10829,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.qr.html#torch.Tensor.qr" title="torch.Tensor.qr">
@@ -10602,7 +10854,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.qscheme.html#torch.Tensor.qscheme" title="torch.Tensor.qscheme">
@@ -10620,7 +10872,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.quantile.html#torch.Tensor.quantile" title="torch.Tensor.quantile">
@@ -10645,7 +10897,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.nanquantile.html#torch.Tensor.nanquantile" title="torch.Tensor.nanquantile">
@@ -10670,7 +10922,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.q_scale.html#torch.Tensor.q_scale" title="torch.Tensor.q_scale">
@@ -10688,7 +10940,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.q_zero_point.html#torch.Tensor.q_zero_point" title="torch.Tensor.q_zero_point">
@@ -10706,7 +10958,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.q_per_channel_scales.html#torch.Tensor.q_per_channel_scales" title="torch.Tensor.q_per_channel_scales">
@@ -10724,7 +10976,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.q_per_channel_zero_points.html#torch.Tensor.q_per_channel_zero_points" title="torch.Tensor.q_per_channel_zero_points">
@@ -10742,7 +10994,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.q_per_channel_axis.html#torch.Tensor.q_per_channel_axis" title="torch.Tensor.q_per_channel_axis">
@@ -10760,7 +11012,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.rad2deg.html#torch.Tensor.rad2deg" title="torch.Tensor.rad2deg">
@@ -10785,7 +11037,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.random_.html#torch.Tensor.random_" title="torch.Tensor.random_">
@@ -10824,7 +11076,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.ravel.html#torch.Tensor.ravel" title="torch.Tensor.ravel">
@@ -10849,7 +11101,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.reciprocal.html#torch.Tensor.reciprocal" title="torch.Tensor.reciprocal">
@@ -10874,7 +11126,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.reciprocal_.html#torch.Tensor.reciprocal_" title="torch.Tensor.reciprocal_">
@@ -10899,7 +11151,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.record_stream.html#torch.Tensor.record_stream" title="torch.Tensor.record_stream">
@@ -10923,7 +11175,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.register_hook.html#torch.Tensor.register_hook" title="torch.Tensor.register_hook">
@@ -10941,7 +11193,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.remainder.html#torch.Tensor.remainder" title="torch.Tensor.remainder">
@@ -10966,7 +11218,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.remainder_.html#torch.Tensor.remainder_" title="torch.Tensor.remainder_">
@@ -10991,7 +11243,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.renorm.html#torch.Tensor.renorm" title="torch.Tensor.renorm">
@@ -11016,7 +11268,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.renorm_.html#torch.Tensor.renorm_" title="torch.Tensor.renorm_">
@@ -11041,7 +11293,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.repeat.html#torch.Tensor.repeat" title="torch.Tensor.repeat">
@@ -11059,7 +11311,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.repeat_interleave.html#torch.Tensor.repeat_interleave" title="torch.Tensor.repeat_interleave">
@@ -11085,7 +11337,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.requires_grad.html#torch.Tensor.requires_grad" title="torch.Tensor.requires_grad">
@@ -11115,7 +11367,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.requires_grad_.html#torch.Tensor.requires_grad_" title="torch.Tensor.requires_grad_">
@@ -11139,7 +11391,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.reshape.html#torch.Tensor.reshape" title="torch.Tensor.reshape">
@@ -11163,7 +11415,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.reshape_as.html#torch.Tensor.reshape_as" title="torch.Tensor.reshape_as">
@@ -11187,7 +11439,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.resize_.html#torch.Tensor.resize_" title="torch.Tensor.resize_">
@@ -11211,7 +11463,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.resize_as_.html#torch.Tensor.resize_as_" title="torch.Tensor.resize_as_">
@@ -11243,7 +11495,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.retain_grad.html#torch.Tensor.retain_grad" title="torch.Tensor.retain_grad">
@@ -11273,7 +11525,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.retains_grad.html#torch.Tensor.retains_grad" title="torch.Tensor.retains_grad">
@@ -11315,7 +11567,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.roll.html#torch.Tensor.roll" title="torch.Tensor.roll">
@@ -11340,7 +11592,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.rot90.html#torch.Tensor.rot90" title="torch.Tensor.rot90">
@@ -11365,7 +11617,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.round.html#torch.Tensor.round" title="torch.Tensor.round">
@@ -11390,7 +11642,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.round_.html#torch.Tensor.round_" title="torch.Tensor.round_">
@@ -11415,7 +11667,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.rsqrt.html#torch.Tensor.rsqrt" title="torch.Tensor.rsqrt">
@@ -11440,7 +11692,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.rsqrt_.html#torch.Tensor.rsqrt_" title="torch.Tensor.rsqrt_">
@@ -11465,7 +11717,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.scatter.html#torch.Tensor.scatter" title="torch.Tensor.scatter">
@@ -11490,7 +11742,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.scatter_.html#torch.Tensor.scatter_" title="torch.Tensor.scatter_">
@@ -11526,7 +11778,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.scatter_add_.html#torch.Tensor.scatter_add_" title="torch.Tensor.scatter_add_">
@@ -11570,7 +11822,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.scatter_add.html#torch.Tensor.scatter_add" title="torch.Tensor.scatter_add">
@@ -11595,6 +11847,31 @@ use
               </p>
              </td>
             </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.Tensor.scatter_reduce.html#torch.Tensor.scatter_reduce" title="torch.Tensor.scatter_reduce">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.scatter_reduce
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               See
+               <a class="reference internal" href="generated/torch.scatter_reduce.html#torch.scatter_reduce" title="torch.scatter_reduce">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.scatter_reduce()
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+            </tr>
             <tr class="row-even">
              <td>
               <p>
@@ -11609,17 +11886,43 @@ use
              </td>
              <td>
               <p>
-               Slices the
-               <code class="xref py py-attr docutils literal notranslate">
-                <span class="pre">
-                 self
-                </span>
-               </code>
-               tensor along the selected dimension at the given index.
+               See
+               <a class="reference internal" href="generated/torch.select.html#torch.select" title="torch.select">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.select()
+                 </span>
+                </code>
+               </a>
               </p>
              </td>
             </tr>
             <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.Tensor.select_scatter.html#torch.Tensor.select_scatter" title="torch.Tensor.select_scatter">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.select_scatter
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               See
+               <a class="reference internal" href="generated/torch.select_scatter.html#torch.select_scatter" title="torch.select_scatter">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.select_scatter()
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.set_.html#torch.Tensor.set_" title="torch.Tensor.set_">
@@ -11637,7 +11940,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.share_memory_.html#torch.Tensor.share_memory_" title="torch.Tensor.share_memory_">
@@ -11655,7 +11958,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.short.html#torch.Tensor.short" title="torch.Tensor.short">
@@ -11684,7 +11987,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sigmoid.html#torch.Tensor.sigmoid" title="torch.Tensor.sigmoid">
@@ -11709,7 +12012,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sigmoid_.html#torch.Tensor.sigmoid_" title="torch.Tensor.sigmoid_">
@@ -11734,7 +12037,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sign.html#torch.Tensor.sign" title="torch.Tensor.sign">
@@ -11759,7 +12062,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sign_.html#torch.Tensor.sign_" title="torch.Tensor.sign_">
@@ -11784,7 +12087,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.signbit.html#torch.Tensor.signbit" title="torch.Tensor.signbit">
@@ -11809,7 +12112,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sgn.html#torch.Tensor.sgn" title="torch.Tensor.sgn">
@@ -11834,7 +12137,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sgn_.html#torch.Tensor.sgn_" title="torch.Tensor.sgn_">
@@ -11859,7 +12162,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sin.html#torch.Tensor.sin" title="torch.Tensor.sin">
@@ -11884,7 +12187,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sin_.html#torch.Tensor.sin_" title="torch.Tensor.sin_">
@@ -11909,7 +12212,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sinc.html#torch.Tensor.sinc" title="torch.Tensor.sinc">
@@ -11934,7 +12237,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sinc_.html#torch.Tensor.sinc_" title="torch.Tensor.sinc_">
@@ -11959,7 +12262,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sinh.html#torch.Tensor.sinh" title="torch.Tensor.sinh">
@@ -11984,7 +12287,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.sinh_.html#torch.Tensor.sinh_" title="torch.Tensor.sinh_">
@@ -12009,7 +12312,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.asinh.html#torch.Tensor.asinh" title="torch.Tensor.asinh">
@@ -12034,7 +12337,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.asinh_.html#torch.Tensor.asinh_" title="torch.Tensor.asinh_">
@@ -12059,7 +12362,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.arcsinh.html#torch.Tensor.arcsinh" title="torch.Tensor.arcsinh">
@@ -12084,7 +12387,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.arcsinh_.html#torch.Tensor.arcsinh_" title="torch.Tensor.arcsinh_">
@@ -12109,7 +12412,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.size.html#torch.Tensor.size" title="torch.Tensor.size">
@@ -12133,7 +12436,7 @@ use
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.slogdet.html#torch.Tensor.slogdet" title="torch.Tensor.slogdet">
@@ -12152,6 +12455,31 @@ use
                 <code class="xref py py-func docutils literal notranslate">
                  <span class="pre">
                   torch.slogdet()
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.Tensor.slice_scatter.html#torch.Tensor.slice_scatter" title="torch.Tensor.slice_scatter">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Tensor.slice_scatter
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               See
+               <a class="reference internal" href="generated/torch.slice_scatter.html#torch.slice_scatter" title="torch.slice_scatter">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  torch.slice_scatter()
                  </span>
                 </code>
                </a>

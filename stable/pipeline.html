@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Pipeline Parallelism — PyTorch 1.10 documentation
+   Pipeline Parallelism — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -749,7 +750,7 @@ non-tensors.
            </h3>
            <p>
             Certain models like ResNeXt are not completely sequential and have skip
-connections between layers. Naively implementing as part of pipeling
+connections between layers. Naively implementing as part of pipeline
 parallelism would imply that we need to copy outputs for certain layers through
 multiple GPUs till we eventually reach the GPU where the layer for the skip
 connection resides. To avoid this copy overhead, we provide APIs below to stash
@@ -1325,7 +1326,7 @@ rest of the components that PyTorch provides:
           </h2>
           <p>
            The implementation for pipeline parallelism is based on
-           <a class="reference external" href="https://github.com/facebookresearch/fairscale/tree/master/fairscale/nn/pipe">
+           <a class="reference external" href="https://github.com/facebookresearch/fairscale/tree/main/fairscale/nn/pipe">
             fairscale’s pipe implementation
            </a>
            and

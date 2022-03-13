@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   AdaptiveLogSoftmaxWithLoss — PyTorch 1.10 documentation
+   AdaptiveLogSoftmaxWithLoss — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -296,7 +297,7 @@ which is given as
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:1.80002em;vertical-align:-0.65002em;">
+                  <span class="strut" style="height:1.8em;vertical-align:-0.65em;">
                   </span>
                   <span class="minner">
                    <span class="mopen delimcenter" style="top:0em;">
@@ -310,8 +311,8 @@ which is given as
                     <span class="mfrac">
                      <span class="vlist-t vlist-t2">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.821777em;">
-                        <span style="top:-2.64258em;">
+                       <span class="vlist" style="height:0.8218em;">
+                        <span style="top:-2.6426em;">
                          <span class="pstrut" style="height:3em;">
                          </span>
                          <span class="sizing reset-size6 size3 mtight">
@@ -325,8 +326,8 @@ which is given as
                             <span class="msupsub">
                              <span class="vlist-t">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.7820285714285713em;">
-                                <span style="top:-2.786em;margin-right:0.07142857142857144em;">
+                               <span class="vlist" style="height:0.782em;">
+                                <span style="top:-2.786em;margin-right:0.0714em;">
                                  <span class="pstrut" style="height:2.5em;">
                                  </span>
                                  <span class="sizing reset-size3 size1 mtight">
@@ -376,7 +377,7 @@ which is given as
                        </span>
                       </span>
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.4240179999999999em;">
+                       <span class="vlist" style="height:0.424em;">
                         <span>
                         </span>
                        </span>
@@ -422,7 +423,7 @@ where
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6944em;">
                   </span>
                   <span class="mord mathnormal">
                    i
@@ -458,7 +459,7 @@ and indices starting from
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6444em;">
                   </span>
                   <span class="mord">
                    1
@@ -752,7 +753,49 @@ log likelihood loss
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord text">
+                     <span class="mord texttt">
+                      in_features
+                     </span>
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mtext mathvariant="monospace">
+                       in_features
+                      </mtext>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (\texttt{in\_features})
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
                     </span>
                     <span class="mord text">
                      <span class="mord texttt">
@@ -810,6 +853,40 @@ log likelihood loss
                   </span>
                  </span>
                 </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      ()
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
                 where each value satisfies
                 <span class="math">
                  <span class="katex">
@@ -847,37 +924,37 @@ log likelihood loss
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68354em;vertical-align:-0.0391em;">
+                    <span class="strut" style="height:0.6835em;vertical-align:-0.0391em;">
                     </span>
                     <span class="mord">
                      0
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                     <span class="mrel">
                      &lt;=
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                    </span>
                    <span class="base">
-                    <span class="strut" style="height:0.9166599999999999em;vertical-align:-0.22222em;">
+                    <span class="strut" style="height:0.9167em;vertical-align:-0.2222em;">
                     </span>
                     <span class="mord text">
                      <span class="mord texttt">
                       target[i]
                      </span>
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                     <span class="mrel">
                      &lt;=
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                    </span>
                    <span class="base">
-                    <span class="strut" style="height:0.70625em;vertical-align:-0.09514em;">
+                    <span class="strut" style="height:0.7063em;vertical-align:-0.0951em;">
                     </span>
                     <span class="mord text">
                      <span class="mord texttt">
@@ -924,6 +1001,40 @@ log likelihood loss
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.10903em;">
                      N
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      ()
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
                     </span>
                     <span class="mclose">
                      )
@@ -999,7 +1110,7 @@ log likelihood loss
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.70625em;vertical-align:-0.09514em;">
+                  <span class="strut" style="height:0.7063em;vertical-align:-0.0951em;">
                   </span>
                   <span class="mord text">
                    <span class="mord texttt">
@@ -1053,7 +1164,7 @@ log likelihood loss
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4306em;">
                     </span>
                     <span class="mord mathnormal">
                      c
@@ -1099,17 +1210,17 @@ log likelihood loss
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68354em;vertical-align:-0.0391em;">
+                    <span class="strut" style="height:0.6835em;vertical-align:-0.0391em;">
                     </span>
                     <span class="mord">
                      0
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                     <span class="mrel">
                      &lt;=
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                    </span>
                    <span class="base">
@@ -1118,16 +1229,16 @@ log likelihood loss
                     <span class="mord mathnormal">
                      c
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                     <span class="mrel">
                      &lt;=
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                    </span>
                    <span class="base">
-                    <span class="strut" style="height:0.70625em;vertical-align:-0.09514em;">
+                    <span class="strut" style="height:0.7063em;vertical-align:-0.0951em;">
                     </span>
                     <span class="mord text">
                      <span class="mord texttt">
@@ -1157,7 +1268,7 @@ log likelihood loss
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.70625em;vertical-align:-0.09514em;">
+                    <span class="strut" style="height:0.7063em;vertical-align:-0.0951em;">
                     </span>
                     <span class="mord text">
                      <span class="mord texttt">
@@ -1229,7 +1340,7 @@ parameter passed to
                       <span class="mpunct">
                        ,
                       </span>
-                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      <span class="mspace" style="margin-right:0.1667em;">
                       </span>
                       <span class="mord text">
                        <span class="mord texttt">
@@ -1289,7 +1400,7 @@ parameter passed to
                       <span class="mpunct">
                        ,
                       </span>
-                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      <span class="mspace" style="margin-right:0.1667em;">
                       </span>
                       <span class="mord text">
                        <span class="mord texttt">
@@ -1345,7 +1456,7 @@ parameter passed to
              <p>
               This is equivalent to
               <cite>
-               self.log_pob(input).argmax(dim=1)
+               self.log_prob(input).argmax(dim=1)
               </cite>
               ,
 but is more efficient in some cases.
@@ -1439,7 +1550,7 @@ but is more efficient in some cases.
                       <span class="mpunct">
                        ,
                       </span>
-                      <span class="mspace" style="margin-right:0.16666666666666666em;">
+                      <span class="mspace" style="margin-right:0.1667em;">
                       </span>
                       <span class="mord text">
                        <span class="mord texttt">

@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.autograd.function.FunctionCtx.save_for_backward — PyTorch 1.10 documentation
+   torch.autograd.function.FunctionCtx.save_for_backward — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -80,18 +81,44 @@
             .
            </p>
            <p>
-            <strong>
-             This should be called at most once, and only from inside the
-            </strong>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              save_for_backward
+             </span>
+            </code>
+            should be called at most once, only from inside the
             <code class="xref py py-func docutils literal notranslate">
              <span class="pre">
               forward()
              </span>
             </code>
-            <strong>
-             method. This should only be called with input or
-output tensors
-            </strong>
+            method, and only with tensors.
+           </p>
+           <p>
+            All tensors intended to be used in the backward pass should be saved
+with
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              save_for_backward
+             </span>
+            </code>
+            (as opposed to directly on
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              ctx
+             </span>
+            </code>
+            ) to prevent
+incorrect gradients and memory leaks, and enable the application of saved
+tensor hooks. See
+            <a class="reference internal" href="../autograd.html#torch.autograd.graph.saved_tensors_hooks" title="torch.autograd.graph.saved_tensors_hooks">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.autograd.graph.saved_tensors_hooks
+              </span>
+             </code>
+            </a>
+            .
            </p>
            <p>
             In
@@ -139,14 +166,13 @@ they weren’t used in any in-place operation that modified their content.
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">w</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">out</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="n">w</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">ctx</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>  <span class="c1"># z is not a tensor</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">ctx</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>  <span class="c1"># w is neither input nor output</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="k">return</span> <span class="n">out</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="nd">@staticmethod</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">grad_out</span><span class="p">):</span>
-<span class="gp">&gt;&gt;&gt; </span>        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_tensors</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_tensors</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">z</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">z</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">gx</span> <span class="o">=</span> <span class="n">grad_out</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="n">gy</span> <span class="o">=</span> <span class="n">grad_out</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">z</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span>

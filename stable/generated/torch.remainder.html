@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.remainder — PyTorch 1.10 documentation
+   torch.remainder — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -99,36 +100,42 @@
           </dt>
           <dd>
            <p>
-            Like
-            <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
-             <code class="xref py py-func docutils literal notranslate">
-              <span class="pre">
-               torch.fmod()
-              </span>
-             </code>
+            Computes
+            <a class="reference external" href="https://docs.python.org/3/reference/expressions.html#binary-arithmetic-operations">
+             Python’s modulus operation
             </a>
-            this applies C++’s
-            <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/fmod">
-             std::fmod
-            </a>
-            for floating point tensors and the modulus operation for integer tensors.
-Unlike
-            <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
-             <code class="xref py py-func docutils literal notranslate">
-              <span class="pre">
-               torch.fmod()
-              </span>
-             </code>
-            </a>
-            , however, if the sign of the modulus is different
-than the sign of the divisor
+            entrywise.  The result has the same sign as the divisor
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               other
              </span>
             </code>
-            then the divisor is added to the modulus.
+            and its absolute value
+is less than that of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              other
+             </span>
+            </code>
+            .
            </p>
+           <p>
+            It may also be defined in terms of
+            <a class="reference internal" href="torch.div.html#torch.div" title="torch.div">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.div()
+              </span>
+             </code>
+            </a>
+            as
+           </p>
+           <div class="highlight-python notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">-</span> <span class="n">a</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s2">"floor"</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span>
+</pre>
+            </div>
+           </div>
            <p>
             Supports
             <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
@@ -162,27 +169,24 @@ See
              for how division by zero is handled.
             </p>
            </div>
-           <div class="admonition note">
+           <div class="admonition seealso">
             <p class="admonition-title">
-             Note
+             See also
             </p>
             <p>
-             This op, like NumPy’s
-             <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.remainder.html">
-              remainder
+             <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.fmod()
+               </span>
+              </code>
              </a>
-             ,
-is equivalent to Python’s modulus operation, and different from Python’s
-             <a class="reference external" href="https://docs.python.org/dev/library/math.html#math.remainder">
-              math.remainder
+             which implements C++’s
+             <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/fmod">
+              std::fmod
              </a>
-             and
-C++’s
-             <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/remainder">
-              std::remainder
-             </a>
-             which implement
-the IEEE remainder.
+             .
+This one is defined in terms of division rounding towards zero.
             </p>
            </div>
            <dl class="field-list simple">
@@ -268,26 +272,6 @@ the IEEE remainder.
 <span class="go">tensor([ -0.5000, -1.0000,  0.0000, -0.5000, -1.0000 ])</span>
 </pre>
             </div>
-           </div>
-           <div class="admonition seealso">
-            <p class="admonition-title">
-             See also
-            </p>
-            <p>
-             <a class="reference internal" href="torch.fmod.html#torch.fmod" title="torch.fmod">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                torch.fmod()
-               </span>
-              </code>
-             </a>
-             which just computes the modulus for integer inputs and
-applies C++’s
-             <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/fmod">
-              std::fmod
-             </a>
-             for floating point inputs.
-            </p>
            </div>
           </dd>
          </dl>

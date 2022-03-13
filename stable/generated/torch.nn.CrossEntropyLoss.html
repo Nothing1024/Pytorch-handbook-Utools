@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   CrossEntropyLoss — PyTorch 1.10 documentation
+   CrossEntropyLoss — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -204,7 +205,47 @@ This is particularly useful when you have an unbalanced training set.
             <cite>
              input
             </cite>
-            has to be a Tensor of size either
+            has to be a Tensor of size
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   C
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  (C)
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.07153em;">
+                 C
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            for unbatched input,
             <span class="math">
              <span class="katex">
               <span class="katex-mathml">
@@ -279,7 +320,7 @@ This is particularly useful when you have an unbalanced training set.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.07153em;">
                  C
@@ -411,7 +452,7 @@ This is particularly useful when you have an unbalanced training set.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.07153em;">
                  C
@@ -419,7 +460,7 @@ This is particularly useful when you have an unbalanced training set.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal">
@@ -428,8 +469,8 @@ This is particularly useful when you have an unbalanced training set.
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.30110799999999993em;">
-                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3011em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -455,7 +496,7 @@ This is particularly useful when you have an unbalanced training set.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal">
@@ -464,8 +505,8 @@ This is particularly useful when you have an unbalanced training set.
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.30110799999999993em;">
-                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3011em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -491,7 +532,7 @@ This is particularly useful when you have an unbalanced training set.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  ...
@@ -499,7 +540,7 @@ This is particularly useful when you have an unbalanced training set.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal">
@@ -508,8 +549,8 @@ This is particularly useful when you have an unbalanced training set.
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.32833099999999993em;">
-                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3283em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -564,21 +605,21 @@ This is particularly useful when you have an unbalanced training set.
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.8193em;vertical-align:-0.13597em;">
+                <span class="strut" style="height:0.8193em;vertical-align:-0.136em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.07153em;">
                  K
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  ≥
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6444em;">
                 </span>
                 <span class="mord">
                  1
@@ -591,7 +632,7 @@ This is particularly useful when you have an unbalanced training set.
             <cite>
              K
             </cite>
-            -dimensional case. The latter is useful for higher dimension inputs, such
+            -dimensional case. The last being useful for higher dimension inputs, such
 as computing cross entropy loss per-pixel for 2D images.
            </p>
            <p>
@@ -623,18 +664,12 @@ as computing cross entropy loss per-pixel for 2D images.
                     <mi>
                      C
                     </mi>
-                    <mo>
-                     −
-                    </mo>
-                    <mn>
-                     1
-                    </mn>
                     <mo stretchy="false">
-                     ]
+                     )
                     </mo>
                    </mrow>
                    <annotation encoding="application/x-tex">
-                    [0, C-1]
+                    [0, C)
                    </annotation>
                   </semantics>
                  </math>
@@ -652,27 +687,13 @@ as computing cross entropy loss per-pixel for 2D images.
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.07153em;">
                    C
                   </span>
-                  <span class="mspace" style="margin-right:0.2222222222222222em;">
-                  </span>
-                  <span class="mbin">
-                   −
-                  </span>
-                  <span class="mspace" style="margin-right:0.2222222222222222em;">
-                  </span>
-                 </span>
-                 <span class="base">
-                  <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                  </span>
-                  <span class="mord">
-                   1
-                  </span>
                   <span class="mclose">
-                   ]
+                   )
                   </span>
                  </span>
                 </span>
@@ -697,7 +718,7 @@ as computing cross entropy loss per-pixel for 2D images.
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.07153em;">
                    C
@@ -970,7 +991,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.03588em;">
                    y
@@ -978,30 +999,30 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   <span class="mclose">
                    )
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal">
                    L
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:1.149108em;vertical-align:-0.25em;">
+                  <span class="strut" style="height:1.1491em;vertical-align:-0.25em;">
                   </span>
                   <span class="mopen">
                    {
@@ -1013,8 +1034,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.30110799999999993em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3011em;">
+                       <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -1040,17 +1061,17 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="minner">
                    …
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -1059,8 +1080,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.32833099999999993em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3283em;">
+                       <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -1090,7 +1111,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.8991079999999999em;">
+                      <span class="vlist" style="height:0.8991em;">
                        <span style="top:-3.113em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
@@ -1110,7 +1131,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   </span>
                   <span class="mspace" style="margin-right:1em;">
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -1119,8 +1140,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.151392em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.1514em;">
+                       <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -1143,16 +1164,16 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                     </span>
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:2.597941em;vertical-align:-1.170941em;">
+                  <span class="strut" style="height:2.5979em;vertical-align:-1.1709em;">
                   </span>
                   <span class="mord">
                    −
@@ -1164,8 +1185,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.15139200000000003em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.1514em;">
+                       <span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -1177,8 +1198,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                            <span class="msupsub">
                             <span class="vlist-t vlist-t2">
                              <span class="vlist-r">
-                              <span class="vlist" style="height:0.16454285714285719em;">
-                               <span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;">
+                              <span class="vlist" style="height:0.1645em;">
+                               <span style="top:-2.357em;margin-left:-0.0359em;margin-right:0.0714em;">
                                 <span class="pstrut" style="height:2.5em;">
                                 </span>
                                 <span class="sizing reset-size3 size1 mtight">
@@ -1210,7 +1231,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                       </span>
                      </span>
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.286108em;">
+                      <span class="vlist" style="height:0.2861em;">
                        <span>
                        </span>
                       </span>
@@ -1218,7 +1239,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                     </span>
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mop">
                    lo
@@ -1226,7 +1247,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                     g
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mopen nulldelimiter">
@@ -1235,19 +1256,19 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
                       <span class="vlist" style="height:1.427em;">
-                       <span style="top:-2.128769em;">
+                       <span style="top:-2.1288em;">
                         <span class="pstrut" style="height:3em;">
                         </span>
                         <span class="mord">
                          <span class="mop">
-                          <span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">
+                          <span class="mop op-symbol small-op" style="position:relative;top:0em;">
                            ∑
                           </span>
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.981231em;">
-                              <span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;">
+                             <span class="vlist" style="height:0.9812em;">
+                              <span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;">
                                <span class="pstrut" style="height:2.7em;">
                                </span>
                                <span class="sizing reset-size6 size3 mtight">
@@ -1279,7 +1300,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.29971000000000003em;">
+                             <span class="vlist" style="height:0.2997em;">
                               <span>
                               </span>
                              </span>
@@ -1287,7 +1308,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                            </span>
                           </span>
                          </span>
-                         <span class="mspace" style="margin-right:0.16666666666666666em;">
+                         <span class="mspace" style="margin-right:0.1667em;">
                          </span>
                          <span class="mop">
                           exp
@@ -1302,8 +1323,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.15139200000000003em;">
-                              <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="vlist" style="height:0.1514em;">
+                              <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                                <span class="pstrut" style="height:2.7em;">
                                </span>
                                <span class="sizing reset-size6 size3 mtight">
@@ -1326,7 +1347,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.286108em;">
+                             <span class="vlist" style="height:0.2861em;">
                               <span>
                               </span>
                              </span>
@@ -1362,8 +1383,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.15139200000000003em;">
-                              <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="vlist" style="height:0.1514em;">
+                              <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                                <span class="pstrut" style="height:2.7em;">
                                </span>
                                <span class="sizing reset-size6 size3 mtight">
@@ -1381,8 +1402,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                   <span class="msupsub">
                                    <span class="vlist-t vlist-t2">
                                     <span class="vlist-r">
-                                     <span class="vlist" style="height:0.16454285714285719em;">
-                                      <span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;">
+                                     <span class="vlist" style="height:0.1645em;">
+                                      <span style="top:-2.357em;margin-left:-0.0359em;margin-right:0.0714em;">
                                        <span class="pstrut" style="height:2.5em;">
                                        </span>
                                        <span class="sizing reset-size3 size1 mtight">
@@ -1414,7 +1435,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.286108em;">
+                             <span class="vlist" style="height:0.2861em;">
                               <span>
                               </span>
                              </span>
@@ -1433,7 +1454,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                       </span>
                      </span>
                      <span class="vlist-r">
-                      <span class="vlist" style="height:1.170941em;">
+                      <span class="vlist" style="height:1.1709em;">
                        <span>
                        </span>
                       </span>
@@ -1443,12 +1464,12 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="mclose nulldelimiter">
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.2222222222222222em;">
+                  <span class="mspace" style="margin-right:0.2222em;">
                   </span>
                   <span class="mbin">
                    ⋅
                   </span>
-                  <span class="mspace" style="margin-right:0.2222222222222222em;">
+                  <span class="mspace" style="margin-right:0.2222em;">
                   </span>
                  </span>
                  <span class="base">
@@ -1467,8 +1488,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.151392em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.1514em;">
+                       <span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -1491,13 +1512,13 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                     </span>
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    <span class="mord vbox">
                     <span class="thinbox">
                      <span class="rlap">
-                      <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                      <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
                       </span>
                       <span class="inner">
                        <span class="mord">
@@ -1514,12 +1535,12 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:0.36687em;vertical-align:0em;">
+                  <span class="strut" style="height:0.3669em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
@@ -1558,7 +1579,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                  <span class="strut" style="height:0.4306em;">
                   </span>
                   <span class="mord mathnormal">
                    x
@@ -1586,7 +1607,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                  <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.03588em;">
                    y
@@ -1614,7 +1635,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                  <span class="strut" style="height:0.4306em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.02691em;">
                    w
@@ -1642,7 +1663,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.07153em;">
                    C
@@ -1670,7 +1691,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.10903em;">
                    N
@@ -1726,7 +1747,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                  <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal">
@@ -1735,8 +1756,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.30110799999999993em;">
-                       <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3011em;">
+                       <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -1762,7 +1783,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    ...
@@ -1770,7 +1791,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal">
@@ -1779,8 +1800,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.33610799999999996em;">
-                       <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3361em;">
+                       <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -1863,7 +1884,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                      <mo fence="true">
                       {
                      </mo>
-                     <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                     <mtable columnalign="left left" columnspacing="1em" rowspacing="0.36em">
                       <mtr>
                        <mtd>
                         <mstyle displaystyle="false" scriptlevel="0">
@@ -2065,7 +2086,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.03588em;">
                    y
@@ -2073,16 +2094,16 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                   <span class="mclose">
                    )
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:3.102672em;vertical-align:-1.301336em;">
+                  <span class="strut" style="height:3.1027em;vertical-align:-1.3013em;">
                   </span>
                   <span class="minner">
                    <span class="mopen delimcenter" style="top:0em;">
@@ -2095,20 +2116,20 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                      <span class="col-align-l">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.801336em;">
-                         <span style="top:-3.801336em;">
+                        <span class="vlist" style="height:1.8013em;">
+                         <span style="top:-3.8013em;">
                           <span class="pstrut" style="height:3.008em;">
                           </span>
                           <span class="mord">
                            <span class="mop">
-                            <span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">
+                            <span class="mop op-symbol small-op" style="position:relative;top:0em;">
                              ∑
                             </span>
                             <span class="msupsub">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.981231em;">
-                                <span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;">
+                               <span class="vlist" style="height:0.9812em;">
+                                <span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;">
                                  <span class="pstrut" style="height:2.7em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
@@ -2140,7 +2161,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                </span>
                               </span>
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.29971000000000003em;">
+                               <span class="vlist" style="height:0.2997em;">
                                 <span>
                                 </span>
                                </span>
@@ -2148,7 +2169,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                              </span>
                             </span>
                            </span>
-                           <span class="mspace" style="margin-right:0.16666666666666666em;">
+                           <span class="mspace" style="margin-right:0.1667em;">
                            </span>
                            <span class="mord">
                             <span class="mopen nulldelimiter">
@@ -2156,21 +2177,21 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                             <span class="mfrac">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.845108em;">
-                                <span style="top:-2.570335em;">
+                               <span class="vlist" style="height:0.8451em;">
+                                <span style="top:-2.5703em;">
                                  <span class="pstrut" style="height:3em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
                                   <span class="mord mtight">
                                    <span class="mop mtight">
-                                    <span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">
+                                    <span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">
                                      ∑
                                     </span>
                                     <span class="msupsub">
                                      <span class="vlist-t vlist-t2">
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.8852357142857143em;">
-                                        <span style="top:-2.1785614285714283em;margin-left:0em;margin-right:0.07142857142857144em;">
+                                       <span class="vlist" style="height:0.8852em;">
+                                        <span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;">
                                          <span class="pstrut" style="height:2.5em;">
                                          </span>
                                          <span class="sizing reset-size3 size1 mtight">
@@ -2187,7 +2208,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                           </span>
                                          </span>
                                         </span>
-                                        <span style="top:-2.8971428571428572em;margin-right:0.07142857142857144em;">
+                                        <span style="top:-2.8971em;margin-right:0.0714em;">
                                          <span class="pstrut" style="height:2.5em;">
                                          </span>
                                          <span class="sizing reset-size3 size1 mtight">
@@ -2202,7 +2223,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                        </span>
                                       </span>
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.32143857142857146em;">
+                                       <span class="vlist" style="height:0.3214em;">
                                         <span>
                                         </span>
                                        </span>
@@ -2210,7 +2231,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                      </span>
                                     </span>
                                    </span>
-                                   <span class="mspace mtight" style="margin-right:0.19516666666666668em;">
+                                   <span class="mspace mtight" style="margin-right:0.1952em;">
                                    </span>
                                    <span class="mord mtight">
                                     <span class="mord mathnormal mtight" style="margin-right:0.02691em;">
@@ -2219,8 +2240,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                     <span class="msupsub">
                                      <span class="vlist-t vlist-t2">
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.16454285714285716em;">
-                                        <span style="top:-2.3569999999999998em;margin-left:-0.02691em;margin-right:0.07142857142857144em;">
+                                       <span class="vlist" style="height:0.1645em;">
+                                        <span style="top:-2.357em;margin-left:-0.0269em;margin-right:0.0714em;">
                                          <span class="pstrut" style="height:2.5em;">
                                          </span>
                                          <span class="sizing reset-size3 size1 mtight">
@@ -2232,8 +2253,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                             <span class="msupsub">
                                              <span class="vlist-t vlist-t2">
                                               <span class="vlist-r">
-                                               <span class="vlist" style="height:0.23056em;">
-                                                <span style="top:-2.3em;margin-left:-0.03588em;margin-right:0.1em;">
+                                               <span class="vlist" style="height:0.2306em;">
+                                                <span style="top:-2.3em;margin-left:-0.0359em;margin-right:0.1em;">
                                                  <span class="pstrut" style="height:2.5em;">
                                                  </span>
                                                  <span class="mord mathnormal mtight">
@@ -2263,7 +2284,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                        </span>
                                       </span>
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.28585714285714287em;">
+                                       <span class="vlist" style="height:0.2859em;">
                                         <span>
                                         </span>
                                        </span>
@@ -2287,8 +2308,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                     <span class="msupsub">
                                      <span class="vlist-t vlist-t2">
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.16454285714285719em;">
-                                        <span style="top:-2.357em;margin-left:-0.03588em;margin-right:0.07142857142857144em;">
+                                       <span class="vlist" style="height:0.1645em;">
+                                        <span style="top:-2.357em;margin-left:-0.0359em;margin-right:0.0714em;">
                                          <span class="pstrut" style="height:2.5em;">
                                          </span>
                                          <span class="sizing reset-size3 size1 mtight">
@@ -2315,7 +2336,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                     <span class="mord vbox mtight">
                                      <span class="thinbox mtight">
                                       <span class="rlap mtight">
-                                       <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                                       <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
                                        </span>
                                        <span class="inner">
                                         <span class="mord mtight">
@@ -2367,7 +2388,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                </span>
                               </span>
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.654672em;">
+                               <span class="vlist" style="height:0.6547em;">
                                 <span>
                                 </span>
                                </span>
@@ -2384,8 +2405,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                             <span class="msupsub">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.151392em;">
-                                <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                               <span class="vlist" style="height:0.1514em;">
+                                <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                                  <span class="pstrut" style="height:2.7em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
@@ -2413,19 +2434,19 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                            </span>
                           </span>
                          </span>
-                         <span style="top:-2.138664em;">
+                         <span style="top:-2.1387em;">
                           <span class="pstrut" style="height:3.008em;">
                           </span>
                           <span class="mord">
                            <span class="mop">
-                            <span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">
+                            <span class="mop op-symbol small-op" style="position:relative;top:0em;">
                              ∑
                             </span>
                             <span class="msupsub">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.981231em;">
-                                <span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;">
+                               <span class="vlist" style="height:0.9812em;">
+                                <span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;">
                                  <span class="pstrut" style="height:2.7em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
@@ -2457,7 +2478,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                                </span>
                               </span>
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.29971000000000003em;">
+                               <span class="vlist" style="height:0.2997em;">
                                 <span>
                                 </span>
                                </span>
@@ -2465,7 +2486,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                              </span>
                             </span>
                            </span>
-                           <span class="mspace" style="margin-right:0.16666666666666666em;">
+                           <span class="mspace" style="margin-right:0.1667em;">
                            </span>
                            <span class="mord">
                             <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -2474,8 +2495,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                             <span class="msupsub">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.151392em;">
-                                <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                               <span class="vlist" style="height:0.1514em;">
+                                <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                                  <span class="pstrut" style="height:2.7em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
@@ -2509,7 +2530,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                         </span>
                        </span>
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.301336em;">
+                        <span class="vlist" style="height:1.3013em;">
                          <span>
                          </span>
                         </span>
@@ -2521,8 +2542,8 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                      <span class="col-align-l">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.801336em;">
-                         <span style="top:-3.801336em;">
+                        <span class="vlist" style="height:1.8013em;">
+                         <span style="top:-3.8013em;">
                           <span class="pstrut" style="height:3.008em;">
                           </span>
                           <span class="mord">
@@ -2531,12 +2552,12 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                              if reduction
                             </span>
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mrel">
                             =
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mord text">
                             <span class="mord">
@@ -2545,7 +2566,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                            </span>
                           </span>
                          </span>
-                         <span style="top:-2.138664em;">
+                         <span style="top:-2.1387em;">
                           <span class="pstrut" style="height:3.008em;">
                           </span>
                           <span class="mord">
@@ -2554,12 +2575,12 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                              if reduction
                             </span>
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mrel">
                             =
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mord text">
                             <span class="mord">
@@ -2574,7 +2595,7 @@ l_n = - w_{y_n} \log \frac{\exp(x_{n,y_n})}{\sum_{c=1}^C \exp(x_{n,c})}
                         </span>
                        </span>
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.301336em;">
+                        <span class="vlist" style="height:1.3013em;">
                          <span>
                          </span>
                         </span>
@@ -2782,15 +2803,6 @@ are required, such as for blended labels, label smoothing, etc. The unreduced (i
                       </mo>
                      </mrow>
                      <mrow>
-                      <mi>
-                       exp
-                      </mi>
-                      <mo>
-                       ⁡
-                      </mo>
-                      <mo stretchy="false">
-                       (
-                      </mo>
                       <munderover>
                        <mo>
                         ∑
@@ -2810,6 +2822,15 @@ are required, such as for blended labels, label smoothing, etc. The unreduced (i
                         C
                        </mi>
                       </munderover>
+                      <mi>
+                       exp
+                      </mi>
+                      <mo>
+                       ⁡
+                      </mo>
+                      <mo stretchy="false">
+                       (
+                      </mo>
                       <msub>
                        <mi>
                         x
@@ -2850,7 +2871,7 @@ are required, such as for blended labels, label smoothing, etc. The unreduced (i
                    </mrow>
                    <annotation encoding="application/x-tex">
                     \ell(x, y) = L = \{l_1,\dots,l_N\}^\top, \quad
-l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y_{n,c}
+l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\sum_{i=1}^C \exp(x_{n,i})} y_{n,c}
                    </annotation>
                   </semantics>
                  </math>
@@ -2871,7 +2892,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.03588em;">
                    y
@@ -2879,30 +2900,30 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   <span class="mclose">
                    )
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal">
                    L
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:1.149108em;vertical-align:-0.25em;">
+                  <span class="strut" style="height:1.1491em;vertical-align:-0.25em;">
                   </span>
                   <span class="mopen">
                    {
@@ -2914,8 +2935,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.30110799999999993em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3011em;">
+                       <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -2941,17 +2962,17 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="minner">
                    …
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -2960,8 +2981,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.32833099999999993em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3283em;">
+                       <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -2991,7 +3012,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.8991079999999999em;">
+                      <span class="vlist" style="height:0.8991em;">
                        <span style="top:-3.113em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
@@ -3011,7 +3032,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   </span>
                   <span class="mspace" style="margin-right:1em;">
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -3020,8 +3041,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.151392em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.1514em;">
+                       <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -3044,27 +3065,27 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                     </span>
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:3.0954490000000003em;vertical-align:-1.267113em;">
+                  <span class="strut" style="height:3.0954em;vertical-align:-1.2671em;">
                   </span>
                   <span class="mord">
                    −
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mop op-limits">
                    <span class="vlist-t vlist-t2">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:1.8283360000000002em;">
-                      <span style="top:-1.882887em;margin-left:0em;">
+                     <span class="vlist" style="height:1.8283em;">
+                      <span style="top:-1.8829em;margin-left:0em;">
                        <span class="pstrut" style="height:3.05em;">
                        </span>
                        <span class="sizing reset-size6 size3 mtight">
@@ -3081,7 +3102,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                         </span>
                        </span>
                       </span>
-                      <span style="top:-3.050005em;">
+                      <span style="top:-3.05em;">
                        <span class="pstrut" style="height:3.05em;">
                        </span>
                        <span>
@@ -3090,7 +3111,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                         </span>
                        </span>
                       </span>
-                      <span style="top:-4.3000050000000005em;margin-left:0em;">
+                      <span style="top:-4.3em;margin-left:0em;">
                        <span class="pstrut" style="height:3.05em;">
                        </span>
                        <span class="sizing reset-size6 size3 mtight">
@@ -3105,14 +3126,14 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                      </span>
                     </span>
                     <span class="vlist-r">
-                     <span class="vlist" style="height:1.267113em;">
+                     <span class="vlist" style="height:1.2671em;">
                       <span>
                       </span>
                      </span>
                     </span>
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal" style="margin-right:0.02691em;">
@@ -3121,8 +3142,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.151392em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.1514em;">
+                       <span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -3145,7 +3166,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                     </span>
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mop">
                    lo
@@ -3153,7 +3174,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                     g
                    </span>
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mopen nulldelimiter">
@@ -3162,25 +3183,19 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
                       <span class="vlist" style="height:1.427em;">
-                       <span style="top:-2.128769em;">
+                       <span style="top:-2.1288em;">
                         <span class="pstrut" style="height:3em;">
                         </span>
                         <span class="mord">
                          <span class="mop">
-                          exp
-                         </span>
-                         <span class="mopen">
-                          (
-                         </span>
-                         <span class="mop">
-                          <span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">
+                          <span class="mop op-symbol small-op" style="position:relative;top:0em;">
                            ∑
                           </span>
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.981231em;">
-                              <span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;">
+                             <span class="vlist" style="height:0.9812em;">
+                              <span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;">
                                <span class="pstrut" style="height:2.7em;">
                                </span>
                                <span class="sizing reset-size6 size3 mtight">
@@ -3212,7 +3227,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.29971000000000003em;">
+                             <span class="vlist" style="height:0.2997em;">
                               <span>
                               </span>
                              </span>
@@ -3220,7 +3235,13 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                            </span>
                           </span>
                          </span>
-                         <span class="mspace" style="margin-right:0.16666666666666666em;">
+                         <span class="mspace" style="margin-right:0.1667em;">
+                         </span>
+                         <span class="mop">
+                          exp
+                         </span>
+                         <span class="mopen">
+                          (
                          </span>
                          <span class="mord">
                           <span class="mord mathnormal">
@@ -3229,8 +3250,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.311664em;">
-                              <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="vlist" style="height:0.3117em;">
+                              <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                                <span class="pstrut" style="height:2.7em;">
                                </span>
                                <span class="sizing reset-size6 size3 mtight">
@@ -3253,7 +3274,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.286108em;">
+                             <span class="vlist" style="height:0.2861em;">
                               <span>
                               </span>
                              </span>
@@ -3289,8 +3310,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.15139200000000003em;">
-                              <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                             <span class="vlist" style="height:0.1514em;">
+                              <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                                <span class="pstrut" style="height:2.7em;">
                                </span>
                                <span class="sizing reset-size6 size3 mtight">
@@ -3313,7 +3334,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.286108em;">
+                             <span class="vlist" style="height:0.2861em;">
                               <span>
                               </span>
                              </span>
@@ -3332,7 +3353,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                       </span>
                      </span>
                      <span class="vlist-r">
-                      <span class="vlist" style="height:1.170941em;">
+                      <span class="vlist" style="height:1.1709em;">
                        <span>
                        </span>
                       </span>
@@ -3349,8 +3370,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.15139200000000003em;">
-                       <span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.1514em;">
+                       <span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -3373,7 +3394,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                       </span>
                      </span>
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.286108em;">
+                      <span class="vlist" style="height:0.2861em;">
                        <span>
                        </span>
                       </span>
@@ -3406,7 +3427,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                  <span class="strut" style="height:0.4306em;">
                   </span>
                   <span class="mord mathnormal">
                    x
@@ -3434,7 +3455,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                  <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.03588em;">
                    y
@@ -3462,7 +3483,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                  <span class="strut" style="height:0.4306em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.02691em;">
                    w
@@ -3490,7 +3511,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.07153em;">
                    C
@@ -3518,7 +3539,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                  <span class="strut" style="height:0.6833em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.10903em;">
                    N
@@ -3574,7 +3595,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                 </span>
                 <span aria-hidden="true" class="katex-html">
                  <span class="base">
-                  <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                  <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal">
@@ -3583,8 +3604,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.30110799999999993em;">
-                       <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3011em;">
+                       <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -3610,7 +3631,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    ...
@@ -3618,7 +3639,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord">
                    <span class="mord mathnormal">
@@ -3627,8 +3648,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                    <span class="msupsub">
                     <span class="vlist-t vlist-t2">
                      <span class="vlist-r">
-                      <span class="vlist" style="height:0.33610799999999996em;">
-                       <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                      <span class="vlist" style="height:0.3361em;">
+                       <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                         <span class="pstrut" style="height:2.7em;">
                         </span>
                         <span class="sizing reset-size6 size3 mtight">
@@ -3711,7 +3732,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                      <mo fence="true">
                       {
                      </mo>
-                     <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                     <mtable columnalign="left left" columnspacing="1em" rowspacing="0.36em">
                       <mtr>
                        <mtd>
                         <mstyle displaystyle="false" scriptlevel="0">
@@ -3855,7 +3876,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   <span class="mpunct">
                    ,
                   </span>
-                  <span class="mspace" style="margin-right:0.16666666666666666em;">
+                  <span class="mspace" style="margin-right:0.1667em;">
                   </span>
                   <span class="mord mathnormal" style="margin-right:0.03588em;">
                    y
@@ -3863,16 +3884,16 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                   <span class="mclose">
                    )
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                   <span class="mrel">
                    =
                   </span>
-                  <span class="mspace" style="margin-right:0.2777777777777778em;">
+                  <span class="mspace" style="margin-right:0.2778em;">
                   </span>
                  </span>
                  <span class="base">
-                  <span class="strut" style="height:3.050372em;vertical-align:-1.2751860000000002em;">
+                  <span class="strut" style="height:3.0504em;vertical-align:-1.2752em;">
                   </span>
                   <span class="minner">
                    <span class="mopen delimcenter" style="top:0em;">
@@ -3885,9 +3906,9 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                      <span class="col-align-l">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.7751859999999997em;">
-                         <span style="top:-3.7751859999999997em;">
-                          <span class="pstrut" style="height:3.178372em;">
+                        <span class="vlist" style="height:1.7752em;">
+                         <span style="top:-3.7752em;">
+                          <span class="pstrut" style="height:3.1784em;">
                           </span>
                           <span class="mord">
                            <span class="mord">
@@ -3896,8 +3917,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                             <span class="mfrac">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:1.178372em;">
-                                <span style="top:-2.6550000000000002em;">
+                               <span class="vlist" style="height:1.1784em;">
+                                <span style="top:-2.655em;">
                                  <span class="pstrut" style="height:3em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
@@ -3914,20 +3935,20 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                                  <span class="frac-line" style="border-bottom-width:0.04em;">
                                  </span>
                                 </span>
-                                <span style="top:-3.5350070000000002em;">
+                                <span style="top:-3.535em;">
                                  <span class="pstrut" style="height:3em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
                                   <span class="mord mtight">
                                    <span class="mop mtight">
-                                    <span class="mop op-symbol small-op mtight" style="position:relative;top:-0.0000050000000000050004em;">
+                                    <span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">
                                      ∑
                                     </span>
                                     <span class="msupsub">
                                      <span class="vlist-t vlist-t2">
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.9190928571428572em;">
-                                        <span style="top:-2.1785614285714283em;margin-left:0em;margin-right:0.07142857142857144em;">
+                                       <span class="vlist" style="height:0.9191em;">
+                                        <span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;">
                                          <span class="pstrut" style="height:2.5em;">
                                          </span>
                                          <span class="sizing reset-size3 size1 mtight">
@@ -3944,7 +3965,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                                           </span>
                                          </span>
                                         </span>
-                                        <span style="top:-2.931em;margin-right:0.07142857142857144em;">
+                                        <span style="top:-2.931em;margin-right:0.0714em;">
                                          <span class="pstrut" style="height:2.5em;">
                                          </span>
                                          <span class="sizing reset-size3 size1 mtight">
@@ -3959,7 +3980,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                                        </span>
                                       </span>
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.32143857142857146em;">
+                                       <span class="vlist" style="height:0.3214em;">
                                         <span>
                                         </span>
                                        </span>
@@ -3967,7 +3988,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                                      </span>
                                     </span>
                                    </span>
-                                   <span class="mspace mtight" style="margin-right:0.19516666666666668em;">
+                                   <span class="mspace mtight" style="margin-right:0.1952em;">
                                    </span>
                                    <span class="mord mtight">
                                     <span class="mord mathnormal mtight" style="margin-right:0.01968em;">
@@ -3976,8 +3997,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                                     <span class="msupsub">
                                      <span class="vlist-t vlist-t2">
                                       <span class="vlist-r">
-                                       <span class="vlist" style="height:0.16454285714285719em;">
-                                        <span style="top:-2.357em;margin-left:-0.01968em;margin-right:0.07142857142857144em;">
+                                       <span class="vlist" style="height:0.1645em;">
+                                        <span style="top:-2.357em;margin-left:-0.0197em;margin-right:0.0714em;">
                                          <span class="pstrut" style="height:2.5em;">
                                          </span>
                                          <span class="sizing reset-size3 size1 mtight">
@@ -4024,19 +4045,19 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                            </span>
                           </span>
                          </span>
-                         <span style="top:-2.3351859999999998em;">
-                          <span class="pstrut" style="height:3.178372em;">
+                         <span style="top:-2.3352em;">
+                          <span class="pstrut" style="height:3.1784em;">
                           </span>
                           <span class="mord">
                            <span class="mop">
-                            <span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">
+                            <span class="mop op-symbol small-op" style="position:relative;top:0em;">
                              ∑
                             </span>
                             <span class="msupsub">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.981231em;">
-                                <span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;">
+                               <span class="vlist" style="height:0.9812em;">
+                                <span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;">
                                  <span class="pstrut" style="height:2.7em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
@@ -4068,7 +4089,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                                </span>
                               </span>
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.29971000000000003em;">
+                               <span class="vlist" style="height:0.2997em;">
                                 <span>
                                 </span>
                                </span>
@@ -4076,7 +4097,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                              </span>
                             </span>
                            </span>
-                           <span class="mspace" style="margin-right:0.16666666666666666em;">
+                           <span class="mspace" style="margin-right:0.1667em;">
                            </span>
                            <span class="mord">
                             <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -4085,8 +4106,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                             <span class="msupsub">
                              <span class="vlist-t vlist-t2">
                               <span class="vlist-r">
-                               <span class="vlist" style="height:0.151392em;">
-                                <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                               <span class="vlist" style="height:0.1514em;">
+                                <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                                  <span class="pstrut" style="height:2.7em;">
                                  </span>
                                  <span class="sizing reset-size6 size3 mtight">
@@ -4120,7 +4141,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                         </span>
                        </span>
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.2751860000000002em;">
+                        <span class="vlist" style="height:1.2752em;">
                          <span>
                          </span>
                         </span>
@@ -4132,9 +4153,9 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                      <span class="col-align-l">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.7751859999999997em;">
-                         <span style="top:-3.7751859999999997em;">
-                          <span class="pstrut" style="height:3.178372em;">
+                        <span class="vlist" style="height:1.7752em;">
+                         <span style="top:-3.7752em;">
+                          <span class="pstrut" style="height:3.1784em;">
                           </span>
                           <span class="mord">
                            <span class="mord text">
@@ -4142,12 +4163,12 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                              if reduction
                             </span>
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mrel">
                             =
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mord text">
                             <span class="mord">
@@ -4156,8 +4177,8 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                            </span>
                           </span>
                          </span>
-                         <span style="top:-2.3351859999999998em;">
-                          <span class="pstrut" style="height:3.178372em;">
+                         <span style="top:-2.3352em;">
+                          <span class="pstrut" style="height:3.1784em;">
                           </span>
                           <span class="mord">
                            <span class="mord text">
@@ -4165,12 +4186,12 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                              if reduction
                             </span>
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mrel">
                             =
                            </span>
-                           <span class="mspace" style="margin-right:0.2777777777777778em;">
+                           <span class="mspace" style="margin-right:0.2778em;">
                            </span>
                            <span class="mord text">
                             <span class="mord">
@@ -4185,7 +4206,7 @@ l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\exp(\sum_{i=1}^C x_{n,i})} y
                         </span>
                        </span>
                        <span class="vlist-r">
-                        <span class="vlist" style="height:1.2751860000000002em;">
+                        <span class="vlist" style="height:1.2752em;">
                          <span>
                          </span>
                         </span>
@@ -4528,7 +4549,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6444em;">
                     </span>
                     <span class="mord">
                      0.0
@@ -4543,7 +4564,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
              </ul>
             </dd>
            </dl>
-           <dl class="simple">
+           <dl>
             <dt>
              Shape:
             </dt>
@@ -4551,7 +4572,47 @@ become a mixture of the original ground truth and a uniform distribution as desc
              <ul class="simple">
               <li>
                <p>
-                Input:
+                Input: Shape
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (C)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                ,
                 <span class="math">
                  <span class="katex">
                   <span class="katex-mathml">
@@ -4593,7 +4654,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -4605,11 +4666,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                   </span>
                  </span>
                 </span>
-                where
-                <cite>
-                 C = number of classes
-                </cite>
-                , or
+                or
                 <span class="math">
                  <span class="katex">
                   <span class="katex-mathml">
@@ -4696,7 +4753,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -4704,7 +4761,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal">
@@ -4713,8 +4770,8 @@ become a mixture of the original ground truth and a uniform distribution as desc
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.30110799999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3011em;">
+                         <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -4740,7 +4797,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal">
@@ -4749,8 +4806,8 @@ become a mixture of the original ground truth and a uniform distribution as desc
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.30110799999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3011em;">
+                         <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -4776,7 +4833,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      ...
@@ -4784,7 +4841,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal">
@@ -4793,8 +4850,8 @@ become a mixture of the original ground truth and a uniform distribution as desc
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.32833099999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3283em;">
+                         <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -4849,21 +4906,21 @@ become a mixture of the original ground truth and a uniform distribution as desc
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.8193em;vertical-align:-0.13597em;">
+                    <span class="strut" style="height:0.8193em;vertical-align:-0.136em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      K
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                     <span class="mrel">
                      ≥
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                    </span>
                    <span class="base">
-                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6444em;">
                     </span>
                     <span class="mord">
                      1
@@ -4891,15 +4948,12 @@ become a mixture of the original ground truth and a uniform distribution as desc
                       <mo stretchy="false">
                        (
                       </mo>
-                      <mi>
-                       N
-                      </mi>
                       <mo stretchy="false">
                        )
                       </mo>
                      </mrow>
                      <annotation encoding="application/x-tex">
-                      (N)
+                      ()
                      </annotation>
                     </semantics>
                    </math>
@@ -4911,9 +4965,6 @@ become a mixture of the original ground truth and a uniform distribution as desc
                     <span class="mopen">
                      (
                     </span>
-                    <span class="mord mathnormal" style="margin-right:0.10903em;">
-                     N
-                    </span>
                     <span class="mclose">
                      )
                     </span>
@@ -4921,382 +4972,7 @@ become a mixture of the original ground truth and a uniform distribution as desc
                   </span>
                  </span>
                 </span>
-                where each value is
-                <span class="math">
-                 <span class="katex">
-                  <span class="katex-mathml">
-                   <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics>
-                     <mrow>
-                      <mn>
-                       0
-                      </mn>
-                      <mo>
-                       ≤
-                      </mo>
-                      <mtext>
-                       targets
-                      </mtext>
-                      <mo stretchy="false">
-                       [
-                      </mo>
-                      <mi>
-                       i
-                      </mi>
-                      <mo stretchy="false">
-                       ]
-                      </mo>
-                      <mo>
-                       ≤
-                      </mo>
-                      <mi>
-                       C
-                      </mi>
-                      <mo>
-                       −
-                      </mo>
-                      <mn>
-                       1
-                      </mn>
-                     </mrow>
-                     <annotation encoding="application/x-tex">
-                      0 \leq \text{targets}[i] \leq C-1
-                     </annotation>
-                    </semantics>
-                   </math>
-                  </span>
-                  <span aria-hidden="true" class="katex-html">
-                   <span class="base">
-                    <span class="strut" style="height:0.78041em;vertical-align:-0.13597em;">
-                    </span>
-                    <span class="mord">
-                     0
-                    </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
-                    </span>
-                    <span class="mrel">
-                     ≤
-                    </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
-                    </span>
-                   </span>
-                   <span class="base">
-                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                    </span>
-                    <span class="mord text">
-                     <span class="mord">
-                      targets
-                     </span>
-                    </span>
-                    <span class="mopen">
-                     [
-                    </span>
-                    <span class="mord mathnormal">
-                     i
-                    </span>
-                    <span class="mclose">
-                     ]
-                    </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
-                    </span>
-                    <span class="mrel">
-                     ≤
-                    </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
-                    </span>
-                   </span>
-                   <span class="base">
-                    <span class="strut" style="height:0.76666em;vertical-align:-0.08333em;">
-                    </span>
-                    <span class="mord mathnormal" style="margin-right:0.07153em;">
-                     C
-                    </span>
-                    <span class="mspace" style="margin-right:0.2222222222222222em;">
-                    </span>
-                    <span class="mbin">
-                     −
-                    </span>
-                    <span class="mspace" style="margin-right:0.2222222222222222em;">
-                    </span>
-                   </span>
-                   <span class="base">
-                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
-                    </span>
-                    <span class="mord">
-                     1
-                    </span>
-                   </span>
-                  </span>
-                 </span>
-                </span>
-                , or
-                <span class="math">
-                 <span class="katex">
-                  <span class="katex-mathml">
-                   <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics>
-                     <mrow>
-                      <mo stretchy="false">
-                       (
-                      </mo>
-                      <mi>
-                       N
-                      </mi>
-                      <mo separator="true">
-                       ,
-                      </mo>
-                      <msub>
-                       <mi>
-                        d
-                       </mi>
-                       <mn>
-                        1
-                       </mn>
-                      </msub>
-                      <mo separator="true">
-                       ,
-                      </mo>
-                      <msub>
-                       <mi>
-                        d
-                       </mi>
-                       <mn>
-                        2
-                       </mn>
-                      </msub>
-                      <mo separator="true">
-                       ,
-                      </mo>
-                      <mi mathvariant="normal">
-                       .
-                      </mi>
-                      <mi mathvariant="normal">
-                       .
-                      </mi>
-                      <mi mathvariant="normal">
-                       .
-                      </mi>
-                      <mo separator="true">
-                       ,
-                      </mo>
-                      <msub>
-                       <mi>
-                        d
-                       </mi>
-                       <mi>
-                        K
-                       </mi>
-                      </msub>
-                      <mo stretchy="false">
-                       )
-                      </mo>
-                     </mrow>
-                     <annotation encoding="application/x-tex">
-                      (N, d_1, d_2, ..., d_K)
-                     </annotation>
-                    </semantics>
-                   </math>
-                  </span>
-                  <span aria-hidden="true" class="katex-html">
-                   <span class="base">
-                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                    </span>
-                    <span class="mopen">
-                     (
-                    </span>
-                    <span class="mord mathnormal" style="margin-right:0.10903em;">
-                     N
-                    </span>
-                    <span class="mpunct">
-                     ,
-                    </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
-                    </span>
-                    <span class="mord">
-                     <span class="mord mathnormal">
-                      d
-                     </span>
-                     <span class="msupsub">
-                      <span class="vlist-t vlist-t2">
-                       <span class="vlist-r">
-                        <span class="vlist" style="height:0.30110799999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
-                          <span class="pstrut" style="height:2.7em;">
-                          </span>
-                          <span class="sizing reset-size6 size3 mtight">
-                           <span class="mord mtight">
-                            1
-                           </span>
-                          </span>
-                         </span>
-                        </span>
-                        <span class="vlist-s">
-                         ​
-                        </span>
-                       </span>
-                       <span class="vlist-r">
-                        <span class="vlist" style="height:0.15em;">
-                         <span>
-                         </span>
-                        </span>
-                       </span>
-                      </span>
-                     </span>
-                    </span>
-                    <span class="mpunct">
-                     ,
-                    </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
-                    </span>
-                    <span class="mord">
-                     <span class="mord mathnormal">
-                      d
-                     </span>
-                     <span class="msupsub">
-                      <span class="vlist-t vlist-t2">
-                       <span class="vlist-r">
-                        <span class="vlist" style="height:0.30110799999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
-                          <span class="pstrut" style="height:2.7em;">
-                          </span>
-                          <span class="sizing reset-size6 size3 mtight">
-                           <span class="mord mtight">
-                            2
-                           </span>
-                          </span>
-                         </span>
-                        </span>
-                        <span class="vlist-s">
-                         ​
-                        </span>
-                       </span>
-                       <span class="vlist-r">
-                        <span class="vlist" style="height:0.15em;">
-                         <span>
-                         </span>
-                        </span>
-                       </span>
-                      </span>
-                     </span>
-                    </span>
-                    <span class="mpunct">
-                     ,
-                    </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
-                    </span>
-                    <span class="mord">
-                     ...
-                    </span>
-                    <span class="mpunct">
-                     ,
-                    </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
-                    </span>
-                    <span class="mord">
-                     <span class="mord mathnormal">
-                      d
-                     </span>
-                     <span class="msupsub">
-                      <span class="vlist-t vlist-t2">
-                       <span class="vlist-r">
-                        <span class="vlist" style="height:0.32833099999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
-                          <span class="pstrut" style="height:2.7em;">
-                          </span>
-                          <span class="sizing reset-size6 size3 mtight">
-                           <span class="mord mathnormal mtight" style="margin-right:0.07153em;">
-                            K
-                           </span>
-                          </span>
-                         </span>
-                        </span>
-                        <span class="vlist-s">
-                         ​
-                        </span>
-                       </span>
-                       <span class="vlist-r">
-                        <span class="vlist" style="height:0.15em;">
-                         <span>
-                         </span>
-                        </span>
-                       </span>
-                      </span>
-                     </span>
-                    </span>
-                    <span class="mclose">
-                     )
-                    </span>
-                   </span>
-                  </span>
-                 </span>
-                </span>
-                with
-                <span class="math">
-                 <span class="katex">
-                  <span class="katex-mathml">
-                   <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics>
-                     <mrow>
-                      <mi>
-                       K
-                      </mi>
-                      <mo>
-                       ≥
-                      </mo>
-                      <mn>
-                       1
-                      </mn>
-                     </mrow>
-                     <annotation encoding="application/x-tex">
-                      K \geq 1
-                     </annotation>
-                    </semantics>
-                   </math>
-                  </span>
-                  <span aria-hidden="true" class="katex-html">
-                   <span class="base">
-                    <span class="strut" style="height:0.8193em;vertical-align:-0.13597em;">
-                    </span>
-                    <span class="mord mathnormal" style="margin-right:0.07153em;">
-                     K
-                    </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
-                    </span>
-                    <span class="mrel">
-                     ≥
-                    </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
-                    </span>
-                   </span>
-                   <span class="base">
-                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
-                    </span>
-                    <span class="mord">
-                     1
-                    </span>
-                   </span>
-                  </span>
-                 </span>
-                </span>
-                in the case of K-dimensional loss. If containing class probabilities,
-same shape as the input.
-               </p>
-              </li>
-              <li>
-               <p>
-                Output: If
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  reduction
-                 </span>
-                </code>
-                is
-                <code class="docutils literal notranslate">
-                 <span class="pre">
-                  'none'
-                 </span>
-                </code>
-                , shape
+                ,
                 <span class="math">
                  <span class="katex">
                   <span class="katex-mathml">
@@ -5417,7 +5093,7 @@ same shape as the input.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal">
@@ -5426,8 +5102,8 @@ same shape as the input.
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.30110799999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3011em;">
+                         <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -5453,7 +5129,7 @@ same shape as the input.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal">
@@ -5462,8 +5138,8 @@ same shape as the input.
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.30110799999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3011em;">
+                         <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -5489,7 +5165,7 @@ same shape as the input.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      ...
@@ -5497,7 +5173,7 @@ same shape as the input.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal">
@@ -5506,8 +5182,8 @@ same shape as the input.
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.32833099999999993em;">
-                         <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3283em;">
+                         <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -5562,21 +5238,21 @@ same shape as the input.
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.8193em;vertical-align:-0.13597em;">
+                    <span class="strut" style="height:0.8193em;vertical-align:-0.136em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      K
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                     <span class="mrel">
                      ≥
                     </span>
-                    <span class="mspace" style="margin-right:0.2777777777777778em;">
+                    <span class="mspace" style="margin-right:0.2778em;">
                     </span>
                    </span>
                    <span class="base">
-                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6444em;">
                     </span>
                     <span class="mord">
                      1
@@ -5585,11 +5261,307 @@ same shape as the input.
                   </span>
                  </span>
                 </span>
-                in the case of K-dimensional loss.
-Otherwise, scalar.
+                in the case of K-dimensional loss where each value should be between
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       [
+                      </mo>
+                      <mn>
+                       0
+                      </mn>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      [0, C)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     [
+                    </span>
+                    <span class="mord">
+                     0
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                .
+If containing class probabilities, same shape as the input and each value should be between
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       [
+                      </mo>
+                      <mn>
+                       0
+                      </mn>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mn>
+                       1
+                      </mn>
+                      <mo stretchy="false">
+                       ]
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      [0, 1]
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     [
+                    </span>
+                    <span class="mord">
+                     0
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord">
+                     1
+                    </span>
+                    <span class="mclose">
+                     ]
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                Output: If reduction is ‘none’, same shape as the target. Otherwise, scalar.
                </p>
               </li>
              </ul>
+             <p>
+              where:
+             </p>
+             <div class="math">
+              <span class="katex-display">
+               <span class="katex">
+                <span class="katex-mathml">
+                 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                  <semantics>
+                   <mtable columnalign="right left" columnspacing="0em" rowspacing="0.25em">
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="true" scriptlevel="0">
+                       <mrow>
+                        <mi>
+                         C
+                        </mi>
+                        <mo>
+                         =
+                        </mo>
+                        <mrow>
+                        </mrow>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="true" scriptlevel="0">
+                       <mrow>
+                        <mrow>
+                        </mrow>
+                        <mtext>
+                         number of classes
+                        </mtext>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                    <mtr>
+                     <mtd>
+                      <mstyle displaystyle="true" scriptlevel="0">
+                       <mrow>
+                        <mi>
+                         N
+                        </mi>
+                        <mo>
+                         =
+                        </mo>
+                        <mrow>
+                        </mrow>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                     <mtd>
+                      <mstyle displaystyle="true" scriptlevel="0">
+                       <mrow>
+                        <mrow>
+                        </mrow>
+                        <mtext>
+                         batch size
+                        </mtext>
+                       </mrow>
+                      </mstyle>
+                     </mtd>
+                    </mtr>
+                   </mtable>
+                   <annotation encoding="application/x-tex">
+                    \begin{aligned}
+    C ={} &amp; \text{number of classes} \\
+    N ={} &amp; \text{batch size} \\
+\end{aligned}
+                   </annotation>
+                  </semantics>
+                 </math>
+                </span>
+                <span aria-hidden="true" class="katex-html">
+                 <span class="base">
+                  <span class="strut" style="height:3em;vertical-align:-1.25em;">
+                  </span>
+                  <span class="mord">
+                   <span class="mtable">
+                    <span class="col-align-r">
+                     <span class="vlist-t vlist-t2">
+                      <span class="vlist-r">
+                       <span class="vlist" style="height:1.75em;">
+                        <span style="top:-3.91em;">
+                         <span class="pstrut" style="height:3em;">
+                         </span>
+                         <span class="mord">
+                          <span class="mord mathnormal" style="margin-right:0.07153em;">
+                           C
+                          </span>
+                          <span class="mspace" style="margin-right:0.2778em;">
+                          </span>
+                          <span class="mrel">
+                           =
+                          </span>
+                          <span class="mspace" style="margin-right:0.2778em;">
+                          </span>
+                          <span class="mord">
+                          </span>
+                         </span>
+                        </span>
+                        <span style="top:-2.41em;">
+                         <span class="pstrut" style="height:3em;">
+                         </span>
+                         <span class="mord">
+                          <span class="mord mathnormal" style="margin-right:0.10903em;">
+                           N
+                          </span>
+                          <span class="mspace" style="margin-right:0.2778em;">
+                          </span>
+                          <span class="mrel">
+                           =
+                          </span>
+                          <span class="mspace" style="margin-right:0.2778em;">
+                          </span>
+                          <span class="mord">
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="vlist-s">
+                        ​
+                       </span>
+                      </span>
+                      <span class="vlist-r">
+                       <span class="vlist" style="height:1.25em;">
+                        <span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="col-align-l">
+                     <span class="vlist-t vlist-t2">
+                      <span class="vlist-r">
+                       <span class="vlist" style="height:1.75em;">
+                        <span style="top:-3.91em;">
+                         <span class="pstrut" style="height:3em;">
+                         </span>
+                         <span class="mord">
+                          <span class="mord">
+                          </span>
+                          <span class="mord text">
+                           <span class="mord">
+                            number of classes
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                        <span style="top:-2.41em;">
+                         <span class="pstrut" style="height:3em;">
+                         </span>
+                         <span class="mord">
+                          <span class="mord">
+                          </span>
+                          <span class="mord text">
+                           <span class="mord">
+                            batch size
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                       <span class="vlist-s">
+                        ​
+                       </span>
+                      </span>
+                      <span class="vlist-r">
+                       <span class="vlist" style="height:1.25em;">
+                        <span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </div>
             </dd>
            </dl>
            <p>

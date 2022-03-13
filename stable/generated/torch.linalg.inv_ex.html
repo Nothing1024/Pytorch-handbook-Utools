@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.linalg.inv_ex — PyTorch 1.10 documentation
+   torch.linalg.inv_ex — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -190,14 +191,16 @@ the output has the same batch dimensions.
              Note
             </p>
             <p>
-             If
+             When the inputs are on a CUDA device, this function synchronizes only when
              <code class="xref py py-attr docutils literal notranslate">
               <span class="pre">
-               A
+               check_errors
               </span>
              </code>
-             is on a CUDA device then this function may synchronize
-that device with the CPU.
+             <cite>
+              = True
+             </cite>
+             .
             </p>
            </div>
            <div class="admonition warning">

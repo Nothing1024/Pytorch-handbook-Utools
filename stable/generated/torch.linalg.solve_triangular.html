@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.solve_triangular — PyTorch 1.11.0 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-solve-triangular">
+         <h1>
+          torch.linalg.solve_triangular
+          <a class="headerlink" href="#torch-linalg-solve-triangular" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.solve_triangular">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             solve_triangular
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              B
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              upper
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              left
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              unitriangular
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.linalg.solve_triangular" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes the solution of a triangular system of linear equations with a unique solution.
+           </p>
+           <p>
+            Letting
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi mathvariant="double-struck">
+                   K
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathbb{K}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6889em;">
+                </span>
+                <span class="mord mathbb">
+                 K
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            be
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi mathvariant="double-struck">
+                   R
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathbb{R}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6889em;">
+                </span>
+                <span class="mord mathbb">
+                 R
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            or
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi mathvariant="double-struck">
+                   C
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \mathbb{C}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6889em;">
+                </span>
+                <span class="mord mathbb">
+                 C
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            ,
+this function computes the solution
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   X
+                  </mi>
+                  <mo>
+                   ∈
+                  </mo>
+                  <msup>
+                   <mi mathvariant="double-struck">
+                    K
+                   </mi>
+                   <mrow>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     k
+                    </mi>
+                   </mrow>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  X \in \mathbb{K}^{n \times k}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.7224em;vertical-align:-0.0391em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.07847em;">
+                 X
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 ∈
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8491em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathbb">
+                  K
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.8491em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                        <span class="mbin mtight">
+                         ×
+                        </span>
+                        <span class="mord mathnormal mtight" style="margin-right:0.03148em;">
+                         k
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            of the
+            <strong>
+             linear system
+            </strong>
+            associated to the triangular matrix
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   A
+                  </mi>
+                  <mo>
+                   ∈
+                  </mo>
+                  <msup>
+                   <mi mathvariant="double-struck">
+                    K
+                   </mi>
+                   <mrow>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     n
+                    </mi>
+                   </mrow>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  A \in \mathbb{K}^{n \times n}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.7224em;vertical-align:-0.0391em;">
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 ∈
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.7713em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathbb">
+                  K
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.7713em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                        <span class="mbin mtight">
+                         ×
+                        </span>
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            without zeros on the diagonal
+(that is, it is
+            <a class="reference external" href="https://en.wikipedia.org/wiki/Invertible_matrix#The_invertible_matrix_theorem">
+             invertible
+            </a>
+            ) and the rectangular matrix ,
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   B
+                  </mi>
+                  <mo>
+                   ∈
+                  </mo>
+                  <msup>
+                   <mi mathvariant="double-struck">
+                    K
+                   </mi>
+                   <mrow>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     k
+                    </mi>
+                   </mrow>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  B \in \mathbb{K}^{n \times k}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.7224em;vertical-align:-0.0391em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.05017em;">
+                 B
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 ∈
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8491em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathbb">
+                  K
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.8491em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                        <span class="mbin mtight">
+                         ×
+                        </span>
+                        <span class="mord mathnormal mtight" style="margin-right:0.03148em;">
+                         k
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            ,
+which is defined as
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   A
+                  </mi>
+                  <mi>
+                   X
+                  </mi>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   B
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  AX = B
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.07847em;">
+                 X
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.05017em;">
+                 B
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            The argument
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              upper
+             </span>
+            </code>
+            signals whether
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   A
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  A
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is upper or lower triangular.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              left
+             </span>
+            </code>
+            <cite>
+             = False
+            </cite>
+            , this function returns the matrix
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   X
+                  </mi>
+                  <mo>
+                   ∈
+                  </mo>
+                  <msup>
+                   <mi mathvariant="double-struck">
+                    K
+                   </mi>
+                   <mrow>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     k
+                    </mi>
+                   </mrow>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  X \in \mathbb{K}^{n \times k}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.7224em;vertical-align:-0.0391em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.07847em;">
+                 X
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 ∈
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8491em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathbb">
+                  K
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.8491em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         n
+                        </span>
+                        <span class="mbin mtight">
+                         ×
+                        </span>
+                        <span class="mord mathnormal mtight" style="margin-right:0.03148em;">
+                         k
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            that
+solves the system
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   X
+                  </mi>
+                  <mi>
+                   A
+                  </mi>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   B
+                  </mi>
+                  <mpadded width="0px">
+                   <mrow>
+                    <mspace width="2em">
+                    </mspace>
+                    <mi>
+                     A
+                    </mi>
+                    <mo>
+                     ∈
+                    </mo>
+                    <msup>
+                     <mi mathvariant="double-struck">
+                      K
+                     </mi>
+                     <mrow>
+                      <mi>
+                       k
+                      </mi>
+                      <mo>
+                       ×
+                      </mo>
+                      <mi>
+                       k
+                      </mi>
+                     </mrow>
+                    </msup>
+                    <mo separator="true">
+                     ,
+                    </mo>
+                    <mi>
+                     B
+                    </mi>
+                    <mo>
+                     ∈
+                    </mo>
+                    <msup>
+                     <mi mathvariant="double-struck">
+                      K
+                     </mi>
+                     <mrow>
+                      <mi>
+                       n
+                      </mi>
+                      <mo>
+                       ×
+                      </mo>
+                      <mi>
+                       k
+                      </mi>
+                     </mrow>
+                    </msup>
+                    <mi mathvariant="normal">
+                     .
+                    </mi>
+                   </mrow>
+                  </mpadded>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  XA = B\mathrlap{\qquad A \in \mathbb{K}^{k \times k}, B \in \mathbb{K}^{n \times k}.}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.07847em;">
+                 X
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1.0935em;vertical-align:-0.1944em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.05017em;">
+                 B
+                </span>
+                <span class="mord vbox">
+                 <span class="thinbox">
+                  <span class="rlap">
+                   <span class="strut" style="height:1.0935em;vertical-align:-0.1944em;">
+                   </span>
+                   <span class="inner">
+                    <span class="mord">
+                     <span class="mspace" style="margin-right:2em;">
+                     </span>
+                     <span class="mord mathnormal">
+                      A
+                     </span>
+                     <span class="mspace" style="margin-right:0.2778em;">
+                     </span>
+                     <span class="mrel">
+                      ∈
+                     </span>
+                     <span class="mspace" style="margin-right:0.2778em;">
+                     </span>
+                     <span class="mord">
+                      <span class="mord mathbb">
+                       K
+                      </span>
+                      <span class="msupsub">
+                       <span class="vlist-t">
+                        <span class="vlist-r">
+                         <span class="vlist" style="height:0.8991em;">
+                          <span style="top:-3.113em;margin-right:0.05em;">
+                           <span class="pstrut" style="height:2.7em;">
+                           </span>
+                           <span class="sizing reset-size6 size3 mtight">
+                            <span class="mord mtight">
+                             <span class="mord mathnormal mtight" style="margin-right:0.03148em;">
+                              k
+                             </span>
+                             <span class="mbin mtight">
+                              ×
+                             </span>
+                             <span class="mord mathnormal mtight" style="margin-right:0.03148em;">
+                              k
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span class="mpunct">
+                      ,
+                     </span>
+                     <span class="mspace" style="margin-right:0.1667em;">
+                     </span>
+                     <span class="mord mathnormal" style="margin-right:0.05017em;">
+                      B
+                     </span>
+                     <span class="mspace" style="margin-right:0.2778em;">
+                     </span>
+                     <span class="mrel">
+                      ∈
+                     </span>
+                     <span class="mspace" style="margin-right:0.2778em;">
+                     </span>
+                     <span class="mord">
+                      <span class="mord mathbb">
+                       K
+                      </span>
+                      <span class="msupsub">
+                       <span class="vlist-t">
+                        <span class="vlist-r">
+                         <span class="vlist" style="height:0.8991em;">
+                          <span style="top:-3.113em;margin-right:0.05em;">
+                           <span class="pstrut" style="height:2.7em;">
+                           </span>
+                           <span class="sizing reset-size6 size3 mtight">
+                            <span class="mord mtight">
+                             <span class="mord mathnormal mtight">
+                              n
+                             </span>
+                             <span class="mbin mtight">
+                              ×
+                             </span>
+                             <span class="mord mathnormal mtight" style="margin-right:0.03148em;">
+                              k
+                             </span>
+                            </span>
+                           </span>
+                          </span>
+                         </span>
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span class="mord">
+                      .
+                     </span>
+                    </span>
+                   </span>
+                   <span class="fix">
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              upper
+             </span>
+            </code>
+            <cite>
+             = True
+            </cite>
+            (resp.
+            <cite>
+             False
+            </cite>
+            ) just the upper (resp. lower) triangular half of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            will be accessed. The elements below the main diagonal will be considered to be zero and will not be accessed.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              unitriangular
+             </span>
+            </code>
+            <cite>
+             = True
+            </cite>
+            , the diagonal of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is assumed to be ones and will not be accessed.
+           </p>
+           <p>
+            The result may contain
+            <cite>
+             NaN
+            </cite>
+            s if the diagonal of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            contains zeros or elements that
+are very close to zero and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              unitriangular
+             </span>
+            </code>
+            <cite>
+             = False
+            </cite>
+            (default) or if the input matrix
+has very small eigenvalues.
+           </p>
+           <p>
+            Supports inputs of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if the inputs are batches of matrices then
+the output has the same batch dimensions.
+           </p>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.linalg.solve.html#torch.linalg.solve" title="torch.linalg.solve">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.solve()
+               </span>
+              </code>
+             </a>
+             computes the solution of a general square system of linear
+equations with a unique solution.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 A
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – tensor of shape
+                <cite>
+                 (*, n, n)
+                </cite>
+                (or
+                <cite>
+                 (*, k, k)
+                </cite>
+                if
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  left
+                 </span>
+                </code>
+                <cite>
+                 = True
+                </cite>
+                )
+where
+                <cite>
+                 *
+                </cite>
+                is zero or more batch dimensions.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 B
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – right-hand side tensor of shape
+                <cite>
+                 (*, n, k)
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 upper
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                ) – whether
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                is an upper or lower triangular matrix.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 left
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether to solve the system
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       A
+                      </mi>
+                      <mi>
+                       X
+                      </mi>
+                      <mo>
+                       =
+                      </mo>
+                      <mi>
+                       B
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      AX=B
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.6833em;">
+                    </span>
+                    <span class="mord mathnormal">
+                     A
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07847em;">
+                     X
+                    </span>
+                    <span class="mspace" style="margin-right:0.2778em;">
+                    </span>
+                    <span class="mrel">
+                     =
+                    </span>
+                    <span class="mspace" style="margin-right:0.2778em;">
+                    </span>
+                   </span>
+                   <span class="base">
+                    <span class="strut" style="height:0.6833em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.05017em;">
+                     B
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       X
+                      </mi>
+                      <mi>
+                       A
+                      </mi>
+                      <mo>
+                       =
+                      </mo>
+                      <mi>
+                       B
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      XA = B
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.6833em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07847em;">
+                     X
+                    </span>
+                    <span class="mord mathnormal">
+                     A
+                    </span>
+                    <span class="mspace" style="margin-right:0.2778em;">
+                    </span>
+                    <span class="mrel">
+                     =
+                    </span>
+                    <span class="mspace" style="margin-right:0.2778em;">
+                    </span>
+                   </span>
+                   <span class="base">
+                    <span class="strut" style="height:0.6833em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.05017em;">
+                     B
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                . Default:
+                <cite>
+                 True
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 unitriangular
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if
+                <cite>
+                 True
+                </cite>
+                , the diagonal elements of
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  A
+                 </span>
+                </code>
+                are assumed to be
+all equal to
+                <cite>
+                 1
+                </cite>
+                . Default:
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – output tensor.
+                <cite>
+                 B
+                </cite>
+                may be passed as
+                <cite>
+                 out
+                </cite>
+                and the result is computed in-place on
+                <cite>
+                 B
+                </cite>
+                .
+Ignored if
+                <cite>
+                 None
+                </cite>
+                . Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">triu_</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve_triangular</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">X</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">tril_</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve_triangular</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">X</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">tril_</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve_triangular</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">True</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

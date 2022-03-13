@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.sparse — PyTorch 1.10 documentation
+   torch.sparse — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -1002,6 +1003,32 @@ instance is coalesced:
 <span class="go">        [2, 0, 2]])</span>
 </pre>
              </div>
+            </div>
+            <div class="admonition warning">
+             <p class="admonition-title">
+              Warning
+             </p>
+             <p>
+              Calling
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                torch.Tensor._values()
+               </span>
+              </code>
+              will return a
+              <em>
+               detached
+              </em>
+              tensor.
+To track gradients,
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                torch.Tensor.coalesce().values()
+               </span>
+              </code>
+              must be
+used instead.
+             </p>
             </div>
            </div>
            <p>
@@ -2349,6 +2376,28 @@ applications can still compute this using the matrix relation
               <p>
                <code class="xref py py-obj docutils literal notranslate">
                 <span class="pre">
+                 Tensor.to_sparse_coo
+                </span>
+               </code>
+              </p>
+             </td>
+             <td>
+              <p>
+               Convert a tensor to
+               <a class="reference internal" href="#sparse-coo-docs">
+                <span class="std std-ref">
+                 coordinate format
+                </span>
+               </a>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
                  Tensor.to_sparse_csr
                 </span>
                </code>
@@ -2360,7 +2409,7 @@ applications can still compute this using the matrix relation
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.indices.html#torch.Tensor.indices" title="torch.Tensor.indices">
@@ -2384,7 +2433,7 @@ applications can still compute this using the matrix relation
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.Tensor.values.html#torch.Tensor.values" title="torch.Tensor.values">
@@ -3167,6 +3216,42 @@ applications can still compute this using the matrix relation
             <tr class="row-odd">
              <td>
               <p>
+               <a class="reference internal" href="generated/torch.sparse.sampled_addmm.html#torch.sparse.sampled_addmm" title="torch.sparse.sampled_addmm">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  sparse.sampled_addmm
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Performs a matrix multiplication of the dense matrices
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 mat1
+                </span>
+               </code>
+               and
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 mat2
+                </span>
+               </code>
+               at the locations specified by the sparsity pattern of
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 input
+                </span>
+               </code>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
                <a class="reference internal" href="generated/torch.sparse.mm.html#torch.sparse.mm" title="torch.sparse.mm">
                 <code class="xref py py-obj docutils literal notranslate">
                  <span class="pre">
@@ -3194,7 +3279,7 @@ applications can still compute this using the matrix relation
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.sspaddmm">
@@ -3232,7 +3317,7 @@ applications can still compute this using the matrix relation
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.hspmm">
@@ -3269,7 +3354,7 @@ applications can still compute this using the matrix relation
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.smm">
@@ -3301,7 +3386,7 @@ applications can still compute this using the matrix relation
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.sparse.softmax.html#torch.sparse.softmax" title="torch.sparse.softmax">
@@ -3319,7 +3404,7 @@ applications can still compute this using the matrix relation
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.sparse.log_softmax.html#torch.sparse.log_softmax" title="torch.sparse.log_softmax">
@@ -3463,11 +3548,13 @@ applications can still compute this using the matrix relation
              </span>
             </code>
            </a>
-           <code class="xref py py-func docutils literal notranslate">
-            <span class="pre">
-             select()
-            </span>
-           </code>
+           <a class="reference internal" href="generated/torch.select.html#torch.select" title="torch.select">
+            <code class="xref py py-func docutils literal notranslate">
+             <span class="pre">
+              select()
+             </span>
+            </code>
+           </a>
            <a class="reference internal" href="generated/torch.stack.html#torch.stack" title="torch.stack">
             <code class="xref py py-func docutils literal notranslate">
              <span class="pre">

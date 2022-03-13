@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   ScriptModule — PyTorch 1.10 documentation
+   ScriptModule — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -2128,18 +2129,7 @@ both the name of the module as well as the module itself.
                    remove_duplicate
                   </strong>
                   – whether to remove the duplicated module instances in the result
-                 </p>
-                </li>
-                <li>
-                 <p>
-                  <strong>
-                   not
-                  </strong>
-                  (
-                  <em>
-                   or
-                  </em>
-                  ) –
+or not
                  </p>
                 </li>
                </ul>
@@ -2977,6 +2967,52 @@ will raise an error.
                </p>
               </dd>
              </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.jit.ScriptModule.register_module">
+             <code class="sig-name descname">
+              <span class="pre">
+               register_module
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                name
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                module
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="headerlink" href="#torch.jit.ScriptModule.register_module" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Alias for
+              <a class="reference internal" href="#torch.jit.ScriptModule.add_module" title="torch.jit.ScriptModule.add_module">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 add_module()
+                </span>
+               </code>
+              </a>
+              .
+             </p>
             </dd>
            </dl>
            <dl class="py method">

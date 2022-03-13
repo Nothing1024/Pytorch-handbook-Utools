@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.quantile — PyTorch 1.10 documentation
+   torch.quantile — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -106,6 +107,24 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              interpolation
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'linear'
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               out
              </span>
             </span>
@@ -141,8 +160,7 @@
               input
              </span>
             </code>
-            tensor
-along the dimension
+            tensor along the dimension
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               dim
@@ -177,40 +195,138 @@ indices
               j
              </span>
             </code>
-            in the sorted order, result is computed using linear interpolation as follows:
-           </p>
-           <p>
-            <code class="docutils literal notranslate">
+            in the sorted order, result is computed according to the given
+            <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
-              a
-             </span>
-             <span class="pre">
-              +
-             </span>
-             <span class="pre">
-              (b
-             </span>
-             <span class="pre">
-              -
-             </span>
-             <span class="pre">
-              a)
-             </span>
-             <span class="pre">
-              *
-             </span>
-             <span class="pre">
-              fraction
+              interpolation
              </span>
             </code>
-            , where
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              fraction
-             </span>
-            </code>
-            is the fractional part of the computed quantile index.
+            method as follows:
            </p>
+           <ul class="simple">
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                linear
+               </span>
+              </code>
+              :
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                a
+               </span>
+               <span class="pre">
+                +
+               </span>
+               <span class="pre">
+                (b
+               </span>
+               <span class="pre">
+                -
+               </span>
+               <span class="pre">
+                a)
+               </span>
+               <span class="pre">
+                *
+               </span>
+               <span class="pre">
+                fraction
+               </span>
+              </code>
+              , where
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                fraction
+               </span>
+              </code>
+              is the fractional part of the computed quantile index.
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                lower
+               </span>
+              </code>
+              :
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                a
+               </span>
+              </code>
+              .
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                higher
+               </span>
+              </code>
+              :
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                b
+               </span>
+              </code>
+              .
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                nearest
+               </span>
+              </code>
+              :
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                a
+               </span>
+              </code>
+              or
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                b
+               </span>
+              </code>
+              , whichever’s index is closer to the computed quantile index (rounding down for .5 fractions).
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                midpoint
+               </span>
+              </code>
+              :
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                (a
+               </span>
+               <span class="pre">
+                +
+               </span>
+               <span class="pre">
+                b)
+               </span>
+               <span class="pre">
+                /
+               </span>
+               <span class="pre">
+                2
+               </span>
+              </code>
+              .
+             </p>
+            </li>
+           </ul>
            <p>
             If
             <code class="xref py py-attr docutils literal notranslate">
@@ -335,24 +451,80 @@ equal to the size of
              Keyword Arguments
             </dt>
             <dd class="field-even">
-             <p>
-              <strong>
-               out
-              </strong>
-              (
-              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
-               <em>
-                Tensor
-               </em>
-              </a>
-              <em>
-               ,
-              </em>
-              <em>
-               optional
-              </em>
-              ) – the output tensor.
-             </p>
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 interpolation
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.10)">
+                 <em>
+                  string
+                 </em>
+                </a>
+                ) – interpolation method to use when the desired quantile lies between two data points.
+Can be
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  linear
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  lower
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  higher
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  midpoint
+                 </span>
+                </code>
+                and
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  nearest
+                 </span>
+                </code>
+                .
+Default is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  linear
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the output tensor.
+               </p>
+              </li>
+             </ul>
             </dd>
            </dl>
            <p>
@@ -379,6 +551,18 @@ equal to the size of
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">4.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">tensor([0., 1., 2., 3.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'linear'</span><span class="p">)</span>
+<span class="go">tensor(1.8000)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">)</span>
+<span class="go">tensor(1.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'higher'</span><span class="p">)</span>
+<span class="go">tensor(2.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'midpoint'</span><span class="p">)</span>
+<span class="go">tensor(1.5000)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">)</span>
+<span class="go">tensor(2.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">)</span>
+<span class="go">tensor(1.)</span>
 </pre>
             </div>
            </div>

@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   LazyInstanceNorm2d — PyTorch 1.10 documentation
+   LazyInstanceNorm2d — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -262,7 +263,7 @@ on lazy modules and their limitations.
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6833em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -325,7 +326,7 @@ on lazy modules and their limitations.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -333,7 +334,7 @@ on lazy modules and their limitations.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.08125em;">
                      H
@@ -341,7 +342,75 @@ on lazy modules and their limitations.
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (C, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.13889em;">
                      W
@@ -419,6 +488,324 @@ statistics in both training and eval modes. Default:
                   False
                  </span>
                 </code>
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="simple">
+            <dt>
+             Shape:
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <p>
+                Input:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       N
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (N, C, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.10903em;">
+                     N
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (C, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </p>
+              </li>
+              <li>
+               <p>
+                Output:
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       N
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (N, C, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.10903em;">
+                     N
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                or
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mo stretchy="false">
+                       (
+                      </mo>
+                      <mi>
+                       C
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       H
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
+                       W
+                      </mi>
+                      <mo stretchy="false">
+                       )
+                      </mo>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      (C, H, W)
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                    </span>
+                    <span class="mopen">
+                     (
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.07153em;">
+                     C
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.08125em;">
+                     H
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.13889em;">
+                     W
+                    </span>
+                    <span class="mclose">
+                     )
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                (same shape as input)
                </p>
               </li>
              </ul>

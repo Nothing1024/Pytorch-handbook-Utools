@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Tensor Views — PyTorch 1.10 documentation
+   Tensor Views — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -89,7 +90,7 @@ in the view, it will be reflected in the base tensor as well.
            </code>
           </a>
           .
-But in case of view ops, outputs are views of input tensors to avoid unncessary data copy.
+But in case of view ops, outputs are views of input tensors to avoid unnecessary data copy.
 No data movement occurs when creating a view, view tensor just changes the way
 it interprets the same data. Taking a view of contiguous tensor could potentially produce a non-contiguous tensor.
 Users should be pay additional attention as contiguity might have implicit performance impact.
@@ -142,6 +143,17 @@ Users should be pay additional attention as contiguity might have implicit perfo
              </span>
             </code>
             , see note below.
+           </p>
+          </li>
+          <li>
+           <p>
+            <a class="reference internal" href="generated/torch.Tensor.adjoint.html#torch.Tensor.adjoint" title="torch.Tensor.adjoint">
+             <code class="xref py py-meth docutils literal notranslate">
+              <span class="pre">
+               adjoint()
+              </span>
+             </code>
+            </a>
            </p>
           </li>
           <li>
@@ -282,6 +294,39 @@ Users should be pay additional attention as contiguity might have implicit perfo
              <code class="xref py py-attr docutils literal notranslate">
               <span class="pre">
                T
+              </span>
+             </code>
+            </a>
+           </p>
+          </li>
+          <li>
+           <p>
+            <a class="reference internal" href="tensors.html#torch.Tensor.H" title="torch.Tensor.H">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               H
+              </span>
+             </code>
+            </a>
+           </p>
+          </li>
+          <li>
+           <p>
+            <a class="reference internal" href="tensors.html#torch.Tensor.mT" title="torch.Tensor.mT">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               mT
+              </span>
+             </code>
+            </a>
+           </p>
+          </li>
+          <li>
+           <p>
+            <a class="reference internal" href="tensors.html#torch.Tensor.mH" title="torch.Tensor.mH">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               mH
               </span>
              </code>
             </a>

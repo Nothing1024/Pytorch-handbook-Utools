@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.linalg.pinv — PyTorch 1.10 documentation
+   torch.linalg.pinv — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -52,9 +53,17 @@
            </em>
            ,
            <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
             <span class="n">
              <span class="pre">
-              rcond
+              atol
              </span>
             </span>
             <span class="o">
@@ -64,7 +73,25 @@
             </span>
             <span class="default_value">
              <span class="pre">
-              1e-15
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              rtol
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
              </span>
             </span>
            </em>
@@ -83,14 +110,6 @@
             <span class="default_value">
              <span class="pre">
               False
-             </span>
-            </span>
-           </em>
-           ,
-           <em class="sig-param">
-            <span class="o">
-             <span class="pre">
-              *
              </span>
             </span>
            </em>
@@ -179,13 +198,400 @@ triangular part of the matrix is used in the computations.
              = True
             </cite>
             )
-that are below the specified
+that are below
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   max
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext>
+                   atol
+                  </mtext>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <msub>
+                   <mi>
+                    σ
+                   </mi>
+                   <mn>
+                    1
+                   </mn>
+                  </msub>
+                  <mo>
+                   ⋅
+                  </mo>
+                  <mtext>
+                   rtol
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \max(\text{atol}, \sigma_1 \cdot \text{rtol})
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mop">
+                 max
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  atol
+                 </span>
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.1667em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal" style="margin-right:0.03588em;">
+                  σ
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.3011em;">
+                     <span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        1
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+                <span class="mbin">
+                 ⋅
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  rtol
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            threshold are
+treated as zero and discarded in the computation,
+where
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <msub>
+                   <mi>
+                    σ
+                   </mi>
+                   <mn>
+                    1
+                   </mn>
+                  </msub>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \sigma_1
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.5806em;vertical-align:-0.15em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal" style="margin-right:0.03588em;">
+                  σ
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.3011em;">
+                     <span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        1
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is the largest singular value (or eigenvalue).
+           </p>
+           <p>
+            If
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
-              rcond
+              rtol
              </span>
             </code>
-            threshold are treated as zero and discarded in the computation.
+            is not specified and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a matrix of dimensions
+            <cite>
+             (m, n)
+            </cite>
+            ,
+the relative tolerance is set to be
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   rtol
+                  </mtext>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   max
+                  </mi>
+                  <mo>
+                   ⁡
+                  </mo>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mi>
+                   m
+                  </mi>
+                  <mo separator="true">
+                   ,
+                  </mo>
+                  <mi>
+                   n
+                  </mi>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mi>
+                   ε
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{rtol} = \max(m, n) \varepsilon
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6944em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  rtol
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mop">
+                 max
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord mathnormal">
+                 m
+                </span>
+                <span class="mpunct">
+                 ,
+                </span>
+                <span class="mspace" style="margin-right:0.1667em;">
+                </span>
+                <span class="mord mathnormal">
+                 n
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mord mathnormal">
+                 ε
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            and
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   ε
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \varepsilon
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.4306em;">
+                </span>
+                <span class="mord mathnormal">
+                 ε
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is the epsilon value for the dtype of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            (see
+            <a class="reference internal" href="../type_info.html#torch.torch.finfo" title="torch.torch.finfo">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               finfo
+              </span>
+             </code>
+            </a>
+            ).
+If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              rtol
+             </span>
+            </code>
+            is not specified and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              atol
+             </span>
+            </code>
+            is specified to be larger than zero then
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              rtol
+             </span>
+            </code>
+            is set to zero.
+           </p>
+           <p>
+            If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              atol
+             </span>
+            </code>
+            or
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              rtol
+             </span>
+            </code>
+            is a
+            <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               torch.Tensor
+              </span>
+             </code>
+            </a>
+            , its shape must be broadcastable to that
+of the singular values of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            as returned by
+            <a class="reference internal" href="torch.linalg.svd.html#torch.linalg.svd" title="torch.linalg.svd">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.linalg.svd()
+              </span>
+             </code>
+            </a>
+            .
            </p>
            <div class="admonition note">
             <p class="admonition-title">
@@ -263,6 +669,31 @@ the pseudoinverse, as:
              </a>
              when possible, as it is faster and more
 numerically stable than computing the pseudoinverse explicitly.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function has NumPy compatible variant
+             <cite>
+              linalg.pinv(A, rcond, hermitian=False)
+             </cite>
+             .
+However, use of the positional argument
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               rcond
+              </span>
+             </code>
+             is deprecated in favor of
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               rtol
+              </span>
+             </code>
+             .
             </p>
            </div>
            <div class="admonition warning">
@@ -396,7 +827,7 @@ numerically stable algorithm.
                  </em>
                 </a>
                 <em>
-                 or
+                 ,
                 </em>
                 <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
                  <em>
@@ -409,34 +840,96 @@ numerically stable algorithm.
                 <em>
                  optional
                 </em>
-                ) – the tolerance value to determine when is a singular value zero
-If it is a
-                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
-                 <code class="xref py py-class docutils literal notranslate">
-                  <span class="pre">
-                   torch.Tensor
-                  </span>
-                 </code>
-                </a>
-                , its shape must be
-broadcastable to that of the singular values of
+                ) – [NumPy Compat]. Alias for
                 <code class="xref py py-attr docutils literal notranslate">
                  <span class="pre">
-                  A
+                  rtol
                  </span>
                 </code>
-                as returned by
-                <a class="reference internal" href="torch.svd.html#torch.svd" title="torch.svd">
-                 <code class="xref py py-func docutils literal notranslate">
-                  <span class="pre">
-                   torch.svd()
-                  </span>
-                 </code>
+                . Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 atol
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
                 </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the absolute tolerance value. When
+                <cite>
+                 None
+                </cite>
+                it’s considered to be zero.
+Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 rtol
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)">
+                 <em>
+                  float
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – the relative tolerance value. See above for the value it takes when
+                <cite>
+                 None
+                </cite>
                 .
 Default:
                 <cite>
-                 1e-15
+                 None
                 </cite>
                 .
                </p>
@@ -472,38 +965,35 @@ or symmetric if real. Default:
                 .
                </p>
               </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – output tensor. Ignored if
+                <cite>
+                 None
+                </cite>
+                . Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
              </ul>
-            </dd>
-            <dt class="field-even">
-             Keyword Arguments
-            </dt>
-            <dd class="field-even">
-             <p>
-              <strong>
-               out
-              </strong>
-              (
-              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
-               <em>
-                Tensor
-               </em>
-              </a>
-              <em>
-               ,
-              </em>
-              <em>
-               optional
-              </em>
-              ) – output tensor. Ignored if
-              <cite>
-               None
-              </cite>
-              . Default:
-              <cite>
-               None
-              </cite>
-              .
-             </p>
             </dd>
            </dl>
            <p>

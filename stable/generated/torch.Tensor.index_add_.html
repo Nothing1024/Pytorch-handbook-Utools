@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.Tensor.index_add_ — PyTorch 1.10 documentation
+   torch.Tensor.index_add_ — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -62,7 +63,7 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
-              tensor
+              source
              </span>
             </span>
            </em>
@@ -114,13 +115,11 @@
              </span>
             </code>
             times
-            <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               tensor
-              </span>
-             </code>
-            </a>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              source
+             </span>
+            </code>
             into the
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
@@ -171,13 +170,11 @@ if
              </span>
             </code>
             th row of
-            <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               tensor
-              </span>
-             </code>
-            </a>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              source
+             </span>
+            </code>
             is subtracted from the
             <code class="docutils literal notranslate">
              <span class="pre">
@@ -202,13 +199,11 @@ if
              </code>
             </a>
             th dimension of
-            <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               tensor
-              </span>
-             </code>
-            </a>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              source
+             </span>
+            </code>
             must have the same size as the
 length of
             <code class="xref py py-attr docutils literal notranslate">
@@ -265,30 +260,32 @@ match
                  index
                 </strong>
                 (
-                <em>
-                 IntTensor
-                </em>
-                <em>
-                 or
-                </em>
-                <em>
-                 LongTensor
-                </em>
-                ) – indices of
-                <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
-                 <code class="xref py py-attr docutils literal notranslate">
-                  <span class="pre">
-                   tensor
-                  </span>
-                 </code>
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
                 </a>
-                to select from
+                ) – indices of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  source
+                 </span>
+                </code>
+                to select from,
+should have dtype either
+                <cite>
+                 torch.int64
+                </cite>
+                or
+                <cite>
+                 torch.int32
+                </cite>
                </p>
               </li>
               <li>
                <p>
                 <strong>
-                 tensor
+                 source
                 </strong>
                 (
                 <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
@@ -314,13 +311,11 @@ match
                Number
               </em>
               ) – the scalar multiplier for
-              <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
-               <code class="xref py py-attr docutils literal notranslate">
-                <span class="pre">
-                 tensor
-                </span>
-               </code>
-              </a>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                source
+               </span>
+              </code>
              </p>
             </dd>
            </dl>

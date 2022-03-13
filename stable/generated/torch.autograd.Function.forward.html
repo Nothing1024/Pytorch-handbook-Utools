@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.autograd.Function.forward — PyTorch 1.10 documentation
+   torch.autograd.Function.forward — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -108,7 +109,43 @@ number of arguments (tensors or other types).
            </p>
            <p>
             The context can be used to store arbitrary data that can be then
-retrieved during the backward pass.
+retrieved during the backward pass. Tensors should not be stored
+directly on
+            <cite>
+             ctx
+            </cite>
+            (though this is not currently enforced for
+backward compatibility). Instead, tensors should be saved either with
+            <code class="xref py py-func docutils literal notranslate">
+             <span class="pre">
+              ctx.save_for_backward()
+             </span>
+            </code>
+            if they are intended to be used in
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              backward
+             </span>
+            </code>
+            (equivalently,
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              vjp
+             </span>
+            </code>
+            ) or
+            <code class="xref py py-func docutils literal notranslate">
+             <span class="pre">
+              ctx.save_for_forward()
+             </span>
+            </code>
+            if they are intended to be used for in
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              jvp
+             </span>
+            </code>
+            .
            </p>
           </dd>
          </dl>

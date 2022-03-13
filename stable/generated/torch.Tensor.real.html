@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.Tensor.real — PyTorch 1.10 documentation
+   torch.Tensor.real — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -52,7 +53,7 @@
               self
              </span>
             </code>
-            tensor.
+            tensor for a complex-valued input tensor.
 The returned tensor and
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
@@ -61,21 +62,21 @@ The returned tensor and
             </code>
             share the same underlying storage.
            </p>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             <a class="reference internal" href="torch.real.html#torch.real" title="torch.real">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                real()
-               </span>
-              </code>
-             </a>
-             is only supported for tensors with complex dtypes.
-            </p>
-           </div>
+           <p>
+            Returns
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              self
+             </span>
+            </code>
+            is a real-valued tensor tensor.
+           </p>
            <dl>
             <dt>
              Example::

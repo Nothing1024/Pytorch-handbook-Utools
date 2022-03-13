@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.sparse.sampled_addmm — PyTorch 1.11.0 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-sparse-sampled-addmm">
+         <h1>
+          torch.sparse.sampled_addmm
+          <a class="headerlink" href="#torch-sparse-sampled-addmm" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.sparse.sampled_addmm">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.sparse.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             sampled_addmm
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              input
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              mat1
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              mat2
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              beta
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1.0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              alpha
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              1.0
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           →
+           <span class="pre">
+            Tensor
+           </span>
+           <a class="headerlink" href="#torch.sparse.sampled_addmm" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Performs a matrix multiplication of the dense matrices
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              mat1
+             </span>
+            </code>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              mat2
+             </span>
+            </code>
+            at the locations
+specified by the sparsity pattern of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            . The matrix
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            is added to the final result.
+           </p>
+           <p>
+            Mathematically this performs the following operation:
+           </p>
+           <div class="math">
+            <span class="katex-display">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   out
+                  </mtext>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   α
+                  </mi>
+                  <mtext>
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext>
+                   mat1
+                  </mtext>
+                  <mo lspace="0.22em" mathvariant="normal" rspace="0.22em">
+                   @
+                  </mo>
+                  <mtext>
+                   mat2
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   ∗
+                  </mo>
+                  <mtext>
+                   spy
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext>
+                   input
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                  <mo>
+                   +
+                  </mo>
+                  <mi>
+                   β
+                  </mi>
+                  <mtext>
+                   input
+                  </mtext>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{out} = \alpha\ (\text{mat1} \mathbin{@} \text{mat2})*\text{spy}(\text{input}) + \beta\ \text{input}
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6151em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  out
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.0037em;">
+                 α
+                </span>
+                <span class="mspace">
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  mat1
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+                <span class="mbin">
+                 <span class="mord">
+                  @
+                 </span>
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  mat2
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+                <span class="mbin">
+                 ∗
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  spy
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  input
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+                <span class="mbin">
+                 +
+                </span>
+                <span class="mspace" style="margin-right:0.2222em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.05278em;">
+                 β
+                </span>
+                <span class="mspace">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  input
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+           </div>
+           <p>
+            where
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   spy
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext>
+                   input
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{spy}(\text{input})
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  spy
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  input
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            is the sparsity pattern matrix of
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            ,
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              alpha
+             </span>
+            </code>
+            and
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              beta
+             </span>
+            </code>
+            are the scaling factors.
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mtext>
+                   spy
+                  </mtext>
+                  <mo stretchy="false">
+                   (
+                  </mo>
+                  <mtext>
+                   input
+                  </mtext>
+                  <mo stretchy="false">
+                   )
+                  </mo>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  \text{spy}(\text{input})
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  spy
+                 </span>
+                </span>
+                <span class="mopen">
+                 (
+                </span>
+                <span class="mord text">
+                 <span class="mord">
+                  input
+                 </span>
+                </span>
+                <span class="mclose">
+                 )
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            has value 1 at the positions where
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              input
+             </span>
+            </code>
+            has non-zero values, and 0 elsewhere.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               input
+              </span>
+             </code>
+             must be a sparse CSR tensor.
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               mat1
+              </span>
+             </code>
+             and
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               mat2
+              </span>
+             </code>
+             must be dense tensors.
+This function is implemented only for tensors on CUDA devices.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 input
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – a sparse CSR matrix of shape
+                <cite>
+                 (m, n)
+                </cite>
+                to be added and used to compute
+the sampled matrix multiplication
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 mat1
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – a dense matrix of shape
+                <cite>
+                 (m, k)
+                </cite>
+                to be multiplied
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 mat2
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                ) – a dense matrix of shape
+                <cite>
+                 (k, n)
+                </cite>
+                to be multiplied
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 beta
+                </strong>
+                (
+                <em>
+                 Number
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – multiplier for
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                (
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       β
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      \beta
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.05278em;">
+                     β
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                )
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 alpha
+                </strong>
+                (
+                <em>
+                 Number
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – multiplier for
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       m
+                      </mi>
+                      <mi>
+                       a
+                      </mi>
+                      <mi>
+                       t
+                      </mi>
+                      <mn>
+                       1
+                      </mn>
+                      <mi mathvariant="normal">
+                       @
+                      </mi>
+                      <mi>
+                       m
+                      </mi>
+                      <mi>
+                       a
+                      </mi>
+                      <mi>
+                       t
+                      </mi>
+                      <mn>
+                       2
+                      </mn>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      mat1 @ mat2
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.6944em;">
+                    </span>
+                    <span class="mord mathnormal">
+                     ma
+                    </span>
+                    <span class="mord mathnormal">
+                     t
+                    </span>
+                    <span class="mord">
+                     1@
+                    </span>
+                    <span class="mord mathnormal">
+                     ma
+                    </span>
+                    <span class="mord mathnormal">
+                     t
+                    </span>
+                    <span class="mord">
+                     2
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                (
+                <span class="math">
+                 <span class="katex">
+                  <span class="katex-mathml">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics>
+                     <mrow>
+                      <mi>
+                       α
+                      </mi>
+                     </mrow>
+                     <annotation encoding="application/x-tex">
+                      \alpha
+                     </annotation>
+                    </semantics>
+                   </math>
+                  </span>
+                  <span aria-hidden="true" class="katex-html">
+                   <span class="base">
+                    <span class="strut" style="height:0.4306em;">
+                    </span>
+                    <span class="mord mathnormal" style="margin-right:0.0037em;">
+                     α
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                )
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                 <em>
+                  Tensor
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – output tensor. Ignored if
+                <cite>
+                 None
+                </cite>
+                . Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse_csr</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mat1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mat2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">sampled_addmm</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">)</span>
+<span class="go">tensor(crow_indices=tensor([0, 1, 2, 3]),</span>
+<span class="go">    col_indices=tensor([0, 1, 2]),</span>
+<span class="go">    values=tensor([ 0.2847, -0.7805, -0.1900]), device='cuda:0',</span>
+<span class="go">    size=(3, 3), nnz=3, layout=torch.sparse_csr)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">sampled_addmm</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">()</span>
+<span class="go">tensor([[ 0.2847,  0.0000,  0.0000],</span>
+<span class="go">    [ 0.0000, -0.7805,  0.0000],</span>
+<span class="go">    [ 0.0000,  0.0000, -0.1900]], device='cuda:0')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">sampled_addmm</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="go">tensor(crow_indices=tensor([0, 1, 2, 3]),</span>
+<span class="go">    col_indices=tensor([0, 1, 2]),</span>
+<span class="go">    values=tensor([ 0.1423, -0.3903, -0.0950]), device='cuda:0',</span>
+<span class="go">    size=(3, 3), nnz=3, layout=torch.sparse_csr)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

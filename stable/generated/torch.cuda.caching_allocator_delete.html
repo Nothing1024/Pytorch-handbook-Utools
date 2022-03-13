@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.cuda.caching_allocator_delete — PyTorch 1.11.0 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-cuda-caching-allocator-delete">
+         <h1>
+          torch.cuda.caching_allocator_delete
+          <a class="headerlink" href="#torch-cuda-caching-allocator-delete" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.cuda.caching_allocator_delete">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             caching_allocator_delete
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              mem_ptr
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/cuda/memory.html#caching_allocator_delete">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.caching_allocator_delete" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Deletes memory allocated using the CUDA memory allocator.
+           </p>
+           <p>
+            Memory allocated with
+            <a class="reference internal" href="torch.cuda.caching_allocator_alloc.html#torch.cuda.caching_allocator_alloc" title="torch.cuda.caching_allocator_alloc">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               caching_allocator_alloc()
+              </span>
+             </code>
+            </a>
+            .
+is freed here. The associated device and stream are tracked inside
+the allocator.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               mem_ptr
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+               <em>
+                int
+               </em>
+              </a>
+              ) – memory address to be freed by the allocator.
+             </p>
+            </dd>
+           </dl>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             See
+             <a class="reference internal" href="../notes/cuda.html#cuda-memory-management">
+              <span class="std std-ref">
+               Memory management
+              </span>
+             </a>
+             for more details about GPU memory
+management.
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

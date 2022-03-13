@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.fmod — PyTorch 1.10 documentation
+   torch.fmod — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -103,8 +104,8 @@
             <a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/fmod">
              std::fmod
             </a>
-            for floating point tensors, and the modulus operation for integer tensors. The result
-has the same sign as the dividend
+            entrywise.
+The result has the same sign as the dividend
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               input
@@ -119,6 +120,23 @@ is less than that of
             </code>
             .
            </p>
+           <p>
+            This function may be defined in terms of
+            <a class="reference internal" href="torch.div.html#torch.div" title="torch.div">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.div()
+              </span>
+             </code>
+            </a>
+            as
+           </p>
+           <div class="highlight-python notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">fmod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">-</span> <span class="n">a</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s2">"trunc"</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span>
+</pre>
+            </div>
+           </div>
            <p>
             Supports
             <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
@@ -163,6 +181,22 @@ zero on CPU; Integer division by zero on GPU may return any value.
             <p>
              Complex inputs are not supported. In some cases, it is not mathematically
 possible to satisfy the definition of a modulo operation with complex numbers.
+            </p>
+           </div>
+           <div class="admonition seealso">
+            <p class="admonition-title">
+             See also
+            </p>
+            <p>
+             <a class="reference internal" href="torch.remainder.html#torch.remainder" title="torch.remainder">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.remainder()
+               </span>
+              </code>
+             </a>
+             which implements Python’s modulus operator.
+This one is defined using division rounding down the result.
             </p>
            </div>
            <dl class="field-list simple">
@@ -242,37 +276,6 @@ possible to satisfy the definition of a modulo operation with complex numbers.
 <span class="go">tensor([1.0000, 0.5000, 0.0000, 1.0000, 0.5000])</span>
 </pre>
             </div>
-           </div>
-           <div class="admonition seealso">
-            <p class="admonition-title">
-             See also
-            </p>
-            <p>
-             <a class="reference internal" href="torch.remainder.html#torch.remainder" title="torch.remainder">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                torch.remainder()
-               </span>
-              </code>
-             </a>
-             which is similar to
-             <a class="reference internal" href="#torch.fmod" title="torch.fmod">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                torch.fmod()
-               </span>
-              </code>
-             </a>
-             except that if the sign
-of the modulus is different than the sign of the divisor
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               other
-              </span>
-             </code>
-             then the divisor
-is added to the modulus.
-            </p>
            </div>
           </dd>
          </dl>

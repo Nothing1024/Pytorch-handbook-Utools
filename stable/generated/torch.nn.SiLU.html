@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   SiLU — PyTorch 1.10 documentation
+   SiLU — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -170,26 +171,26 @@ The SiLU function is also known as the swish function.
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                <span class="strut" style="height:0.4653em;">
                 </span>
                 <span class="mord mathnormal">
                  x
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  ∗
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -210,7 +211,7 @@ The SiLU function is also known as the swish function.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord text">
                  <span class="mord">
@@ -328,7 +329,7 @@ a Self-Gated Activation Function
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗
@@ -388,17 +389,19 @@ a Self-Gated Activation Function
              </ul>
             </dd>
            </dl>
-           <p>
-            Examples:
-           </p>
-           <div class="highlight-default notranslate">
-            <div class="highlight">
-             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">()</span>
+           <img alt="../_images/SiLU.png" src="../_images/SiLU.png">
+            <p>
+             Examples:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 </pre>
+             </div>
             </div>
-           </div>
+           </img>
           </dd>
          </dl>
         </div>

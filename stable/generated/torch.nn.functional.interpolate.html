@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nn.functional.interpolate — PyTorch 1.10 documentation
+   torch.nn.functional.interpolate — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -140,6 +141,24 @@
              </span>
             </span>
            </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              antialias
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
            <span class="sig-paren">
             )
            </span>
@@ -213,6 +232,10 @@ expected inputs are 3-D, 4-D or 5-D in shape.
             (5D-only),
             <cite>
              area
+            </cite>
+            ,
+            <cite>
+             nearest-exact
             </cite>
            </p>
            <dl class="field-list simple">
@@ -405,6 +428,12 @@ its length has to match
                   'area'
                  </span>
                 </code>
+                |
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'nearest-exact'
+                 </span>
+                </code>
                 . Default:
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -556,7 +585,7 @@ from the recomputed
                 due to rounding and precision issues.
 If
                 <cite>
-                 recomputed_scale_factor
+                 recompute_scale_factor
                 </cite>
                 is
                 <code class="docutils literal notranslate">
@@ -573,7 +602,59 @@ If
                  scale_factor
                 </cite>
                 will
-be used directly for interpolation.
+be used directly for interpolation. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 antialias
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – flag to apply anti-aliasing. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                . Using anti-alias
+option together with
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  align_corners=False
+                 </span>
+                </code>
+                , interpolation result would match Pillow
+result for downsampling operation. Supported modes:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'bilinear'
+                 </span>
+                </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'bicubic'
+                 </span>
+                </code>
+                .
                </p>
               </li>
              </ul>
@@ -605,75 +686,39 @@ Explicitly call
 when displaying the image.
             </p>
            </div>
-           <div class="admonition warning">
+           <div class="admonition note">
             <p class="admonition-title">
-             Warning
+             Note
             </p>
             <p>
-             With
+             Mode
              <code class="docutils literal notranslate">
               <span class="pre">
-               align_corners
-              </span>
-              <span class="pre">
-               =
-              </span>
-              <span class="pre">
-               True
+               mode='nearest-exact'
               </span>
              </code>
-             , the linearly interpolating modes
-(
-             <cite>
-              linear
-             </cite>
-             ,
-             <cite>
-              bilinear
-             </cite>
-             , and
-             <cite>
-              trilinear
-             </cite>
-             ) don’t proportionally align the
-output and input pixels, and thus the output values can depend on the
-input size. This was the default behavior for these modes up to version
-0.3.1. Since then, the default behavior is
+             matches Scikit-Image and PIL nearest neighbours interpolation
+algorithms and fixes known issues with
              <code class="docutils literal notranslate">
               <span class="pre">
-               align_corners
-              </span>
-              <span class="pre">
-               =
-              </span>
-              <span class="pre">
-               False
+               mode='nearest'
               </span>
              </code>
-             .
-See
-             <a class="reference internal" href="torch.nn.Upsample.html#torch.nn.Upsample" title="torch.nn.Upsample">
-              <code class="xref py py-class docutils literal notranslate">
-               <span class="pre">
-                Upsample
-               </span>
-              </code>
-             </a>
-             for concrete examples on how this
-affects the outputs.
-            </p>
-           </div>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             When scale_factor is specified, if recompute_scale_factor=True,
-scale_factor is used to compute the output_size which will then
-be used to infer new scales for the interpolation.
-The default behavior for recompute_scale_factor changed to False
-in 1.6.0, and scale_factor is used in the interpolation
-calculation.
+             . This mode is introduced to keep
+backward compatibility.
+Mode
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               mode='nearest'
+              </span>
+             </code>
+             matches buggy OpenCV’s
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               INTER_NEAREST
+              </span>
+             </code>
+             interpolation algorithm.
             </p>
            </div>
            <div class="admonition note">

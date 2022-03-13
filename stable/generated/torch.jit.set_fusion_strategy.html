@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.jit.set_fusion_strategy — PyTorch 1.11.0 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-jit-set-fusion-strategy">
+         <h1>
+          torch.jit.set_fusion_strategy
+          <a class="headerlink" href="#torch-jit-set-fusion-strategy" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.jit.set_fusion_strategy">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.jit.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             set_fusion_strategy
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              strategy
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/jit/_fuser.html#set_fusion_strategy">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.jit.set_fusion_strategy" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Sets the type and number of specializations that can occur during fusion.
+           </p>
+           <p>
+            Usage: provide a list of pairs (type, depth) where type is one of “STATIC” or “DYNAMIC”
+and depth is an integer.
+           </p>
+           <dl class="simple">
+            <dt>
+             Behavior - static vs dynamic:
+            </dt>
+            <dd>
+             <p>
+              In STATIC fusion, fused ops are compiled to have fixed input shapes. The shape is determined
+based on some initial profiling runs.
+In DYNAMIC fusion, fused ops are compiled to have variable input shapes, so that multiple
+shapes are possible.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            In both cases, we also recompile on new striding behavior, device, or dtype.
+           </p>
+           <dl class="simple">
+            <dt>
+             Behavior - fallback functions &amp; depth:
+            </dt>
+            <dd>
+             <p>
+              When an input doesn’t match the format required by the specialized compiled op, it will run
+a fallback function. Fallback functions are recursively be compiled and specialized based
+on the observed tensor shapes. Since compilation can be slow, the “depth” parameter is provided to
+limit the number of specializations that can be compiled, before giving up on recompiling and
+falling back to a completely un-fused, un-specialized implementation.
+             </p>
+            </dd>
+           </dl>
+           <p>
+            The list of (type, depth) pairs controls the type of specializations and the number of
+specializations. For example: [(“STATIC”, 2), (“DYNAMIC”, 2)] indicates that the first
+two specializations will use static fusions, the following two specializations will use
+dynamic fusion, and any inputs that satisfy none of the 4 options will run an
+unfused implementation.
+           </p>
+           <p>
+            NB: in the future, if more as more fusion backends are added there may be more granular
+apis for specific fusers.
+           </p>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

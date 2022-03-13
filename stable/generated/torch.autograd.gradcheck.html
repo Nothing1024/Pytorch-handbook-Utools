@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.autograd.gradcheck — PyTorch 1.10 documentation
+   torch.autograd.gradcheck — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -232,6 +233,24 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              check_batched_forward_grad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               check_forward_ad
              </span>
             </span>
@@ -243,6 +262,24 @@
             <span class="default_value">
              <span class="pre">
               False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              check_backward_ad
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              True
              </span>
             </span>
            </em>
@@ -588,6 +625,27 @@ batched gradients using prototype vmap support. Defaults to False.
               <li>
                <p>
                 <strong>
+                 check_batched_forward_grad
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if True, checks if we can compute
+batched forward gradients using forward ad and prototype vmap support. Defaults to False.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
                  check_forward_ad
                 </strong>
                 (
@@ -604,6 +662,27 @@ batched gradients using prototype vmap support. Defaults to False.
                 </em>
                 ) – if True, check that the gradients computed with forward
 mode AD match the numerical ones. Defaults to False.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 check_backward_ad
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if False, do not perform any checks that rely on
+backward mode AD to be implemented. Defaults to True.
                </p>
               </li>
               <li>

@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Automatic differentiation package - torch.autograd — PyTorch 1.10 documentation
+   Automatic differentiation package - torch.autograd — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -111,6 +112,90 @@ half, float, double and bfloat16) and complex
            </tr>
           </tbody>
          </table>
+         <div class="section" id="forward-mode-automatic-differentiation">
+          <span id="forward-mode-ad">
+          </span>
+          <h2>
+           Forward-mode Automatic Differentiation
+           <a class="headerlink" href="#forward-mode-automatic-differentiation" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <div class="admonition warning">
+           <p class="admonition-title">
+            Warning
+           </p>
+           <p>
+            This API is in beta. Even though the function signatures are very unlikely to change, improved
+operator coverage is planned before we consider this stable.
+           </p>
+          </div>
+          <p>
+           Please see the
+           <a class="reference external" href="https://pytorch.org/tutorials/intermediate/forward_ad_usage.html">
+            forward-mode AD tutorial
+           </a>
+           for detailed steps on how to use this API.
+          </p>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.autograd.forward_ad.dual_level.html#torch.autograd.forward_ad.dual_level" title="torch.autograd.forward_ad.dual_level">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  forward_ad.dual_level
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Context-manager that enables forward AD.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.autograd.forward_ad.make_dual.html#torch.autograd.forward_ad.make_dual" title="torch.autograd.forward_ad.make_dual">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  forward_ad.make_dual
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Associates a tensor value with a forward gradient, the tangent, to create a “dual tensor”, which is used to compute forward AD gradients.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.autograd.forward_ad.unpack_dual.html#torch.autograd.forward_ad.unpack_dual" title="torch.autograd.forward_ad.unpack_dual">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  forward_ad.unpack_dual
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Unpacks a “dual tensor” to get both its Tensor value and its forward AD gradient.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
          <div class="section" id="functional-higher-level-api">
           <span id="functional-api">
           </span>
@@ -1220,7 +1305,15 @@ the
                </span>
               </code>
              </a>
-             and :meth`backward` static methods. Then, to use your custom
+             and
+             <a class="reference internal" href="generated/torch.autograd.backward.html#torch.autograd.backward" title="torch.autograd.backward">
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                backward()
+               </span>
+              </code>
+             </a>
+             static methods. Then, to use your custom
 op in the forward pass, call the class method
              <code class="docutils literal notranslate">
               <span class="pre">
@@ -1293,24 +1386,6 @@ correct methods on
             <tr class="row-odd">
              <td>
               <p>
-               <a class="reference internal" href="generated/torch.autograd.Function.backward.html#torch.autograd.Function.backward" title="torch.autograd.Function.backward">
-                <code class="xref py py-obj docutils literal notranslate">
-                 <span class="pre">
-                  Function.backward
-                 </span>
-                </code>
-               </a>
-              </p>
-             </td>
-             <td>
-              <p>
-               Defines a formula for differentiating the operation with backward mode automatic differentiation.
-              </p>
-             </td>
-            </tr>
-            <tr class="row-even">
-             <td>
-              <p>
                <a class="reference internal" href="generated/torch.autograd.Function.forward.html#torch.autograd.Function.forward" title="torch.autograd.Function.forward">
                 <code class="xref py py-obj docutils literal notranslate">
                  <span class="pre">
@@ -1323,6 +1398,42 @@ correct methods on
              <td>
               <p>
                Performs the operation.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.autograd.Function.backward.html#torch.autograd.Function.backward" title="torch.autograd.Function.backward">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Function.backward
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Defines a formula for differentiating the operation with backward mode automatic differentiation (alias to the vjp function).
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.autograd.Function.jvp.html#torch.autograd.Function.jvp" title="torch.autograd.Function.jvp">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  Function.jvp
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Defines a formula for differentiating the operation with forward mode automatic differentiation.
               </p>
              </td>
             </tr>
@@ -2917,8 +3028,8 @@ to undefined behavior.
               Warning
              </p>
              <p>
-              Only one pair of hooks is allowed at a time. Recursively nesting this
-context-manager is not yet supported.
+              Only one pair of hooks is allowed at a time. When recursively nesting this
+context-manager, only the inner-most pair of hooks will be applied.
              </p>
             </div>
            </dd>

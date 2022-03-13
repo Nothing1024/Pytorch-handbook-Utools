@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.jit.freeze — PyTorch 1.10 documentation
+   torch.jit.freeze — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -292,6 +293,15 @@ freezing.
 <span class="k">assert</span> <span class="n">frozen_module</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
 </pre>
             </div>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Freezing submodule attributes is also supported:
+frozen_module = torch.jit.freeze(scripted_module, preserved_attrs=[“submodule.version”])
+            </p>
            </div>
            <div class="admonition note">
             <p class="admonition-title">

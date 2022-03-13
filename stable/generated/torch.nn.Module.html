@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Module — PyTorch 1.10 documentation
+   Module — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -74,7 +75,7 @@ a tree structure. You can assign the submodules as regular attributes:
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
@@ -96,6 +97,21 @@ parameters converted too when you call
             </a>
             , etc.
            </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             As per the example above, an
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               __init__()
+              </span>
+             </code>
+             call to the parent class
+must be made before assignment on the child.
+            </p>
+           </div>
            <dl class="field-list simple">
             <dt class="field-odd">
              Variables
@@ -2297,18 +2313,7 @@ both the name of the module as well as the module itself.
                    remove_duplicate
                   </strong>
                   – whether to remove the duplicated module instances in the result
-                 </p>
-                </li>
-                <li>
-                 <p>
-                  <strong>
-                   not
-                  </strong>
-                  (
-                  <em>
-                   or
-                  </em>
-                  ) –
+or not
                  </p>
                 </li>
                </ul>
@@ -3201,6 +3206,59 @@ will raise an error.
                </p>
               </dd>
              </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.Module.register_module">
+             <code class="sig-name descname">
+              <span class="pre">
+               register_module
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                name
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                module
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/module.html#Module.register_module">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.Module.register_module" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Alias for
+              <a class="reference internal" href="#torch.nn.Module.add_module" title="torch.nn.Module.add_module">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 add_module()
+                </span>
+               </code>
+              </a>
+              .
+             </p>
             </dd>
            </dl>
            <dl class="py method">

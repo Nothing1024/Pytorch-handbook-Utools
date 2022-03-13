@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.solve — PyTorch 1.10 documentation
+   torch.solve — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -122,7 +123,7 @@ equations represented by
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal">
                  A
@@ -130,16 +131,16 @@ equations represented by
                 <span class="mord mathnormal" style="margin-right:0.07847em;">
                  X
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.05017em;">
                  B
@@ -287,11 +288,11 @@ which may be used with
              </cite>
              will be transposed, i.e. with strides like
              <cite>
-              B.contiguous().transpose(-1, -2).stride()
+              B.contiguous().mT.stride()
              </cite>
              and
              <cite>
-              A.contiguous().transpose(-1, -2).stride()
+              A.contiguous().mT.stride()
              </cite>
              respectively.
             </p>
@@ -332,7 +333,7 @@ which may be used with
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6833em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.05017em;">
                      B
@@ -389,7 +390,7 @@ which may be used with
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -397,7 +398,7 @@ which may be used with
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.03148em;">
                      k
@@ -428,7 +429,7 @@ which may be used with
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗
@@ -499,7 +500,7 @@ which may be used with
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -507,7 +508,7 @@ which may be used with
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal">
                      m
@@ -538,7 +539,7 @@ which may be used with
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗

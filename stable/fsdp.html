@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   FullyShardedDataParallel — PyTorch 1.11.0 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="module-torch.distributed.fsdp">
+         <span id="fullyshardeddataparallel">
+         </span>
+         <h1>
+          FullyShardedDataParallel
+          <a class="headerlink" href="#module-torch.distributed.fsdp" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.distributed.fsdp.FullyShardedDataParallel">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.distributed.fsdp.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             FullyShardedDataParallel
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              module
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              process_group
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              cpu_offload
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              fsdp_auto_wrap_policy
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              backward_prefetch
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="_modules/torch/distributed/fsdp/fully_sharded_data_parallel.html#FullyShardedDataParallel">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.distributed.fsdp.FullyShardedDataParallel" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            A wrapper for sharding Module parameters across data parallel workers. This
+is inspired by
+            <a class="reference external" href="https://arxiv.org/abs/2004.13336">
+             Xu et al.
+            </a>
+            as well as the ZeRO Stage 3 from
+            <a class="reference external" href="https://www.deepspeed.ai/">
+             DeepSpeed
+            </a>
+            .
+FullyShardedDataParallel is commonly shorten to FSDP.
+           </p>
+           <p>
+            Example:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">torch.distributed.fsdp</span> <span class="kn">import</span> <span class="n">FullyShardedDataParallel</span> <span class="k">as</span> <span class="n">FSDP</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">set_device</span><span class="p">(</span><span class="n">device_id</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sharded_module</span> <span class="o">=</span> <span class="n">FSDP</span><span class="p">(</span><span class="n">my_module</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">optim</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">sharded_module</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">sharded_module</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">optim</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre>
+            </div>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             The optimizer must be initialized
+             <em>
+              after
+             </em>
+             the module has been wrapped,
+since FSDP will shard parameters in-place and this will break any
+previously initialized optimizers.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 module
+                </strong>
+                (
+                <a class="reference internal" href="generated/torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
+                 <em>
+                  nn.Module
+                 </em>
+                </a>
+                ) – module to be wrapped with FSDP.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 process_group
+                </strong>
+                (
+                <em>
+                 Optional
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 ProcessGroup
+                </em>
+                <em>
+                 ]
+                </em>
+                ) – process group for sharding
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 cpu_offload
+                </strong>
+                (
+                <em>
+                 Optional
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 CPUOffload
+                </em>
+                <em>
+                 ]
+                </em>
+                ) – CPU offloading config. Currently, only parameter and gradient CPU
+offload is supported. It can be enabled via passing in
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  cpu_offload=CPUOffload(offload_params=True)
+                 </span>
+                </code>
+                . Note that this
+currently implicitly enables gradient offloading to CPU in order for
+params and grads to be on same device to work with optimizer. This
+API is subject to change. Default is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  None
+                 </span>
+                </code>
+                in which case there
+will be no offloading.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 fsdp_auto_wrap_policy
+                </strong>
+                –
+                <p>
+                 (Optional [callable]):
+A callable specifying a policy to recursively wrap layers with FSDP.
+Note that this policy currently will only apply to child modules of
+the passed in module. The remainder modules are always wrapped in
+the returned FSDP root instance.
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   default_auto_wrap_policy
+                  </span>
+                 </code>
+                 written in
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   torch.distributed.fsdp.wrap
+                  </span>
+                 </code>
+                 is
+an example of
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   fsdp_auto_wrap_policy
+                  </span>
+                 </code>
+                 callable, this policy wraps layers
+with parameter sizes larger than 100M. Users can supply the customized
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   fsdp_auto_wrap_policy
+                  </span>
+                 </code>
+                 callable that should accept following arguments:
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   module:
+                  </span>
+                  <span class="pre">
+                   nn.Module
+                  </span>
+                 </code>
+                 ,
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   recurse:
+                  </span>
+                  <span class="pre">
+                   bool
+                  </span>
+                 </code>
+                 ,
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   unwrapped_params:
+                  </span>
+                  <span class="pre">
+                   int
+                  </span>
+                 </code>
+                 ,
+extra customized arguments could be added to the customized
+                 <code class="docutils literal notranslate">
+                  <span class="pre">
+                   fsdp_auto_wrap_policy
+                  </span>
+                 </code>
+                 callable as well.
+                </p>
+                <p>
+                 Example:
+                </p>
+                <div class="highlight-default notranslate">
+                 <div class="highlight">
+                  <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">custom_auto_wrap_policy</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">module</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">recurse</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">unwrapped_params</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># These are customizable for this policy function.</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">min_num_params</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e8</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">unwrapped_params</span> <span class="o">&gt;=</span> <span class="n">min_num_params</span>
+</pre>
+                 </div>
+                </div>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 backward_prefetch
+                </strong>
+                – (Optional[BackwardPrefetch]):
+This is an experimental feature that is subject to change in the
+the near future. It allows users to enable two different backward_prefetch
+algorithms to help backward communication and computation overlapping.
+Pros and cons of each algorithm is explained in the class
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  BackwardPrefetch
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.distributed.fsdp.FullyShardedDataParallel.module">
+             <em class="property">
+              <span class="pre">
+               property
+              </span>
+             </em>
+             <code class="sig-name descname">
+              <span class="pre">
+               module
+              </span>
+             </code>
+             <a class="headerlink" href="#torch.distributed.fsdp.FullyShardedDataParallel.module" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              make model.module accessible, just like DDP.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

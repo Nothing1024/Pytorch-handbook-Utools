@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.svd — PyTorch 1.10 documentation
+   torch.svd — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -180,16 +181,16 @@ namedtuple
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.36687em;vertical-align:0em;">
+                <span class="strut" style="height:0.3669em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1.0913309999999998em;vertical-align:-0.25em;">
+                <span class="strut" style="height:1.0913em;vertical-align:-0.25em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.10903em;">
                  U
@@ -215,7 +216,7 @@ namedtuple
                  <span class="msupsub">
                   <span class="vlist-t">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.8413309999999999em;">
+                    <span class="vlist" style="height:0.8413em;">
                      <span style="top:-3.063em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
@@ -263,7 +264,7 @@ where
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.8413309999999999em;vertical-align:0em;">
+                <span class="strut" style="height:0.8413em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.22222em;">
@@ -272,7 +273,7 @@ where
                  <span class="msupsub">
                   <span class="vlist-t">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.8413309999999999em;">
+                    <span class="vlist" style="height:0.8413em;">
                      <span style="top:-3.063em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
@@ -510,7 +511,7 @@ always be real-valued, even if
             <div class="highlight-python notranslate">
              <div class="highlight">
               <pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="ow">not</span> <span class="n">some</span><span class="p">)</span>
-<span class="n">V</span> <span class="o">=</span> <span class="n">Vh</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">Vh</span><span class="o">.</span><span class="n">mH</span>
 </pre>
              </div>
             </div>
@@ -542,7 +543,7 @@ always be real-valued, even if
             </p>
             <div class="highlight-python notranslate">
              <div class="highlight">
-              <pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">svdvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+              <pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svdvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre>
              </div>
             </div>
@@ -642,7 +643,7 @@ effectively the opposite.
                  </span>
                  <span aria-hidden="true" class="katex-html">
                   <span class="base">
-                   <span class="strut" style="height:0.8413309999999999em;vertical-align:0em;">
+                   <span class="strut" style="height:0.8413em;">
                    </span>
                    <span class="mord">
                     <span class="mord mathnormal" style="margin-right:0.22222em;">
@@ -651,7 +652,7 @@ effectively the opposite.
                     <span class="msupsub">
                      <span class="vlist-t">
                       <span class="vlist-r">
-                       <span class="vlist" style="height:0.8413309999999999em;">
+                       <span class="vlist" style="height:0.8413em;">
                         <span style="top:-3.063em;margin-right:0.05em;">
                          <span class="pstrut" style="height:2.7em;">
                          </span>
@@ -934,7 +935,7 @@ have zero nor repeated singular values.
                </span>
                <span aria-hidden="true" class="katex-html">
                 <span class="base">
-                 <span class="strut" style="height:1.5415079999999999em;vertical-align:-0.6963999999999999em;">
+                 <span class="strut" style="height:1.5415em;vertical-align:-0.6964em;">
                  </span>
                  <span class="mord">
                   <span class="mopen nulldelimiter">
@@ -942,8 +943,8 @@ have zero nor repeated singular values.
                   <span class="mfrac">
                    <span class="vlist-t vlist-t2">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.845108em;">
-                      <span style="top:-2.6264200000000004em;">
+                     <span class="vlist" style="height:0.8451em;">
+                      <span style="top:-2.6264em;">
                        <span class="pstrut" style="height:3em;">
                        </span>
                        <span class="sizing reset-size6 size3 mtight">
@@ -964,7 +965,7 @@ have zero nor repeated singular values.
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
                              <span class="vlist" style="height:0.3448em;">
-                              <span style="top:-2.3487714285714287em;margin-right:0.07142857142857144em;">
+                              <span style="top:-2.3488em;margin-right:0.0714em;">
                                <span class="pstrut" style="height:2.5em;">
                                </span>
                                <span class="sizing reset-size3 size1 mtight">
@@ -977,7 +978,7 @@ have zero nor repeated singular values.
                                    <span class="mord vbox mtight">
                                     <span class="thinbox mtight">
                                      <span class="rlap mtight">
-                                      <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                                      <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
                                       </span>
                                       <span class="inner">
                                        <span class="mord mtight">
@@ -1008,7 +1009,7 @@ have zero nor repeated singular values.
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.29011428571428566em;">
+                             <span class="vlist" style="height:0.2901em;">
                               <span>
                               </span>
                              </span>
@@ -1016,7 +1017,7 @@ have zero nor repeated singular values.
                            </span>
                           </span>
                          </span>
-                         <span class="mspace mtight" style="margin-right:0.19516666666666668em;">
+                         <span class="mspace mtight" style="margin-right:0.1952em;">
                          </span>
                          <span class="mord mtight">
                           <span class="mord mathnormal mtight" style="margin-right:0.03588em;">
@@ -1025,8 +1026,8 @@ have zero nor repeated singular values.
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.8051142857142857em;">
-                              <span style="top:-2.177714285714286em;margin-left:-0.03588em;margin-right:0.07142857142857144em;">
+                             <span class="vlist" style="height:0.8051em;">
+                              <span style="top:-2.1777em;margin-left:-0.0359em;margin-right:0.0714em;">
                                <span class="pstrut" style="height:2.5em;">
                                </span>
                                <span class="sizing reset-size3 size1 mtight">
@@ -1035,7 +1036,7 @@ have zero nor repeated singular values.
                                 </span>
                                </span>
                               </span>
-                              <span style="top:-2.8448em;margin-right:0.07142857142857144em;">
+                              <span style="top:-2.8448em;margin-right:0.0714em;">
                                <span class="pstrut" style="height:2.5em;">
                                </span>
                                <span class="sizing reset-size3 size1 mtight">
@@ -1050,7 +1051,7 @@ have zero nor repeated singular values.
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.3222857142857143em;">
+                             <span class="vlist" style="height:0.3223em;">
                               <span>
                               </span>
                              </span>
@@ -1068,8 +1069,8 @@ have zero nor repeated singular values.
                           <span class="msupsub">
                            <span class="vlist-t vlist-t2">
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.8051142857142857em;">
-                              <span style="top:-2.177714285714286em;margin-left:-0.03588em;margin-right:0.07142857142857144em;">
+                             <span class="vlist" style="height:0.8051em;">
+                              <span style="top:-2.1777em;margin-left:-0.0359em;margin-right:0.0714em;">
                                <span class="pstrut" style="height:2.5em;">
                                </span>
                                <span class="sizing reset-size3 size1 mtight">
@@ -1078,7 +1079,7 @@ have zero nor repeated singular values.
                                 </span>
                                </span>
                               </span>
-                              <span style="top:-2.8448em;margin-right:0.07142857142857144em;">
+                              <span style="top:-2.8448em;margin-right:0.0714em;">
                                <span class="pstrut" style="height:2.5em;">
                                </span>
                                <span class="sizing reset-size3 size1 mtight">
@@ -1093,7 +1094,7 @@ have zero nor repeated singular values.
                              </span>
                             </span>
                             <span class="vlist-r">
-                             <span class="vlist" style="height:0.46117142857142857em;">
+                             <span class="vlist" style="height:0.4612em;">
                               <span>
                               </span>
                              </span>
@@ -1127,7 +1128,7 @@ have zero nor repeated singular values.
                      </span>
                     </span>
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.6963999999999999em;">
+                     <span class="vlist" style="height:0.6964em;">
                       <span>
                       </span>
                      </span>
@@ -1198,7 +1199,7 @@ as
                </span>
                <span aria-hidden="true" class="katex-html">
                 <span class="base">
-                 <span class="strut" style="height:0.8491079999999999em;vertical-align:0em;">
+                 <span class="strut" style="height:0.8491em;">
                  </span>
                  <span class="mord">
                   <span class="mord mathnormal">
@@ -1207,7 +1208,7 @@ as
                   <span class="msupsub">
                    <span class="vlist-t">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.8491079999999999em;">
+                     <span class="vlist" style="height:0.8491em;">
                       <span style="top:-3.063em;margin-right:0.05em;">
                        <span class="pstrut" style="height:2.7em;">
                        </span>
@@ -1418,7 +1419,7 @@ consequently, the shape of returned
 <span class="go">tensor(8.6531e-07)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a_big</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">a_big</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">a_big</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">diag_embed</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span> <span class="n">v</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">a_big</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">diag_embed</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span> <span class="n">v</span><span class="o">.</span><span class="n">mT</span><span class="p">))</span>
 <span class="go">tensor(2.6503e-06)</span>
 </pre>
             </div>

@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   ParameterDict — PyTorch 1.10 documentation
+   ParameterDict — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -249,6 +250,243 @@ of type (string,
             </dd>
            </dl>
            <dl class="py method">
+            <dt id="torch.nn.ParameterDict.copy">
+             <code class="sig-name descname">
+              <span class="pre">
+               copy
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/container.html#ParameterDict.copy">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.ParameterDict.copy" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Returns a copy of this
+              <a class="reference internal" href="#torch.nn.ParameterDict" title="torch.nn.ParameterDict">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 ParameterDict
+                </span>
+               </code>
+              </a>
+              instance.
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.ParameterDict.fromkeys">
+             <code class="sig-name descname">
+              <span class="pre">
+               fromkeys
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                keys
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                default
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/container.html#ParameterDict.fromkeys">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.ParameterDict.fromkeys" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Return a new ParameterDict with the keys provided
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   keys
+                  </strong>
+                  (
+                  <em>
+                   iterable
+                  </em>
+                  <em>
+                   ,
+                  </em>
+                  <em>
+                   string
+                  </em>
+                  ) – keys to make the new ParameterDict from
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   default
+                  </strong>
+                  (
+                  <a class="reference internal" href="torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="torch.nn.parameter.Parameter">
+                   <em>
+                    Parameter
+                   </em>
+                  </a>
+                  <em>
+                   ,
+                  </em>
+                  <em>
+                   optional
+                  </em>
+                  ) – value to set for all keys
+                 </p>
+                </li>
+               </ul>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.ParameterDict.get">
+             <code class="sig-name descname">
+              <span class="pre">
+               get
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                key
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                default
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/container.html#ParameterDict.get">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.ParameterDict.get" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Return the parameter associated with key if present.
+Otherwise return default if provided, None if not.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   key
+                  </strong>
+                  (
+                  <em>
+                   string
+                  </em>
+                  ) – key to get from the ParameterDict
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   default
+                  </strong>
+                  (
+                  <a class="reference internal" href="torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="torch.nn.parameter.Parameter">
+                   <em>
+                    Parameter
+                   </em>
+                  </a>
+                  <em>
+                   ,
+                  </em>
+                  <em>
+                   optional
+                  </em>
+                  ) – value to return if key not present
+                 </p>
+                </li>
+               </ul>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
             <dt id="torch.nn.ParameterDict.items">
              <code class="sig-name descname">
               <span class="pre">
@@ -358,6 +596,152 @@ of type (string,
                 </em>
                 ) – key to pop from the ParameterDict
                </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.ParameterDict.popitem">
+             <code class="sig-name descname">
+              <span class="pre">
+               popitem
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/container.html#ParameterDict.popitem">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.ParameterDict.popitem" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Remove and return the last inserted
+              <cite>
+               (key, parameter)
+              </cite>
+              pair
+from the ParameterDict
+             </p>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.ParameterDict.setdefault">
+             <code class="sig-name descname">
+              <span class="pre">
+               setdefault
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                key
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                default
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/container.html#ParameterDict.setdefault">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.ParameterDict.setdefault" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              If key is in the ParameterDict, return its parameter.
+If not, insert
+              <cite>
+               key
+              </cite>
+              with a parameter
+              <cite>
+               default
+              </cite>
+              and return
+              <cite>
+               default
+              </cite>
+              .
+              <cite>
+               default
+              </cite>
+              defaults to
+              <cite>
+               None
+              </cite>
+              .
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   key
+                  </strong>
+                  (
+                  <em>
+                   string
+                  </em>
+                  ) – key to set default for
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   default
+                  </strong>
+                  (
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    Parameter
+                   </span>
+                  </code>
+                  ) – the parameter set to the key
+                 </p>
+                </li>
+               </ul>
               </dd>
              </dl>
             </dd>

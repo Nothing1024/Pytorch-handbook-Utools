@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   ELU — PyTorch 1.10 documentation
+   ELU — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -99,7 +100,16 @@
           </dt>
           <dd>
            <p>
-            Applies the element-wise function:
+            Applies the Exponential Linear Unit (ELU) function, element-wise, as described
+in the paper:
+            <a class="reference external" href="https://arxiv.org/abs/1511.07289">
+             Fast and Accurate Deep Network Learning by Exponential Linear
+Units (ELUs)
+            </a>
+            .
+           </p>
+           <p>
+            ELU is defined as:
            </p>
            <div class="math">
             <span class="katex-display">
@@ -127,7 +137,7 @@
                    <mo fence="true">
                     {
                    </mo>
-                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.36em">
                     <mtr>
                      <mtd>
                       <mstyle displaystyle="false" scriptlevel="0">
@@ -252,16 +262,16 @@ x, &amp; \text{ if } x &gt; 0\\
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;">
+                <span class="strut" style="height:3em;vertical-align:-1.25em;">
                 </span>
                 <span class="minner">
                  <span class="mopen delimcenter" style="top:0em;">
@@ -294,12 +304,12 @@ x, &amp; \text{ if } x &gt; 0\\
                          <span class="mord mathnormal" style="margin-right:0.0037em;">
                           α
                          </span>
-                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         <span class="mspace" style="margin-right:0.2222em;">
                          </span>
                          <span class="mbin">
                           ∗
                          </span>
-                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         <span class="mspace" style="margin-right:0.2222em;">
                          </span>
                          <span class="mopen">
                           (
@@ -316,12 +326,12 @@ x, &amp; \text{ if } x &gt; 0\\
                          <span class="mclose">
                           )
                          </span>
-                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         <span class="mspace" style="margin-right:0.2222em;">
                          </span>
                          <span class="mbin">
                           −
                          </span>
-                         <span class="mspace" style="margin-right:0.2222222222222222em;">
+                         <span class="mspace" style="margin-right:0.2222em;">
                          </span>
                          <span class="mord">
                           1
@@ -365,12 +375,12 @@ x, &amp; \text{ if } x &gt; 0\\
                          <span class="mord mathnormal">
                           x
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mrel">
                           &gt;
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mord">
                           0
@@ -389,12 +399,12 @@ x, &amp; \text{ if } x &gt; 0\\
                          <span class="mord mathnormal">
                           x
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mrel">
                           ≤
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mord">
                           0
@@ -454,7 +464,7 @@ x, &amp; \text{ if } x &gt; 0\\
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4306em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.0037em;">
                      α
@@ -549,7 +559,7 @@ x, &amp; \text{ if } x &gt; 0\\
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗

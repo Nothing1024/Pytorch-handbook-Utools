@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Upsample — PyTorch 1.10 documentation
+   Upsample — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -106,6 +107,24 @@
             <span class="n">
              <span class="pre">
               align_corners
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              recompute_scale_factor
              </span>
             </span>
             <span class="o">
@@ -449,18 +468,103 @@ those pixels. This only has effect when
                   'bilinear'
                  </span>
                 </code>
+                ,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  'bicubic'
+                 </span>
+                </code>
                 , or
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   'trilinear'
                  </span>
                 </code>
-                . Default:
+                .
+Default:
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   False
                  </span>
                 </code>
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 recompute_scale_factor
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – recompute the scale_factor for use in the
+interpolation calculation. If
+                <cite>
+                 recompute_scale_factor
+                </cite>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                , then
+                <cite>
+                 scale_factor
+                </cite>
+                must be passed in and
+                <cite>
+                 scale_factor
+                </cite>
+                is used to compute the
+output
+                <cite>
+                 size
+                </cite>
+                . The computed output
+                <cite>
+                 size
+                </cite>
+                will be used to infer new scales for
+the interpolation. Note that when
+                <cite>
+                 scale_factor
+                </cite>
+                is floating-point, it may differ
+from the recomputed
+                <cite>
+                 scale_factor
+                </cite>
+                due to rounding and precision issues.
+If
+                <cite>
+                 recompute_scale_factor
+                </cite>
+                is
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                , then
+                <cite>
+                 size
+                </cite>
+                or
+                <cite>
+                 scale_factor
+                </cite>
+                will
+be used directly for interpolation.
                </p>
               </li>
              </ul>
@@ -532,7 +636,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -540,7 +644,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -549,8 +653,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.31166399999999994em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3117em;">
+                         <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -656,7 +760,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -664,7 +768,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.08125em;">
@@ -673,8 +777,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.31166399999999994em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3117em;">
+                         <span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -702,7 +806,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -711,8 +815,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.31166399999999994em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3117em;">
+                         <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -834,7 +938,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -842,7 +946,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.02778em;">
@@ -851,8 +955,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.31166399999999994em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3117em;">
+                         <span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -880,7 +984,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.08125em;">
@@ -889,8 +993,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.31166399999999994em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3117em;">
+                         <span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -918,7 +1022,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -927,8 +1031,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.31166399999999994em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.3117em;">
+                         <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -1025,7 +1129,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -1033,7 +1137,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -1042,8 +1146,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.2805559999999999em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.2806em;">
+                         <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -1161,7 +1265,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -1169,7 +1273,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.08125em;">
@@ -1178,8 +1282,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.2805559999999999em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.2806em;">
+                         <span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -1213,7 +1317,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -1222,8 +1326,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.2805559999999999em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.2806em;">
+                         <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -1360,7 +1464,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
@@ -1368,7 +1472,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.02778em;">
@@ -1377,8 +1481,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.2805559999999999em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.2806em;">
+                         <span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -1412,7 +1516,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.08125em;">
@@ -1421,8 +1525,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.2805559999999999em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.2806em;">
+                         <span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -1456,7 +1560,7 @@ those pixels. This only has effect when
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -1465,8 +1569,8 @@ those pixels. This only has effect when
                      <span class="msupsub">
                       <span class="vlist-t vlist-t2">
                        <span class="vlist-r">
-                        <span class="vlist" style="height:0.2805559999999999em;">
-                         <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                        <span class="vlist" style="height:0.2806em;">
+                         <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                           <span class="pstrut" style="height:2.7em;">
                           </span>
                           <span class="sizing reset-size6 size3 mtight">
@@ -1572,7 +1676,7 @@ those pixels. This only has effect when
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.83333em;vertical-align:-0.15em;">
+                <span class="strut" style="height:0.8333em;vertical-align:-0.15em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.02778em;">
@@ -1581,8 +1685,8 @@ those pixels. This only has effect when
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.2805559999999999em;">
-                     <span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.2806em;">
+                     <span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -1613,16 +1717,16 @@ those pixels. This only has effect when
                   </span>
                  </span>
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1.20001em;vertical-align:-0.35001em;">
+                <span class="strut" style="height:1.2em;vertical-align:-0.35em;">
                 </span>
                 <span class="minner">
                  <span class="mopen delimcenter" style="top:0em;">
@@ -1637,8 +1741,8 @@ those pixels. This only has effect when
                   <span class="msupsub">
                    <span class="vlist-t vlist-t2">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.31166399999999994em;">
-                      <span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;">
+                     <span class="vlist" style="height:0.3117em;">
+                      <span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;">
                        <span class="pstrut" style="height:2.7em;">
                        </span>
                        <span class="sizing reset-size6 size3 mtight">
@@ -1663,12 +1767,12 @@ those pixels. This only has effect when
                    </span>
                   </span>
                  </span>
-                 <span class="mspace" style="margin-right:0.2222222222222222em;">
+                 <span class="mspace" style="margin-right:0.2222em;">
                  </span>
                  <span class="mbin">
                   ×
                  </span>
-                 <span class="mspace" style="margin-right:0.2222222222222222em;">
+                 <span class="mspace" style="margin-right:0.2222em;">
                  </span>
                  <span class="mord text">
                   <span class="mord">
@@ -1748,7 +1852,7 @@ those pixels. This only has effect when
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.83333em;vertical-align:-0.15em;">
+                <span class="strut" style="height:0.8333em;vertical-align:-0.15em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.08125em;">
@@ -1757,8 +1861,8 @@ those pixels. This only has effect when
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.2805559999999999em;">
-                     <span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.2806em;">
+                     <span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -1789,16 +1893,16 @@ those pixels. This only has effect when
                   </span>
                  </span>
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1.20001em;vertical-align:-0.35001em;">
+                <span class="strut" style="height:1.2em;vertical-align:-0.35em;">
                 </span>
                 <span class="minner">
                  <span class="mopen delimcenter" style="top:0em;">
@@ -1813,8 +1917,8 @@ those pixels. This only has effect when
                   <span class="msupsub">
                    <span class="vlist-t vlist-t2">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.31166399999999994em;">
-                      <span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;">
+                     <span class="vlist" style="height:0.3117em;">
+                      <span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;">
                        <span class="pstrut" style="height:2.7em;">
                        </span>
                        <span class="sizing reset-size6 size3 mtight">
@@ -1839,12 +1943,12 @@ those pixels. This only has effect when
                    </span>
                   </span>
                  </span>
-                 <span class="mspace" style="margin-right:0.2222222222222222em;">
+                 <span class="mspace" style="margin-right:0.2222em;">
                  </span>
                  <span class="mbin">
                   ×
                  </span>
-                 <span class="mspace" style="margin-right:0.2222222222222222em;">
+                 <span class="mspace" style="margin-right:0.2222em;">
                  </span>
                  <span class="mord text">
                   <span class="mord">
@@ -1924,7 +2028,7 @@ those pixels. This only has effect when
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.83333em;vertical-align:-0.15em;">
+                <span class="strut" style="height:0.8333em;vertical-align:-0.15em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -1933,8 +2037,8 @@ those pixels. This only has effect when
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.2805559999999999em;">
-                     <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.2806em;">
+                     <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -1965,16 +2069,16 @@ those pixels. This only has effect when
                   </span>
                  </span>
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1.20001em;vertical-align:-0.35001em;">
+                <span class="strut" style="height:1.2em;vertical-align:-0.35em;">
                 </span>
                 <span class="minner">
                  <span class="mopen delimcenter" style="top:0em;">
@@ -1989,8 +2093,8 @@ those pixels. This only has effect when
                   <span class="msupsub">
                    <span class="vlist-t vlist-t2">
                     <span class="vlist-r">
-                     <span class="vlist" style="height:0.31166399999999994em;">
-                      <span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;">
+                     <span class="vlist" style="height:0.3117em;">
+                      <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
                        <span class="pstrut" style="height:2.7em;">
                        </span>
                        <span class="sizing reset-size6 size3 mtight">
@@ -2015,12 +2119,12 @@ those pixels. This only has effect when
                    </span>
                   </span>
                  </span>
-                 <span class="mspace" style="margin-right:0.2222222222222222em;">
+                 <span class="mspace" style="margin-right:0.2222em;">
                  </span>
                  <span class="mbin">
                   ×
                  </span>
-                 <span class="mspace" style="margin-right:0.2222222222222222em;">
+                 <span class="mspace" style="margin-right:0.2222em;">
                  </span>
                  <span class="mord text">
                   <span class="mord">

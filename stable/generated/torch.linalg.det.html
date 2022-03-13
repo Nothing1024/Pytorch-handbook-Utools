@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.linalg.det — PyTorch 1.10 documentation
+   torch.linalg.det — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -102,23 +103,6 @@ Also supports batches of matrices, and if
             is a batch of matrices then
 the output has the same batch dimensions.
            </p>
-           <div class="admonition note">
-            <p class="admonition-title">
-             Note
-            </p>
-            <p>
-             This function is computed using
-             <a class="reference internal" href="torch.lu.html#torch.lu" title="torch.lu">
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                torch.lu()
-               </span>
-              </code>
-             </a>
-             .
-When inputs are on a CUDA device, this function synchronizes that device with the CPU.
-            </p>
-           </div>
            <div class="admonition seealso">
             <p class="admonition-title">
              See also

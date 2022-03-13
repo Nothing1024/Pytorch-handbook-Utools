@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.as_strided — PyTorch 1.10 documentation
+   torch.as_strided — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -133,14 +134,7 @@
              Warning
             </p>
             <p>
-             More than one element of a created tensor may refer to a single memory
-location. As a result, in-place operations (especially ones that are
-vectorized) may result in incorrect behavior. If you need to write to
-the tensors, please clone them first.
-            </p>
-            <p>
-             Many PyTorch functions, which return a view of a tensor, are internally
-implemented with this function. Those functions, like
+             Prefer using other view functions, like
              <a class="reference internal" href="torch.Tensor.expand.html#torch.Tensor.expand" title="torch.Tensor.expand">
               <code class="xref py py-meth docutils literal notranslate">
                <span class="pre">
@@ -148,8 +142,17 @@ implemented with this function. Those functions, like
                </span>
               </code>
              </a>
-             , are easier to read and are therefore more
-advisable to use.
+             ,
+to setting a view’s strides manually with
+             <cite>
+              as_strided
+             </cite>
+             , as this
+function’s behavior depends on the implementation of a tensor’s storage.
+The constructed view of the storage must only refer to elements within
+the storage or a runtime error will be thrown, and if the view is
+“overlapped” (with multiple indices referring to the same element in
+memory) its behavior is undefined.
             </p>
            </div>
            <dl class="field-list simple">

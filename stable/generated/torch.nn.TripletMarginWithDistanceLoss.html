@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   TripletMarginWithDistanceLoss — PyTorch 1.10 documentation
+   TripletMarginWithDistanceLoss — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -163,7 +164,7 @@ tensors
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                <span class="strut" style="height:0.4306em;">
                 </span>
                 <span class="mord mathnormal">
                  a
@@ -191,7 +192,7 @@ tensors
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.625em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.625em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal">
                  p
@@ -219,7 +220,7 @@ tensors
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.43056em;vertical-align:0em;">
+                <span class="strut" style="height:0.4306em;">
                 </span>
                 <span class="mord mathnormal">
                  n
@@ -466,7 +467,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord mathnormal">
                  p
@@ -474,7 +475,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord mathnormal">
                  n
@@ -482,30 +483,30 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal">
                  L
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1.149108em;vertical-align:-0.25em;">
+                <span class="strut" style="height:1.1491em;vertical-align:-0.25em;">
                 </span>
                 <span class="mopen">
                  {
@@ -517,8 +518,8 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.30110799999999993em;">
-                     <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3011em;">
+                     <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -544,17 +545,17 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="minner">
                  …
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -563,8 +564,8 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.32833099999999993em;">
-                     <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3283em;">
+                     <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -594,7 +595,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.8991079999999999em;">
+                    <span class="vlist" style="height:0.8991em;">
                      <span style="top:-3.113em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
@@ -614,7 +615,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 </span>
                 <span class="mspace" style="margin-right:1em;">
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -623,8 +624,8 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.31166399999999994em;">
-                     <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3117em;">
+                     <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -647,12 +648,12 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                   </span>
                  </span>
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
@@ -677,8 +678,8 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.31166399999999994em;">
-                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3117em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -704,7 +705,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal">
@@ -713,8 +714,8 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.31166399999999994em;">
-                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3117em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -740,12 +741,12 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  −
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -764,8 +765,8 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.31166399999999994em;">
-                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3117em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -791,7 +792,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal">
@@ -800,8 +801,8 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.31166399999999994em;">
-                     <span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3117em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -827,12 +828,12 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  +
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -848,7 +849,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord">
                  0
@@ -881,7 +882,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.10903em;">
                  N
@@ -909,7 +910,7 @@ l_i = \max \{d(a_i, p_i) - d(a_i, n_i) + {\rm margin}, 0\}
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6944em;">
                 </span>
                 <span class="mord mathnormal">
                  d
@@ -960,7 +961,7 @@ and
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.85396em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.854em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal">
                  ma
@@ -999,7 +1000,7 @@ be 0.  The input tensors have
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.68333em;vertical-align:0em;">
+                <span class="strut" style="height:0.6833em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.10903em;">
                  N
@@ -1064,7 +1065,7 @@ that the distance function can handle.
                    <mo fence="true">
                     {
                    </mo>
-                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.3600em">
+                   <mtable columnalign="left left" columnspacing="1em" rowspacing="0.36em">
                     <mtr>
                      <mtd>
                       <mstyle displaystyle="false" scriptlevel="0">
@@ -1176,7 +1177,7 @@ that the distance function can handle.
                 <span class="mpunct">
                  ,
                 </span>
-                <span class="mspace" style="margin-right:0.16666666666666666em;">
+                <span class="mspace" style="margin-right:0.1667em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.03588em;">
                  y
@@ -1184,16 +1185,16 @@ that the distance function can handle.
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:3.0000299999999998em;vertical-align:-1.25003em;">
+                <span class="strut" style="height:3em;vertical-align:-1.25em;">
                 </span>
                 <span class="minner">
                  <span class="mopen delimcenter" style="top:0em;">
@@ -1281,12 +1282,12 @@ that the distance function can handle.
                            if reduction
                           </span>
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mrel">
                           =
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mord text">
                           <span class="mord">
@@ -1304,12 +1305,12 @@ that the distance function can handle.
                            if reduction
                           </span>
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mrel">
                           =
                          </span>
-                         <span class="mspace" style="margin-right:0.2777777777777778em;">
+                         <span class="mspace" style="margin-right:0.2778em;">
                          </span>
                          <span class="mord text">
                           <span class="mord">
@@ -1375,7 +1376,7 @@ loss for input tensors using the
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.980548em;vertical-align:-0.286108em;">
+                <span class="strut" style="height:0.9805em;vertical-align:-0.2861em;">
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.01968em;">
@@ -1384,8 +1385,8 @@ loss for input tensors using the
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.15139200000000003em;">
-                     <span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.1514em;">
+                     <span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -1400,7 +1401,7 @@ loss for input tensors using the
                     </span>
                    </span>
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.286108em;">
+                    <span class="vlist" style="height:0.2861em;">
                      <span>
                      </span>
                     </span>
@@ -1487,7 +1488,7 @@ anchors, relative to the positives. Default:
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.64444em;vertical-align:0em;">
+                    <span class="strut" style="height:0.6444em;">
                     </span>
                     <span class="mord">
                      1
@@ -1645,7 +1646,7 @@ elements in the output,
                     <span class="mpunct">
                      ,
                     </span>
-                    <span class="mspace" style="margin-right:0.16666666666666666em;">
+                    <span class="mspace" style="margin-right:0.1667em;">
                     </span>
                     <span class="mord">
                      ∗
@@ -1676,7 +1677,7 @@ elements in the output,
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗

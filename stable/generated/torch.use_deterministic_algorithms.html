@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.use_deterministic_algorithms — PyTorch 1.10 documentation
+   torch.use_deterministic_algorithms — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -50,6 +51,32 @@
              </span>
             </span>
            </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              warn_only
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
            <span class="sig-paren">
             )
            </span>
@@ -80,6 +107,22 @@ and if only nondeterministic algorithms are available they will throw a
             </a>
             when called.
            </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             <a class="reference internal" href="torch.set_deterministic_debug_mode.html#torch.set_deterministic_debug_mode" title="torch.set_deterministic_debug_mode">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.set_deterministic_debug_mode()
+               </span>
+              </code>
+             </a>
+             offers an alternative
+interface for this feature.
+            </p>
+           </div>
            <p>
             The following normally-nondeterministic operations will act
 deterministically when
@@ -283,11 +326,13 @@ on a CUDA tensor that requires grad
               </li>
               <li>
                <p>
-                <code class="xref py py-func docutils literal notranslate">
-                 <span class="pre">
-                  torch.index_add()
-                 </span>
-                </code>
+                <a class="reference internal" href="torch.index_add.html#torch.index_add" title="torch.index_add">
+                 <code class="xref py py-func docutils literal notranslate">
+                  <span class="pre">
+                   torch.index_add()
+                  </span>
+                 </code>
+                </a>
                 when called on CUDA tensor
                </p>
               </li>
@@ -844,6 +889,32 @@ a single memory location, and the order of writes is not guaranteed.
               ) – If True, makes potentially nondeterministic
 operations switch to a deterministic algorithm or throw a runtime
 error. If False, allows nondeterministic operations.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <p>
+              <strong>
+               warn_only
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 bool
+                </span>
+               </code>
+              </a>
+              , optional) – If True, operations that do not
+have a deterministic implementation will throw a warning instead of
+an error. Default:
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                False
+               </span>
+              </code>
              </p>
             </dd>
            </dl>

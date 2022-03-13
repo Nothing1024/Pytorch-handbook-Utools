@@ -7,10 +7,11 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Softplus — PyTorch 1.10 documentation
+   Softplus — PyTorch 1.11.0 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
+  <!-- End Google Analytics -->
   <!-- Preload the theme fonts -->
   <!-- Preload the katex fonts -->
  </head>
@@ -99,13 +100,11 @@
           </dt>
           <dd>
            <p>
-            Applies the element-wise function:
-           </p>
-           <div class="math">
-            <span class="katex-display">
+            Applies the Softplus function
+            <span class="math">
              <span class="katex">
               <span class="katex-mathml">
-               <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <semantics>
                  <mrow>
                   <mtext>
@@ -175,7 +174,8 @@
                   </mo>
                  </mrow>
                  <annotation encoding="application/x-tex">
-                  \text{Softplus}(x) = \frac{1}{\beta} * \log(1 + \exp(\beta * x))
+                  \text{Softplus}(x) = \frac{1}{\beta} *
+\log(1 + \exp(\beta * x))
                  </annotation>
                 </semantics>
                </math>
@@ -198,16 +198,16 @@
                 <span class="mclose">
                  )
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  =
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:2.20188em;vertical-align:-0.8804400000000001em;">
+                <span class="strut" style="height:1.3262em;vertical-align:-0.4811em;">
                 </span>
                 <span class="mord">
                  <span class="mopen nulldelimiter">
@@ -215,13 +215,15 @@
                  <span class="mfrac">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:1.32144em;">
-                     <span style="top:-2.314em;">
+                    <span class="vlist" style="height:0.8451em;">
+                     <span style="top:-2.655em;">
                       <span class="pstrut" style="height:3em;">
                       </span>
-                      <span class="mord">
-                       <span class="mord mathnormal" style="margin-right:0.05278em;">
-                        β
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight" style="margin-right:0.05278em;">
+                         β
+                        </span>
                        </span>
                       </span>
                      </span>
@@ -231,12 +233,14 @@
                       <span class="frac-line" style="border-bottom-width:0.04em;">
                       </span>
                      </span>
-                     <span style="top:-3.677em;">
+                     <span style="top:-3.394em;">
                       <span class="pstrut" style="height:3em;">
                       </span>
-                      <span class="mord">
-                       <span class="mord">
-                        1
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mtight">
+                         1
+                        </span>
                        </span>
                       </span>
                      </span>
@@ -246,7 +250,7 @@
                     </span>
                    </span>
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.8804400000000001em;">
+                    <span class="vlist" style="height:0.4811em;">
                      <span>
                      </span>
                     </span>
@@ -256,12 +260,12 @@
                  <span class="mclose nulldelimiter">
                  </span>
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  ∗
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -279,12 +283,12 @@
                 <span class="mord">
                  1
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  +
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -299,12 +303,12 @@
                 <span class="mord mathnormal" style="margin-right:0.05278em;">
                  β
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  ∗
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
@@ -320,7 +324,8 @@
               </span>
              </span>
             </span>
-           </div>
+            element-wise.
+           </p>
            <p>
             SoftPlus is a smooth approximation to the ReLU function and can be used
 to constrain the output of a machine to always be positive.
@@ -394,7 +399,7 @@ when
               </span>
               <span aria-hidden="true" class="katex-html">
                <span class="base">
-                <span class="strut" style="height:0.85396em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.854em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal">
                  in
@@ -408,30 +413,30 @@ when
                 <span class="mord mathnormal">
                  t
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                 <span class="mbin">
                  ×
                 </span>
-                <span class="mspace" style="margin-right:0.2222222222222222em;">
+                <span class="mspace" style="margin-right:0.2222em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
                 </span>
                 <span class="mord mathnormal" style="margin-right:0.05278em;">
                  β
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                 <span class="mrel">
                  &gt;
                 </span>
-                <span class="mspace" style="margin-right:0.2777777777777778em;">
+                <span class="mspace" style="margin-right:0.2778em;">
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:0.69444em;vertical-align:0em;">
+                <span class="strut" style="height:0.6944em;">
                 </span>
                 <span class="mord mathnormal">
                  t
@@ -490,7 +495,7 @@ when
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;">
+                    <span class="strut" style="height:0.8889em;vertical-align:-0.1944em;">
                     </span>
                     <span class="mord mathnormal" style="margin-right:0.05278em;">
                      β
@@ -580,7 +585,7 @@ when
                   </span>
                   <span aria-hidden="true" class="katex-html">
                    <span class="base">
-                    <span class="strut" style="height:0.46528em;vertical-align:0em;">
+                    <span class="strut" style="height:0.4653em;">
                     </span>
                     <span class="mord">
                      ∗
