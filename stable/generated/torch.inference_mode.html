@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   inference_mode — PyTorch 1.11.0 documentation
+   inference_mode — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -95,7 +95,15 @@
             </a>
             to be used when you are certain your operations will have no interactions
 with autograd (e.g., model training). Code run under this mode gets better
-performance by disabling view tracking and version counter bumps.
+performance by disabling view tracking and version counter bumps. Note that
+unlike some other mechanisms that locally enable or disable grad,
+entering inference_mode also disables to
+            <a class="reference internal" href="../autograd.html#forward-mode-ad">
+             <span class="std std-ref">
+              forward-mode AD
+             </span>
+            </a>
+            .
            </p>
            <p>
             This context manager is thread local; it will not affect computation

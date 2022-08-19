@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.histogramdd — PyTorch 1.11.0 documentation
+   torch.histogramdd — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -100,13 +100,6 @@
            <span class="sig-paren">
             )
            </span>
-           <a class="reference internal" href="../_modules/torch/functional.html#histogramdd">
-            <span class="viewcode-link">
-             <span class="pre">
-              [source]
-             </span>
-            </span>
-           </a>
            <a class="headerlink" href="#torch.histogramdd" title="Permalink to this definition">
             ¶
            </a>
@@ -143,16 +136,28 @@ sequence of integers specifying the number of equal-width bins in each dimension
             <dd>
              <ul class="simple">
               <li>
-               <p>
-                Each of its coordinates is binned independently among the bin edges
-corresponding to its dimension
-               </p>
+               <dl class="simple">
+                <dt>
+                 Each of its coordinates is binned independently among the bin edges
+                </dt>
+                <dd>
+                 <p>
+                  corresponding to its dimension
+                 </p>
+                </dd>
+               </dl>
               </li>
               <li>
-               <p>
-                Binning results are combined to identify the N-dimensional bin (if any)
-into which the point falls
-               </p>
+               <dl class="simple">
+                <dt>
+                 Binning results are combined to identify the N-dimensional bin (if any)
+                </dt>
+                <dd>
+                 <p>
+                  into which the point falls
+                 </p>
+                </dd>
+               </dl>
               </li>
               <li>
                <p>
@@ -381,11 +386,12 @@ bin_edges(Tensor[]): sequence of N 1D Tensors containing the bin edges.
               <div class="highlight">
                <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">histogramdd</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]]),</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
 <span class="gp">... </span>                  <span class="n">weight</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">8.</span><span class="p">]))</span>
-<span class="go">    histogramdd_return_type(hist=tensor([[0., 1., 0.],</span>
-<span class="go">                                         [2., 0., 0.],</span>
-<span class="go">                                         [4., 0., 8.]]),</span>
-<span class="go">                            bin_edges=(tensor([0.0000, 0.6667, 1.3333, 2.0000]),</span>
-<span class="go">                                       tensor([0.0000, 0.6667, 1.3333, 2.0000])))</span>
+<span class="go">    torch.return_types.histogramdd(</span>
+<span class="go">        hist=tensor([[0., 1., 0.],</span>
+<span class="go">                     [2., 0., 0.],</span>
+<span class="go">                     [4., 0., 8.]]),</span>
+<span class="go">        bin_edges=(tensor([0.0000, 0.6667, 1.3333, 2.0000]),</span>
+<span class="go">                   tensor([0.0000, 0.6667, 1.3333, 2.0000])))</span>
 </pre>
               </div>
              </div>
@@ -393,10 +399,11 @@ bin_edges(Tensor[]): sequence of N 1D Tensors containing the bin edges.
               <div class="highlight">
                <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">histogramdd</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]]),</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
 <span class="gp">... </span>                  <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="go">    histogramdd_return_type(hist=tensor([[2., 0.],</span>
-<span class="go">                                         [0., 2.]]),</span>
-<span class="go">                            bin_edges=(tensor([0.0000, 0.5000, 1.0000]),</span>
-<span class="go">                                       tensor([0.0000, 0.5000, 1.0000])))</span>
+<span class="go">    torch.return_types.histogramdd(</span>
+<span class="go">       hist=tensor([[2., 0.],</span>
+<span class="go">                    [0., 2.]]),</span>
+<span class="go">       bin_edges=(tensor([0.0000, 0.5000, 1.0000]),</span>
+<span class="go">                  tensor([0.0000, 0.5000, 1.0000])))</span>
 </pre>
               </div>
              </div>

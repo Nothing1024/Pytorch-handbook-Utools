@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.linalg.qr — PyTorch 1.11.0 documentation
+   torch.linalg.qr — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -521,7 +521,8 @@ the
               </span>
              </span>
             </span>
-            is orthogonal in the real case and unitary in the complex case, and
+            is orthogonal in the real case and unitary in the complex case,
+and
             <span class="math">
              <span class="katex">
               <span class="katex-mathml">
@@ -549,7 +550,7 @@ the
               </span>
              </span>
             </span>
-            is upper triangular.
+            is upper triangular with real diagonal (even in the complex case).
            </p>
            <p>
             When
@@ -850,6 +851,7 @@ If
                (*, k, n)
               </cite>
               respectively.
+It is always differentiable.
              </p>
             </li>
             <li>
@@ -875,6 +877,11 @@ If
                (*, m, n)
               </cite>
               respectively.
+It is differentiable for
+              <cite>
+               m &lt;= n
+              </cite>
+              .
              </p>
             </li>
             <li>
@@ -908,6 +915,7 @@ If
                (*, k, n)
               </cite>
               .
+It is never differentiable.
              </p>
             </li>
            </ul>
@@ -953,13 +961,12 @@ When
                Q
               </cite>
               tensor is an empty tensor.
-This behavior may change in a future PyTorch release.
              </p>
             </li>
            </ul>
-           <div class="admonition note">
+           <div class="admonition warning">
             <p class="admonition-title">
-             Note
+             Warning
             </p>
             <p>
              The elements in the diagonal of
@@ -967,56 +974,13 @@ This behavior may change in a future PyTorch release.
               R
              </cite>
              are not necessarily positive.
-            </p>
-           </div>
-           <div class="admonition note">
-            <p class="admonition-title">
-             Note
-            </p>
-            <p>
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               mode
-              </span>
-             </code>
-             <cite>
-              = ‘r’
-             </cite>
-             does not support backpropagation. Use
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               mode
-              </span>
-             </code>
-             <cite>
-              = ‘reduced’
-             </cite>
-             instead.
-            </p>
-           </div>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             The QR decomposition is only unique up to the sign of the diagonal of
+As such, the returned QR decomposition is only unique up to the sign of the diagonal of
              <cite>
               R
              </cite>
-             when the
-first
-             <cite>
-              k = min(m, n)
-             </cite>
-             columns of
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               A
-              </span>
-             </code>
-             are linearly independent.
-If this is not the case, different platforms, like NumPy,
-or inputs on different devices, may produce different valid decompositions.
+             .
+Therefore, different platforms, like NumPy, or inputs on different devices,
+may produce different valid decompositions.
             </p>
            </div>
            <div class="admonition warning">
@@ -1024,7 +988,7 @@ or inputs on different devices, may produce different valid decompositions.
              Warning
             </p>
             <p>
-             Gradient computations are only supported if the first
+             The QR decomposition is only well-defined if the first
              <cite>
               k = min(m, n)
              </cite>
@@ -1036,9 +1000,8 @@ of every matrix in
               </span>
              </code>
              are linearly independent.
-If this condition is not met, no error will be thrown, but the gradient produced
-will be incorrect.
-This is because the QR decomposition is not differentiable at these points.
+If this condition is not met, no error will be thrown, but the QR produced
+may be incorrect and its autodiff may fail or produce incorrect results.
             </p>
            </div>
            <dl class="field-list simple">

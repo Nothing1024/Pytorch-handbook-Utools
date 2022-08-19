@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nn.functional.gelu — PyTorch 1.11.0 documentation
+   torch.nn.functional.gelu — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -51,6 +51,24 @@
              </span>
             </span>
            </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              approximate
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'none'
+             </span>
+            </span>
+           </em>
            <span class="sig-paren">
             )
            </span>
@@ -64,7 +82,7 @@
           </dt>
           <dd>
            <p>
-            Applies element-wise the function
+            When the approximate argument is ‘none’, it applies element-wise the function
             <span class="math">
              <span class="katex">
               <span class="katex-mathml">
@@ -220,6 +238,23 @@
             </span>
             is the Cumulative Distribution Function for Gaussian Distribution.
            </p>
+           <dl class="simple">
+            <dt>
+             When the approximate argument is ‘tanh’, Gelu is estimated with:
+            </dt>
+            <dd>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               math:
+              </dt>
+              <dd class="field-odd">
+               <p>
+                text{GELU}(x) = 0.5 * x * (1 + text{Tanh}(sqrt(2 / pi) * (x + 0.044715 * x^3)))
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
            <p>
             See
             <a class="reference external" href="https://arxiv.org/abs/1606.08415">

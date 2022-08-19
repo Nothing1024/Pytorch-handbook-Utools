@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Hardtanh — PyTorch 1.11.0 documentation
+   Hardtanh — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -192,9 +192,9 @@
                     <mtr>
                      <mtd>
                       <mstyle displaystyle="false" scriptlevel="0">
-                       <mn>
-                        1
-                       </mn>
+                       <mtext>
+                        max_val
+                       </mtext>
                       </mstyle>
                      </mtd>
                      <mtd>
@@ -209,9 +209,9 @@
                         <mo>
                          &gt;
                         </mo>
-                        <mn>
-                         1
-                        </mn>
+                        <mtext>
+                         max_val
+                        </mtext>
                        </mrow>
                       </mstyle>
                      </mtd>
@@ -219,14 +219,9 @@
                     <mtr>
                      <mtd>
                       <mstyle displaystyle="false" scriptlevel="0">
-                       <mrow>
-                        <mo>
-                         −
-                        </mo>
-                        <mn>
-                         1
-                        </mn>
-                       </mrow>
+                       <mtext>
+                        min_val
+                       </mtext>
                       </mstyle>
                      </mtd>
                      <mtd>
@@ -241,12 +236,9 @@
                         <mo>
                          &lt;
                         </mo>
-                        <mo>
-                         −
-                        </mo>
-                        <mn>
-                         1
-                        </mn>
+                        <mtext>
+                         min_val
+                        </mtext>
                        </mrow>
                       </mstyle>
                      </mtd>
@@ -272,8 +264,8 @@
                  </mrow>
                  <annotation encoding="application/x-tex">
                   \text{HardTanh}(x) = \begin{cases}
-    1 &amp; \text{ if } x &gt; 1 \\
-    -1 &amp; \text{ if } x &lt; -1 \\
+    \text{max\_val} &amp; \text{ if } x &gt; \text{ max\_val } \\
+    \text{min\_val} &amp; \text{ if } x &lt; \text{ min\_val } \\
     x &amp; \text{ otherwise } \\
 \end{cases}
                  </annotation>
@@ -386,8 +378,10 @@
                         <span class="pstrut" style="height:3.008em;">
                         </span>
                         <span class="mord">
-                         <span class="mord">
-                          1
+                         <span class="mord text">
+                          <span class="mord">
+                           max_val
+                          </span>
                          </span>
                         </span>
                        </span>
@@ -395,11 +389,10 @@
                         <span class="pstrut" style="height:3.008em;">
                         </span>
                         <span class="mord">
-                         <span class="mord">
-                          −
-                         </span>
-                         <span class="mord">
-                          1
+                         <span class="mord text">
+                          <span class="mord">
+                           min_val
+                          </span>
                          </span>
                         </span>
                        </span>
@@ -450,8 +443,10 @@
                          </span>
                          <span class="mspace" style="margin-right:0.2778em;">
                          </span>
-                         <span class="mord">
-                          1
+                         <span class="mord text">
+                          <span class="mord">
+                           max_val
+                          </span>
                          </span>
                         </span>
                        </span>
@@ -474,11 +469,10 @@
                          </span>
                          <span class="mspace" style="margin-right:0.2778em;">
                          </span>
-                         <span class="mord">
-                          −
-                         </span>
-                         <span class="mord">
-                          1
+                         <span class="mord text">
+                          <span class="mord">
+                           min_val
+                          </span>
                          </span>
                         </span>
                        </span>
@@ -516,81 +510,6 @@
              </span>
             </span>
            </div>
-           <p>
-            The range of the linear region
-            <span class="math">
-             <span class="katex">
-              <span class="katex-mathml">
-               <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <semantics>
-                 <mrow>
-                  <mo stretchy="false">
-                   [
-                  </mo>
-                  <mo>
-                   −
-                  </mo>
-                  <mn>
-                   1
-                  </mn>
-                  <mo separator="true">
-                   ,
-                  </mo>
-                  <mn>
-                   1
-                  </mn>
-                  <mo stretchy="false">
-                   ]
-                  </mo>
-                 </mrow>
-                 <annotation encoding="application/x-tex">
-                  [-1, 1]
-                 </annotation>
-                </semantics>
-               </math>
-              </span>
-              <span aria-hidden="true" class="katex-html">
-               <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                </span>
-                <span class="mopen">
-                 [
-                </span>
-                <span class="mord">
-                 −
-                </span>
-                <span class="mord">
-                 1
-                </span>
-                <span class="mpunct">
-                 ,
-                </span>
-                <span class="mspace" style="margin-right:0.1667em;">
-                </span>
-                <span class="mord">
-                 1
-                </span>
-                <span class="mclose">
-                 ]
-                </span>
-               </span>
-              </span>
-             </span>
-            </span>
-            can be adjusted using
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              min_val
-             </span>
-            </code>
-            and
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              max_val
-             </span>
-            </code>
-            .
-           </p>
            <dl class="field-list simple">
             <dt class="field-odd">
              Parameters

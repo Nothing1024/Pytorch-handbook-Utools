@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Tensor Views — PyTorch 1.11.0 documentation
+   Tensor Views — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -93,7 +93,7 @@ in the view, it will be reflected in the base tensor as well.
 But in case of view ops, outputs are views of input tensors to avoid unnecessary data copy.
 No data movement occurs when creating a view, view tensor just changes the way
 it interprets the same data. Taking a view of contiguous tensor could potentially produce a non-contiguous tensor.
-Users should be pay additional attention as contiguity might have implicit performance impact.
+Users should pay additional attention as contiguity might have implicit performance impact.
           <a class="reference internal" href="generated/torch.Tensor.transpose.html#torch.Tensor.transpose" title="torch.Tensor.transpose">
            <code class="xref py py-meth docutils literal notranslate">
             <span class="pre">

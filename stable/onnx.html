@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.onnx — PyTorch 1.11.0 documentation
+   torch.onnx — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -134,24 +134,40 @@
                 ATen operators
                </a>
               </p>
+              <ul>
+               <li>
+                <p>
+                 <a class="reference internal" href="#list-of-supported-operators" id="id18">
+                  List of supported operators
+                 </a>
+                </p>
+               </li>
+               <li>
+                <p>
+                 <a class="reference internal" href="#adding-support-for-an-operator" id="id19">
+                  Adding support for an operator
+                 </a>
+                </p>
+               </li>
+              </ul>
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#torch-autograd-functions" id="id18">
+               <a class="reference internal" href="#torch-autograd-functions" id="id20">
                 torch.autograd.Functions
                </a>
               </p>
               <ul>
                <li>
                 <p>
-                 <a class="reference internal" href="#static-symbolic-method" id="id19">
+                 <a class="reference internal" href="#static-symbolic-method" id="id21">
                   Static Symbolic Method
                  </a>
                 </p>
                </li>
                <li>
                 <p>
-                 <a class="reference internal" href="#pythonop-symbolic" id="id20">
+                 <a class="reference internal" href="#pythonop-symbolic" id="id22">
                   PythonOp Symbolic
                  </a>
                 </p>
@@ -160,14 +176,14 @@
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#custom-operators" id="id21">
+               <a class="reference internal" href="#custom-operators" id="id23">
                 Custom operators
                </a>
               </p>
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#discovering-all-unconvertible-aten-ops-at-once" id="id22">
+               <a class="reference internal" href="#discovering-all-unconvertible-aten-ops-at-once" id="id24">
                 Discovering all unconvertible ATen ops at once
                </a>
               </p>
@@ -176,15 +192,29 @@
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#frequently-asked-questions" id="id23">
+             <a class="reference internal" href="#frequently-asked-questions" id="id25">
               Frequently Asked Questions
              </a>
             </p>
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#functions" id="id24">
+             <a class="reference internal" href="#contributing-developing" id="id26">
+              Contributing / developing
+             </a>
+            </p>
+           </li>
+           <li>
+            <p>
+             <a class="reference internal" href="#functions" id="id27">
               Functions
+             </a>
+            </p>
+           </li>
+           <li>
+            <p>
+             <a class="reference internal" href="#classes" id="id28">
+              Classes
              </a>
             </p>
            </li>
@@ -525,14 +555,15 @@ of different sizes. To use scripting:
                  ScriptModule
                 </span>
                </code>
-               as the model, and set the
+               as the model. The
                <code class="docutils literal notranslate">
                 <span class="pre">
-                 example_outputs
+                 args
                 </span>
                </code>
-               arg. This is required so that the types and shapes of the outputs can be
-captured without executing the model.
+               are still required,
+but they will be used internally only to produce example outputs, so that the types and shapes of the
+outputs can be captured. No tracing will be performed.
               </p>
              </li>
             </ul>
@@ -1007,111 +1038,155 @@ If the operator is an ATen operator (shows up in the TorchScript graph with the 
               aten::
              </span>
             </code>
-            ):
+            ), make sure it is not supported already.
            </p>
-           <ul class="simple">
-            <li>
-             <p>
-              Define the symbolic function in
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                torch/onnx/symbolic_opset&lt;version&gt;.py
-               </span>
-              </code>
-              , for example
-              <a class="reference external" href="https://github.com/pytorch/pytorch/blob/master/torch/onnx/symbolic_opset9.py">
-               torch/onnx/symbolic_opset9.py
-              </a>
-              .
+           <div class="section" id="list-of-supported-operators">
+            <h4>
+             <a class="toc-backref" href="#id18">
+              List of supported operators
+             </a>
+             <a class="headerlink" href="#list-of-supported-operators" title="Permalink to this headline">
+              ¶
+             </a>
+            </h4>
+            <p>
+             Visit the auto generated
+             <a class="reference internal" href="onnx_supported_aten_ops.html">
+              <span class="doc">
+               list of supported ATen operators
+              </span>
+             </a>
+             for details on which operator are supported in each
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               opset_version
+              </span>
+             </code>
+             .
+            </p>
+           </div>
+           <div class="section" id="adding-support-for-an-operator">
+            <h4>
+             <a class="toc-backref" href="#id19">
+              Adding support for an operator
+             </a>
+             <a class="headerlink" href="#adding-support-for-an-operator" title="Permalink to this headline">
+              ¶
+             </a>
+            </h4>
+            <p>
+             If the operator is not in the list above:
+            </p>
+            <ul class="simple">
+             <li>
+              <p>
+               Define the symbolic function in
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 torch/onnx/symbolic_opset&lt;version&gt;.py
+                </span>
+               </code>
+               , for example
+               <a class="reference external" href="https://github.com/pytorch/pytorch/blob/master/torch/onnx/symbolic_opset9.py">
+                torch/onnx/symbolic_opset9.py
+               </a>
+               .
 Make sure the function has the same name as the ATen function, which may be declared in
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                torch/_C/_VariableFunctions.pyi
-               </span>
-              </code>
-              or
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                torch/nn/functional.pyi
-               </span>
-              </code>
-              (these files are generated at
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 torch/_C/_VariableFunctions.pyi
+                </span>
+               </code>
+               or
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 torch/nn/functional.pyi
+                </span>
+               </code>
+               (these files are generated at
 build time, so will not appear in your checkout until you build PyTorch).
-             </p>
-            </li>
-            <li>
-             <p>
-              The first arg is always the ONNX graph that is being built for export.
+              </p>
+             </li>
+             <li>
+              <p>
+               By default, the first arg is the ONNX graph.
 Other arg names must EXACTLY match the names in the
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                .pyi
-               </span>
-              </code>
-              file,
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 .pyi
+                </span>
+               </code>
+               file,
 because dispatch is done with keyword arguments.
-             </p>
-            </li>
-            <li>
-             <p>
-              In the symbolic function, if the operator is in the
-              <a class="reference external" href="https://github.com/onnx/onnx/blob/master/docs/Operators.md">
-               ONNX standard operator set
-              </a>
-              ,
+              </p>
+             </li>
+             <li>
+              <p>
+               A symbolic function that has a first arg (before the Graph object) with the
+type annotation of torch.onnx.SymbolicContext will be called with that additional context.
+See examples below.
+              </p>
+             </li>
+             <li>
+              <p>
+               In the symbolic function, if the operator is in the
+               <a class="reference external" href="https://github.com/onnx/onnx/blob/master/docs/Operators.md">
+                ONNX standard operator set
+               </a>
+               ,
 we only need to create a node to represent the ONNX operator in the graph.
 If not, we can create a graph of several standard operators that have
 equivalent semantics to the ATen operator.
-             </p>
-            </li>
-            <li>
-             <p>
-              If an input argument is a Tensor, but ONNX asks for a scalar, we have to
+              </p>
+             </li>
+             <li>
+              <p>
+               If an input argument is a Tensor, but ONNX asks for a scalar, we have to
 explicitly do the conversion.
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                symbolic_helper._scalar()
-               </span>
-              </code>
-              can convert a
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 symbolic_helper._scalar()
+                </span>
+               </code>
+               can convert a
 scalar tensor into a python scalar, and
-              <code class="xref py py-func docutils literal notranslate">
-               <span class="pre">
-                symbolic_helper._if_scalar_type_as()
-               </span>
-              </code>
-              can turn a Python scalar into a
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 symbolic_helper._if_scalar_type_as()
+                </span>
+               </code>
+               can turn a Python scalar into a
 PyTorch tensor.
-             </p>
-            </li>
-           </ul>
-           <p>
-            Here is an example of handling missing symbolic function for the
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              ELU
-             </span>
-            </code>
-            operator.
-           </p>
-           <p>
-            If we run the following code:
-           </p>
-           <div class="highlight-default notranslate">
-            <div class="highlight">
-             <pre><span></span><span class="nb">print</span><span class="p">(</span>
+              </p>
+             </li>
+            </ul>
+            <p>
+             Here is an example of handling missing symbolic function for the
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               ELU
+              </span>
+             </code>
+             operator.
+            </p>
+            <p>
+             If we run the following code:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="nb">print</span><span class="p">(</span>
   <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ELU</span><span class="p">(),</span> <span class="c1"># module</span>
                   <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># example input</span>
                   <span class="p">)</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
 </pre>
+             </div>
             </div>
-           </div>
-           <p>
-            We see something like:
-           </p>
-           <div class="highlight-default notranslate">
-            <div class="highlight">
-             <pre><span></span><span class="n">graph</span><span class="p">(</span><span class="o">%</span><span class="bp">self</span> <span class="p">:</span> <span class="n">__torch__</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">activation</span><span class="o">.</span><span class="n">___torch_mangle_0</span><span class="o">.</span><span class="n">ELU</span><span class="p">,</span>
+            <p>
+             We see something like:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="n">graph</span><span class="p">(</span><span class="o">%</span><span class="bp">self</span> <span class="p">:</span> <span class="n">__torch__</span><span class="o">.</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">activation</span><span class="o">.</span><span class="n">___torch_mangle_0</span><span class="o">.</span><span class="n">ELU</span><span class="p">,</span>
       <span class="o">%</span><span class="nb">input</span> <span class="p">:</span> <span class="n">Float</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">cpu</span><span class="p">)):</span>
   <span class="o">%</span><span class="mi">4</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">prim</span><span class="p">::</span><span class="n">Constant</span><span class="p">[</span><span class="n">value</span><span class="o">=</span><span class="mf">1.</span><span class="p">]()</span>
   <span class="o">%</span><span class="mi">5</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">prim</span><span class="p">::</span><span class="n">Constant</span><span class="p">[</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">]()</span>
@@ -1119,90 +1194,91 @@ PyTorch tensor.
   <span class="o">%</span><span class="mi">7</span> <span class="p">:</span> <span class="n">Float</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">cpu</span><span class="p">)</span> <span class="o">=</span> <span class="n">aten</span><span class="p">::</span><span class="n">elu</span><span class="p">(</span><span class="o">%</span><span class="nb">input</span><span class="p">,</span> <span class="o">%</span><span class="mi">4</span><span class="p">,</span> <span class="o">%</span><span class="mi">5</span><span class="p">,</span> <span class="o">%</span><span class="mi">6</span><span class="p">)</span>
   <span class="k">return</span> <span class="p">(</span><span class="o">%</span><span class="mi">7</span><span class="p">)</span>
 </pre>
+             </div>
             </div>
-           </div>
-           <p>
-            Since we see
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              aten::elu
-             </span>
-            </code>
-            in the graph, we know this is an ATen operator.
-           </p>
-           <p>
-            We check the
-            <a class="reference external" href="https://github.com/onnx/onnx/blob/master/docs/Operators.md">
-             ONNX operator list
-            </a>
-            ,
+            <p>
+             Since we see
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               aten::elu
+              </span>
+             </code>
+             in the graph, we know this is an ATen operator.
+            </p>
+            <p>
+             We check the
+             <a class="reference external" href="https://github.com/onnx/onnx/blob/master/docs/Operators.md">
+              ONNX operator list
+             </a>
+             ,
 and confirm that
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              Elu
-             </span>
-            </code>
-            is standardized in ONNX.
-           </p>
-           <p>
-            We find a signature for
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              elu
-             </span>
-            </code>
-            in
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              torch/nn/functional.pyi
-             </span>
-            </code>
-            :
-           </p>
-           <div class="highlight-default notranslate">
-            <div class="highlight">
-             <pre><span></span><span class="k">def</span> <span class="nf">elu</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span> <span class="o">...</span>
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               Elu
+              </span>
+             </code>
+             is standardized in ONNX.
+            </p>
+            <p>
+             We find a signature for
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               elu
+              </span>
+             </code>
+             in
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               torch/nn/functional.pyi
+              </span>
+             </code>
+             :
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="k">def</span> <span class="nf">elu</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span> <span class="o">...</span>
 </pre>
+             </div>
             </div>
-           </div>
-           <p>
-            We add the following lines to
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              symbolic_opset9.py
-             </span>
-            </code>
-            :
-           </p>
-           <div class="highlight-default notranslate">
-            <div class="highlight">
-             <pre><span></span><span class="k">def</span> <span class="nf">elu</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <p>
+             We add the following lines to
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               symbolic_opset9.py
+              </span>
+             </code>
+             :
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="k">def</span> <span class="nf">elu</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">g</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="s2">"Elu"</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">alpha_f</span><span class="o">=</span><span class="n">_scalar</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
 </pre>
+             </div>
             </div>
+            <p>
+             Now PyTorch is able to export models containing the
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               aten::elu
+              </span>
+             </code>
+             operator!
+            </p>
+            <p>
+             See the
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               symbolic_opset*.py
+              </span>
+             </code>
+             files for more examples.
+            </p>
            </div>
-           <p>
-            Now PyTorch is able to export models containing the
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              aten::elu
-             </span>
-            </code>
-            operator!
-           </p>
-           <p>
-            See the
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              symbolic_opset*.py
-             </span>
-            </code>
-            files for more examples.
-           </p>
           </div>
           <div class="section" id="torch-autograd-functions">
            <h3>
-            <a class="toc-backref" href="#id18">
+            <a class="toc-backref" href="#id20">
              torch.autograd.Functions
             </a>
             <a class="headerlink" href="#torch-autograd-functions" title="Permalink to this headline">
@@ -1223,7 +1299,7 @@ to export it.
            </p>
            <div class="section" id="static-symbolic-method">
             <h4>
-             <a class="toc-backref" href="#id19">
+             <a class="toc-backref" href="#id21">
               Static Symbolic Method
              </a>
              <a class="headerlink" href="#static-symbolic-method" title="Permalink to this headline">
@@ -1257,7 +1333,7 @@ ONNX operators that represent the function’s behavior in ONNX. For example:
            </div>
            <div class="section" id="pythonop-symbolic">
             <h4>
-             <a class="toc-backref" href="#id20">
+             <a class="toc-backref" href="#id22">
               PythonOp Symbolic
              </a>
              <a class="headerlink" href="#pythonop-symbolic" title="Permalink to this headline">
@@ -1267,14 +1343,13 @@ ONNX operators that represent the function’s behavior in ONNX. For example:
             <p>
              Alternatively, you can register a custom symbolic function.
 This gives the symbolic function access to more info through the
-TorchScript
              <code class="docutils literal notranslate">
               <span class="pre">
-               Node
+               torch.onnx.SymbolicContext
               </span>
              </code>
-             object for the original operation, which gets passed in as the second
-argument (after the
+             object, which gets passed in as the first
+argument (before the
              <code class="docutils literal notranslate">
               <span class="pre">
                Graph
@@ -1372,7 +1447,8 @@ shape and type inference for down-stream nodes. For a non-trivial example of
         <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">input</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">symbolic_python_op</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">Graph</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">Node</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">symbolic_python_op</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">onnx</span><span class="o">.</span><span class="n">SymbolicContext</span><span class="p">,</span> <span class="n">g</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">Graph</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">cur_node</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"original node: "</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">out</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">outputs</span><span class="p">()):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"original output </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">, requires grad: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">requiresGrad</span><span class="p">()))</span>
@@ -1403,7 +1479,7 @@ shape and type inference for down-stream nodes. For a non-trivial example of
           </div>
           <div class="section" id="custom-operators">
            <h3>
-            <a class="toc-backref" href="#id21">
+            <a class="toc-backref" href="#id23">
              Custom operators
             </a>
             <a class="headerlink" href="#custom-operators" title="Permalink to this headline">
@@ -1475,7 +1551,7 @@ or your runtime of choice’s documentation.
           </div>
           <div class="section" id="discovering-all-unconvertible-aten-ops-at-once">
            <h3>
-            <a class="toc-backref" href="#id22">
+            <a class="toc-backref" href="#id24">
              Discovering all unconvertible ATen ops at once
             </a>
             <a class="headerlink" href="#discovering-all-unconvertible-aten-ops-at-once" title="Permalink to this headline">
@@ -1505,7 +1581,7 @@ all of the unconvertible ops in one go you can:
          </div>
          <div class="section" id="frequently-asked-questions">
           <h2>
-           <a class="toc-backref" href="#id23">
+           <a class="toc-backref" href="#id25">
             Frequently Asked Questions
            </a>
            <a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">
@@ -1615,9 +1691,25 @@ is supported in more cases.
            </div>
           </blockquote>
          </div>
+         <div class="section" id="contributing-developing">
+          <h2>
+           <a class="toc-backref" href="#id26">
+            Contributing / developing
+           </a>
+           <a class="headerlink" href="#contributing-developing" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <p>
+           <a class="reference external" href="https://github.com/pytorch/pytorch/wiki/PyTorch-ONNX-exporter">
+            Developer docs
+           </a>
+           .
+          </p>
+         </div>
          <div class="section" id="functions">
           <h2>
-           <a class="toc-backref" href="#id24">
+           <a class="toc-backref" href="#id27">
             Functions
            </a>
            <a class="headerlink" href="#functions" title="Permalink to this headline">
@@ -1692,7 +1784,10 @@ is supported in more cases.
             ,
             <em class="sig-param">
              <span class="pre">
-              operator_export_type=None
+              operator_export_type=&lt;OperatorExportTypes.ONNX:
+             </span>
+             <span class="pre">
+              0&gt;
              </span>
             </em>
             ,
@@ -2030,7 +2125,7 @@ for
                    model
                   </span>
                  </code>
-                 .
+                 . If True, ONNX exporter logging will be turned on.
                 </p>
                </li>
                <li>
@@ -2136,31 +2231,9 @@ output nodes of the graph, in order.
                   ,
                  </em>
                  <em>
-                  default None
+                  default OperatorExportTypes.ONNX
                  </em>
                  ) –
-                 <p>
-                  None usually means
-                  <code class="docutils literal notranslate">
-                   <span class="pre">
-                    OperatorExportTypes.ONNX
-                   </span>
-                  </code>
-                  .
-However if PyTorch was built with
-                  <code class="docutils literal notranslate">
-                   <span class="pre">
-                    -DPYTORCH_ONNX_CAFFE2_BUNDLE
-                   </span>
-                  </code>
-                  , None means
-                  <code class="docutils literal notranslate">
-                   <span class="pre">
-                    OperatorExportTypes.ONNX_ATEN_FALLBACK
-                   </span>
-                  </code>
-                  .
-                 </p>
                  <ul>
                   <li>
                    <p>
@@ -2310,13 +2383,13 @@ for ops are produced by the modules described in
                   ,
                  </em>
                  <em>
-                  default 9
+                  default 13
                  </em>
                  ) – The version of the
                  <a class="reference external" href="https://github.com/onnx/onnx/blob/master/docs/Operators.md">
                   default (ai.onnx) opset
                  </a>
-                 to target. Must be &gt;= 7 and &lt;= 15.
+                 to target. Must be &gt;= 7 and &lt;= 16.
                 </p>
                </li>
                <li>
@@ -2686,6 +2759,23 @@ This feature requires
                    </span>
                   </code>
                   &lt; 15 implies IR version &lt; 8, which means no local function support.
+Module variables will be exported as function attributes. There are two categories of function
+attributes.
+                 </p>
+                 <p>
+                  1. Annotated attributes: class variables that have type annotations via
+                  <a class="reference external" href="https://www.python.org/dev/peps/pep-0526/#class-and-instance-variable-annotations">
+                   PEP 526-style
+                  </a>
+                  will be exported as attributes.
+Annotated attributes are not used inside the subgraph of ONNX local function because
+they are not created by PyTorch JIT tracing, but they may be used by consumers
+to determine whether or not to replace the function with a particular fused kernel.
+                 </p>
+                 <p>
+                  2. Inferred attributes: variables that are used by operators inside the module. Attribute names
+will have prefix “inferred::”. This is to differentiate from predefined attributes retrieved from
+python module annotations. Inferred attributes are used inside the subgraph of ONNX local function.
                  </p>
                  <ul>
                   <li>
@@ -3194,6 +3284,300 @@ mode is None.
             </p>
            </dd>
           </dl>
+          <dl class="py function">
+           <dt id="torch.onnx.is_onnx_log_enabled">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.onnx.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              is_onnx_log_enabled
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/onnx.html#is_onnx_log_enabled">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.onnx.is_onnx_log_enabled" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Returns True iff ONNX logging is turned on.
+            </p>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.onnx.enable_log">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.onnx.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              enable_log
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/onnx.html#enable_log">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.onnx.enable_log" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Enables ONNX logging.
+            </p>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.onnx.disable_log">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.onnx.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              disable_log
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/onnx.html#disable_log">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.onnx.disable_log" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Disables ONNX logging.
+            </p>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.onnx.set_log_stream">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.onnx.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              set_log_stream
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               stream_name
+              </span>
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               'stdout'
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/onnx.html#set_log_stream">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.onnx.set_log_stream" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Set output stream for ONNX logging.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                stream_name
+               </strong>
+               (
+               <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                <em>
+                 str
+                </em>
+               </a>
+               <em>
+                ,
+               </em>
+               <em>
+                default "stdout"
+               </em>
+               ) – Only
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 stdout
+                </span>
+               </code>
+               and
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 stderr
+                </span>
+               </code>
+               are supported
+as
+               <cite>
+                stream_name
+               </cite>
+               .
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.onnx.log">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.onnx.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              log
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="o">
+              <span class="pre">
+               *
+              </span>
+             </span>
+             <span class="n">
+              <span class="pre">
+               args
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/onnx.html#log">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.onnx.log" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             A simple logging facility for ONNX exporter.
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                args
+               </strong>
+               – Arguments are converted to string, concatenated together with a newline
+character appended to the end, and flushed to output stream.
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+         </div>
+         <div class="section" id="classes">
+          <h2>
+           <a class="toc-backref" href="#id28">
+            Classes
+           </a>
+           <a class="headerlink" href="#classes" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.onnx.SymbolicContext">
+               </p>
+               <a class="reference internal" href="generated/torch.onnx.SymbolicContext.html#torch.onnx.SymbolicContext" title="torch.onnx.SymbolicContext">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  SymbolicContext
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Provides extra context for symbolic functions.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
          </div>
         </div>
        </article>

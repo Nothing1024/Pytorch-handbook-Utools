@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.fft.hfftn — PyTorch 1.11.0 documentation
+   torch.fft.hfftn — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -252,6 +252,20 @@ properly. It is recommended to always pass the signal shape
               </span>
              </code>
              .
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Supports torch.half and torch.chalf on CUDA with GPU Architecture SM53 or greater.
+However it only supports powers of 2 signal length in every transformed dimensions.
+With default arguments, the size of last dimension should be (2^n + 1) as argument
+             <cite>
+              s
+             </cite>
+             defaults to even output size = 2 * (last_dim_size - 1)
             </p>
            </div>
            <dl class="field-list simple">

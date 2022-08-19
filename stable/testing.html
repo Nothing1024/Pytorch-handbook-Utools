@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.testing — PyTorch 1.11.0 documentation
+   torch.testing — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -22,24 +22,15 @@
      <div class="rst-content">
       <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
        <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
-        <div class="section" id="torch-testing">
+        <div class="section" id="module-torch.testing">
+         <span id="torch-testing">
+         </span>
          <h1>
           torch.testing
-          <a class="headerlink" href="#torch-testing" title="Permalink to this headline">
+          <a class="headerlink" href="#module-torch.testing" title="Permalink to this headline">
            ¶
           </a>
          </h1>
-         <div class="admonition warning">
-          <p class="admonition-title">
-           Warning
-          </p>
-          <p>
-           This module is a beta release, and its interfaces and functionality may change without warning in future
-PyTorch releases.
-          </p>
-         </div>
-         <span class="target" id="module-torch.testing">
-         </span>
          <dl class="py function">
           <dt id="torch.testing.assert_close">
            <code class="sig-prename descclassname">
@@ -429,7 +420,42 @@ PyTorch releases.
             </span>
            </div>
            <p>
-            and they have the same
+            Non-finite values (
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              -inf
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              inf
+             </span>
+            </code>
+            ) are only considered close if and only if they are equal.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              NaN
+             </span>
+            </code>
+            ’s are
+only considered equal to each other if
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              equal_nan
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            .
+           </p>
+           <p>
+            In addition, they are only considered close if they have the same
+-
             <a class="reference internal" href="generated/torch.Tensor.device.html#torch.Tensor.device" title="torch.Tensor.device">
              <code class="xref py py-attr docutils literal notranslate">
               <span class="pre">
@@ -449,7 +475,8 @@ PyTorch releases.
               True
              </span>
             </code>
-            ), same
+            ),
+-
             <code class="docutils literal notranslate">
              <span class="pre">
               dtype
@@ -467,7 +494,27 @@ PyTorch releases.
               True
              </span>
             </code>
-            ), and the same stride (if
+            ),
+-
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              layout
+             </span>
+            </code>
+            (if
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              check_layout
+             </span>
+            </code>
+            is
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              True
+             </span>
+            </code>
+            ), and
+- stride (if
             <code class="docutils literal notranslate">
              <span class="pre">
               check_stride
@@ -479,39 +526,20 @@ PyTorch releases.
               True
              </span>
             </code>
-            ). Non-finite values
-(
+            ).
+If either
             <code class="docutils literal notranslate">
              <span class="pre">
-              -inf
+              actual
              </span>
             </code>
-            and
+            or
             <code class="docutils literal notranslate">
              <span class="pre">
-              inf
+              expected
              </span>
             </code>
-            ) are only considered close if and only if they are equal.
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              NaN
-             </span>
-            </code>
-            ’s are only considered equal
-to each other if
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              equal_nan
-             </span>
-            </code>
-            is
-            <code class="docutils literal notranslate">
-             <span class="pre">
-              True
-             </span>
-            </code>
-            .
+            is a meta tensor, only the attribute checks will be performed.
            </p>
            <p>
             If
@@ -526,14 +554,14 @@ to each other if
               expected
              </span>
             </code>
-            are sparse (either having COO or CSR layout), their strided members are
+            are sparse (either having COO, CSR, CSC, BSR, or BSC layout), their strided members are
 checked individually. Indices, namely
             <code class="docutils literal notranslate">
              <span class="pre">
               indices
              </span>
             </code>
-            for COO or
+            for COO,
             <code class="docutils literal notranslate">
              <span class="pre">
               crow_indices
@@ -545,7 +573,20 @@ checked individually. Indices, namely
               col_indices
              </span>
             </code>
-            for CSR layout,
+            for CSR and BSR,
+or
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              ccol_indices
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              row_indices
+             </span>
+            </code>
+            for CSC and BSC layouts, respectively,
 are always checked for equality whereas the values are checked for closeness according to the definition above.
            </p>
            <p>
@@ -1015,6 +1056,29 @@ compared.
                 <em>
                  [
                 </em>
+                <em>
+                 Union
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 Callable
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 [
+                </em>
                 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
                  <em>
                   str
@@ -1023,7 +1087,26 @@ compared.
                 <em>
                  ]
                 </em>
-                ) – Optional error message to use in case a failure occurs during the comparison.
+                <em>
+                 ,
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ]
+                </em>
+                <em>
+                 ]
+                </em>
+                ) – Optional error message to use in case a failure occurs during
+the comparison. Can also passed as callable in which case it will be called with the generated message and
+should return the new message.
                </p>
               </li>
              </ul>
@@ -1499,6 +1582,35 @@ compared.
                <p>
                 <code class="xref py py-attr docutils literal notranslate">
                  <span class="pre">
+                  complex32
+                 </span>
+                </code>
+               </p>
+              </td>
+              <td>
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  1e-3
+                 </span>
+                </code>
+               </p>
+              </td>
+              <td>
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  1e-5
+                 </span>
+                </code>
+               </p>
+              </td>
+             </tr>
+             <tr class="row-odd">
+              <td>
+               <p>
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
                   complex64
                  </span>
                 </code>
@@ -1523,7 +1635,7 @@ compared.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <code class="xref py py-attr docutils literal notranslate">
@@ -1552,7 +1664,7 @@ compared.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <code class="xref py py-attr docutils literal notranslate">
@@ -1581,7 +1693,7 @@ compared.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <code class="xref py py-attr docutils literal notranslate">
@@ -1610,7 +1722,7 @@ compared.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <code class="xref py py-attr docutils literal notranslate">
@@ -1639,7 +1751,7 @@ compared.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <code class="xref py py-attr docutils literal notranslate">
@@ -1668,7 +1780,7 @@ compared.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <code class="xref py py-attr docutils literal notranslate">
@@ -1697,7 +1809,7 @@ compared.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 other
@@ -1886,6 +1998,22 @@ define an
 <span class="gt">Traceback (most recent call last):</span>
 <span class="c">...</span>
 <span class="gr">AssertionError</span>: <span class="n">Argh, the tensors are not close!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># If msg is a callable, it can be used to augment the generated message with</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># extra information</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_close</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Header</span><span class="se">\n\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Footer"</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">AssertionError</span>: <span class="n">Header</span>
+
+<span class="go">Tensor-likes are not close!</span>
+
+<span class="go">Mismatched elements: 2 / 3 (66.7%)</span>
+<span class="go">Greatest absolute difference: 2.0 at index (1,) (up to 1e-05 allowed)</span>
+<span class="go">Greatest relative difference: 1.0 at index (1,) (up to 1.3e-06 allowed)</span>
+
+<span class="go">Footer</span>
 </pre>
             </div>
            </div>
@@ -1907,17 +2035,14 @@ define an
             (
            </span>
            <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
             <span class="n">
              <span class="pre">
               shape
-             </span>
-            </span>
-           </em>
-           ,
-           <em class="sig-param">
-            <span class="n">
-             <span class="pre">
-              device
              </span>
             </span>
            </em>
@@ -1931,9 +2056,9 @@ define an
            </em>
            ,
            <em class="sig-param">
-            <span class="o">
+            <span class="n">
              <span class="pre">
-              *
+              device
              </span>
             </span>
            </em>
@@ -2313,7 +2438,23 @@ which depend on
                 <em>
                  ]
                 </em>
-                ) – A sequence of integers defining the shape of the output tensor.
+                ) – Single integer or a sequence of integers defining the shape of the output tensor.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 dtype
+                </strong>
+                (
+                <a class="reference internal" href="tensor_attributes.html#torch.dtype" title="torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                ) – The data type of the returned tensor.
                </p>
               </li>
               <li>
@@ -2336,7 +2477,7 @@ which depend on
                 <em>
                  ,
                 </em>
-                <a class="reference internal" href="tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                <a class="reference internal" href="tensor_attributes.html#torch.device" title="torch.device">
                  <em>
                   torch.device
                  </em>
@@ -2345,20 +2486,6 @@ which depend on
                  ]
                 </em>
                 ) – The device of the returned tensor.
-               </p>
-              </li>
-              <li>
-               <p>
-                <strong>
-                 dtype
-                </strong>
-                (
-                <code class="xref py py-class docutils literal notranslate">
-                 <span class="pre">
-                  torch.dtype
-                 </span>
-                </code>
-                ) – The data type of the returned tensor.
                </p>
               </li>
               <li>

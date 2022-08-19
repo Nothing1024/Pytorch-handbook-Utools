@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   LSTM — PyTorch 1.11.0 documentation
+   LSTM — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -5724,7 +5724,18 @@ Defaults to zeros if (h_0, c_0) is not provided.
                  </code>
                 </a>
                 has been given as the input, the output
-will also be a packed sequence.
+will also be a packed sequence. When
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  bidirectional=True
+                 </span>
+                </code>
+                ,
+                <cite>
+                 output
+                </cite>
+                will contain
+a concatenation of the forward and reverse hidden states at each time step in the sequence.
                </p>
               </li>
               <li>
@@ -5997,7 +6008,17 @@ will also be a packed sequence.
                  </span>
                 </span>
                 containing the
-final hidden state for each element in the sequence.
+final hidden state for each element in the sequence. When
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  bidirectional=True
+                 </span>
+                </code>
+                ,
+                <cite>
+                 h_n
+                </cite>
+                will contain a concatenation of the final forward and reverse hidden states, respectively.
                </p>
               </li>
               <li>
@@ -6270,7 +6291,17 @@ final hidden state for each element in the sequence.
                  </span>
                 </span>
                 containing the
-final cell state for each element in the sequence.
+final cell state for each element in the sequence. When
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  bidirectional=True
+                 </span>
+                </code>
+                ,
+                <cite>
+                 c_n
+                </cite>
+                will contain a concatenation of the final forward and reverse cell states, respectively.
                </p>
               </li>
              </ul>
@@ -7140,6 +7171,24 @@ Example of splitting the output layers when
               </span>
              </code>
              .
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             For bidirectional LSTMs,
+             <cite>
+              h_n
+             </cite>
+             is not equivalent to the last element of
+             <cite>
+              output
+             </cite>
+             ; the
+former contains the final forward and reverse hidden states, while the latter contains the
+final forward hidden state and the initial reverse hidden state.
             </p>
            </div>
            <div class="admonition note">

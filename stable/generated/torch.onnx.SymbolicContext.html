@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   SymbolicContext — PyTorch 1.12 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="symboliccontext">
+         <h1>
+          SymbolicContext
+          <a class="headerlink" href="#symboliccontext" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py class">
+          <dt id="torch.onnx.SymbolicContext">
+           <em class="property">
+            <span class="pre">
+             class
+            </span>
+           </em>
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.onnx.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             SymbolicContext
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              params_dict
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              env
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              cur_node
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              onnx_block
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/onnx.html#SymbolicContext">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.onnx.SymbolicContext" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Provides extra context for symbolic functions.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 params_dict
+                </strong>
+                (
+                <em>
+                 Dict
+                </em>
+                <em>
+                 [
+                </em>
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                 <em>
+                  str
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 _C.IValue
+                </em>
+                <em>
+                 ]
+                </em>
+                ) – Mapping from graph initializer name to IValue.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 env
+                </strong>
+                (
+                <em>
+                 Dict
+                </em>
+                <em>
+                 [
+                </em>
+                <em>
+                 _C.Value
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 _C.Value
+                </em>
+                <em>
+                 ]
+                </em>
+                ) – Mapping from Torch domain graph Value to ONNX domain graph Value.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 cur_node
+                </strong>
+                (
+                <em>
+                 _C.Node
+                </em>
+                ) – Current node being converted to ONNX domain.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 onnx_block
+                </strong>
+                (
+                <em>
+                 _C.Block
+                </em>
+                ) – Current ONNX block that converted nodes are being appended to.
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

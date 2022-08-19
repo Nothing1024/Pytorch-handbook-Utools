@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   GroupNorm — PyTorch 1.11.0 documentation
+   GroupNorm — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -442,7 +442,19 @@ M1001 80h400000v40h-400000z">
               num_groups
              </span>
             </code>
-            channels. The mean and standard-deviation are calculated
+            channels.
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              num_channels
+             </span>
+            </code>
+            must be divisible by
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              num_groups
+             </span>
+            </code>
+            . The mean and standard-deviation are calculated
 separately over the each group.
             <span class="math">
              <span class="katex">

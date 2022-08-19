@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.ldl_factor — PyTorch 1.12 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-ldl-factor">
+         <h1>
+          torch.linalg.ldl_factor
+          <a class="headerlink" href="#torch-linalg-ldl-factor" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.ldl_factor">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             ldl_factor
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              hermitian
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.linalg.ldl_factor" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Computes a compact representation of the LDL factorization of a Hermitian or symmetric (possibly indefinite) matrix.
+           </p>
+           <p>
+            When
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is complex valued it can be Hermitian (
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              hermitian
+             </span>
+            </code>
+            <cite>
+             = True
+            </cite>
+            )
+or symmetric (
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              hermitian
+             </span>
+            </code>
+            <cite>
+             = False
+            </cite>
+            ).
+           </p>
+           <p>
+            The factorization is of the form the form
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   A
+                  </mi>
+                  <mo>
+                   =
+                  </mo>
+                  <mi>
+                   L
+                  </mi>
+                  <mi>
+                   D
+                  </mi>
+                  <msup>
+                   <mi>
+                    L
+                   </mi>
+                   <mi>
+                    T
+                   </mi>
+                  </msup>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  A = L D L^T
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal">
+                 A
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 =
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8413em;">
+                </span>
+                <span class="mord mathnormal">
+                 L
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.02778em;">
+                 D
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  L
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.8413em;">
+                     <span style="top:-3.063em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight" style="margin-right:0.13889em;">
+                        T
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            .
+If
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              hermitian
+             </span>
+            </code>
+            is
+            <cite>
+             True
+            </cite>
+            then transpose operation is the conjugate transpose.
+           </p>
+           <p>
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   L
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  L
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal">
+                 L
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            (or
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   U
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  U
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.10903em;">
+                 U
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            ) and
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   D
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  D
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.02778em;">
+                 D
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            are stored in compact form in
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              LD
+             </span>
+            </code>
+            .
+They follow the format specified by
+            <a class="reference external" href="https://www.netlib.org/lapack/explore-html/d3/db6/group__double_s_ycomputational_gad91bde1212277b3e909eb6af7f64858a.html">
+             LAPACK’s sytrf
+            </a>
+            function.
+These tensors may be used in
+            <a class="reference internal" href="torch.linalg.ldl_solve.html#torch.linalg.ldl_solve" title="torch.linalg.ldl_solve">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               torch.linalg.ldl_solve()
+              </span>
+             </code>
+            </a>
+            to solve linear systems.
+           </p>
+           <p>
+            Supports input of float, double, cfloat and cdouble dtypes.
+Also supports batches of matrices, and if
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              A
+             </span>
+            </code>
+            is a batch of matrices then
+the output has the same batch dimensions.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When inputs are on a CUDA device, this function synchronizes that device with the CPU. For a version of this function that does not synchronize, see
+             <a class="reference internal" href="torch.linalg.ldl_factor_ex.html#torch.linalg.ldl_factor_ex" title="torch.linalg.ldl_factor_ex">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                torch.linalg.ldl_factor_ex()
+               </span>
+              </code>
+             </a>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               A
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – tensor of shape (
+              <em>
+               , n, n) where * is zero or more batch dimensions consisting of symmetric or Hermitian matrices.
+`(
+              </em>
+              , n, n)` where
+              <cite>
+               *
+              </cite>
+              is one or more batch dimensions.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 hermitian
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether to consider the input to be Hermitian or symmetric.
+For real-valued matrices, this switch has no effect. Default:
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+                 <em>
+                  tuple
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – tuple of two tensors to write the output to. Ignored if
+                <cite>
+                 None
+                </cite>
+                . Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              A named tuple
+              <cite>
+               (LD, pivots)
+              </cite>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">mT</span> <span class="c1"># make symmetric</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">tensor([[7.2079, 4.2414, 1.9428],</span>
+<span class="go">        [4.2414, 3.4554, 0.3264],</span>
+<span class="go">        [1.9428, 0.3264, 1.3823]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LD</span><span class="p">,</span> <span class="n">pivots</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">ldl_factor</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LD</span>
+<span class="go">tensor([[ 7.2079,  0.0000,  0.0000],</span>
+<span class="go">        [ 0.5884,  0.9595,  0.0000],</span>
+<span class="go">        [ 0.2695, -0.8513,  0.1633]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pivots</span>
+<span class="go">tensor([1, 2, 3], dtype=torch.int32)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

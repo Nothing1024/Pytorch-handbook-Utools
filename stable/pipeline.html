@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Pipeline Parallelism — PyTorch 1.11.0 documentation
+   Pipeline Parallelism — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -542,13 +542,11 @@ The forward function returns an
               </a>
               to allow for inter-node pipelining in the future, where the output
 might be on a remote host. For intra-node pipelinining you can use
-              <a class="reference internal" href="rpc.html#torch.distributed.rpc.RRef.local_value" title="torch.distributed.rpc.RRef.local_value">
-               <code class="xref py py-meth docutils literal notranslate">
-                <span class="pre">
-                 local_value()
-                </span>
-               </code>
-              </a>
+              <code class="xref py py-meth docutils literal notranslate">
+               <span class="pre">
+                local_value()
+               </span>
+              </code>
               to retrieve the
 output locally.
              </p>

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.stft — PyTorch 1.11.0 documentation
+   torch.stft — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -261,7 +261,12 @@ tensor with an extra last dimension for real and imaginary components.
            <p>
             The STFT computes the Fourier transform of short overlapping windows of the
 input. This giving frequency components of the signal as they change over
-time. The interface of this function is modeled after the
+time. The interface of this function is modeled after (but
+            <em>
+             not
+            </em>
+            a drop-in
+replacement for)
             <a class="reference external" href="https://librosa.org/doc/latest/generated/librosa.stft.html">
              librosa
             </a>

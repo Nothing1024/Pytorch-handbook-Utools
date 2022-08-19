@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   ParameterList — PyTorch 1.11.0 documentation
+   ParameterList — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -52,7 +52,7 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
-              parameters
+              values
              </span>
             </span>
             <span class="o">
@@ -92,9 +92,15 @@
               </span>
              </code>
             </a>
-            can be indexed like a regular Python
-list, but parameters it contains are properly registered, and will be
-visible by all
+            can be used like a regular Python
+list, but Tensors that are
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              Parameter
+             </span>
+            </code>
+            are properly registered,
+and will be visible by all
             <a class="reference internal" href="torch.nn.Module.html#torch.nn.Module" title="torch.nn.Module">
              <code class="xref py py-class docutils literal notranslate">
               <span class="pre">
@@ -103,6 +109,35 @@ visible by all
              </code>
             </a>
             methods.
+           </p>
+           <p>
+            Note that the constructor, assigning an element of the list, the
+            <code class="xref py py-meth docutils literal notranslate">
+             <span class="pre">
+              append()
+             </span>
+            </code>
+            method and the
+            <code class="xref py py-meth docutils literal notranslate">
+             <span class="pre">
+              extend()
+             </span>
+            </code>
+            method will convert any
+            <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               Tensor
+              </span>
+             </code>
+            </a>
+            into
+            <code class="xref py py-class docutils literal notranslate">
+             <span class="pre">
+              Parameter
+             </span>
+            </code>
+            .
            </p>
            <dl class="field-list simple">
             <dt class="field-odd">
@@ -123,13 +158,7 @@ visible by all
               <em>
                optional
               </em>
-              ) – an iterable of
-              <code class="xref py py-class docutils literal notranslate">
-               <span class="pre">
-                Parameter
-               </span>
-              </code>
-              to add
+              ) – an iterable of elements to add to the list.
              </p>
             </dd>
            </dl>
@@ -164,7 +193,7 @@ visible by all
              <em class="sig-param">
               <span class="n">
                <span class="pre">
-                parameter
+                value
                </span>
               </span>
              </em>
@@ -184,7 +213,7 @@ visible by all
             </dt>
             <dd>
              <p>
-              Appends a given parameter at the end of the list.
+              Appends a given value at the end of the list.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -193,13 +222,13 @@ visible by all
               <dd class="field-odd">
                <p>
                 <strong>
-                 parameter
+                 value
                 </strong>
                 (
                 <em>
-                 nn.Parameter
+                 Any
                 </em>
-                ) – parameter to append
+                ) – value to append
                </p>
               </dd>
              </dl>
@@ -218,7 +247,7 @@ visible by all
              <em class="sig-param">
               <span class="n">
                <span class="pre">
-                parameters
+                values
                </span>
               </span>
              </em>
@@ -238,7 +267,7 @@ visible by all
             </dt>
             <dd>
              <p>
-              Appends parameters from a Python iterable to the end of the list.
+              Appends values from a Python iterable to the end of the list.
              </p>
              <dl class="field-list simple">
               <dt class="field-odd">
@@ -247,13 +276,13 @@ visible by all
               <dd class="field-odd">
                <p>
                 <strong>
-                 parameters
+                 values
                 </strong>
                 (
                 <em>
                  iterable
                 </em>
-                ) – iterable of parameters to append
+                ) – iterable of values to append
                </p>
               </dd>
              </dl>

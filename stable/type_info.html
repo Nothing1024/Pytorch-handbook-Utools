@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Type Info — PyTorch 1.11.0 documentation
+   Type Info — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -33,7 +33,7 @@
          </h1>
          <p>
           The numerical properties of a
-          <a class="reference internal" href="tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+          <a class="reference internal" href="tensor_attributes.html#torch.dtype" title="torch.dtype">
            <code class="xref py py-class docutils literal notranslate">
             <span class="pre">
              torch.dtype
@@ -101,7 +101,7 @@
             </code>
            </a>
            is an object that represents the numerical properties of a floating point
-           <a class="reference internal" href="tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+           <a class="reference internal" href="tensor_attributes.html#torch.dtype" title="torch.dtype">
             <code class="xref py py-class docutils literal notranslate">
              <span class="pre">
               torch.dtype
@@ -275,11 +275,34 @@
              </td>
              <td>
               <p>
-               The smallest positive normal number. See notes.
+               The smallest positive normal number. Equivalent to
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 smallest_normal
+                </span>
+               </code>
+               .
               </p>
              </td>
             </tr>
             <tr class="row-odd">
+             <td>
+              <p>
+               smallest_normal
+              </p>
+             </td>
+             <td>
+              <p>
+               float
+              </p>
+             </td>
+             <td>
+              <p>
+               The smallest positive normal number. See notes.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
              <td>
               <p>
                resolution
@@ -334,7 +357,7 @@
            </p>
            <p>
             <cite>
-             tiny
+             smallest_normal
             </cite>
             returns the smallest
             <em>
@@ -392,7 +415,7 @@ subnormal numbers. See
             </code>
            </a>
            is an object that represents the numerical properties of a integer
-           <a class="reference internal" href="tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+           <a class="reference internal" href="tensor_attributes.html#torch.dtype" title="torch.dtype">
             <code class="xref py py-class docutils literal notranslate">
              <span class="pre">
               torch.dtype

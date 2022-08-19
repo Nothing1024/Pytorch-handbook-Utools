@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.set_float32_matmul_precision — PyTorch 1.12 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-set-float32-matmul-precision">
+         <h1>
+          torch.set_float32_matmul_precision
+          <a class="headerlink" href="#torch-set-float32-matmul-precision" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.set_float32_matmul_precision">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             set_float32_matmul_precision
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              precision
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch.html#set_float32_matmul_precision">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.set_float32_matmul_precision" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Sets the internal precision of float32 matrix multiplications.
+           </p>
+           <p>
+            Running float32 matrix multiplications in lower precision may significantly increase
+performance, and in some programs the loss of precision has a negligible impact.
+           </p>
+           <p>
+            Supports three settings:
+           </p>
+           <blockquote>
+            <div>
+             <ul class="simple">
+              <li>
+               <p>
+                “highest”, float32 matrix multiplications use the float32 datatype for
+internal computations.
+               </p>
+              </li>
+              <li>
+               <p>
+                “high”, float32 matrix multiplications use the TensorFloat32 or bfloat16_3x
+datatypes for internal computations, if fast matrix multiplication algorithms
+using those datatypes internally are available. Otherwise float32
+matrix multiplications are computed as if the precision is “highest”.
+               </p>
+              </li>
+              <li>
+               <p>
+                “medium”, float32 matrix multiplications use the bfloat16 datatype for
+internal computations, if a fast matrix multiplication algorithm
+using that datatype internally is available. Otherwise float32
+matrix multiplications are computed as if the precision is “high”.
+               </p>
+              </li>
+             </ul>
+            </div>
+           </blockquote>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This does not change the output dtype of float32 matrix multiplications,
+it controls how the internal computation of the matrix multiplication is performed.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This does not change the precision of convolution operations. Other flags,
+like
+             <cite>
+              torch.backends.cudnn.allow_tf32
+             </cite>
+             , may control the precision of convolution
+operations.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This flag currently only affects one native device type: CUDA.
+If “high” or “medium” are set then the TensorFloat32 datatype will be used
+when computing float32 matrix multiplications, equivalent to setting
+             <cite>
+              torch.backends.cuda.matmul.allow_tf32 = True
+             </cite>
+             . When “highest” (the default)
+is set then the float32 datatype is used for internal computations, equivalent
+to setting
+             <cite>
+              torch.backends.cuda.matmul.allow_tf32 = False
+             </cite>
+             .
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               precision
+              </strong>
+              (
+              <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+               <em>
+                str
+               </em>
+              </a>
+              ) – can be set to “highest” (default), “high”, or “medium” (see above).
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

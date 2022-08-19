@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.fft.ifft — PyTorch 1.11.0 documentation
+   torch.fft.ifft — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -155,6 +155,15 @@
             </code>
             .
            </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             Supports torch.half and torch.chalf on CUDA with GPU Architecture SM53 or greater.
+However it only supports powers of 2 signal length in every transformed dimension.
+            </p>
+           </div>
            <dl class="field-list simple">
             <dt class="field-odd">
              Parameters

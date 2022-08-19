@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   DistributedDataParallel — PyTorch 1.11.0 documentation
+   DistributedDataParallel — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -707,11 +707,13 @@ same model and thus the exact same parameter registration order.
             <p>
              This module allows parameters with non-rowmajor-contiguous strides.
 For example, your model may contain some parameters whose
-             <code class="xref py py-class docutils literal notranslate">
-              <span class="pre">
-               torch.memory_format
-              </span>
-             </code>
+             <a class="reference internal" href="../tensor_attributes.html#torch.memory_format" title="torch.memory_format">
+              <code class="xref py py-class docutils literal notranslate">
+               <span class="pre">
+                torch.memory_format
+               </span>
+              </code>
+             </a>
              is
              <code class="docutils literal notranslate">
               <span class="pre">
@@ -786,27 +788,6 @@ multiple workers, please change the multiprocessing start method to
              . Unfortunately
 Gloo (that uses Infiniband) and NCCL2 are not fork safe, and you will
 likely experience deadlocks if you don’t change this setting.
-            </p>
-           </div>
-           <div class="admonition warning">
-            <p class="admonition-title">
-             Warning
-            </p>
-            <p>
-             Forward and backward hooks defined on
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               module
-              </span>
-             </code>
-             and its submodules
-won’t be invoked anymore, unless the hooks are initialized in the
-             <code class="xref py py-meth docutils literal notranslate">
-              <span class="pre">
-               forward()
-              </span>
-             </code>
-             method.
             </p>
            </div>
            <div class="admonition warning">
@@ -894,7 +875,7 @@ parameters.
                 <em>
                  or
                 </em>
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
                  <em>
                   torch.device
                  </em>
@@ -978,7 +959,7 @@ must be placed on the correct device.
                 <em>
                  or
                 </em>
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
                  <em>
                   torch.device
                  </em>

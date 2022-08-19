@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nn — PyTorch 1.11.0 documentation
+   torch.nn — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -22,13 +22,17 @@
      <div class="rst-content">
       <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
        <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
-        <div class="section" id="torch-nn">
+        <div class="section" id="module-torch.nn">
+         <span id="torch-nn">
+         </span>
          <h1>
           torch.nn
-          <a class="headerlink" href="#torch-nn" title="Permalink to this headline">
+          <a class="headerlink" href="#module-torch.nn" title="Permalink to this headline">
            ¶
           </a>
          </h1>
+         <span class="target" id="module-torch.nn.modules">
+         </span>
          <p>
           These are the basic building blocks for graphs:
          </p>
@@ -151,14 +155,14 @@
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#dataparallel-layers-multi-gpu-distributed" id="id18">
+             <a class="reference internal" href="#module-torch.nn.parallel" id="id18">
               DataParallel Layers (multi-GPU, distributed)
              </a>
             </p>
            </li>
            <li>
             <p>
-             <a class="reference internal" href="#utilities" id="id19">
+             <a class="reference internal" href="#module-torch.nn.utils" id="id19">
               Utilities
              </a>
             </p>
@@ -3703,6 +3707,142 @@
             <tr class="row-even">
              <td>
               <p>
+               <a class="reference internal" href="generated/torch.nn.Dropout1d.html#torch.nn.Dropout1d" title="torch.nn.Dropout1d">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  nn.Dropout1d
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Randomly zero out entire channels (a channel is a 1D feature map, e.g., the
+               <span class="math">
+                <span class="katex">
+                 <span class="katex-mathml">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                   <semantics>
+                    <mrow>
+                     <mi>
+                      j
+                     </mi>
+                    </mrow>
+                    <annotation encoding="application/x-tex">
+                     j
+                    </annotation>
+                   </semantics>
+                  </math>
+                 </span>
+                 <span aria-hidden="true" class="katex-html">
+                  <span class="base">
+                   <span class="strut" style="height:0.854em;vertical-align:-0.1944em;">
+                   </span>
+                   <span class="mord mathnormal" style="margin-right:0.05724em;">
+                    j
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+               -th channel of the
+               <span class="math">
+                <span class="katex">
+                 <span class="katex-mathml">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                   <semantics>
+                    <mrow>
+                     <mi>
+                      i
+                     </mi>
+                    </mrow>
+                    <annotation encoding="application/x-tex">
+                     i
+                    </annotation>
+                   </semantics>
+                  </math>
+                 </span>
+                 <span aria-hidden="true" class="katex-html">
+                  <span class="base">
+                   <span class="strut" style="height:0.6595em;">
+                   </span>
+                   <span class="mord mathnormal">
+                    i
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+               -th sample in the batched input is a 1D tensor
+               <span class="math">
+                <span class="katex">
+                 <span class="katex-mathml">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                   <semantics>
+                    <mrow>
+                     <mtext>
+                      input
+                     </mtext>
+                     <mo stretchy="false">
+                      [
+                     </mo>
+                     <mi>
+                      i
+                     </mi>
+                     <mo separator="true">
+                      ,
+                     </mo>
+                     <mi>
+                      j
+                     </mi>
+                     <mo stretchy="false">
+                      ]
+                     </mo>
+                    </mrow>
+                    <annotation encoding="application/x-tex">
+                     \text{input}[i, j]
+                    </annotation>
+                   </semantics>
+                  </math>
+                 </span>
+                 <span aria-hidden="true" class="katex-html">
+                  <span class="base">
+                   <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                   </span>
+                   <span class="mord text">
+                    <span class="mord">
+                     input
+                    </span>
+                   </span>
+                   <span class="mopen">
+                    [
+                   </span>
+                   <span class="mord mathnormal">
+                    i
+                   </span>
+                   <span class="mpunct">
+                    ,
+                   </span>
+                   <span class="mspace" style="margin-right:0.1667em;">
+                   </span>
+                   <span class="mord mathnormal" style="margin-right:0.05724em;">
+                    j
+                   </span>
+                   <span class="mclose">
+                    ]
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+               ).
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <a class="reference internal" href="generated/torch.nn.Dropout2d.html#torch.nn.Dropout2d" title="torch.nn.Dropout2d">
                 <code class="xref py py-obj docutils literal notranslate">
                  <span class="pre">
@@ -3836,7 +3976,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.nn.Dropout3d.html#torch.nn.Dropout3d" title="torch.nn.Dropout3d">
@@ -3972,7 +4112,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.nn.AlphaDropout.html#torch.nn.AlphaDropout" title="torch.nn.AlphaDropout">
@@ -3990,7 +4130,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <a class="reference internal" href="generated/torch.nn.FeatureAlphaDropout.html#torch.nn.FeatureAlphaDropout" title="torch.nn.FeatureAlphaDropout">
@@ -6665,12 +6805,14 @@
            </tbody>
           </table>
          </div>
-         <div class="section" id="dataparallel-layers-multi-gpu-distributed">
+         <div class="section" id="module-torch.nn.parallel">
+          <span id="dataparallel-layers-multi-gpu-distributed">
+          </span>
           <h2>
            <a class="toc-backref" href="#id1">
             DataParallel Layers (multi-GPU, distributed)
            </a>
-           <a class="headerlink" href="#dataparallel-layers-multi-gpu-distributed" title="Permalink to this headline">
+           <a class="headerlink" href="#module-torch.nn.parallel" title="Permalink to this headline">
             ¶
            </a>
           </h2>
@@ -6721,12 +6863,14 @@
            </tbody>
           </table>
          </div>
-         <div class="section" id="utilities">
+         <div class="section" id="module-torch.nn.utils">
+          <span id="utilities">
+          </span>
           <h2>
            <a class="toc-backref" href="#id1">
             Utilities
            </a>
-           <a class="headerlink" href="#utilities" title="Permalink to this headline">
+           <a class="headerlink" href="#module-torch.nn.utils" title="Permalink to this headline">
             ¶
            </a>
           </h2>
@@ -7576,6 +7720,31 @@ an object into a parameter. See the
            </tbody>
           </table>
           <p>
+           Utility functions to calls a given Module in a stateless manner.
+          </p>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.nn.utils.stateless.functional_call.html#torch.nn.utils.stateless.functional_call" title="torch.nn.utils.stateless.functional_call">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  stateless.functional_call
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Performs a functional call on the module by replacing the module parameters and buffers with the provided ones.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+          <p>
            Utility functions in other modules
           </p>
           <table class="longtable docutils colwidths-auto align-default">
@@ -7775,6 +7944,10 @@ floating point precision. PyTorch supports both per tensor and per channel asymm
             </tr>
            </tbody>
           </table>
+          <span class="target" id="module-torch.nn.backends">
+          </span>
+          <span class="target" id="module-torch.nn.utils.stateless">
+          </span>
          </div>
         </div>
        </article>

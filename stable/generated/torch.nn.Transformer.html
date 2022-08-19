@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Transformer — PyTorch 1.11.0 documentation
+   Transformer — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -880,6 +880,96 @@ other attention and feedforward operations, otherwise after. Default:
                     </span>
                    </span>
                   </span>
+                  or
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo>
+                         ⋅
+                        </mo>
+                        <mtext>
+                         num_heads
+                        </mtext>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         S
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (N\cdot\text{num\_heads}, S, S)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mspace" style="margin-right:0.2222em;">
+                      </span>
+                      <span class="mbin">
+                       ⋅
+                      </span>
+                      <span class="mspace" style="margin-right:0.2222em;">
+                      </span>
+                     </span>
+                     <span class="base">
+                      <span class="strut" style="height:1.06em;vertical-align:-0.31em;">
+                      </span>
+                      <span class="mord text">
+                       <span class="mord">
+                        num_heads
+                       </span>
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.1667em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.1667em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.05764em;">
+                       S
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
                   .
                  </p>
                 </li>
@@ -920,6 +1010,96 @@ other attention and feedforward operations, otherwise after. Default:
                       </span>
                       <span class="mopen">
                        (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.1667em;">
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.13889em;">
+                       T
+                      </span>
+                      <span class="mclose">
+                       )
+                      </span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                  or
+                  <span class="math">
+                   <span class="katex">
+                    <span class="katex-mathml">
+                     <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <semantics>
+                       <mrow>
+                        <mo stretchy="false">
+                         (
+                        </mo>
+                        <mi>
+                         N
+                        </mi>
+                        <mo>
+                         ⋅
+                        </mo>
+                        <mtext>
+                         num_heads
+                        </mtext>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo separator="true">
+                         ,
+                        </mo>
+                        <mi>
+                         T
+                        </mi>
+                        <mo stretchy="false">
+                         )
+                        </mo>
+                       </mrow>
+                       <annotation encoding="application/x-tex">
+                        (N\cdot\text{num\_heads}, T, T)
+                       </annotation>
+                      </semantics>
+                     </math>
+                    </span>
+                    <span aria-hidden="true" class="katex-html">
+                     <span class="base">
+                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      </span>
+                      <span class="mopen">
+                       (
+                      </span>
+                      <span class="mord mathnormal" style="margin-right:0.10903em;">
+                       N
+                      </span>
+                      <span class="mspace" style="margin-right:0.2222em;">
+                      </span>
+                      <span class="mbin">
+                       ⋅
+                      </span>
+                      <span class="mspace" style="margin-right:0.2222em;">
+                      </span>
+                     </span>
+                     <span class="base">
+                      <span class="strut" style="height:1.06em;vertical-align:-0.31em;">
+                      </span>
+                      <span class="mord text">
+                       <span class="mord">
+                        num_heads
+                       </span>
+                      </span>
+                      <span class="mpunct">
+                       ,
+                      </span>
+                      <span class="mspace" style="margin-right:0.1667em;">
                       </span>
                       <span class="mord mathnormal" style="margin-right:0.13889em;">
                        T

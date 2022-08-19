@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Conv2d — PyTorch 1.11.0 documentation
+   Conv2d — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -1321,6 +1321,15 @@ width in pixels.
             </a>
             .
            </p>
+           <p>
+            On certain ROCm devices, when using float16 inputs this module will use
+            <a class="reference internal" href="../notes/numerical_accuracy.html#fp16-on-mi200">
+             <span class="std std-ref">
+              different precision
+             </span>
+            </a>
+            for backward.
+           </p>
            <ul>
             <li>
              <p>
@@ -2144,6 +2153,26 @@ a depthwise convolution with a depthwise multiplier
              pads
 the input so the output has the shape as the input. However, this mode
 doesn’t support any stride values other than 1.
+            </p>
+           </div>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This module supports complex data types i.e.
+             <code class="docutils literal notranslate">
+              <span class="pre">
+               complex32,
+              </span>
+              <span class="pre">
+               complex64,
+              </span>
+              <span class="pre">
+               complex128
+              </span>
+             </code>
+             .
             </p>
            </div>
            <dl class="field-list simple">

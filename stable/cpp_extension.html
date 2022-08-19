@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.utils.cpp_extension — PyTorch 1.11.0 documentation
+   torch.utils.cpp_extension — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -1784,7 +1784,7 @@ variable to a non-negative number.
           </dd>
          </dl>
          <dl class="py function">
-          <dt id="torch.utils.cpp_extension.check_compiler_abi_compatibility">
+          <dt id="torch.utils.cpp_extension.get_compiler_abi_compatibility_and_version">
            <code class="sig-prename descclassname">
             <span class="pre">
              torch.utils.cpp_extension.
@@ -1792,7 +1792,7 @@ variable to a non-negative number.
            </code>
            <code class="sig-name descname">
             <span class="pre">
-             check_compiler_abi_compatibility
+             get_compiler_abi_compatibility_and_version
             </span>
            </code>
            <span class="sig-paren">
@@ -1808,20 +1808,21 @@ variable to a non-negative number.
            <span class="sig-paren">
             )
            </span>
-           <a class="reference internal" href="_modules/torch/utils/cpp_extension.html#check_compiler_abi_compatibility">
+           <a class="reference internal" href="_modules/torch/utils/cpp_extension.html#get_compiler_abi_compatibility_and_version">
             <span class="viewcode-link">
              <span class="pre">
               [source]
              </span>
             </span>
            </a>
-           <a class="headerlink" href="#torch.utils.cpp_extension.check_compiler_abi_compatibility" title="Permalink to this definition">
+           <a class="headerlink" href="#torch.utils.cpp_extension.get_compiler_abi_compatibility_and_version" title="Permalink to this definition">
             ¶
            </a>
           </dt>
           <dd>
            <p>
-            Verifies that the given compiler is ABI-compatible with PyTorch.
+            Determine if the given compiler is ABI-compatible with PyTorch alongside
+its version.
            </p>
            <dl class="field-list simple">
             <dt class="field-odd">
@@ -1853,8 +1854,12 @@ Must be executable in a shell process.
             </dt>
             <dd class="field-even">
              <p>
-              False if the compiler is (likely) ABI-incompatible with PyTorch,
-else True.
+              A tuple that contains a boolean that defines if the compiler is (likely) ABI-incompatible with PyTorch,
+followed by a
+              <cite>
+               TorchVersion
+              </cite>
+              string that contains the compiler version separated by dots.
              </p>
             </dd>
            </dl>

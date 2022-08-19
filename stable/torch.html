@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch — PyTorch 1.11.0 documentation
+   torch — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -22,10 +22,12 @@
      <div class="rst-content">
       <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
        <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
-        <div class="section" id="torch">
+        <div class="section" id="module-torch">
+         <span id="torch">
+         </span>
          <h1>
           torch
-          <a class="headerlink" href="#torch" title="Permalink to this headline">
+          <a class="headerlink" href="#module-torch" title="Permalink to this headline">
            ¶
           </a>
          </h1>
@@ -37,7 +39,7 @@ Tensors and arbitrary types, and other useful utilities.
          </p>
          <p>
           It has a CUDA counterpart, that enables you to run your tensor computations
-on an NVIDIA GPU with compute capability &gt;= 3.0
+on an NVIDIA GPU with compute capability &gt;= 3.0.
          </p>
          <div class="section" id="tensors">
           <h2>
@@ -283,7 +285,7 @@ on an NVIDIA GPU with compute capability &gt;= 3.0
              <td>
               <p>
                Get the current default floating point
-               <a class="reference internal" href="tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+               <a class="reference internal" href="tensor_attributes.html#torch.dtype" title="torch.dtype">
                 <code class="xref py py-class docutils literal notranslate">
                  <span class="pre">
                   torch.dtype
@@ -675,7 +677,7 @@ range of distributions.
                  </code>
                 </a>
                 from a
-                <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)">
+                <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    numpy.ndarray
@@ -687,6 +689,32 @@ range of distributions.
               </td>
              </tr>
              <tr class="row-odd">
+              <td>
+               <p>
+                <p id="torch.from_dlpack">
+                </p>
+                <a class="reference internal" href="generated/torch.from_dlpack.html#torch.from_dlpack" title="torch.from_dlpack">
+                 <code class="xref py py-obj docutils literal notranslate">
+                  <span class="pre">
+                   from_dlpack
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </td>
+              <td>
+               <p>
+                Converts a tensor from an external library into a
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  torch.Tensor
+                 </span>
+                </code>
+                .
+               </p>
+              </td>
+             </tr>
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.frombuffer">
@@ -714,7 +742,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.zeros">
@@ -744,7 +772,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.zeros_like">
@@ -774,7 +802,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.ones">
@@ -804,7 +832,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.ones_like">
@@ -834,7 +862,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.arange">
@@ -992,7 +1020,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.range">
@@ -1171,7 +1199,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.linspace">
@@ -1209,7 +1237,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.logspace">
@@ -1377,7 +1405,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.eye">
@@ -1397,7 +1425,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.empty">
@@ -1417,7 +1445,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.empty_like">
@@ -1443,7 +1471,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.empty_strided">
@@ -1475,7 +1503,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.full">
@@ -1507,7 +1535,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.full_like">
@@ -1539,7 +1567,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.quantize_per_tensor">
@@ -1559,7 +1587,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.quantize_per_channel">
@@ -1579,7 +1607,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.dequantize">
@@ -1599,7 +1627,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.complex">
@@ -1635,7 +1663,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.polar">
@@ -1671,7 +1699,7 @@ range of distributions.
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.heaviside">
@@ -2032,6 +2060,62 @@ range of distributions.
                  <code class="xref py py-meth docutils literal notranslate">
                   <span class="pre">
                    index_add_()
+                  </span>
+                 </code>
+                </a>
+                for function description.
+               </p>
+              </td>
+             </tr>
+             <tr class="row-even">
+              <td>
+               <p>
+                <p id="torch.index_copy">
+                </p>
+                <a class="reference internal" href="generated/torch.index_copy.html#torch.index_copy" title="torch.index_copy">
+                 <code class="xref py py-obj docutils literal notranslate">
+                  <span class="pre">
+                   index_copy
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </td>
+              <td>
+               <p>
+                See
+                <a class="reference internal" href="generated/torch.Tensor.index_add_.html#torch.Tensor.index_add_" title="torch.Tensor.index_add_">
+                 <code class="xref py py-meth docutils literal notranslate">
+                  <span class="pre">
+                   index_add_()
+                  </span>
+                 </code>
+                </a>
+                for function description.
+               </p>
+              </td>
+             </tr>
+             <tr class="row-odd">
+              <td>
+               <p>
+                <p id="torch.index_reduce">
+                </p>
+                <a class="reference internal" href="generated/torch.index_reduce.html#torch.index_reduce" title="torch.index_reduce">
+                 <code class="xref py py-obj docutils literal notranslate">
+                  <span class="pre">
+                   index_reduce
+                  </span>
+                 </code>
+                </a>
+               </p>
+              </td>
+              <td>
+               <p>
+                See
+                <a class="reference internal" href="generated/torch.Tensor.index_reduce_.html#torch.Tensor.index_reduce_" title="torch.Tensor.index_reduce_">
+                 <code class="xref py py-meth docutils literal notranslate">
+                  <span class="pre">
+                   index_reduce_()
                   </span>
                  </code>
                 </a>
@@ -2518,19 +2602,14 @@ range of distributions.
               </td>
               <td>
                <p>
-                Reduces all values from the
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  input
-                 </span>
-                </code>
-                tensor to the indices specified in the
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  index
-                 </span>
-                </code>
-                tensor.
+                Out-of-place version of
+                <a class="reference internal" href="generated/torch.Tensor.scatter_reduce_.html#torch.Tensor.scatter_reduce_" title="torch.Tensor.scatter_reduce_">
+                 <code class="xref py py-meth docutils literal notranslate">
+                  <span class="pre">
+                   torch.Tensor.scatter_reduce_()
+                  </span>
+                 </code>
+                </a>
                </p>
               </td>
              </tr>
@@ -10801,7 +10880,13 @@ work if you send work to another thread using the
               </td>
               <td>
                <p>
-                Roll the tensor along the given dimension(s).
+                Roll the tensor
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  input
+                 </span>
+                </code>
+                along the given dimension(s).
                </p>
               </td>
              </tr>
@@ -12581,84 +12666,6 @@ work if you send work to another thread using the
              <tr class="row-odd">
               <td>
                <p>
-                <p id="torch.solve">
-                </p>
-                <a class="reference internal" href="generated/torch.solve.html#torch.solve" title="torch.solve">
-                 <code class="xref py py-obj docutils literal notranslate">
-                  <span class="pre">
-                   solve
-                  </span>
-                 </code>
-                </a>
-               </p>
-              </td>
-              <td>
-               <p>
-                This function returns the solution to the system of linear equations represented by
-                <span class="math">
-                 <span class="katex">
-                  <span class="katex-mathml">
-                   <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics>
-                     <mrow>
-                      <mi>
-                       A
-                      </mi>
-                      <mi>
-                       X
-                      </mi>
-                      <mo>
-                       =
-                      </mo>
-                      <mi>
-                       B
-                      </mi>
-                     </mrow>
-                     <annotation encoding="application/x-tex">
-                      AX = B
-                     </annotation>
-                    </semantics>
-                   </math>
-                  </span>
-                  <span aria-hidden="true" class="katex-html">
-                   <span class="base">
-                    <span class="strut" style="height:0.6833em;">
-                    </span>
-                    <span class="mord mathnormal">
-                     A
-                    </span>
-                    <span class="mord mathnormal" style="margin-right:0.07847em;">
-                     X
-                    </span>
-                    <span class="mspace" style="margin-right:0.2778em;">
-                    </span>
-                    <span class="mrel">
-                     =
-                    </span>
-                    <span class="mspace" style="margin-right:0.2778em;">
-                    </span>
-                   </span>
-                   <span class="base">
-                    <span class="strut" style="height:0.6833em;">
-                    </span>
-                    <span class="mord mathnormal" style="margin-right:0.05017em;">
-                     B
-                    </span>
-                   </span>
-                  </span>
-                 </span>
-                </span>
-                and the LU factorization of A, in order as a namedtuple
-                <cite>
-                 solution, LU
-                </cite>
-                .
-               </p>
-              </td>
-             </tr>
-             <tr class="row-even">
-              <td>
-               <p>
                 <p id="torch.svd">
                 </p>
                 <a class="reference internal" href="generated/torch.svd.html#torch.svd" title="torch.svd">
@@ -12682,7 +12689,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.svd_lowrank">
@@ -12859,7 +12866,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.pca_lowrank">
@@ -12879,7 +12886,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.symeig">
@@ -12905,7 +12912,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.lobpcg">
@@ -12925,7 +12932,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.trapz">
@@ -12953,7 +12960,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.trapezoid">
@@ -12983,7 +12990,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.cumulative_trapezoid">
@@ -13015,7 +13022,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-even">
+             <tr class="row-odd">
               <td>
                <p>
                 <p id="torch.triangular_solve">
@@ -13091,7 +13098,7 @@ work if you send work to another thread using the
                </p>
               </td>
              </tr>
-             <tr class="row-odd">
+             <tr class="row-even">
               <td>
                <p>
                 <p id="torch.vdot">
@@ -13161,7 +13168,7 @@ work if you send work to another thread using the
              <td>
               <p>
                Returns the
-               <a class="reference internal" href="tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+               <a class="reference internal" href="tensor_attributes.html#torch.dtype" title="torch.dtype">
                 <code class="xref py py-class docutils literal notranslate">
                  <span class="pre">
                   torch.dtype
@@ -13215,7 +13222,7 @@ work if you send work to another thread using the
              <td>
               <p>
                Returns the
-               <a class="reference internal" href="tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+               <a class="reference internal" href="tensor_attributes.html#torch.dtype" title="torch.dtype">
                 <code class="xref py py-class docutils literal notranslate">
                  <span class="pre">
                   torch.dtype
@@ -13337,6 +13344,46 @@ work if you send work to another thread using the
             <tr class="row-even">
              <td>
               <p>
+               <p id="torch.set_float32_matmul_precision">
+               </p>
+               <a class="reference internal" href="generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision" title="torch.set_float32_matmul_precision">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  set_float32_matmul_precision
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Sets the internal precision of float32 matrix multiplications.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.get_float32_matmul_precision">
+               </p>
+               <a class="reference internal" href="generated/torch.get_float32_matmul_precision.html#torch.get_float32_matmul_precision" title="torch.get_float32_matmul_precision">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  get_float32_matmul_precision
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Returns the current value of float32 matrix multiplication precision.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
                <p id="torch.set_warn_always">
                </p>
                <a class="reference internal" href="generated/torch.set_warn_always.html#torch.set_warn_always" title="torch.set_warn_always">
@@ -13396,6 +13443,16 @@ work if you send work to another thread using the
             </tr>
            </tbody>
           </table>
+          <span class="target" id="module-torch.contrib">
+          </span>
+          <span class="target" id="module-torch.utils.backcompat">
+          </span>
+          <span class="target" id="module-torch.utils">
+          </span>
+          <span class="target" id="module-torch.utils.hipify">
+          </span>
+          <span class="target" id="module-torch.utils.model_dump">
+          </span>
          </div>
         </div>
        </article>

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.sparse_csr_tensor — PyTorch 1.11.0 documentation
+   torch.sparse_csr_tensor — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -206,10 +206,12 @@ at
                 <em>
                  array_like
                 </em>
-                ) – One-dimensional array of size size[0] + 1. The last element
-is the number of non-zeros. This tensor encodes the index in values and col_indices
-depending on where the given row starts. Each successive number in the tensor
-subtracted by the number before it denotes the number of elements in a given row.
+                ) – One-dimensional array of size size[0] + 1.
+The last element is the number of non-zeros. This tensor
+encodes the index in values and col_indices depending on where
+the given row starts. Each successive number in the tensor
+subtracted by the number before it denotes the number of
+elements in a given row.
                </p>
               </li>
               <li>
@@ -221,8 +223,9 @@ subtracted by the number before it denotes the number of elements in a given row
                 <em>
                  array_like
                 </em>
-                ) – Column co-ordinates of each element in values. Strictly one
-dimensional tensor with the same length as values.
+                ) – Column co-ordinates of each element in
+values. Strictly one dimensional tensor with the same length
+as values.
                </p>
               </li>
               <li>
@@ -234,14 +237,14 @@ dimensional tensor with the same length as values.
                 <em>
                  array_list
                 </em>
-                ) – Initial values for the tensor. Can be a list, tuple, NumPy
+                ) – Initial values for the tensor. Can be a list,
+tuple, NumPy
                 <code class="docutils literal notranslate">
                  <span class="pre">
                   ndarray
                  </span>
                 </code>
-                , scalar,
-and other types.
+                , scalar, and other types.
                </p>
               </li>
               <li>
@@ -255,8 +258,9 @@ and other types.
                   torch.Size
                  </span>
                 </code>
-                , optional) – Size of the sparse tensor. If not provided, the
-size will be inferred as the minimum size big enough to hold all non-zero elements.
+                , optional) – Size of the
+sparse tensor. If not provided, the size will be inferred as
+the minimum size big enough to hold all non-zero elements.
                </p>
               </li>
              </ul>
@@ -272,15 +276,15 @@ size will be inferred as the minimum size big enough to hold all non-zero elemen
                  dtype
                 </strong>
                 (
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    torch.dtype
                   </span>
                  </code>
                 </a>
-                , optional) – the desired data type of returned tensor.
-Default: if None, infers data type from
+                , optional) – the desired data type of
+returned tensor.  Default: if None, infers data type from
                 <code class="xref py py-attr docutils literal notranslate">
                  <span class="pre">
                   values
@@ -295,16 +299,16 @@ Default: if None, infers data type from
                  device
                 </strong>
                 (
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    torch.device
                   </span>
                  </code>
                 </a>
-                , optional) – the desired device of returned tensor.
-Default: if None, uses the current device for the default tensor type
-(see
+                , optional) – the desired device of
+returned tensor.  Default: if None, uses the current device
+for the default tensor type (see
                 <a class="reference internal" href="torch.set_default_tensor_type.html#torch.set_default_tensor_type" title="torch.set_default_tensor_type">
                  <code class="xref py py-func docutils literal notranslate">
                   <span class="pre">
@@ -313,13 +317,16 @@ Default: if None, uses the current device for the default tensor type
                  </code>
                 </a>
                 ).
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  device
-                 </span>
-                </code>
-                will be the CPU
-for CPU tensor types and the current CUDA device for CUDA tensor types.
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   device
+                  </span>
+                 </code>
+                </a>
+                will be
+the CPU for CPU tensor types and the current CUDA device for
+CUDA tensor types.
                </p>
               </li>
               <li>
@@ -354,7 +361,7 @@ returned tensor. Default:
            </dl>
            <dl>
             <dt>
-             Example ::
+             Example::
             </dt>
             <dd>
              <div class="doctest highlight-default notranslate">

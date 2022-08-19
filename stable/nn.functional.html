@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nn.functional — PyTorch 1.11.0 documentation
+   torch.nn.functional — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -2684,7 +2684,7 @@
              </td>
              <td>
               <p>
-               Applies element-wise the function
+               When the approximate argument is ‘none’, it applies element-wise the function
                <span class="math">
                 <span class="katex">
                  <span class="katex-mathml">
@@ -4900,6 +4900,144 @@
             <tr class="row-even">
              <td>
               <p>
+               <p id="torch.nn.functional.dropout1d">
+               </p>
+               <a class="reference internal" href="generated/torch.nn.functional.dropout1d.html#torch.nn.functional.dropout1d" title="torch.nn.functional.dropout1d">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  dropout1d
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Randomly zero out entire channels (a channel is a 1D feature map, e.g., the
+               <span class="math">
+                <span class="katex">
+                 <span class="katex-mathml">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                   <semantics>
+                    <mrow>
+                     <mi>
+                      j
+                     </mi>
+                    </mrow>
+                    <annotation encoding="application/x-tex">
+                     j
+                    </annotation>
+                   </semantics>
+                  </math>
+                 </span>
+                 <span aria-hidden="true" class="katex-html">
+                  <span class="base">
+                   <span class="strut" style="height:0.854em;vertical-align:-0.1944em;">
+                   </span>
+                   <span class="mord mathnormal" style="margin-right:0.05724em;">
+                    j
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+               -th channel of the
+               <span class="math">
+                <span class="katex">
+                 <span class="katex-mathml">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                   <semantics>
+                    <mrow>
+                     <mi>
+                      i
+                     </mi>
+                    </mrow>
+                    <annotation encoding="application/x-tex">
+                     i
+                    </annotation>
+                   </semantics>
+                  </math>
+                 </span>
+                 <span aria-hidden="true" class="katex-html">
+                  <span class="base">
+                   <span class="strut" style="height:0.6595em;">
+                   </span>
+                   <span class="mord mathnormal">
+                    i
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+               -th sample in the batched input is a 1D tensor
+               <span class="math">
+                <span class="katex">
+                 <span class="katex-mathml">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                   <semantics>
+                    <mrow>
+                     <mtext>
+                      input
+                     </mtext>
+                     <mo stretchy="false">
+                      [
+                     </mo>
+                     <mi>
+                      i
+                     </mi>
+                     <mo separator="true">
+                      ,
+                     </mo>
+                     <mi>
+                      j
+                     </mi>
+                     <mo stretchy="false">
+                      ]
+                     </mo>
+                    </mrow>
+                    <annotation encoding="application/x-tex">
+                     \text{input}[i, j]
+                    </annotation>
+                   </semantics>
+                  </math>
+                 </span>
+                 <span aria-hidden="true" class="katex-html">
+                  <span class="base">
+                   <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                   </span>
+                   <span class="mord text">
+                    <span class="mord">
+                     input
+                    </span>
+                   </span>
+                   <span class="mopen">
+                    [
+                   </span>
+                   <span class="mord mathnormal">
+                    i
+                   </span>
+                   <span class="mpunct">
+                    ,
+                   </span>
+                   <span class="mspace" style="margin-right:0.1667em;">
+                   </span>
+                   <span class="mord mathnormal" style="margin-right:0.05724em;">
+                    j
+                   </span>
+                   <span class="mclose">
+                    ]
+                   </span>
+                  </span>
+                 </span>
+                </span>
+               </span>
+               ) of the input tensor).
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <p id="torch.nn.functional.dropout2d">
                </p>
                <a class="reference internal" href="generated/torch.nn.functional.dropout2d.html#torch.nn.functional.dropout2d" title="torch.nn.functional.dropout2d">
@@ -5035,7 +5173,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.nn.functional.dropout3d">

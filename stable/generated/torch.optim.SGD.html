@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   SGD — PyTorch 1.11.0 documentation
+   SGD — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -97,6 +97,12 @@
            <em class="sig-param">
             <span class="pre">
              maximize=False
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="pre">
+             foreach=None
             </span>
            </em>
            <span class="sig-paren">
@@ -754,17 +760,9 @@
                        <mi>
                         g
                        </mi>
-                       <mrow>
-                        <mi>
-                         t
-                        </mi>
-                        <mo>
-                         −
-                        </mo>
-                        <mn>
-                         1
-                        </mn>
-                       </mrow>
+                       <mi>
+                        t
+                       </mi>
                       </msub>
                       <mo>
                        +
@@ -1114,7 +1112,7 @@
      &amp;\hspace{10mm}\textbf{else}                                                          \\
      &amp;\hspace{15mm} \textbf{b}_t \leftarrow g_t                                           \\
      &amp;\hspace{10mm}\textbf{if} \: \textit{nesterov}                                       \\
-     &amp;\hspace{15mm} g_t \leftarrow g_{t-1} + \mu \textbf{b}_t                             \\
+     &amp;\hspace{15mm} g_t \leftarrow g_{t} + \mu \textbf{b}_t                             \\
      &amp;\hspace{10mm}\textbf{else}                                                   \\[-1.ex]
      &amp;\hspace{15mm} g_t  \leftarrow  \textbf{b}_t                                         \\
      &amp;\hspace{5mm}\textbf{if} \: \textit{maximize}                                          \\
@@ -2277,7 +2275,7 @@
                          <span class="msupsub">
                           <span class="vlist-t vlist-t2">
                            <span class="vlist-r">
-                            <span class="vlist" style="height:0.3011em;">
+                            <span class="vlist" style="height:0.2806em;">
                              <span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;">
                               <span class="pstrut" style="height:2.7em;">
                               </span>
@@ -2285,12 +2283,6 @@
                                <span class="mord mtight">
                                 <span class="mord mathnormal mtight">
                                  t
-                                </span>
-                                <span class="mbin mtight">
-                                 −
-                                </span>
-                                <span class="mord mtight">
-                                 1
                                 </span>
                                </span>
                               </span>
@@ -2301,7 +2293,7 @@
                             </span>
                            </span>
                            <span class="vlist-r">
-                            <span class="vlist" style="height:0.2083em;">
+                            <span class="vlist" style="height:0.15em;">
                              <span>
                              </span>
                             </span>
@@ -2970,6 +2962,27 @@ parameter groups
                 </em>
                 ) – maximize the params based on the objective, instead of
 minimizing (default: False)
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 foreach
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether foreach implementation of optimizer
+is used (default: None)
                </p>
               </li>
              </ul>

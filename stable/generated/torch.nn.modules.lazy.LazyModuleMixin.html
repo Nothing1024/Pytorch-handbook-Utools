@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   LazyModuleMixin — PyTorch 1.11.0 documentation
+   LazyModuleMixin — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -154,7 +154,7 @@ the network and to each one of its lazy modules. After this the network can be u
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span> <span class="o">=</span> <span class="n">LazyMLP</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># transforms the network's device and dtype</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># NOTE: these transforms can and should be applied after construction and before any 'dry runs'</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">double</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span> <span class="o">=</span> <span class="n">lazy_mlp</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">double</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_mlp</span>
 <span class="go">LazyMLP( (fc1): LazyLinear(in_features=0, out_features=10, bias=True)</span>
 <span class="go">  (relu1): ReLU()</span>

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.linalg — PyTorch 1.11.0 documentation
+   torch.linalg — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -284,6 +284,26 @@
             <tr class="row-odd">
              <td>
               <p>
+               <p id="torch.linalg.lu">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.lu.html#torch.linalg.lu" title="torch.linalg.lu">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  lu
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the LU decomposition with partial pivoting of a matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
                <p id="torch.linalg.lu_factor">
                </p>
                <a class="reference internal" href="generated/torch.linalg.lu_factor.html#torch.linalg.lu_factor" title="torch.linalg.lu_factor">
@@ -301,7 +321,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.eig">
@@ -321,7 +341,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.linalg.eigvals">
@@ -341,7 +361,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.eigh">
@@ -361,7 +381,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.linalg.eigvalsh">
@@ -381,7 +401,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.linalg.svd">
@@ -401,7 +421,7 @@
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.linalg.svdvals">
@@ -779,6 +799,38 @@
            </tbody>
           </table>
          </div>
+         <div class="section" id="misc">
+          <h2>
+           Misc
+           <a class="headerlink" href="#misc" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.vander">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.vander.html#torch.linalg.vander" title="torch.linalg.vander">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  vander
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Generates a Vandermonde matrix.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
          <div class="section" id="experimental-functions">
           <h2>
            Experimental Functions
@@ -862,6 +914,83 @@
                 = True
                </cite>
                .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.ldl_factor">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.ldl_factor.html#torch.linalg.ldl_factor" title="torch.linalg.ldl_factor">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ldl_factor
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes a compact representation of the LDL factorization of a Hermitian or symmetric (possibly indefinite) matrix.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <p id="torch.linalg.ldl_factor_ex">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.ldl_factor_ex.html#torch.linalg.ldl_factor_ex" title="torch.linalg.ldl_factor_ex">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ldl_factor_ex
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               This is a version of
+               <a class="reference internal" href="generated/torch.linalg.ldl_factor.html#torch.linalg.ldl_factor" title="torch.linalg.ldl_factor">
+                <code class="xref py py-func docutils literal notranslate">
+                 <span class="pre">
+                  ldl_factor()
+                 </span>
+                </code>
+               </a>
+               that does not perform error checks unless
+               <code class="xref py py-attr docutils literal notranslate">
+                <span class="pre">
+                 check_errors
+                </span>
+               </code>
+               <cite>
+                = True
+               </cite>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.linalg.ldl_solve">
+               </p>
+               <a class="reference internal" href="generated/torch.linalg.ldl_solve.html#torch.linalg.ldl_solve" title="torch.linalg.ldl_solve">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  ldl_solve
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Computes the solution of a system of linear equations using the LDL factorization.
               </p>
              </td>
             </tr>

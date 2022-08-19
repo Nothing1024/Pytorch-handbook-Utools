@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.cuda — PyTorch 1.11.0 documentation
+   torch.cuda — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -976,6 +976,26 @@ function as CPU tensors, but they utilize GPUs for computation.
             <tr class="row-odd">
              <td>
               <p>
+               <p id="torch.cuda.is_current_stream_capturing">
+               </p>
+               <a class="reference internal" href="generated/torch.cuda.is_current_stream_capturing.html#torch.cuda.is_current_stream_capturing" title="torch.cuda.is_current_stream_capturing">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  is_current_stream_capturing
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Returns True if CUDA graph capture is underway on the current CUDA stream, False otherwise.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
                <p id="torch.cuda.graph_pool_handle">
                </p>
                <a class="reference internal" href="generated/torch.cuda.graph_pool_handle.html#torch.cuda.graph_pool_handle" title="torch.cuda.graph_pool_handle">
@@ -993,7 +1013,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.CUDAGraph">
@@ -1013,7 +1033,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.cuda.graph">
@@ -1041,7 +1061,7 @@ function as CPU tensors, but they utilize GPUs for computation.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.cuda.make_graphed_callables">
@@ -1524,6 +1544,36 @@ function as CPU tensors, but they utilize GPUs for computation.
              <td>
               <p>
                Pops a range off of a stack of nested range spans.
+              </p>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="section" id="jiterator-beta">
+          <h2>
+           Jiterator (beta)
+           <a class="headerlink" href="#jiterator-beta" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <table class="longtable docutils colwidths-auto align-default">
+           <tbody>
+            <tr class="row-odd">
+             <td>
+              <p>
+               <a class="reference internal" href="generated/torch.cuda.jiterator._create_jit_fn.html#torch.cuda.jiterator._create_jit_fn" title="torch.cuda.jiterator._create_jit_fn">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  jiterator._create_jit_fn
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Create a jiterator-generated cuda kernel for an elementwise op.
               </p>
              </td>
             </tr>

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.frombuffer — PyTorch 1.11.0 documentation
+   torch.frombuffer — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -159,11 +159,13 @@ the Python buffer protocol.
             </code>
             bytes in the buffer, and interprets the rest of
 the raw bytes as a 1-dimensional tensor of type
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              dtype
-             </span>
-            </code>
+            <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               dtype
+              </span>
+             </code>
+            </a>
             with
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
@@ -197,11 +199,13 @@ in the buffer is less than
             </code>
             times the size
 (in bytes) of
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              dtype
-             </span>
-            </code>
+            <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               dtype
+              </span>
+             </code>
+            </a>
             .
            </p>
            <p>
@@ -219,11 +223,13 @@ subtracted by the
              </span>
             </code>
             is a multiple of the size (in bytes) of
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              dtype
-             </span>
-            </code>
+            <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               dtype
+              </span>
+             </code>
+            </a>
             .
            </p>
            <p>
@@ -257,18 +263,22 @@ cause a segmentation fault.
             </p>
             <p>
              This function does not try to infer the
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               dtype
-              </span>
-             </code>
+             <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                dtype
+               </span>
+              </code>
+             </a>
              (hence, it is not
 optional). Passing a different
-             <code class="xref py py-attr docutils literal notranslate">
-              <span class="pre">
-               dtype
-              </span>
-             </code>
+             <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                dtype
+               </span>
+              </code>
+             </a>
              than its source may result
 in unexpected behavior.
             </p>
@@ -302,7 +312,7 @@ in unexpected behavior.
                  dtype
                 </strong>
                 (
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    torch.dtype

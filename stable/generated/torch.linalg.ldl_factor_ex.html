@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.linalg.ldl_factor_ex — PyTorch 1.12 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-linalg-ldl-factor-ex">
+         <h1>
+          torch.linalg.ldl_factor_ex
+          <a class="headerlink" href="#torch-linalg-ldl-factor-ex" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.linalg.ldl_factor_ex">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.linalg.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             ldl_factor_ex
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              A
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              *
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              hermitian
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              check_errors
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              out
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="headerlink" href="#torch.linalg.ldl_factor_ex" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            This is a version of
+            <a class="reference internal" href="torch.linalg.ldl_factor.html#torch.linalg.ldl_factor" title="torch.linalg.ldl_factor">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               ldl_factor()
+              </span>
+             </code>
+            </a>
+            that does not perform error checks unless
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              check_errors
+             </span>
+            </code>
+            <cite>
+             = True
+            </cite>
+            .
+It also returns the
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            tensor returned by
+            <a class="reference external" href="https://www.netlib.org/lapack/explore-html/d3/db6/group__double_s_ycomputational_gad91bde1212277b3e909eb6af7f64858a.html">
+             LAPACK’s sytrf
+            </a>
+            .
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            stores integer error codes from the backend library.
+A positive integer indicates the diagonal element of
+            <span class="math">
+             <span class="katex">
+              <span class="katex-mathml">
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                 <mrow>
+                  <mi>
+                   D
+                  </mi>
+                 </mrow>
+                 <annotation encoding="application/x-tex">
+                  D
+                 </annotation>
+                </semantics>
+               </math>
+              </span>
+              <span aria-hidden="true" class="katex-html">
+               <span class="base">
+                <span class="strut" style="height:0.6833em;">
+                </span>
+                <span class="mord mathnormal" style="margin-right:0.02778em;">
+                 D
+                </span>
+               </span>
+              </span>
+             </span>
+            </span>
+            that is zero.
+Division by 0 will occur if the result is used for solving a system of linear equations.
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            filled with zeros indicates that the factorization was successful.
+If
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              check_errors=True
+             </span>
+            </code>
+            and
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              info
+             </span>
+            </code>
+            contains positive integers, then a
+            <cite>
+             RuntimeError
+            </cite>
+            is thrown.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             When the inputs are on a CUDA device, this function synchronizes only when
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               check_errors
+              </span>
+             </code>
+             <cite>
+              = True
+             </cite>
+             .
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This function is “experimental” and it may change in a future PyTorch release.
+            </p>
+           </div>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               A
+              </strong>
+              (
+              <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+               <em>
+                Tensor
+               </em>
+              </a>
+              ) – tensor of shape (
+              <em>
+               , n, n) where * is zero or more batch dimensions consisting of symmetric or Hermitian matrices.
+`(
+              </em>
+              , n, n)` where
+              <cite>
+               *
+              </cite>
+              is one or more batch dimensions.
+             </p>
+            </dd>
+            <dt class="field-even">
+             Keyword Arguments
+            </dt>
+            <dd class="field-even">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 hermitian
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether to consider the input to be Hermitian or symmetric.
+For real-valued matrices, this switch has no effect. Default:
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 check_errors
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – controls whether to check the content of
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  info
+                 </span>
+                </code>
+                and raise
+an error if it is non-zero. Default:
+                <cite>
+                 False
+                </cite>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 out
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">
+                 <em>
+                  tuple
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – tuple of three tensors to write the output to. Ignored if
+                <cite>
+                 None
+                </cite>
+                . Default:
+                <cite>
+                 None
+                </cite>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              A named tuple
+              <cite>
+               (LD, pivots, info)
+              </cite>
+              .
+             </p>
+            </dd>
+           </dl>
+           <p>
+            Examples:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">mT</span> <span class="c1"># make symmetric</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">tensor([[7.2079, 4.2414, 1.9428],</span>
+<span class="go">        [4.2414, 3.4554, 0.3264],</span>
+<span class="go">        [1.9428, 0.3264, 1.3823]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LD</span><span class="p">,</span> <span class="n">pivots</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">ldl_factor_ex</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LD</span>
+<span class="go">tensor([[ 7.2079,  0.0000,  0.0000],</span>
+<span class="go">        [ 0.5884,  0.9595,  0.0000],</span>
+<span class="go">        [ 0.2695, -0.8513,  0.1633]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pivots</span>
+<span class="go">tensor([1, 2, 3], dtype=torch.int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span>
+<span class="go">tensor(0, dtype=torch.int32)</span>
+</pre>
+            </div>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

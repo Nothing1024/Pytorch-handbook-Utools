@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.nested — PyTorch 1.12 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="module-torch.nested">
+         <span id="torch-nested">
+         </span>
+         <h1>
+          torch.nested
+          <a class="headerlink" href="#module-torch.nested" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <div class="section" id="introduction">
+          <h2>
+           Introduction
+           <a class="headerlink" href="#introduction" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <div class="admonition warning">
+           <p class="admonition-title">
+            Warning
+           </p>
+           <p>
+            The PyTorch API of nested tensors is in prototype stage and will change in the near future.
+           </p>
+          </div>
+          <div class="admonition warning">
+           <p class="admonition-title">
+            Warning
+           </p>
+           <p>
+            torch.NestedTensor currently does not support autograd. It needs to be used in the context
+of torch.inference_mode().
+           </p>
+          </div>
+          <p>
+           NestedTensor allows the user to pack a list of Tensors into a single, efficient datastructure.
+          </p>
+          <p>
+           The only constraint on the input Tensors is that their dimension must match.
+          </p>
+          <p>
+           This enables more efficient metadata representations and operator coverage.
+          </p>
+          <p>
+           Construction is straightforward and involves passing a list of Tensors to the constructor.
+          </p>
+          <div class="doctest highlight-default notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">tensor([0, 1, 2])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">tensor([3, 4, 5, 6, 7])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nested_tensor</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span>
+<span class="go">nested_tensor([</span>
+<span class="go">  tensor([0, 1, 2]),</span>
+<span class="go">    tensor([3, 4, 5, 6, 7])</span>
+<span class="go">    ])</span>
+</pre>
+           </div>
+          </div>
+          <p>
+           Data type and device can be chosen via the usual keyword arguments
+          </p>
+          <div class="doctest highlight-default notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nested_tensor</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span>
+<span class="go">nested_tensor([</span>
+<span class="go">  tensor([0., 1., 2.], device='cuda:0'),</span>
+<span class="go">  tensor([3., 4., 5., 6., 7.], device='cuda:0')</span>
+<span class="go">])</span>
+</pre>
+           </div>
+          </div>
+         </div>
+         <div class="section" id="operator-coverage">
+          <h2>
+           Operator coverage
+           <a class="headerlink" href="#operator-coverage" title="Permalink to this headline">
+            ¶
+           </a>
+          </h2>
+          <p>
+           We are currently on our path to wholesale extend operator coverage guided by specific ML use cases.
+          </p>
+          <p>
+           Operator coverage thus is currently very limited and only unbind is supported.
+          </p>
+          <div class="doctest highlight-default notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nested_tensor</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span>
+<span class="go">nested_tensor([</span>
+<span class="go">  tensor([0., 1., 2.], device='cuda:0'),</span>
+<span class="go">  tensor([3., 4., 5., 6., 7.], device='cuda:0')</span>
+<span class="go">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span><span class="o">.</span><span class="n">unbind</span><span class="p">()</span>
+<span class="go">[tensor([0., 1., 2.], device='cuda:0'), tensor([3., 4., 5., 6., 7.], device='cuda:0')]</span>
+</pre>
+           </div>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

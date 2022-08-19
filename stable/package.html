@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.package — PyTorch 1.11.0 documentation
+   torch.package — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -22,6 +22,10 @@
      <div class="rst-content">
       <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
        <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <span class="target" id="module-torch.package">
+        </span>
+        <span class="target" id="module-torch.package.analyze">
+        </span>
         <div class="section" id="torch-package">
          <h1>
           torch.package
@@ -66,7 +70,7 @@ will help you learn more about
              pickle
             </span>
            </code>
-           module which is is not secure. Only unpackage data you trust.
+           module which is not secure. Only unpackage data you trust.
           </p>
           <p>
            It is possible to construct malicious pickle data which will
@@ -1070,7 +1074,7 @@ your code so that it behaves the same way no matter how it was loaded.
            <div class="highlight-default notranslate">
             <div class="highlight">
              <pre><span></span><span class="k">with</span> <span class="n">PackageExporter</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">as</span> <span class="n">exporter</span><span class="p">:</span>
-    <span class="c1"># saves text to one/a.txt in the archive</span>
+    <span class="c1"># saves text to my_resource/a.txt in the archive</span>
     <span class="n">exporter</span><span class="o">.</span><span class="n">save_text</span><span class="p">(</span><span class="s2">"my_resource"</span><span class="p">,</span> <span class="s2">"a.txt"</span><span class="p">,</span> <span class="s2">"hello world!"</span><span class="p">)</span>
     <span class="c1"># saves the tensor to my_pickle/obj.pkl</span>
     <span class="n">exporter</span><span class="o">.</span><span class="n">save_pickle</span><span class="p">(</span><span class="s2">"my_pickle"</span><span class="p">,</span> <span class="s2">"obj.pkl"</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -6759,6 +6763,55 @@ using
                  <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
                   str
                  </a>
+                </p>
+               </dd>
+              </dl>
+             </dd>
+            </dl>
+            <dl class="py method">
+             <dt id="torch.package.PackageImporter.python_version">
+              <code class="sig-name descname">
+               <span class="pre">
+                python_version
+               </span>
+              </code>
+              <span class="sig-paren">
+               (
+              </span>
+              <span class="sig-paren">
+               )
+              </span>
+              <a class="reference internal" href="_modules/torch/package/package_importer.html#PackageImporter.python_version">
+               <span class="viewcode-link">
+                <span class="pre">
+                 [source]
+                </span>
+               </span>
+              </a>
+              <a class="headerlink" href="#torch.package.PackageImporter.python_version" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Returns the version of python that was used to create this package.
+              </p>
+              <p>
+               Note: this function is experimental and not Forward Compatible. The plan is to move this into a lock
+file later on.
+              </p>
+              <dl class="field-list simple">
+               <dt class="field-odd">
+                Returns
+               </dt>
+               <dd class="field-odd">
+                <p>
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   Optional[str]
+                  </span>
+                 </code>
+                 a python version e.g. 3.8.9 or None if no version was stored with this package
                 </p>
                </dd>
               </dl>

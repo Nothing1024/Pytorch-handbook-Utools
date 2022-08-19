@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.Tensor.solve — PyTorch 1.11.0 documentation
+   torch.jit.enable_onednn_fusion — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -22,23 +22,23 @@
      <div class="rst-content">
       <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
        <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
-        <div class="section" id="torch-tensor-solve">
+        <div class="section" id="torch-jit-enable-onednn-fusion">
          <h1>
-          torch.Tensor.solve
-          <a class="headerlink" href="#torch-tensor-solve" title="Permalink to this headline">
+          torch.jit.enable_onednn_fusion
+          <a class="headerlink" href="#torch-jit-enable-onednn-fusion" title="Permalink to this headline">
            ¶
           </a>
          </h1>
-         <dl class="py method">
-          <dt id="torch.Tensor.solve">
+         <dl class="py function">
+          <dt id="torch.jit.enable_onednn_fusion">
            <code class="sig-prename descclassname">
             <span class="pre">
-             Tensor.
+             torch.jit.
             </span>
            </code>
            <code class="sig-name descname">
             <span class="pre">
-             solve
+             enable_onednn_fusion
             </span>
            </code>
            <span class="sig-paren">
@@ -47,43 +47,31 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
-              A
+              enabled
              </span>
             </span>
            </em>
            <span class="sig-paren">
             )
            </span>
-           →
-           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
-            <span class="pre">
-             Tensor
+           <a class="reference internal" href="../_modules/torch/jit.html#enable_onednn_fusion">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
             </span>
            </a>
-           <span class="p">
-            <span class="pre">
-             ,
-            </span>
-           </span>
-           <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
-            <span class="pre">
-             Tensor
-            </span>
-           </a>
-           <a class="headerlink" href="#torch.Tensor.solve" title="Permalink to this definition">
+           <a class="headerlink" href="#torch.jit.enable_onednn_fusion" title="Permalink to this definition">
             ¶
            </a>
           </dt>
           <dd>
            <p>
-            See
-            <a class="reference internal" href="torch.solve.html#torch.solve" title="torch.solve">
-             <code class="xref py py-func docutils literal notranslate">
-              <span class="pre">
-               torch.solve()
-              </span>
-             </code>
-            </a>
+            Enables or disables onednn JIT fusion based on the parameter
+            <cite>
+             enabled
+            </cite>
+            .
            </p>
           </dd>
          </dl>

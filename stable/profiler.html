@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.profiler — PyTorch 1.11.0 documentation
+   torch.profiler — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -202,6 +202,24 @@ examine their input shapes and stack traces, study device kernel activity and vi
               </span>
              </span>
             </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               experimental_config
+              </span>
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               None
+              </span>
+             </span>
+            </em>
             <span class="sig-paren">
              )
             </span>
@@ -325,6 +343,19 @@ module B’s forward which contains an aten::add op,
 then aten::add’s module hierarchy is A.B
 Note that this support exist, at the moment, only for TorchScript models
 and not eager mode models.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  experimental_config
+                 </strong>
+                 (
+                 <em>
+                  _ExperimentalConfig
+                 </em>
+                 ) – A set of experimental options
+used by profiler libraries like Kineto. Note, backward compatibility is not guaranteed.
                 </p>
                </li>
               </ul>
@@ -876,6 +907,24 @@ when creating profiler context manager.
             <em class="sig-param">
              <span class="n">
               <span class="pre">
+               experimental_config
+              </span>
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               None
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
                use_cuda
               </span>
              </span>
@@ -1055,6 +1104,19 @@ module B’s forward which contains an aten::add op,
 then aten::add’s module hierarchy is A.B
 Note that this support exist, at the moment, only for TorchScript models
 and not eager mode models.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  experimental_config
+                 </strong>
+                 (
+                 <em>
+                  _ExperimentalConfig
+                 </em>
+                 ) – A set of experimental options
+used for Kineto library features. Note, backward compatibility is not guaranteed.
                 </p>
                </li>
                <li>

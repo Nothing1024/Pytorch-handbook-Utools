@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   GELU — PyTorch 1.11.0 documentation
+   GELU — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -46,6 +46,29 @@
              GELU
             </span>
            </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              approximate
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              'none'
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
            <a class="reference internal" href="../_modules/torch/nn/modules/activation.html#GELU">
             <span class="viewcode-link">
              <span class="pre">
@@ -217,6 +240,63 @@
             </span>
             is the Cumulative Distribution Function for Gaussian Distribution.
            </p>
+           <dl class="simple">
+            <dt>
+             When the approximate argument is ‘tanh’, Gelu is estimated with:
+            </dt>
+            <dd>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               math:
+              </dt>
+              <dd class="field-odd">
+               <p>
+                text{GELU}(x) = 0.5 * x * (1 + text{Tanh}(sqrt(2 / pi) * (x + 0.044715 * x^3)))
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               approximate
+              </strong>
+              (
+              <em>
+               string
+              </em>
+              <em>
+               ,
+              </em>
+              <em>
+               optional
+              </em>
+              ) – the gelu approximation algorithm to use:
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                'none'
+               </span>
+              </code>
+              |
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                'tanh'
+               </span>
+              </code>
+              . Default:
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                'none'
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
            <dl class="simple">
             <dt>
              Shape:

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Distributed Optimizers — PyTorch 1.11.0 documentation
+   Distributed Optimizers — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -482,8 +482,7 @@ After the warm-up stage, it averages parameters periodically afer the local opti
 <span class="gp">&gt;&gt;&gt; </span> <span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="c1"># Register a post-localSGD communication hook.</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="n">subgroup</span><span class="p">,</span> <span class="n">subgroups</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">new_subgroups</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span> <span class="n">state</span> <span class="o">=</span> <span class="n">PostLocalSGDState</span><span class="p">(</span><span class="n">subgroup</span><span class="o">=</span><span class="n">subgroup</span><span class="p">,</span> <span class="n">start_localSGD_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">state</span> <span class="o">=</span> <span class="n">PostLocalSGDState</span><span class="p">(</span><span class="n">process_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subgroup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_localSGD_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">model</span><span class="o">.</span><span class="n">register_comm_hook</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">post_localSGD_hook</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="c1"># Create a post-localSGD optimizer that wraps a local optimizer.</span>
@@ -755,7 +754,16 @@ the parameter registration or usage order.
                </code>
               </a>
               s
-giving all parameters, which will be sharded across ranks.
+or
+              <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">
+               <code class="xref py py-class docutils literal notranslate">
+                <span class="pre">
+                 dict
+                </span>
+               </code>
+              </a>
+              s giving all parameters, which will be sharded
+across ranks.
              </p>
             </dd>
             <dt class="field-even">

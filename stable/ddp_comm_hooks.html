@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   DDP Communication Hooks — PyTorch 1.11.0 documentation
+   DDP Communication Hooks — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -1215,6 +1215,24 @@ and the user needs to provide a state object defined as below.
                </span>
               </span>
              </em>
+             ,
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                batch_tensors_with_same_shape
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                False
+               </span>
+              </span>
+             </em>
              <span class="sig-paren">
               )
              </span>
@@ -1423,6 +1441,28 @@ For performance, we suggest to keep binary hyperparameters
                  </span>
                 </code>
                 can be a very small value (e.g., 1e-8) added to every normalized matrix column in orthogonalization step, to prevent div-by-zero error if any column has all 0s. If this can already be prevented (e.g., by batch normalization), an epsilon of 0 is recommended for accuracy.
+               </p>
+              </li>
+              <li>
+               <p>
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  batch_tensors_with_same_shape
+                 </span>
+                </code>
+                controls whether to compress and decompress tensors with same shape in a batched operation to achieve higher parallelism. Note that you should also increase the bucket size (i.e.,
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  bucket_cap_mb
+                 </span>
+                </code>
+                arg in DDP constructor) to make more same-shaped tensors appear in the same bucket, however this may reduce the overlap between computation and communication, and increase the memory footprint due to stacking the tensors of the same shape. Set to
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  True
+                 </span>
+                </code>
+                if the compression / decompression computation is a bottleneck.
                </p>
               </li>
              </ol>

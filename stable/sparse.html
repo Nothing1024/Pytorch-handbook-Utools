@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.sparse — PyTorch 1.11.0 documentation
+   torch.sparse — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -22,6 +22,8 @@
      <div class="rst-content">
       <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
        <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <span class="target" id="module-torch.sparse">
+        </span>
         <div class="section" id="torch-sparse">
          <span id="sparse-docs">
          </span>
@@ -3203,7 +3205,7 @@ applications can still compute this using the matrix relation
                  </span>
                 </code>
                </a>
-               in the forward, except that it supports backward for sparse matrix
+               in the forward, except that it supports backward for sparse COO matrix
                <code class="xref py py-attr docutils literal notranslate">
                 <span class="pre">
                  mat1
@@ -3269,13 +3271,6 @@ applications can still compute this using the matrix relation
                  mat1
                 </span>
                </code>
-               and the (sparse or strided) matrix
-               <code class="xref py py-attr docutils literal notranslate">
-                <span class="pre">
-                 mat2
-                </span>
-               </code>
-               .
               </p>
              </td>
             </tr>
@@ -3434,11 +3429,13 @@ applications can still compute this using the matrix relation
           </h2>
           <p>
            The following
-           <code class="xref py py-mod docutils literal notranslate">
-            <span class="pre">
-             torch
-            </span>
-           </code>
+           <a class="reference internal" href="torch.html#module-torch" title="torch">
+            <code class="xref py py-mod docutils literal notranslate">
+             <span class="pre">
+              torch
+             </span>
+            </code>
+           </a>
            functions support sparse tensors:
           </p>
           <p>

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.fx — PyTorch 1.11.0 documentation
+   torch.fx — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -4626,6 +4626,24 @@ code of this
               </span>
              </span>
             </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               tracer_extras
+              </span>
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               None
+              </span>
+             </span>
+            </em>
             <span class="sig-paren">
              )
             </span>
@@ -4765,6 +4783,24 @@ valid Python function.
                <span class="n">
                 <span class="pre">
                  tracer_cls
+                </span>
+               </span>
+               <span class="o">
+                <span class="pre">
+                 =
+                </span>
+               </span>
+               <span class="default_value">
+                <span class="pre">
+                 None
+                </span>
+               </span>
+              </em>
+              ,
+              <em class="sig-param">
+               <span class="n">
+                <span class="pre">
+                 tracer_extras
                 </span>
                </span>
                <span class="o">
@@ -6302,57 +6338,6 @@ there are still users of that node in the
              </dd>
             </dl>
             <dl class="py method">
-             <dt id="torch.fx.Graph.flatten_inps">
-              <code class="sig-name descname">
-               <span class="pre">
-                flatten_inps
-               </span>
-              </code>
-              <span class="sig-paren">
-               (
-              </span>
-              <em class="sig-param">
-               <span class="o">
-                <span class="pre">
-                 *
-                </span>
-               </span>
-               <span class="n">
-                <span class="pre">
-                 args
-                </span>
-               </span>
-              </em>
-              <span class="sig-paren">
-               )
-              </span>
-              <a class="reference internal" href="_modules/torch/fx/graph.html#Graph.flatten_inps">
-               <span class="viewcode-link">
-                <span class="pre">
-                 [source]
-                </span>
-               </span>
-              </a>
-              <a class="headerlink" href="#torch.fx.Graph.flatten_inps" title="Permalink to this definition">
-               ¶
-              </a>
-             </dt>
-             <dd>
-              <div class="admonition warning">
-               <p class="admonition-title">
-                Warning
-               </p>
-               <p>
-                This API is experimental and is
-                <em>
-                 NOT
-                </em>
-                backward-compatible.
-               </p>
-              </div>
-             </dd>
-            </dl>
-            <dl class="py method">
              <dt id="torch.fx.Graph.get_attr">
               <code class="sig-name descname">
                <span class="pre">
@@ -7755,6 +7740,106 @@ installed.
              </dd>
             </dl>
             <dl class="py method">
+             <dt id="torch.fx.Graph.process_inputs">
+              <code class="sig-name descname">
+               <span class="pre">
+                process_inputs
+               </span>
+              </code>
+              <span class="sig-paren">
+               (
+              </span>
+              <em class="sig-param">
+               <span class="o">
+                <span class="pre">
+                 *
+                </span>
+               </span>
+               <span class="n">
+                <span class="pre">
+                 args
+                </span>
+               </span>
+              </em>
+              <span class="sig-paren">
+               )
+              </span>
+              <a class="reference internal" href="_modules/torch/fx/graph.html#Graph.process_inputs">
+               <span class="viewcode-link">
+                <span class="pre">
+                 [source]
+                </span>
+               </span>
+              </a>
+              <a class="headerlink" href="#torch.fx.Graph.process_inputs" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <p>
+               Processes args so that they can be passed to the FX graph.
+              </p>
+              <div class="admonition warning">
+               <p class="admonition-title">
+                Warning
+               </p>
+               <p>
+                This API is experimental and is
+                <em>
+                 NOT
+                </em>
+                backward-compatible.
+               </p>
+              </div>
+             </dd>
+            </dl>
+            <dl class="py method">
+             <dt id="torch.fx.Graph.process_outputs">
+              <code class="sig-name descname">
+               <span class="pre">
+                process_outputs
+               </span>
+              </code>
+              <span class="sig-paren">
+               (
+              </span>
+              <em class="sig-param">
+               <span class="n">
+                <span class="pre">
+                 out
+                </span>
+               </span>
+              </em>
+              <span class="sig-paren">
+               )
+              </span>
+              <a class="reference internal" href="_modules/torch/fx/graph.html#Graph.process_outputs">
+               <span class="viewcode-link">
+                <span class="pre">
+                 [source]
+                </span>
+               </span>
+              </a>
+              <a class="headerlink" href="#torch.fx.Graph.process_outputs" title="Permalink to this definition">
+               ¶
+              </a>
+             </dt>
+             <dd>
+              <div class="admonition warning">
+               <p class="admonition-title">
+                Warning
+               </p>
+               <p>
+                This API is experimental and is
+                <em>
+                 NOT
+                </em>
+                backward-compatible.
+               </p>
+              </div>
+             </dd>
+            </dl>
+            <dl class="py method">
              <dt id="torch.fx.Graph.python_code">
               <code class="sig-name descname">
                <span class="pre">
@@ -7847,10 +7932,10 @@ globals: a dictionary of global names in
              </dd>
             </dl>
             <dl class="py method">
-             <dt id="torch.fx.Graph.unflatten_outs">
+             <dt id="torch.fx.Graph.set_codegen">
               <code class="sig-name descname">
                <span class="pre">
-                unflatten_outs
+                set_codegen
                </span>
               </code>
               <span class="sig-paren">
@@ -7859,21 +7944,21 @@ globals: a dictionary of global names in
               <em class="sig-param">
                <span class="n">
                 <span class="pre">
-                 out
+                 codegen
                 </span>
                </span>
               </em>
               <span class="sig-paren">
                )
               </span>
-              <a class="reference internal" href="_modules/torch/fx/graph.html#Graph.unflatten_outs">
+              <a class="reference internal" href="_modules/torch/fx/graph.html#Graph.set_codegen">
                <span class="viewcode-link">
                 <span class="pre">
                  [source]
                 </span>
                </span>
               </a>
-              <a class="headerlink" href="#torch.fx.Graph.unflatten_outs" title="Permalink to this definition">
+              <a class="headerlink" href="#torch.fx.Graph.set_codegen" title="Permalink to this definition">
                ¶
               </a>
              </dt>
@@ -9206,10 +9291,17 @@ parameters or varargs parameters.
                (
               </span>
               <em class="sig-param">
-               <span class="n">
-                <span class="pre">
-                 replace_with
-                </span>
+               <span class="pre">
+                replace_with
+               </span>
+              </em>
+              ,
+              <em class="sig-param">
+               <span class="pre">
+                delete_user_cb=&lt;function
+               </span>
+               <span class="pre">
+                Node.&lt;lambda&gt;&gt;
                </span>
               </em>
               <span class="sig-paren">
@@ -9247,24 +9339,41 @@ parameters or varargs parameters.
                 Parameters
                </dt>
                <dd class="field-odd">
-                <p>
-                 <strong>
-                  replace_with
-                 </strong>
-                 (
-                 <a class="reference internal" href="#torch.fx.Node" title="torch.fx.Node">
-                  <em>
-                   Node
-                  </em>
-                 </a>
-                 ) – The node to replace all uses of
-                 <code class="docutils literal notranslate">
-                  <span class="pre">
-                   self
-                  </span>
-                 </code>
-                 with.
-                </p>
+                <ul class="simple">
+                 <li>
+                  <p>
+                   <strong>
+                    replace_with
+                   </strong>
+                   (
+                   <a class="reference internal" href="#torch.fx.Node" title="torch.fx.Node">
+                    <em>
+                     Node
+                    </em>
+                   </a>
+                   ) – The node to replace all uses of
+                   <code class="docutils literal notranslate">
+                    <span class="pre">
+                     self
+                    </span>
+                   </code>
+                   with.
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   <strong>
+                    delete_user_cb
+                   </strong>
+                   (
+                   <em>
+                    Callable
+                   </em>
+                   ) – Callback that is called to determine
+whether a given user of the self node should be removed.
+                  </p>
+                 </li>
+                </ul>
                </dd>
                <dt class="field-even">
                 Returns
@@ -12701,6 +12810,24 @@ details on semantics
                 </span>
                </span>
               </em>
+              ,
+              <em class="sig-param">
+               <span class="n">
+                <span class="pre">
+                 enable_io_processing
+                </span>
+               </span>
+               <span class="o">
+                <span class="pre">
+                 =
+                </span>
+               </span>
+               <span class="default_value">
+                <span class="pre">
+                 True
+                </span>
+               </span>
+              </em>
               <span class="sig-paren">
                )
               </span>
@@ -12784,6 +12911,21 @@ pre-populate results for certain
                    </cite>
                    so as to do only partial evaluation within
 the interpreter.
+                  </p>
+                 </li>
+                 <li>
+                  <p>
+                   <strong>
+                    enable_io_processing
+                   </strong>
+                   (
+                   <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                    <em>
+                     bool
+                    </em>
+                   </a>
+                   ) – If true, we process the inputs and outputs with graph’s process_inputs and
+process_outputs function first before using them.
                   </p>
                  </li>
                 </ul>
@@ -14014,6 +14156,16 @@ Python code looks like this:
             </div>
            </dd>
           </dl>
+          <span class="target" id="module-torch.fx.passes">
+          </span>
+          <span class="target" id="module-torch.fx.passes.tests">
+          </span>
+          <span class="target" id="module-torch.fx.experimental">
+          </span>
+          <span class="target" id="module-torch.fx.experimental.unification">
+          </span>
+          <span class="target" id="module-torch.fx.experimental.unification.multipledispatch">
+          </span>
          </div>
         </div>
        </article>

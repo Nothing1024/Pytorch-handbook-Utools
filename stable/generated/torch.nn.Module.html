@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Module — PyTorch 1.11.0 documentation
+   Module — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -768,82 +768,6 @@ copied to that device
              </dl>
             </dd>
            </dl>
-           <dl class="py attribute">
-            <dt id="torch.nn.Module.dump_patches">
-             <code class="sig-name descname">
-              <span class="pre">
-               dump_patches
-              </span>
-             </code>
-             <em class="property">
-              <span class="pre">
-               :
-              </span>
-              <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
-               <span class="pre">
-                bool
-               </span>
-              </a>
-             </em>
-             <em class="property">
-              <span class="pre">
-               =
-              </span>
-              <span class="pre">
-               False
-              </span>
-             </em>
-             <a class="headerlink" href="#torch.nn.Module.dump_patches" title="Permalink to this definition">
-              ¶
-             </a>
-            </dt>
-            <dd>
-             <p>
-              This allows better BC support for
-              <a class="reference internal" href="#torch.nn.Module.load_state_dict" title="torch.nn.Module.load_state_dict">
-               <code class="xref py py-meth docutils literal notranslate">
-                <span class="pre">
-                 load_state_dict()
-                </span>
-               </code>
-              </a>
-              . In
-              <a class="reference internal" href="#torch.nn.Module.state_dict" title="torch.nn.Module.state_dict">
-               <code class="xref py py-meth docutils literal notranslate">
-                <span class="pre">
-                 state_dict()
-                </span>
-               </code>
-              </a>
-              , the version number will be saved as in the attribute
-              <cite>
-               _metadata
-              </cite>
-              of the returned state dict, and thus pickled.
-              <cite>
-               _metadata
-              </cite>
-              is a
-dictionary with keys that follow the naming convention of state dict. See
-              <code class="docutils literal notranslate">
-               <span class="pre">
-                _load_from_state_dict
-               </span>
-              </code>
-              on how to use this information in loading.
-             </p>
-             <p>
-              If new parameters/buffers are added/removed from a module, this number shall
-be bumped, and the module’s
-              <cite>
-               _load_from_state_dict
-              </cite>
-              method can compare the
-version number and do appropriate changes if the state dict is from before
-the change.
-             </p>
-            </dd>
-           </dl>
            <dl class="py method">
             <dt id="torch.nn.Module.eval">
              <code class="sig-name descname">
@@ -1464,6 +1388,19 @@ otherwise throws an error.
               that
 looks like this:
              </p>
+             <div class="highlight-text notranslate">
+              <div class="highlight">
+               <pre><span></span>A(
+    (net_b): Module(
+        (net_c): Module(
+            (conv): Conv2d(16, 33, kernel_size=(3, 3), stride=(2, 2))
+        )
+        (linear): Linear(in_features=100, out_features=200, bias=True)
+    )
+)
+</pre>
+              </div>
+             </div>
              <p>
               (The diagram shows an
               <code class="docutils literal notranslate">
@@ -1689,6 +1626,110 @@ fully-qualified string.)
                Return type
               </dt>
               <dd class="field-even">
+               <p>
+                <a class="reference internal" href="#torch.nn.Module" title="torch.nn.Module">
+                 Module
+                </a>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
+            <dt id="torch.nn.Module.ipu">
+             <code class="sig-name descname">
+              <span class="pre">
+               ipu
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                device
+               </span>
+              </span>
+              <span class="o">
+               <span class="pre">
+                =
+               </span>
+              </span>
+              <span class="default_value">
+               <span class="pre">
+                None
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/module.html#Module.ipu">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.Module.ipu" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Moves all model parameters and buffers to the IPU.
+             </p>
+             <p>
+              This also makes associated parameters and buffers different objects. So
+it should be called before constructing optimizer if the module will
+live on IPU while being optimized.
+             </p>
+             <div class="admonition note">
+              <p class="admonition-title">
+               Note
+              </p>
+              <p>
+               This method modifies the module in-place.
+              </p>
+             </div>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Parameters
+              </dt>
+              <dd class="field-odd">
+               <p>
+                <strong>
+                 device
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">
+                 <em>
+                  int
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – if specified, all parameters will be
+copied to that device
+               </p>
+              </dd>
+              <dt class="field-even">
+               Returns
+              </dt>
+              <dd class="field-even">
+               <p>
+                self
+               </p>
+              </dd>
+              <dt class="field-odd">
+               Return type
+              </dt>
+              <dd class="field-odd">
                <p>
                 <a class="reference internal" href="#torch.nn.Module" title="torch.nn.Module">
                  Module
@@ -3209,6 +3250,197 @@ will raise an error.
             </dd>
            </dl>
            <dl class="py method">
+            <dt id="torch.nn.Module.register_load_state_dict_post_hook">
+             <code class="sig-name descname">
+              <span class="pre">
+               register_load_state_dict_post_hook
+              </span>
+             </code>
+             <span class="sig-paren">
+              (
+             </span>
+             <em class="sig-param">
+              <span class="n">
+               <span class="pre">
+                hook
+               </span>
+              </span>
+             </em>
+             <span class="sig-paren">
+              )
+             </span>
+             <a class="reference internal" href="../_modules/torch/nn/modules/module.html#Module.register_load_state_dict_post_hook">
+              <span class="viewcode-link">
+               <span class="pre">
+                [source]
+               </span>
+              </span>
+             </a>
+             <a class="headerlink" href="#torch.nn.Module.register_load_state_dict_post_hook" title="Permalink to this definition">
+              ¶
+             </a>
+            </dt>
+            <dd>
+             <p>
+              Registers a post hook to be run after module’s
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                load_state_dict
+               </span>
+              </code>
+              is called.
+             </p>
+             <dl class="simple">
+              <dt>
+               It should have the following signature::
+              </dt>
+              <dd>
+               <p>
+                hook(module, incompatible_keys) -&gt; None
+               </p>
+              </dd>
+             </dl>
+             <p>
+              The
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                module
+               </span>
+              </code>
+              argument is the current module that this hook is registered
+on, and the
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                incompatible_keys
+               </span>
+              </code>
+              argument is a
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                NamedTuple
+               </span>
+              </code>
+              consisting
+of attributes
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                missing_keys
+               </span>
+              </code>
+              and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                unexpected_keys
+               </span>
+              </code>
+              .
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                missing_keys
+               </span>
+              </code>
+              is a
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                list
+               </span>
+              </code>
+              of
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                str
+               </span>
+              </code>
+              containing the missing keys and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                unexpected_keys
+               </span>
+              </code>
+              is a
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                list
+               </span>
+              </code>
+              of
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                str
+               </span>
+              </code>
+              containing the unexpected keys.
+             </p>
+             <p>
+              The given incompatible_keys can be modified inplace if needed.
+             </p>
+             <p>
+              Note that the checks performed when calling
+              <a class="reference internal" href="#torch.nn.Module.load_state_dict" title="torch.nn.Module.load_state_dict">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 load_state_dict()
+                </span>
+               </code>
+              </a>
+              with
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                strict=True
+               </span>
+              </code>
+              are affected by modifications the hook makes to
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                missing_keys
+               </span>
+              </code>
+              or
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                unexpected_keys
+               </span>
+              </code>
+              , as expected. Additions to either
+set of keys will result in an error being thrown when
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                strict=True
+               </span>
+              </code>
+              , and
+clearning out both missing and unexpected keys will avoid an error.
+             </p>
+             <dl class="field-list simple">
+              <dt class="field-odd">
+               Returns
+              </dt>
+              <dd class="field-odd">
+               <p>
+                a handle that can be used to remove the added hook by calling
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  handle.remove()
+                 </span>
+                </code>
+               </p>
+              </dd>
+              <dt class="field-even">
+               Return type
+              </dt>
+              <dd class="field-even">
+               <p>
+                <code class="xref py py-class docutils literal notranslate">
+                 <span class="pre">
+                  torch.utils.hooks.RemovableHandle
+                 </span>
+                </code>
+               </p>
+              </dd>
+             </dl>
+            </dd>
+           </dl>
+           <dl class="py method">
             <dt id="torch.nn.Module.register_module">
              <code class="sig-name descname">
               <span class="pre">
@@ -3638,6 +3870,19 @@ found within the
               (
              </span>
              <em class="sig-param">
+              <span class="o">
+               <span class="pre">
+                *
+               </span>
+              </span>
+              <span class="n">
+               <span class="pre">
+                args
+               </span>
+              </span>
+             </em>
+             ,
+             <em class="sig-param">
               <span class="n">
                <span class="pre">
                 destination
@@ -3719,19 +3964,180 @@ Parameters and buffers set to
               </code>
               are not included.
              </p>
+             <div class="admonition warning">
+              <p class="admonition-title">
+               Warning
+              </p>
+              <p>
+               Currently
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 state_dict()
+                </span>
+               </code>
+               also accepts positional arguments for
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 destination
+                </span>
+               </code>
+               ,
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 prefix
+                </span>
+               </code>
+               and
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 keep_vars
+                </span>
+               </code>
+               in order. However,
+this is being deprecated and keyword arguments will be enforced in
+future releases.
+              </p>
+             </div>
+             <div class="admonition warning">
+              <p class="admonition-title">
+               Warning
+              </p>
+              <p>
+               Please avoid the use of argument
+               <code class="docutils literal notranslate">
+                <span class="pre">
+                 destination
+                </span>
+               </code>
+               as it is not
+designed for end-users.
+              </p>
+             </div>
              <dl class="field-list simple">
               <dt class="field-odd">
-               Returns
+               Parameters
               </dt>
               <dd class="field-odd">
+               <ul class="simple">
+                <li>
+                 <p>
+                  <strong>
+                   destination
+                  </strong>
+                  (
+                  <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">
+                   <em>
+                    dict
+                   </em>
+                  </a>
+                  <em>
+                   ,
+                  </em>
+                  <em>
+                   optional
+                  </em>
+                  ) – If provided, the state of module will
+be updated into the dict and the same object is returned.
+Otherwise, an
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    OrderedDict
+                   </span>
+                  </code>
+                  will be created and returned.
+Default:
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    None
+                   </span>
+                  </code>
+                  .
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   prefix
+                  </strong>
+                  (
+                  <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                   <em>
+                    str
+                   </em>
+                  </a>
+                  <em>
+                   ,
+                  </em>
+                  <em>
+                   optional
+                  </em>
+                  ) – a prefix added to parameter and buffer
+names to compose the keys in state_dict. Default:
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    ''
+                   </span>
+                  </code>
+                  .
+                 </p>
+                </li>
+                <li>
+                 <p>
+                  <strong>
+                   keep_vars
+                  </strong>
+                  (
+                  <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                   <em>
+                    bool
+                   </em>
+                  </a>
+                  <em>
+                   ,
+                  </em>
+                  <em>
+                   optional
+                  </em>
+                  ) – by default the
+                  <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
+                   <code class="xref py py-class docutils literal notranslate">
+                    <span class="pre">
+                     Tensor
+                    </span>
+                   </code>
+                  </a>
+                  s
+returned in the state dict are detached from autograd. If it’s
+set to
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    True
+                   </span>
+                  </code>
+                  , detaching will not be performed.
+Default:
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    False
+                   </span>
+                  </code>
+                  .
+                 </p>
+                </li>
+               </ul>
+              </dd>
+              <dt class="field-even">
+               Returns
+              </dt>
+              <dd class="field-even">
                <p>
                 a dictionary containing a whole state of the module
                </p>
               </dd>
-              <dt class="field-even">
+              <dt class="field-odd">
                Return type
               </dt>
-              <dd class="field-even">
+              <dd class="field-odd">
                <p>
                 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)">
                  dict
@@ -4085,11 +4491,13 @@ pinned memory to CUDA devices.
                    device
                   </strong>
                   (
-                  <code class="xref py py-class docutils literal notranslate">
-                   <span class="pre">
-                    torch.device
-                   </span>
-                  </code>
+                  <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
+                   <code class="xref py py-class docutils literal notranslate">
+                    <span class="pre">
+                     torch.device
+                    </span>
+                   </code>
+                  </a>
                   ) – the desired device of the parameters
 and buffers in this module
                  </p>
@@ -4100,11 +4508,13 @@ and buffers in this module
                    dtype
                   </strong>
                   (
-                  <code class="xref py py-class docutils literal notranslate">
-                   <span class="pre">
-                    torch.dtype
-                   </span>
-                  </code>
+                  <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+                   <code class="xref py py-class docutils literal notranslate">
+                    <span class="pre">
+                     torch.dtype
+                    </span>
+                   </code>
+                  </a>
                   ) – the desired floating point or complex dtype of
 the parameters and buffers in this module
                  </p>
@@ -4130,11 +4540,13 @@ dtype and device for all parameters and buffers in this module
                    memory_format
                   </strong>
                   (
-                  <code class="xref py py-class docutils literal notranslate">
-                   <span class="pre">
-                    torch.memory_format
-                   </span>
-                  </code>
+                  <a class="reference internal" href="../tensor_attributes.html#torch.memory_format" title="torch.memory_format">
+                   <code class="xref py py-class docutils literal notranslate">
+                    <span class="pre">
+                     torch.memory_format
+                    </span>
+                   </code>
+                  </a>
                   ) – the desired memory
 format for 4D parameters and buffers in this module (keyword
 only argument)
@@ -4259,11 +4671,13 @@ only argument)
                  device
                 </strong>
                 (
-                <code class="xref py py-class docutils literal notranslate">
-                 <span class="pre">
-                  torch.device
-                 </span>
-                </code>
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.device
+                  </span>
+                 </code>
+                </a>
                 ) – The desired device of the parameters
 and buffers in this module.
                </p>

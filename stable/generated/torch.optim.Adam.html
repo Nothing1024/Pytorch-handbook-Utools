@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Adam — PyTorch 1.11.0 documentation
+   Adam — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -161,7 +161,43 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
+              foreach
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              None
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
               maximize
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              capturable
              </span>
             </span>
             <span class="o">
@@ -4725,6 +4761,27 @@ algorithm from the paper
               <li>
                <p>
                 <strong>
+                 foreach
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether foreach implementation of optimizer
+is used (default: None)
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
                  maximize
                 </strong>
                 (
@@ -4741,6 +4798,28 @@ algorithm from the paper
                 </em>
                 ) – maximize the params based on the objective, instead of
 minimizing (default: False)
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 capturable
+                </strong>
+                (
+                <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)">
+                 <em>
+                  bool
+                 </em>
+                </a>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – whether this instance is safe to capture in a CUDA graph.
+Passing True can impair ungraphed performance, so if you don’t intend to
+graph capture this instance, leave it False (default: False)
                </p>
               </li>
              </ul>

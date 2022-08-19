@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.sparse.mm — PyTorch 1.11.0 documentation
+   torch.sparse.mm — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -44,321 +44,282 @@
            <span class="sig-paren">
             (
            </span>
-           <em class="sig-param">
-            <span class="n">
-             <span class="pre">
-              mat1
-             </span>
-            </span>
-           </em>
-           ,
-           <em class="sig-param">
-            <span class="n">
-             <span class="pre">
-              mat2
-             </span>
-            </span>
-           </em>
            <span class="sig-paren">
             )
            </span>
-           <a class="reference internal" href="../_modules/torch/sparse.html#mm">
-            <span class="viewcode-link">
-             <span class="pre">
-              [source]
-             </span>
-            </span>
-           </a>
            <a class="headerlink" href="#torch.sparse.mm" title="Permalink to this definition">
             ¶
            </a>
           </dt>
           <dd>
-           <p>
-            Performs a matrix multiplication of the sparse matrix
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              mat1
-             </span>
-            </code>
-            and the (sparse or strided) matrix
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              mat2
-             </span>
-            </code>
-            . Similar to
-            <a class="reference internal" href="torch.mm.html#torch.mm" title="torch.mm">
-             <code class="xref py py-func docutils literal notranslate">
-              <span class="pre">
-               torch.mm()
-              </span>
-             </code>
-            </a>
-            , If
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              mat1
-             </span>
-            </code>
-            is a
-            <span class="math">
-             <span class="katex">
-              <span class="katex-mathml">
-               <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <semantics>
-                 <mrow>
-                  <mo stretchy="false">
-                   (
-                  </mo>
-                  <mi>
-                   n
-                  </mi>
-                  <mo>
-                   ×
-                  </mo>
-                  <mi>
-                   m
-                  </mi>
-                  <mo stretchy="false">
-                   )
-                  </mo>
-                 </mrow>
-                 <annotation encoding="application/x-tex">
-                  (n \times m)
-                 </annotation>
-                </semantics>
-               </math>
-              </span>
-              <span aria-hidden="true" class="katex-html">
-               <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                </span>
-                <span class="mopen">
-                 (
-                </span>
-                <span class="mord mathnormal">
-                 n
-                </span>
-                <span class="mspace" style="margin-right:0.2222em;">
-                </span>
-                <span class="mbin">
-                 ×
-                </span>
-                <span class="mspace" style="margin-right:0.2222em;">
-                </span>
-               </span>
-               <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                </span>
-                <span class="mord mathnormal">
-                 m
-                </span>
-                <span class="mclose">
-                 )
-                </span>
-               </span>
-              </span>
-             </span>
-            </span>
-            tensor,
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              mat2
-             </span>
-            </code>
-            is a
-            <span class="math">
-             <span class="katex">
-              <span class="katex-mathml">
-               <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <semantics>
-                 <mrow>
-                  <mo stretchy="false">
-                   (
-                  </mo>
-                  <mi>
-                   m
-                  </mi>
-                  <mo>
-                   ×
-                  </mo>
-                  <mi>
-                   p
-                  </mi>
-                  <mo stretchy="false">
-                   )
-                  </mo>
-                 </mrow>
-                 <annotation encoding="application/x-tex">
-                  (m \times p)
-                 </annotation>
-                </semantics>
-               </math>
-              </span>
-              <span aria-hidden="true" class="katex-html">
-               <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                </span>
-                <span class="mopen">
-                 (
-                </span>
-                <span class="mord mathnormal">
-                 m
-                </span>
-                <span class="mspace" style="margin-right:0.2222em;">
-                </span>
-                <span class="mbin">
-                 ×
-                </span>
-                <span class="mspace" style="margin-right:0.2222em;">
-                </span>
-               </span>
-               <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                </span>
-                <span class="mord mathnormal">
-                 p
-                </span>
-                <span class="mclose">
-                 )
-                </span>
-               </span>
-              </span>
-             </span>
-            </span>
-            tensor, out will be a
-            <span class="math">
-             <span class="katex">
-              <span class="katex-mathml">
-               <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <semantics>
-                 <mrow>
-                  <mo stretchy="false">
-                   (
-                  </mo>
-                  <mi>
-                   n
-                  </mi>
-                  <mo>
-                   ×
-                  </mo>
-                  <mi>
-                   p
-                  </mi>
-                  <mo stretchy="false">
-                   )
-                  </mo>
-                 </mrow>
-                 <annotation encoding="application/x-tex">
-                  (n \times p)
-                 </annotation>
-                </semantics>
-               </math>
-              </span>
-              <span aria-hidden="true" class="katex-html">
-               <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                </span>
-                <span class="mopen">
-                 (
-                </span>
-                <span class="mord mathnormal">
-                 n
-                </span>
-                <span class="mspace" style="margin-right:0.2222em;">
-                </span>
-                <span class="mbin">
-                 ×
-                </span>
-                <span class="mspace" style="margin-right:0.2222em;">
-                </span>
-               </span>
-               <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
-                </span>
-                <span class="mord mathnormal">
-                 p
-                </span>
-                <span class="mclose">
-                 )
-                </span>
-               </span>
-              </span>
-             </span>
-            </span>
-            tensor.
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              mat1
-             </span>
-            </code>
-            need to have
-            <cite>
-             sparse_dim = 2
-            </cite>
-            .
-This function also supports backward for both matrices. Note that the gradients of
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              mat1
-             </span>
-            </code>
-            is a coalesced sparse tensor.
-           </p>
-           <dl class="field-list simple">
-            <dt class="field-odd">
-             Parameters
-            </dt>
-            <dd class="field-odd">
-             <ul class="simple">
-              <li>
-               <p>
-                <strong>
-                 mat1
-                </strong>
-                (
-                <em>
-                 SparseTensor
-                </em>
-                ) – the first sparse matrix to be multiplied
-               </p>
-              </li>
-              <li>
-               <p>
-                <strong>
-                 mat2
-                </strong>
-                (
-                <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
-                 <em>
-                  Tensor
-                 </em>
-                </a>
-                ) – the second matrix to be multiplied, which could be sparse or dense
-               </p>
-              </li>
-             </ul>
-            </dd>
-           </dl>
-           <dl class="simple">
-            <dt>
-             Shape:
-            </dt>
-            <dd>
+           <blockquote>
+            <div>
              <p>
-              The format of the output tensor of this function follows:
+              Performs a matrix multiplication of the sparse matrix
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                mat1
+               </span>
+              </code>
+              and the (sparse or strided) matrix
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                mat2
+               </span>
+              </code>
+              . Similar to
+              <a class="reference internal" href="torch.mm.html#torch.mm" title="torch.mm">
+               <code class="xref py py-func docutils literal notranslate">
+                <span class="pre">
+                 torch.mm()
+                </span>
+               </code>
+              </a>
+              , if
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                mat1
+               </span>
+              </code>
+              is a
+              <span class="math">
+               <span class="katex">
+                <span class="katex-mathml">
+                 <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <semantics>
+                   <mrow>
+                    <mo stretchy="false">
+                     (
+                    </mo>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     m
+                    </mi>
+                    <mo stretchy="false">
+                     )
+                    </mo>
+                   </mrow>
+                   <annotation encoding="application/x-tex">
+                    (n \times m)
+                   </annotation>
+                  </semantics>
+                 </math>
+                </span>
+                <span aria-hidden="true" class="katex-html">
+                 <span class="base">
+                  <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                  </span>
+                  <span class="mopen">
+                   (
+                  </span>
+                  <span class="mord mathnormal">
+                   n
+                  </span>
+                  <span class="mspace" style="margin-right:0.2222em;">
+                  </span>
+                  <span class="mbin">
+                   ×
+                  </span>
+                  <span class="mspace" style="margin-right:0.2222em;">
+                  </span>
+                 </span>
+                 <span class="base">
+                  <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                  </span>
+                  <span class="mord mathnormal">
+                   m
+                  </span>
+                  <span class="mclose">
+                   )
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+              tensor,
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                mat2
+               </span>
+              </code>
+              is a
+              <span class="math">
+               <span class="katex">
+                <span class="katex-mathml">
+                 <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <semantics>
+                   <mrow>
+                    <mo stretchy="false">
+                     (
+                    </mo>
+                    <mi>
+                     m
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     p
+                    </mi>
+                    <mo stretchy="false">
+                     )
+                    </mo>
+                   </mrow>
+                   <annotation encoding="application/x-tex">
+                    (m \times p)
+                   </annotation>
+                  </semantics>
+                 </math>
+                </span>
+                <span aria-hidden="true" class="katex-html">
+                 <span class="base">
+                  <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                  </span>
+                  <span class="mopen">
+                   (
+                  </span>
+                  <span class="mord mathnormal">
+                   m
+                  </span>
+                  <span class="mspace" style="margin-right:0.2222em;">
+                  </span>
+                  <span class="mbin">
+                   ×
+                  </span>
+                  <span class="mspace" style="margin-right:0.2222em;">
+                  </span>
+                 </span>
+                 <span class="base">
+                  <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                  </span>
+                  <span class="mord mathnormal">
+                   p
+                  </span>
+                  <span class="mclose">
+                   )
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+              tensor, out will be a
+              <span class="math">
+               <span class="katex">
+                <span class="katex-mathml">
+                 <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <semantics>
+                   <mrow>
+                    <mo stretchy="false">
+                     (
+                    </mo>
+                    <mi>
+                     n
+                    </mi>
+                    <mo>
+                     ×
+                    </mo>
+                    <mi>
+                     p
+                    </mi>
+                    <mo stretchy="false">
+                     )
+                    </mo>
+                   </mrow>
+                   <annotation encoding="application/x-tex">
+                    (n \times p)
+                   </annotation>
+                  </semantics>
+                 </math>
+                </span>
+                <span aria-hidden="true" class="katex-html">
+                 <span class="base">
+                  <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                  </span>
+                  <span class="mopen">
+                   (
+                  </span>
+                  <span class="mord mathnormal">
+                   n
+                  </span>
+                  <span class="mspace" style="margin-right:0.2222em;">
+                  </span>
+                  <span class="mbin">
+                   ×
+                  </span>
+                  <span class="mspace" style="margin-right:0.2222em;">
+                  </span>
+                 </span>
+                 <span class="base">
+                  <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                  </span>
+                  <span class="mord mathnormal">
+                   p
+                  </span>
+                  <span class="mclose">
+                   )
+                  </span>
+                 </span>
+                </span>
+               </span>
+              </span>
+              tensor.
+When
+              <code class="xref py py-attr docutils literal notranslate">
+               <span class="pre">
+                mat1
+               </span>
+              </code>
+              is a COO tensor it must have
+              <cite>
+               sparse_dim = 2
+              </cite>
+              .
+When inputs are COO tensors, this function also supports backward for both inputs.
+             </p>
+             <p>
+              Supports both CSR and COO storage formats.
+             </p>
+            </div>
+           </blockquote>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function doesn’t support computing derivaties with respect to CSR matrices.
+            </p>
+            <dl class="simple">
+             <dt>
+              Args:
+             </dt>
+             <dd>
+              <p>
+               mat1 (Tensor): the first sparse matrix to be multiplied
+mat2 (Tensor): the second matrix to be multiplied, which could be sparse or dense
+              </p>
+             </dd>
+             <dt>
+              Shape:
+             </dt>
+             <dd>
+              <p>
+               The format of the output tensor of this function follows:
 - sparse x sparse -&gt; sparse
 - sparse x dense -&gt; dense
-             </p>
-            </dd>
-           </dl>
-           <p>
-            Example:
-           </p>
-           <div class="highlight-default notranslate">
-            <div class="highlight">
-             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+              </p>
+             </dd>
+            </dl>
+            <p>
+             Example:
+            </p>
+            <div class="highlight-default notranslate">
+             <div class="highlight">
+              <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">tensor(indices=tensor([[0, 0, 0, 1, 1, 1],</span>
 <span class="go">                       [0, 1, 2, 0, 1, 2]]),</span>
@@ -382,6 +343,7 @@ This function also supports backward for both matrices. Note that the gradients 
 <span class="go">       values=tensor([ 0.1394, -0.6415, -2.1639,  0.1394, -0.6415, -2.1639]),</span>
 <span class="go">       size=(2, 3), nnz=6, layout=torch.sparse_coo)</span>
 </pre>
+             </div>
             </div>
            </div>
           </dd>

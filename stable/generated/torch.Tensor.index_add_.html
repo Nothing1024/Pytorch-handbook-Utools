@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.Tensor.index_add_ — PyTorch 1.11.0 documentation
+   torch.Tensor.index_add_ — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -220,6 +220,17 @@ match
             </code>
             , or an error will be raised.
            </p>
+           <p>
+            For a 3-D tensor the output is given as:
+           </p>
+           <div class="highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="bp">self</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>  <span class="c1"># if dim == 0</span>
+<span class="bp">self</span><span class="p">[:,</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">src</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># if dim == 1</span>
+<span class="bp">self</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">src</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span>  <span class="c1"># if dim == 2</span>
+</pre>
+            </div>
+           </div>
            <div class="admonition note">
             <p class="admonition-title">
              Note

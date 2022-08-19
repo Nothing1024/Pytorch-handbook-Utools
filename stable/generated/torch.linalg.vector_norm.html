@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.linalg.vector_norm — PyTorch 1.11.0 documentation
+   torch.linalg.vector_norm — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -47,7 +47,7 @@
            <em class="sig-param">
             <span class="n">
              <span class="pre">
-              A
+              x
              </span>
             </span>
            </em>
@@ -168,13 +168,13 @@
             If
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
-              A
+              x
              </span>
             </code>
             is complex valued, it computes the norm of
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
-              A
+              x
              </span>
             </code>
             <cite>
@@ -188,7 +188,7 @@
             This function does not necessarily treat multidimensonal
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
-              A
+              x
              </span>
             </code>
             as a batch of
@@ -209,7 +209,7 @@ vectors, instead:
               ,
               <code class="xref py py-attr docutils literal notranslate">
                <span class="pre">
-                A
+                x
                </span>
               </code>
               will be flattened before the norm is computed.
@@ -379,6 +379,21 @@ and the other dimensions will be treated as batch dimensions.
             </cite>
             object, or any equivalent object.
            </p>
+           <p>
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              dtype
+             </span>
+            </code>
+            may be used to perform the computation in a more precise dtype.
+It is semantically equivalent to calling
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              linalg.vector_norm(x.to(dtype))
+             </span>
+            </code>
+            but it is faster in some cases.
+           </p>
            <div class="admonition seealso">
             <p class="admonition-title">
              See also
@@ -403,7 +418,7 @@ and the other dimensions will be treated as batch dimensions.
               <li>
                <p>
                 <strong>
-                 A
+                 x
                 </strong>
                 (
                 <a class="reference internal" href="../tensors.html#torch.Tensor" title="torch.Tensor">
@@ -596,28 +611,58 @@ in the result as dimensions with size one. Default:
                  dtype
                 </strong>
                 (
-                <code class="xref py py-class docutils literal notranslate">
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+                 <code class="xref py py-class docutils literal notranslate">
+                  <span class="pre">
+                   torch.dtype
+                  </span>
+                 </code>
+                </a>
+                , optional) – type used to perform the accumulation and the return.
+If specified,
+                <code class="xref py py-attr docutils literal notranslate">
                  <span class="pre">
-                  torch.dtype
+                  x
                  </span>
                 </code>
-                , optional) – If specified, the input tensor is cast to
+                is cast to
                 <code class="xref py py-attr docutils literal notranslate">
                  <span class="pre">
                   dtype
                  </span>
                 </code>
-                before performing the operation, and the returned tensor’s type
-will be
+                before performing the operation,
+and the returned tensor’s type will be
                 <code class="xref py py-attr docutils literal notranslate">
                  <span class="pre">
                   dtype
                  </span>
                 </code>
-                . Default:
-                <cite>
-                 None
-                </cite>
+                if real and of its real counterpart if complex.
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dtype
+                 </span>
+                </code>
+                may be complex if
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  x
+                 </span>
+                </code>
+                is complex, otherwise it must be real.
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  x
+                 </span>
+                </code>
+                should be convertible without narrowing to
+                <code class="xref py py-attr docutils literal notranslate">
+                 <span class="pre">
+                  dtype
+                 </span>
+                </code>
+                . Default: None
                </p>
               </li>
              </ul>
@@ -630,7 +675,7 @@ will be
               A real-valued tensor, even when
               <code class="xref py py-attr docutils literal notranslate">
                <span class="pre">
-                A
+                x
                </span>
               </code>
               is complex.

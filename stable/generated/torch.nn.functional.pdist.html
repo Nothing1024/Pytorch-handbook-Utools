@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nn.functional.pdist — PyTorch 1.11.0 documentation
+   torch.nn.functional.pdist — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -268,10 +268,17 @@ if the rows are contiguous.
            </p>
            <p>
             This function is equivalent to
-            <cite>
-             scipy.spatial.distance.pdist(input,
-‘minkowski’, p=p)
-            </cite>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              scipy.spatial.distance.pdist(input,
+             </span>
+             <span class="pre">
+              'minkowski',
+             </span>
+             <span class="pre">
+              p=p)
+             </span>
+            </code>
             if
             <span class="math">
              <span class="katex">
@@ -396,9 +403,20 @@ if the rows are contiguous.
             </span>
             it is
 equivalent to
-            <cite>
-             scipy.spatial.distance.pdist(input, ‘hamming’) * M
-            </cite>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              scipy.spatial.distance.pdist(input,
+             </span>
+             <span class="pre">
+              'hamming')
+             </span>
+             <span class="pre">
+              *
+             </span>
+             <span class="pre">
+              M
+             </span>
+            </code>
             .
 When
             <span class="math">
@@ -449,9 +467,29 @@ When
              </span>
             </span>
             , the closest scipy function is
-            <cite>
-             scipy.spatial.distance.pdist(xn, lambda x, y: np.abs(x - y).max())
-            </cite>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              scipy.spatial.distance.pdist(xn,
+             </span>
+             <span class="pre">
+              lambda
+             </span>
+             <span class="pre">
+              x,
+             </span>
+             <span class="pre">
+              y:
+             </span>
+             <span class="pre">
+              np.abs(x
+             </span>
+             <span class="pre">
+              -
+             </span>
+             <span class="pre">
+              y).max())
+             </span>
+            </code>
             .
            </p>
            <dl class="field-list simple">

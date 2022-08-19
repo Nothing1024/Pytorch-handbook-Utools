@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   TorchScript — PyTorch 1.11.0 documentation
+   TorchScript — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -162,7 +162,14 @@
              </li>
              <li>
               <p>
-               <a class="reference internal" href="#references" id="id20">
+               <a class="reference internal" href="#fusion-backends" id="id20">
+                Fusion Backends
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a class="reference internal" href="#references" id="id21">
                 References
                </a>
               </p>
@@ -487,6 +494,50 @@ for performance and multi-threading reasons.
             <tr class="row-odd">
              <td>
               <p>
+               <p id="torch.jit.enable_onednn_fusion">
+               </p>
+               <a class="reference internal" href="generated/torch.jit.enable_onednn_fusion.html#torch.jit.enable_onednn_fusion" title="torch.jit.enable_onednn_fusion">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  enable_onednn_fusion
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Enables or disables onednn JIT fusion based on the parameter
+               <cite>
+                enabled
+               </cite>
+               .
+              </p>
+             </td>
+            </tr>
+            <tr class="row-even">
+             <td>
+              <p>
+               <p id="torch.jit.onednn_fusion_enabled">
+               </p>
+               <a class="reference internal" href="generated/torch.jit.onednn_fusion_enabled.html#torch.jit.onednn_fusion_enabled" title="torch.jit.onednn_fusion_enabled">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  onednn_fusion_enabled
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               Returns whether onednn JIT fusion is enabled
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <p id="torch.jit.set_fusion_strategy">
                </p>
                <a class="reference internal" href="generated/torch.jit.set_fusion_strategy.html#torch.jit.set_fusion_strategy" title="torch.jit.set_fusion_strategy">
@@ -507,6 +558,26 @@ for performance and multi-threading reasons.
             <tr class="row-even">
              <td>
               <p>
+               <p id="torch.jit.strict_fusion">
+               </p>
+               <a class="reference internal" href="generated/torch.jit.strict_fusion.html#torch.jit.strict_fusion" title="torch.jit.strict_fusion">
+                <code class="xref py py-obj docutils literal notranslate">
+                 <span class="pre">
+                  strict_fusion
+                 </span>
+                </code>
+               </a>
+              </p>
+             </td>
+             <td>
+              <p>
+               This class errors if not all nodes have been fused in inference, or symbolically differentiated in training.
+              </p>
+             </td>
+            </tr>
+            <tr class="row-odd">
+             <td>
+              <p>
                <p id="torch.jit.save">
                </p>
                <a class="reference internal" href="generated/torch.jit.save.html#torch.jit.save" title="torch.jit.save">
@@ -524,7 +595,7 @@ for performance and multi-threading reasons.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.jit.load">
@@ -567,7 +638,7 @@ for performance and multi-threading reasons.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.jit.ignore">
@@ -587,7 +658,7 @@ for performance and multi-threading reasons.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.jit.unused">
@@ -607,7 +678,7 @@ for performance and multi-threading reasons.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.jit.isinstance">
@@ -627,7 +698,7 @@ for performance and multi-threading reasons.
               </p>
              </td>
             </tr>
-            <tr class="row-odd">
+            <tr class="row-even">
              <td>
               <p>
                <p id="torch.jit.Attribute">
@@ -655,7 +726,7 @@ for performance and multi-threading reasons.
               </p>
              </td>
             </tr>
-            <tr class="row-even">
+            <tr class="row-odd">
              <td>
               <p>
                <p id="torch.jit.annotate">
@@ -2931,9 +3002,26 @@ now supported.
             </div>
            </div>
           </div>
-          <div class="section" id="references">
+          <div class="section" id="fusion-backends">
            <h3>
             <a class="toc-backref" href="#id20">
+             Fusion Backends
+            </a>
+            <a class="headerlink" href="#fusion-backends" title="Permalink to this headline">
+             ¶
+            </a>
+           </h3>
+           <p>
+            There are a couple of fusion backends available to optimize TorchScript execution. The default fuser on CPUs is NNC, which can perform fusions for both CPUs and GPUs. The default fuser on GPUs is NVFuser, which supports a wider range of operators and has demonstrated generated kernels with improved throughput. See the
+            <a class="reference external" href="https://github.com/pytorch/pytorch/blob/release/1.12/torch/csrc/jit/codegen/cuda/README.md">
+             NVFuser documentation
+            </a>
+            for more details on usage and debugging.
+           </p>
+          </div>
+          <div class="section" id="references">
+           <h3>
+            <a class="toc-backref" href="#id21">
              References
             </a>
             <a class="headerlink" href="#references" title="Permalink to this headline">
@@ -2954,6 +3042,8 @@ now supported.
              </li>
             </ul>
            </div>
+           <span class="target" id="module-torch.jit.mobile">
+           </span>
           </div>
          </div>
         </div>

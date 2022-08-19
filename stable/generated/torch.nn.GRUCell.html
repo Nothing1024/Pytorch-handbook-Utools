@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   GRUCell — PyTorch 1.11.0 documentation
+   GRUCell — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -2428,6 +2428,15 @@ M834 80h400000v40h-400000z">
              </span>
             </p>
            </div>
+           <p>
+            On certain ROCm devices, when using float16 inputs this module will use
+            <a class="reference internal" href="../notes/numerical_accuracy.html#fp16-on-mi200">
+             <span class="std std-ref">
+              different precision
+             </span>
+            </a>
+            for backward.
+           </p>
            <p>
             Examples:
            </p>

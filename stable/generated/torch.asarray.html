@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.asarray — PyTorch 1.11.0 documentation
+   torch.asarray — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -210,17 +210,21 @@ by default, not require a gradient, have the same datatype as
             </code>
             , be on the
 same device, and share memory with it. These properties can be controlled with the
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              dtype
-             </span>
-            </code>
+            <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               dtype
+              </span>
+             </code>
+            </a>
             ,
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              device
-             </span>
-            </code>
+            <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               device
+              </span>
+             </code>
+            </a>
             ,
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
@@ -272,11 +276,13 @@ also a tensor with an autograd history then the returned tensor will have the sa
             is not a tensor, NumPy Array, or DLPack capsule but implements Python’s
 buffer protocol then the buffer is interpreted as an array of bytes grouped according to
 the size of the datatype passed to the
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              dtype
-             </span>
-            </code>
+            <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+             <code class="xref py py-attr docutils literal notranslate">
+              <span class="pre">
+               dtype
+              </span>
+             </code>
+            </a>
             keyword argument. (If no datatype is
 passed then the default floating point datatype is used, instead.) The returned tensor
 will have the specified datatype (or default floating point datatype if none is specified)
@@ -297,23 +303,6 @@ CPU device, and not share its memory.
             <p class="admonition-title">
              See also
             </p>
-            <dl class="simple">
-             <dt>
-              <a class="reference internal" href="torch.as_tensor.html#torch.as_tensor" title="torch.as_tensor">
-               <code class="xref py py-func docutils literal notranslate">
-                <span class="pre">
-                 torch.as_tensor()
-                </span>
-               </code>
-              </a>
-              creates a tensor that always shares memory if the input is a
-             </dt>
-             <dd>
-              <p>
-               tensor or a NumPy array, copying otherwise.
-              </p>
-             </dd>
-            </dl>
             <p>
              <a class="reference internal" href="torch.tensor.html#torch.tensor" title="torch.tensor">
               <code class="xref py py-func docutils literal notranslate">
@@ -351,10 +340,10 @@ CPU device, and not share its memory.
               </p>
              </dd>
              <dt>
-              <a class="reference internal" href="../dlpack.html#torch.utils.dlpack.from_dlpack" title="torch.utils.dlpack.from_dlpack">
+              <a class="reference internal" href="torch.from_dlpack.html#torch.from_dlpack" title="torch.from_dlpack">
                <code class="xref py py-func docutils literal notranslate">
                 <span class="pre">
-                 torch.utils.dlpack.from_dlpack()
+                 torch.from_dlpack()
                 </span>
                </code>
               </a>
@@ -397,7 +386,7 @@ buffer protocol, scalar, or sequence of scalars.
                  dtype
                 </strong>
                 (
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    torch.dtype
@@ -486,7 +475,7 @@ error is thrown if it cannot.
                  device
                 </strong>
                 (
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    torch.device

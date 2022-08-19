@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Dropout2d — PyTorch 1.11.0 documentation
+   Dropout2d — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -316,6 +316,98 @@ in-place
              </ul>
             </dd>
            </dl>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             Due to historical reasons, this class will perform 1D channel-wise dropout
+for 3D inputs (as done by
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               nn.Dropout1d
+              </span>
+             </code>
+             ). Thus, it currently does NOT
+support inputs without a batch dimension of shape
+             <span class="math">
+              <span class="katex">
+               <span class="katex-mathml">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                 <semantics>
+                  <mrow>
+                   <mo stretchy="false">
+                    (
+                   </mo>
+                   <mi>
+                    C
+                   </mi>
+                   <mo separator="true">
+                    ,
+                   </mo>
+                   <mi>
+                    H
+                   </mi>
+                   <mo separator="true">
+                    ,
+                   </mo>
+                   <mi>
+                    W
+                   </mi>
+                   <mo stretchy="false">
+                    )
+                   </mo>
+                  </mrow>
+                  <annotation encoding="application/x-tex">
+                   (C, H, W)
+                  </annotation>
+                 </semantics>
+                </math>
+               </span>
+               <span aria-hidden="true" class="katex-html">
+                <span class="base">
+                 <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                 </span>
+                 <span class="mopen">
+                  (
+                 </span>
+                 <span class="mord mathnormal" style="margin-right:0.07153em;">
+                  C
+                 </span>
+                 <span class="mpunct">
+                  ,
+                 </span>
+                 <span class="mspace" style="margin-right:0.1667em;">
+                 </span>
+                 <span class="mord mathnormal" style="margin-right:0.08125em;">
+                  H
+                 </span>
+                 <span class="mpunct">
+                  ,
+                 </span>
+                 <span class="mspace" style="margin-right:0.1667em;">
+                 </span>
+                 <span class="mord mathnormal" style="margin-right:0.13889em;">
+                  W
+                 </span>
+                 <span class="mclose">
+                  )
+                 </span>
+                </span>
+               </span>
+              </span>
+             </span>
+             . This
+behavior will change in a future release to interpret 3D inputs as no-batch-dim
+inputs. To maintain the old behavior, switch to
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               nn.Dropout1d
+              </span>
+             </code>
+             .
+            </p>
+           </div>
            <dl class="simple">
             <dt>
              Shape:
@@ -417,26 +509,26 @@ in-place
                        (
                       </mo>
                       <mi>
+                       N
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
                        C
                       </mi>
                       <mo separator="true">
                        ,
                       </mo>
                       <mi>
-                       H
-                      </mi>
-                      <mo separator="true">
-                       ,
-                      </mo>
-                      <mi>
-                       W
+                       L
                       </mi>
                       <mo stretchy="false">
                        )
                       </mo>
                      </mrow>
                      <annotation encoding="application/x-tex">
-                      (C, H, W)
+                      (N, C, L)
                      </annotation>
                     </semantics>
                    </math>
@@ -448,6 +540,14 @@ in-place
                     <span class="mopen">
                      (
                     </span>
+                    <span class="mord mathnormal" style="margin-right:0.10903em;">
+                     N
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
                     </span>
@@ -456,16 +556,8 @@ in-place
                     </span>
                     <span class="mspace" style="margin-right:0.1667em;">
                     </span>
-                    <span class="mord mathnormal" style="margin-right:0.08125em;">
-                     H
-                    </span>
-                    <span class="mpunct">
-                     ,
-                    </span>
-                    <span class="mspace" style="margin-right:0.1667em;">
-                    </span>
-                    <span class="mord mathnormal" style="margin-right:0.13889em;">
-                     W
+                    <span class="mord mathnormal">
+                     L
                     </span>
                     <span class="mclose">
                      )
@@ -572,26 +664,26 @@ in-place
                        (
                       </mo>
                       <mi>
+                       N
+                      </mi>
+                      <mo separator="true">
+                       ,
+                      </mo>
+                      <mi>
                        C
                       </mi>
                       <mo separator="true">
                        ,
                       </mo>
                       <mi>
-                       H
-                      </mi>
-                      <mo separator="true">
-                       ,
-                      </mo>
-                      <mi>
-                       W
+                       L
                       </mi>
                       <mo stretchy="false">
                        )
                       </mo>
                      </mrow>
                      <annotation encoding="application/x-tex">
-                      (C, H, W)
+                      (N, C, L)
                      </annotation>
                     </semantics>
                    </math>
@@ -603,6 +695,14 @@ in-place
                     <span class="mopen">
                      (
                     </span>
+                    <span class="mord mathnormal" style="margin-right:0.10903em;">
+                     N
+                    </span>
+                    <span class="mpunct">
+                     ,
+                    </span>
+                    <span class="mspace" style="margin-right:0.1667em;">
+                    </span>
                     <span class="mord mathnormal" style="margin-right:0.07153em;">
                      C
                     </span>
@@ -611,16 +711,8 @@ in-place
                     </span>
                     <span class="mspace" style="margin-right:0.1667em;">
                     </span>
-                    <span class="mord mathnormal" style="margin-right:0.08125em;">
-                     H
-                    </span>
-                    <span class="mpunct">
-                     ,
-                    </span>
-                    <span class="mspace" style="margin-right:0.1667em;">
-                    </span>
-                    <span class="mord mathnormal" style="margin-right:0.13889em;">
-                     W
+                    <span class="mord mathnormal">
+                     L
                     </span>
                     <span class="mclose">
                      )

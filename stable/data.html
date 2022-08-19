@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.utils.data — PyTorch 1.11.0 documentation
+   torch.utils.data — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -456,13 +456,19 @@ individual fetched data samples into batches via arguments
              drop_last
             </span>
            </code>
-           , and
+           ,
            <code class="xref py py-attr docutils literal notranslate">
             <span class="pre">
              batch_sampler
             </span>
            </code>
-           .
+           , and
+           <code class="xref py py-attr docutils literal notranslate">
+            <span class="pre">
+             collate_fn
+            </span>
+           </code>
+           (which has a default function).
           </p>
           <div class="section" id="automatic-batching-default">
            <h3>
@@ -833,13 +839,21 @@ arrays in PyTorch tensors.
             is called with a list
 of data samples at each time. It is expected to collate the input samples into
 a batch for yielding from the data loader iterator. The rest of this section
-describes behavior of the default
+describes the behavior of the default
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               collate_fn
              </span>
             </code>
-            in this case.
+            (
+            <a class="reference internal" href="#torch.utils.data.default_collate" title="torch.utils.data.default_collate">
+             <code class="xref py py-func docutils literal notranslate">
+              <span class="pre">
+               default_collate()
+              </span>
+             </code>
+            </a>
+            ).
            </p>
            <p>
             For instance, if each data sample consists of a 3-channel image and an integral
@@ -918,6 +932,24 @@ for
             to achieve custom batching, e.g.,
 collating along a dimension other than the first, padding sequences of
 various lengths, or adding support for custom data types.
+           </p>
+           <p>
+            If you run into a situation where the outputs of
+            <a class="reference internal" href="#torch.utils.data.DataLoader" title="torch.utils.data.DataLoader">
+             <code class="xref py py-class docutils literal notranslate">
+              <span class="pre">
+               DataLoader
+              </span>
+             </code>
+            </a>
+            have dimensions or type that is different from your expectation, you may
+want to check your
+            <code class="xref py py-attr docutils literal notranslate">
+             <span class="pre">
+              collate_fn
+             </span>
+            </code>
+            .
            </p>
           </div>
          </div>
@@ -1608,7 +1640,7 @@ type(s).
              </span>
              <span class="default_value">
               <span class="pre">
-               False
+               None
               </span>
              </span>
             </em>
@@ -1833,6 +1865,24 @@ type(s).
              <span class="default_value">
               <span class="pre">
                False
+              </span>
+             </span>
+            </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               pin_memory_device
+              </span>
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               ''
               </span>
              </span>
             </em>
@@ -2140,7 +2190,7 @@ map-style dataset.
                   </span>
                  </code>
                  , the data loader will copy Tensors
-into CUDA pinned memory before returning them.  If your data elements
+into device/CUDA pinned memory before returning them.  If your data elements
 are a custom type, or your
                  <code class="xref py py-attr docutils literal notranslate">
                   <span class="pre">
@@ -2324,7 +2374,7 @@ by RandomSampler to generate random indexes and multiprocessing to generate
                  <em>
                   keyword-only arg
                  </em>
-                 ) – Number of samples loaded
+                 ) – Number of batches loaded
 in advance by each worker.
                  <code class="docutils literal notranslate">
                   <span class="pre">
@@ -2332,7 +2382,7 @@ in advance by each worker.
                   </span>
                  </code>
                  means there will be a total of
-2 * num_workers samples prefetched across all workers. (default:
+2 * num_workers batches prefetched across all workers. (default:
                  <code class="docutils literal notranslate">
                   <span class="pre">
                    2
@@ -2377,6 +2427,27 @@ maintain the workers
                   </span>
                  </code>
                  )
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  pin_memory_device
+                 </strong>
+                 (
+                 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                  <em>
+                   str
+                  </em>
+                 </a>
+                 <em>
+                  ,
+                 </em>
+                 <em>
+                  optional
+                 </em>
+                 ) – the data loader will copy Tensors
+into device pinned memory before returning them if pin_memory is set to true.
                 </p>
                </li>
               </ul>
@@ -3297,98 +3368,134 @@ This is used as the default function for collation when
             </p>
             <p>
              Here is the general input type (based on the type of the element within the batch) to output type mapping:
-*
-             <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
-              <code class="xref py py-class docutils literal notranslate">
-               <span class="pre">
-                torch.Tensor
-               </span>
-              </code>
-             </a>
-             -&gt;
-             <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
-              <code class="xref py py-class docutils literal notranslate">
-               <span class="pre">
-                torch.Tensor
-               </span>
-              </code>
-             </a>
-             (with an added outer dimension batch size)
-* NumPy Arrays -&gt;
-             <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
-              <code class="xref py py-class docutils literal notranslate">
-               <span class="pre">
-                torch.Tensor
-               </span>
-              </code>
-             </a>
-             *
-             <cite>
-              float
-             </cite>
-             -&gt;
-             <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
-              <code class="xref py py-class docutils literal notranslate">
-               <span class="pre">
-                torch.Tensor
-               </span>
-              </code>
-             </a>
-             *
-             <cite>
-              int
-             </cite>
-             -&gt;
-             <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
-              <code class="xref py py-class docutils literal notranslate">
-               <span class="pre">
-                torch.Tensor
-               </span>
-              </code>
-             </a>
-             *
-             <cite>
-              str
-             </cite>
-             -&gt;
-             <cite>
-              str
-             </cite>
-             (unchanged)
-*
-             <cite>
-              bytes
-             </cite>
-             -&gt;
-             <cite>
-              bytes
-             </cite>
-             (unchanged)
-*
-             <cite>
-              Mapping[K, V_i]
-             </cite>
-             -&gt;
-             <cite>
-              Mapping[K, default_collate([V_1, V_2, …])]
-             </cite>
-             *
-             <cite>
-              NamedTuple[V1_i, V2_i, …]
-             </cite>
-             -&gt;
-             <cite>
-              NamedTuple[default_collate([V1_1, V1_2, …]), default_collate([V2_1, V2_2, …]), …]
-             </cite>
-             *
-             <cite>
-              Sequence[V1_i, V2_i, …]
-             </cite>
-             -&gt;
-             <cite>
-              Sequence[default_collate([V1_1, V1_2, …]), default_collate([V2_1, V2_2, …]), …]
-             </cite>
             </p>
+            <blockquote>
+             <div>
+              <ul class="simple">
+               <li>
+                <p>
+                 <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    torch.Tensor
+                   </span>
+                  </code>
+                 </a>
+                 -&gt;
+                 <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    torch.Tensor
+                   </span>
+                  </code>
+                 </a>
+                 (with an added outer dimension batch size)
+                </p>
+               </li>
+               <li>
+                <p>
+                 NumPy Arrays -&gt;
+                 <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    torch.Tensor
+                   </span>
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li>
+                <p>
+                 <cite>
+                  float
+                 </cite>
+                 -&gt;
+                 <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    torch.Tensor
+                   </span>
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li>
+                <p>
+                 <cite>
+                  int
+                 </cite>
+                 -&gt;
+                 <a class="reference internal" href="tensors.html#torch.Tensor" title="torch.Tensor">
+                  <code class="xref py py-class docutils literal notranslate">
+                   <span class="pre">
+                    torch.Tensor
+                   </span>
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li>
+                <p>
+                 <cite>
+                  str
+                 </cite>
+                 -&gt;
+                 <cite>
+                  str
+                 </cite>
+                 (unchanged)
+                </p>
+               </li>
+               <li>
+                <p>
+                 <cite>
+                  bytes
+                 </cite>
+                 -&gt;
+                 <cite>
+                  bytes
+                 </cite>
+                 (unchanged)
+                </p>
+               </li>
+               <li>
+                <p>
+                 <cite>
+                  Mapping[K, V_i]
+                 </cite>
+                 -&gt;
+                 <cite>
+                  Mapping[K, default_collate([V_1, V_2, …])]
+                 </cite>
+                </p>
+               </li>
+               <li>
+                <p>
+                 <cite>
+                  NamedTuple[V1_i, V2_i, …]
+                 </cite>
+                 -&gt;
+                 <cite>
+                  NamedTuple[default_collate([V1_1, V1_2, …]),
+default_collate([V2_1, V2_2, …]), …]
+                 </cite>
+                </p>
+               </li>
+               <li>
+                <p>
+                 <cite>
+                  Sequence[V1_i, V2_i, …]
+                 </cite>
+                 -&gt;
+                 <cite>
+                  Sequence[default_collate([V1_1, V1_2, …]),
+default_collate([V2_1, V2_2, …]), …]
+                 </cite>
+                </p>
+               </li>
+              </ul>
+             </div>
+            </blockquote>
             <dl class="field-list simple">
              <dt class="field-odd">
               Parameters
@@ -4993,6 +5100,18 @@ the same ordering will be always used.
             </div>
            </dd>
           </dl>
+          <span class="target" id="module-torch.utils.data.communication">
+          </span>
+          <span class="target" id="module-torch.utils.data.datapipes">
+          </span>
+          <span class="target" id="module-torch.utils.data.datapipes.dataframe">
+          </span>
+          <span class="target" id="module-torch.utils.data.datapipes.iter">
+          </span>
+          <span class="target" id="module-torch.utils.data.datapipes.map">
+          </span>
+          <span class="target" id="module-torch.utils.data.datapipes.utils">
+          </span>
          </div>
         </div>
        </article>

@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   RNN — PyTorch 1.11.0 documentation
+   RNN — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -187,6 +187,14 @@ function:
                   </mo>
                   <msub>
                    <mi>
+                    x
+                   </mi>
+                   <mi>
+                    t
+                   </mi>
+                  </msub>
+                  <msubsup>
+                   <mi>
                     W
                    </mi>
                    <mrow>
@@ -197,15 +205,10 @@ function:
                      h
                     </mi>
                    </mrow>
-                  </msub>
-                  <msub>
                    <mi>
-                    x
+                    T
                    </mi>
-                   <mi>
-                    t
-                   </mi>
-                  </msub>
+                  </msubsup>
                   <mo>
                    +
                   </mo>
@@ -227,6 +230,22 @@ function:
                   </mo>
                   <msub>
                    <mi>
+                    h
+                   </mi>
+                   <mrow>
+                    <mi>
+                     t
+                    </mi>
+                    <mo>
+                     −
+                    </mo>
+                    <mn>
+                     1
+                    </mn>
+                   </mrow>
+                  </msub>
+                  <msubsup>
+                   <mi>
                     W
                    </mi>
                    <mrow>
@@ -237,29 +256,10 @@ function:
                      h
                     </mi>
                    </mrow>
-                  </msub>
-                  <msub>
                    <mi>
-                    h
+                    T
                    </mi>
-                   <mrow>
-                    <mo stretchy="false">
-                     (
-                    </mo>
-                    <mi>
-                     t
-                    </mi>
-                    <mo>
-                     −
-                    </mo>
-                    <mn>
-                     1
-                    </mn>
-                    <mo stretchy="false">
-                     )
-                    </mo>
-                   </mrow>
-                  </msub>
+                  </msubsup>
                   <mo>
                    +
                   </mo>
@@ -281,7 +281,7 @@ function:
                   </mo>
                  </mrow>
                  <annotation encoding="application/x-tex">
-                  h_t = \tanh(W_{ih} x_t + b_{ih} + W_{hh} h_{(t-1)} + b_{hh})
+                  h_t = \tanh(x_t W_{ih}^T + b_{ih} + h_{t-1}W_{hh}^T + b_{hh})
                  </annotation>
                 </semantics>
                </math>
@@ -330,46 +330,13 @@ function:
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                <span class="strut" style="height:1.1413em;vertical-align:-0.25em;">
                 </span>
                 <span class="mop">
                  tanh
                 </span>
                 <span class="mopen">
                  (
-                </span>
-                <span class="mord">
-                 <span class="mord mathnormal" style="margin-right:0.13889em;">
-                  W
-                 </span>
-                 <span class="msupsub">
-                  <span class="vlist-t vlist-t2">
-                   <span class="vlist-r">
-                    <span class="vlist" style="height:0.3361em;">
-                     <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
-                      <span class="pstrut" style="height:2.7em;">
-                      </span>
-                      <span class="sizing reset-size6 size3 mtight">
-                       <span class="mord mtight">
-                        <span class="mord mathnormal mtight">
-                         ih
-                        </span>
-                       </span>
-                      </span>
-                     </span>
-                    </span>
-                    <span class="vlist-s">
-                     ​
-                    </span>
-                   </span>
-                   <span class="vlist-r">
-                    <span class="vlist" style="height:0.15em;">
-                     <span>
-                     </span>
-                    </span>
-                   </span>
-                  </span>
-                 </span>
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal">
@@ -395,6 +362,48 @@ function:
                    </span>
                    <span class="vlist-r">
                     <span class="vlist" style="height:0.15em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal" style="margin-right:0.13889em;">
+                  W
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.8913em;">
+                     <span style="top:-2.453em;margin-left:-0.1389em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         ih
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                     <span style="top:-3.113em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mathnormal mtight" style="margin-right:0.13889em;">
+                        T
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.247em;">
                      <span>
                      </span>
                     </span>
@@ -455,7 +464,46 @@ function:
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1.0496em;vertical-align:-0.3552em;">
+                <span class="strut" style="height:1.1383em;vertical-align:-0.247em;">
+                </span>
+                <span class="mord">
+                 <span class="mord mathnormal">
+                  h
+                 </span>
+                 <span class="msupsub">
+                  <span class="vlist-t vlist-t2">
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.3011em;">
+                     <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
+                      <span class="pstrut" style="height:2.7em;">
+                      </span>
+                      <span class="sizing reset-size6 size3 mtight">
+                       <span class="mord mtight">
+                        <span class="mord mathnormal mtight">
+                         t
+                        </span>
+                        <span class="mbin mtight">
+                         −
+                        </span>
+                        <span class="mord mtight">
+                         1
+                        </span>
+                       </span>
+                      </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.2083em;">
+                     <span>
+                     </span>
+                    </span>
+                   </span>
+                  </span>
+                 </span>
                 </span>
                 <span class="mord">
                  <span class="mord mathnormal" style="margin-right:0.13889em;">
@@ -464,8 +512,8 @@ function:
                  <span class="msupsub">
                   <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.3361em;">
-                     <span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.8913em;">
+                     <span style="top:-2.453em;margin-left:-0.1389em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
@@ -476,48 +524,12 @@ function:
                        </span>
                       </span>
                      </span>
-                    </span>
-                    <span class="vlist-s">
-                     ​
-                    </span>
-                   </span>
-                   <span class="vlist-r">
-                    <span class="vlist" style="height:0.15em;">
-                     <span>
-                     </span>
-                    </span>
-                   </span>
-                  </span>
-                 </span>
-                </span>
-                <span class="mord">
-                 <span class="mord mathnormal">
-                  h
-                 </span>
-                 <span class="msupsub">
-                  <span class="vlist-t vlist-t2">
-                   <span class="vlist-r">
-                    <span class="vlist" style="height:0.3448em;">
-                     <span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;">
+                     <span style="top:-3.113em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
-                       <span class="mord mtight">
-                        <span class="mopen mtight">
-                         (
-                        </span>
-                        <span class="mord mathnormal mtight">
-                         t
-                        </span>
-                        <span class="mbin mtight">
-                         −
-                        </span>
-                        <span class="mord mtight">
-                         1
-                        </span>
-                        <span class="mclose mtight">
-                         )
-                        </span>
+                       <span class="mord mathnormal mtight" style="margin-right:0.13889em;">
+                        T
                        </span>
                       </span>
                      </span>
@@ -527,7 +539,7 @@ function:
                     </span>
                    </span>
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.3552em;">
+                    <span class="vlist" style="height:0.247em;">
                      <span>
                      </span>
                     </span>

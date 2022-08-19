@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   MultiheadAttention — PyTorch 1.11.0 documentation
+   MultiheadAttention — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -833,6 +833,215 @@ from different representation subspaces as described in the paper:
              </span>
             </span>
             .
+           </p>
+           <p>
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              forward()
+             </span>
+            </code>
+            will use a special optimized implementation if all of the following
+conditions are met:
+           </p>
+           <ul class="simple">
+            <li>
+             <p>
+              self attention is being computed (i.e.,
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                query
+               </span>
+              </code>
+              ,
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                key
+               </span>
+              </code>
+              , and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                value
+               </span>
+              </code>
+              are the same tensor. This
+restriction will be loosened in the future.)
+             </p>
+            </li>
+            <li>
+             <p>
+              Either autograd is disabled (using
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                torch.inference_mode
+               </span>
+              </code>
+              or
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                torch.no_grad
+               </span>
+              </code>
+              ) or no tensor argument
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                requires_grad
+               </span>
+              </code>
+             </p>
+            </li>
+            <li>
+             <p>
+              training is disabled (using
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                .eval()
+               </span>
+              </code>
+              )
+             </p>
+            </li>
+            <li>
+             <p>
+              dropout is 0
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                add_bias_kv
+               </span>
+              </code>
+              is
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                False
+               </span>
+              </code>
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                add_zero_attn
+               </span>
+              </code>
+              is
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                False
+               </span>
+              </code>
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                batch_first
+               </span>
+              </code>
+              is
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                True
+               </span>
+              </code>
+              and the input is batched
+             </p>
+            </li>
+            <li>
+             <p>
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                kdim
+               </span>
+              </code>
+              and
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                vdim
+               </span>
+              </code>
+              are equal to
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                embed_dim
+               </span>
+              </code>
+             </p>
+            </li>
+            <li>
+             <p>
+              at most one of
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                key_padding_mask
+               </span>
+              </code>
+              or
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                attn_mask
+               </span>
+              </code>
+              is passed
+             </p>
+            </li>
+            <li>
+             <p>
+              if a
+              <a class="reference external" href="https://pytorch.org/docs/stable/nested.html">
+               NestedTensor
+              </a>
+              is passed, neither
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                key_padding_mask
+               </span>
+              </code>
+              nor
+              <code class="docutils literal notranslate">
+               <span class="pre">
+                attn_mask
+               </span>
+              </code>
+              is passed
+             </p>
+            </li>
+           </ul>
+           <p>
+            If the optimized implementation is in use, a
+            <a class="reference external" href="https://pytorch.org/docs/stable/nested.html">
+             NestedTensor
+            </a>
+            can be passed for
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              query
+             </span>
+            </code>
+            /
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              key
+             </span>
+            </code>
+            /
+            <code class="docutils literal notranslate">
+             <span class="pre">
+              value
+             </span>
+            </code>
+            to represent padding more efficiently than using a
+padding mask. In this case, a
+            <a class="reference external" href="https://pytorch.org/docs/stable/nested.html">
+             NestedTensor
+            </a>
+            will be returned, and an additional speedup proportional to the fraction of the input
+that is padding can be expected.
            </p>
            <dl class="field-list simple">
             <dt class="field-odd">
@@ -2874,10 +3083,16 @@ heads. Otherwise,
 effect when
                   <code class="docutils literal notranslate">
                    <span class="pre">
-                    need_weights=True.
+                    need_weights=True
                    </span>
                   </code>
-                  . Default: True (i.e. average weights across heads)
+                  . Default:
+                  <code class="docutils literal notranslate">
+                   <span class="pre">
+                    True
+                   </span>
+                  </code>
+                  (i.e. average weights across heads)
                  </p>
                 </li>
                </ul>
@@ -3432,32 +3647,9 @@ head of shape
                         <mo stretchy="false">
                          (
                         </mo>
-                        <mi>
-                         n
-                        </mi>
-                        <mi>
-                         u
-                        </mi>
-                        <msub>
-                         <mi>
-                          m
-                         </mi>
-                         <mi>
-                          h
-                         </mi>
-                        </msub>
-                        <mi>
-                         e
-                        </mi>
-                        <mi>
-                         a
-                        </mi>
-                        <mi>
-                         d
-                        </mi>
-                        <mi>
-                         s
-                        </mi>
+                        <mtext>
+                         num_heads
+                        </mtext>
                         <mo separator="true">
                          ,
                         </mo>
@@ -3475,66 +3667,22 @@ head of shape
                         </mo>
                        </mrow>
                        <annotation encoding="application/x-tex">
-                        (num_heads, L, S)
+                        (\text{num\_heads}, L, S)
                        </annotation>
                       </semantics>
                      </math>
                     </span>
                     <span aria-hidden="true" class="katex-html">
                      <span class="base">
-                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      <span class="strut" style="height:1.06em;vertical-align:-0.31em;">
                       </span>
                       <span class="mopen">
                        (
                       </span>
-                      <span class="mord mathnormal">
-                       n
-                      </span>
-                      <span class="mord mathnormal">
-                       u
-                      </span>
-                      <span class="mord">
-                       <span class="mord mathnormal">
-                        m
+                      <span class="mord text">
+                       <span class="mord">
+                        num_heads
                        </span>
-                       <span class="msupsub">
-                        <span class="vlist-t vlist-t2">
-                         <span class="vlist-r">
-                          <span class="vlist" style="height:0.3361em;">
-                           <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
-                            <span class="pstrut" style="height:2.7em;">
-                            </span>
-                            <span class="sizing reset-size6 size3 mtight">
-                             <span class="mord mathnormal mtight">
-                              h
-                             </span>
-                            </span>
-                           </span>
-                          </span>
-                          <span class="vlist-s">
-                           ​
-                          </span>
-                         </span>
-                         <span class="vlist-r">
-                          <span class="vlist" style="height:0.15em;">
-                           <span>
-                           </span>
-                          </span>
-                         </span>
-                        </span>
-                       </span>
-                      </span>
-                      <span class="mord mathnormal">
-                       e
-                      </span>
-                      <span class="mord mathnormal">
-                       a
-                      </span>
-                      <span class="mord mathnormal">
-                       d
-                      </span>
-                      <span class="mord mathnormal">
-                       s
                       </span>
                       <span class="mpunct">
                        ,
@@ -3575,32 +3723,9 @@ head of shape
                         <mo separator="true">
                          ,
                         </mo>
-                        <mi>
-                         n
-                        </mi>
-                        <mi>
-                         u
-                        </mi>
-                        <msub>
-                         <mi>
-                          m
-                         </mi>
-                         <mi>
-                          h
-                         </mi>
-                        </msub>
-                        <mi>
-                         e
-                        </mi>
-                        <mi>
-                         a
-                        </mi>
-                        <mi>
-                         d
-                        </mi>
-                        <mi>
-                         s
-                        </mi>
+                        <mtext>
+                         num_heads
+                        </mtext>
                         <mo separator="true">
                          ,
                         </mo>
@@ -3618,14 +3743,14 @@ head of shape
                         </mo>
                        </mrow>
                        <annotation encoding="application/x-tex">
-                        (N, num_heads, L, S)
+                        (N, \text{num\_heads}, L, S)
                        </annotation>
                       </semantics>
                      </math>
                     </span>
                     <span aria-hidden="true" class="katex-html">
                      <span class="base">
-                      <span class="strut" style="height:1em;vertical-align:-0.25em;">
+                      <span class="strut" style="height:1.06em;vertical-align:-0.31em;">
                       </span>
                       <span class="mopen">
                        (
@@ -3638,54 +3763,10 @@ head of shape
                       </span>
                       <span class="mspace" style="margin-right:0.1667em;">
                       </span>
-                      <span class="mord mathnormal">
-                       n
-                      </span>
-                      <span class="mord mathnormal">
-                       u
-                      </span>
-                      <span class="mord">
-                       <span class="mord mathnormal">
-                        m
+                      <span class="mord text">
+                       <span class="mord">
+                        num_heads
                        </span>
-                       <span class="msupsub">
-                        <span class="vlist-t vlist-t2">
-                         <span class="vlist-r">
-                          <span class="vlist" style="height:0.3361em;">
-                           <span style="top:-2.55em;margin-left:0em;margin-right:0.05em;">
-                            <span class="pstrut" style="height:2.7em;">
-                            </span>
-                            <span class="sizing reset-size6 size3 mtight">
-                             <span class="mord mathnormal mtight">
-                              h
-                             </span>
-                            </span>
-                           </span>
-                          </span>
-                          <span class="vlist-s">
-                           ​
-                          </span>
-                         </span>
-                         <span class="vlist-r">
-                          <span class="vlist" style="height:0.15em;">
-                           <span>
-                           </span>
-                          </span>
-                         </span>
-                        </span>
-                       </span>
-                      </span>
-                      <span class="mord mathnormal">
-                       e
-                      </span>
-                      <span class="mord mathnormal">
-                       a
-                      </span>
-                      <span class="mord mathnormal">
-                       d
-                      </span>
-                      <span class="mord mathnormal">
-                       s
                       </span>
                       <span class="mpunct">
                        ,

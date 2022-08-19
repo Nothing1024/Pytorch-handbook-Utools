@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.nn.functional.pad — PyTorch 1.11.0 documentation
+   torch.nn.functional.pad — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -91,12 +91,16 @@
             </span>
             <span class="default_value">
              <span class="pre">
-              0.0
+              None
              </span>
             </span>
            </em>
            <span class="sig-paren">
             )
+           </span>
+           →
+           <span class="pre">
+            Tensor
            </span>
            <a class="headerlink" href="#torch.nn.functional.pad" title="Permalink to this definition">
             ¶
@@ -592,9 +596,9 @@ to pad the last 3 dimensions, use
               </a>
               for concrete examples on how each of the
 padding modes works. Constant padding is implemented for arbitrary dimensions.
-Replicate and reflection padding is implemented for padding the last 3
-dimensions of 5D input tensor, or the last 2 dimensions of 4D input
-tensor, or the last dimension of 3D input tensor.
+Replicate and reflection padding are implemented for padding the last 3
+dimensions of a 4D or 5D input tensor, the last 2 dimensions of a 3D
+or 4D input tensor, or the last dimension of a 2D or 3D input tensor.
              </p>
             </dd>
            </dl>

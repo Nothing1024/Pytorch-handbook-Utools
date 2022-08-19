@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.sparse.addmm — PyTorch 1.11.0 documentation
+   torch.sparse.addmm — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -133,31 +133,37 @@
              </code>
             </a>
             in the forward,
-except that it supports backward for sparse matrix
+except that it supports backward for sparse COO matrix
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               mat1
              </span>
             </code>
             .
+When
             <code class="xref py py-attr docutils literal notranslate">
              <span class="pre">
               mat1
              </span>
             </code>
-            need to have
+            is a COO tensor it must have
             <cite>
              sparse_dim = 2
             </cite>
-            . Note that the gradients of
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              mat1
-             </span>
-            </code>
-            is a
-coalesced sparse tensor.
+            .
+When inputs are COO tensors, this function also supports backward for both inputs.
            </p>
+           <p>
+            Supports both CSR and COO storage formats.
+           </p>
+           <div class="admonition note">
+            <p class="admonition-title">
+             Note
+            </p>
+            <p>
+             This function doesn’t support computing derivaties with respect to CSR matrices.
+            </p>
+           </div>
            <dl class="field-list simple">
             <dt class="field-odd">
              Parameters

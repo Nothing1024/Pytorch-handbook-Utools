@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   torch.cuda.jiterator._create_jit_fn — PyTorch 1.12 documentation
+  </title>
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <!-- Google Analytics -->
+  <!-- End Google Analytics -->
+  <!-- Preload the theme fonts -->
+  <!-- Preload the katex fonts -->
+ </head>
+ <body class="pytorch-body">
+  <div class="pytorch-container">
+   <section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+    <div class="pytorch-content-left">
+     <div class="rst-content">
+      <div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+       <article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+        <div class="section" id="torch-cuda-jiterator-create-jit-fn">
+         <h1>
+          torch.cuda.jiterator._create_jit_fn
+          <a class="headerlink" href="#torch-cuda-jiterator-create-jit-fn" title="Permalink to this headline">
+           ¶
+          </a>
+         </h1>
+         <dl class="py function">
+          <dt id="torch.cuda.jiterator._create_jit_fn">
+           <code class="sig-prename descclassname">
+            <span class="pre">
+             torch.cuda.jiterator.
+            </span>
+           </code>
+           <code class="sig-name descname">
+            <span class="pre">
+             _create_jit_fn
+            </span>
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              code_string
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="o">
+             <span class="pre">
+              **
+             </span>
+            </span>
+            <span class="n">
+             <span class="pre">
+              kwargs
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/torch/cuda/jiterator.html#_create_jit_fn">
+            <span class="viewcode-link">
+             <span class="pre">
+              [source]
+             </span>
+            </span>
+           </a>
+           <a class="headerlink" href="#torch.cuda.jiterator._create_jit_fn" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Create a jiterator-generated cuda kernel for an elementwise op.
+           </p>
+           <p>
+            The code string has to be a valid CUDA function that describes the computation for a single element. The code
+string has to follow the c++ template pattern, as shown in the example below. This function will be inlined
+into elementwise kernel template, and compiled on the fly. Compiled kernel will be cached in memory, as well as
+local temp dir.
+           </p>
+           <p>
+            Jiterator-generated kernels accepts noncontiguous tensors, and supports boardcasting and type promotion.
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 code_string
+                </strong>
+                (
+                <em>
+                 string
+                </em>
+                ) – CUDA code string to be compiled by jiterator.
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 kwargs
+                </strong>
+                (
+                <em>
+                 Dict
+                </em>
+                <em>
+                 ,
+                </em>
+                <em>
+                 optional
+                </em>
+                ) – Keyword arguments for generated function
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+           <p class="rubric">
+            Example
+           </p>
+           <div class="doctest highlight-default notranslate">
+            <div class="highlight">
+             <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">code_string</span> <span class="o">=</span> <span class="s2">"template &lt;typename T&gt; T my_kernel(T x, T y, T alpha) { return  -x + alpha * y; }"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jitted_fn</span> <span class="o">=</span> <span class="n">create_jit_fn</span><span class="p">(</span><span class="n">code_string</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># invoke jitted function like a regular python function</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">jitted_fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">3.14</span><span class="p">)</span>
+</pre>
+            </div>
+           </div>
+           <p>
+            Jiterator can be used together with python registration to override an operator’s cuda kernel
+           </p>
+           <dl>
+            <dt>
+             Following example is overriding gelu’s cuda kernel with relu:
+            </dt>
+            <dd>
+             <div class="doctest highlight-default notranslate">
+              <div class="highlight">
+               <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">code_string</span> <span class="o">=</span> <span class="s2">"template &lt;typename T&gt; T my_gelu(T a) { return a &gt; 0 ? a : 0; }"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_gelu</span> <span class="o">=</span> <span class="n">create_jit_fn</span><span class="p">(</span><span class="n">code_string</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_lib</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">Library</span><span class="p">(</span><span class="s2">"aten"</span><span class="p">,</span> <span class="s2">"IMPL"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_lib</span><span class="o">.</span><span class="n">impl</span><span class="p">(</span><span class="s1">'aten::gelu'</span><span class="p">,</span> <span class="n">my_gelu</span><span class="p">,</span> <span class="s2">"CUDA"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># torch.nn.GELU and torch.nn.function.gelu are now overridden</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">gelu</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre>
+              </div>
+             </div>
+            </dd>
+           </dl>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             This API is in beta and may change in future releases.
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             Jiterator only supports up to 8 tensor inputs
+            </p>
+           </div>
+           <div class="admonition warning">
+            <p class="admonition-title">
+             Warning
+            </p>
+            <p>
+             All input tensors must live in CUDA device
+            </p>
+           </div>
+          </dd>
+         </dl>
+        </div>
+       </article>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>

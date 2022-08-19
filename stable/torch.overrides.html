@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.overrides — PyTorch 1.11.0 documentation
+   torch.overrides — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -185,6 +185,85 @@ to functions in that namespace that can be overridden.
              <dd class="field-even">
               <p>
                Dict[Any, List[Callable]]
+              </p>
+             </dd>
+            </dl>
+           </dd>
+          </dl>
+          <dl class="py function">
+           <dt id="torch.overrides.resolve_name">
+            <code class="sig-prename descclassname">
+             <span class="pre">
+              torch.overrides.
+             </span>
+            </code>
+            <code class="sig-name descname">
+             <span class="pre">
+              resolve_name
+             </span>
+            </code>
+            <span class="sig-paren">
+             (
+            </span>
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               f
+              </span>
+             </span>
+            </em>
+            <span class="sig-paren">
+             )
+            </span>
+            <a class="reference internal" href="_modules/torch/overrides.html#resolve_name">
+             <span class="viewcode-link">
+              <span class="pre">
+               [source]
+              </span>
+             </span>
+            </a>
+            <a class="headerlink" href="#torch.overrides.resolve_name" title="Permalink to this definition">
+             ¶
+            </a>
+           </dt>
+           <dd>
+            <p>
+             Get a human readable string name for a function passed to
+__torch_function__
+            </p>
+            <dl class="field-list simple">
+             <dt class="field-odd">
+              Parameters
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <strong>
+                callable
+               </strong>
+               (
+               <em>
+                Callable
+               </em>
+               ) – Function to resolve the name of.
+              </p>
+             </dd>
+             <dt class="field-even">
+              Returns
+             </dt>
+             <dd class="field-even">
+              <p>
+               Name of the function; if eval’ed it should give back the input
+function.
+              </p>
+             </dd>
+             <dt class="field-odd">
+              Return type
+             </dt>
+             <dd class="field-odd">
+              <p>
+               <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">
+                str
+               </a>
               </p>
              </dd>
             </dl>
@@ -470,7 +549,7 @@ checked.
             <div class="doctest highlight-default notranslate">
              <div class="highlight">
               <pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># This will make func dispatchable by __torch_function__</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">has_torch_function_unary</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">handle_torch_function</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,),</span> <span class="n">a</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">0</span>
 </pre>
@@ -502,20 +581,38 @@ checked.
            </dt>
            <dd>
             <p>
-             Check for __torch_function__ implementations in the elements of an iterable.
-Considers exact
+             Check for __torch_function__ implementations in the elements of an iterable
+or if a __torch_function__ mode is enabled.  Considers exact
              <code class="docutils literal notranslate">
               <span class="pre">
                Tensor
               </span>
              </code>
-             s and
+             s
+and
              <code class="docutils literal notranslate">
               <span class="pre">
                Parameter
               </span>
              </code>
-             s non-dispatchable.
+             s non-dispatchable.  Use this to guard a call to
+             <a class="reference internal" href="#torch.overrides.handle_torch_function" title="torch.overrides.handle_torch_function">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                handle_torch_function()
+               </span>
+              </code>
+             </a>
+             ; don’t use it to test if something
+is Tensor-like, use
+             <a class="reference internal" href="#torch.overrides.is_tensor_like" title="torch.overrides.is_tensor_like">
+              <code class="xref py py-func docutils literal notranslate">
+               <span class="pre">
+                is_tensor_like()
+               </span>
+              </code>
+             </a>
+             instead.
 :param relevant_args: Iterable or aguments to check for __torch_function__ methods.
 :type relevant_args: iterable
             </p>

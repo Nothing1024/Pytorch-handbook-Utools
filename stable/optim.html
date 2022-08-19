@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.optim — PyTorch 1.11.0 documentation
+   torch.optim — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -89,32 +89,6 @@ parameters (all should be
             s) to optimize. Then,
 you can specify optimizer-specific options such as the learning rate, weight decay, etc.
            </p>
-           <div class="admonition note">
-            <p class="admonition-title">
-             Note
-            </p>
-            <p>
-             If you need to move a model to GPU via
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               .cuda()
-              </span>
-             </code>
-             , please do so before
-constructing optimizers for it. Parameters of a model after
-             <code class="docutils literal notranslate">
-              <span class="pre">
-               .cuda()
-              </span>
-             </code>
-             will
-be different objects with those before the call.
-            </p>
-            <p>
-             In general, you should make sure that optimized parameters live in
-consistent locations when optimizers are constructed and used.
-            </p>
-           </div>
            <p>
             Example:
            </p>

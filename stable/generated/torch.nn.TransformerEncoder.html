@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   TransformerEncoder — PyTorch 1.11.0 documentation
+   TransformerEncoder — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -82,6 +82,24 @@
              </span>
             </span>
            </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             <span class="pre">
+              enable_nested_tensor
+             </span>
+            </span>
+            <span class="o">
+             <span class="pre">
+              =
+             </span>
+            </span>
+            <span class="default_value">
+             <span class="pre">
+              False
+             </span>
+            </span>
+           </em>
            <span class="sig-paren">
             )
            </span>
@@ -128,6 +146,22 @@
                  norm
                 </strong>
                 – the layer normalization component (optional).
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 enable_nested_tensor
+                </strong>
+                – if True, input will automatically convert to nested tensor
+(and convert back on output). This will improve the overall performance of
+TransformerEncoder when padding rate is high. Default:
+                <code class="docutils literal notranslate">
+                 <span class="pre">
+                  False
+                 </span>
+                </code>
+                (disabled).
                </p>
               </li>
              </ul>

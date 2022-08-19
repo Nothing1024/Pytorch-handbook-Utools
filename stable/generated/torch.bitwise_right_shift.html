@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.bitwise_right_shift — PyTorch 1.11.0 documentation
+   torch.bitwise_right_shift — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -113,12 +113,18 @@
              </span>
             </code>
             bits.
-The result will have the same dtype as
-            <code class="xref py py-attr docutils literal notranslate">
-             <span class="pre">
-              input
+The input tensor must be of integral type. This operator supports
+            <a class="reference internal" href="../notes/broadcasting.html#broadcasting-semantics">
+             <span class="std std-ref">
+              broadcasting to a common shape
              </span>
-            </code>
+            </a>
+            and
+            <a class="reference internal" href="../tensor_attributes.html#type-promotion-doc">
+             <span class="std std-ref">
+              type promotion
+             </span>
+            </a>
             .
            </p>
            <p>
@@ -150,25 +156,23 @@ The result will have the same dtype as
                     i
                    </mi>
                   </msub>
-                  <mi mathvariant="normal">
-                   /
-                  </mi>
-                  <msup>
-                   <mn>
-                    2
-                   </mn>
-                   <msub>
-                    <mtext>
-                     other
-                    </mtext>
-                    <mi>
-                     i
-                    </mi>
-                   </msub>
-                  </msup>
+                  <mo>
+                   &gt;
+                  </mo>
+                  <mo>
+                   &gt;
+                  </mo>
+                  <msub>
+                   <mtext>
+                    other
+                   </mtext>
+                   <mi>
+                    i
+                   </mi>
+                  </msub>
                  </mrow>
                  <annotation encoding="application/x-tex">
-                  \text{out}_i = \text{input}_i / 2 ^ {\text{other}_i}
+                  \text{out}_i = \text{input}_i &gt;&gt; \text{other}_i
                  </annotation>
                 </semantics>
                </math>
@@ -219,7 +223,7 @@ The result will have the same dtype as
                 </span>
                </span>
                <span class="base">
-                <span class="strut" style="height:1.1491em;vertical-align:-0.25em;">
+                <span class="strut" style="height:0.912em;vertical-align:-0.2441em;">
                 </span>
                 <span class="mord">
                  <span class="mord text">
@@ -254,57 +258,44 @@ The result will have the same dtype as
                   </span>
                  </span>
                 </span>
-                <span class="mord">
-                 /
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+                <span class="mrel">
+                 &gt;&gt;
+                </span>
+                <span class="mspace" style="margin-right:0.2778em;">
+                </span>
+               </span>
+               <span class="base">
+                <span class="strut" style="height:0.8444em;vertical-align:-0.15em;">
                 </span>
                 <span class="mord">
-                 <span class="mord">
-                  2
+                 <span class="mord text">
+                  <span class="mord">
+                   other
+                  </span>
                  </span>
                  <span class="msupsub">
-                  <span class="vlist-t">
+                  <span class="vlist-t vlist-t2">
                    <span class="vlist-r">
-                    <span class="vlist" style="height:0.8991em;">
-                     <span style="top:-3.113em;margin-right:0.05em;">
+                    <span class="vlist" style="height:0.3117em;">
+                     <span style="top:-2.55em;margin-right:0.05em;">
                       <span class="pstrut" style="height:2.7em;">
                       </span>
                       <span class="sizing reset-size6 size3 mtight">
-                       <span class="mord mtight">
-                        <span class="mord mtight">
-                         <span class="mord text mtight">
-                          <span class="mord mtight">
-                           other
-                          </span>
-                         </span>
-                         <span class="msupsub">
-                          <span class="vlist-t vlist-t2">
-                           <span class="vlist-r">
-                            <span class="vlist" style="height:0.3281em;">
-                             <span style="top:-2.357em;margin-right:0.0714em;">
-                              <span class="pstrut" style="height:2.5em;">
-                              </span>
-                              <span class="sizing reset-size3 size1 mtight">
-                               <span class="mord mathnormal mtight">
-                                i
-                               </span>
-                              </span>
-                             </span>
-                            </span>
-                            <span class="vlist-s">
-                             ​
-                            </span>
-                           </span>
-                           <span class="vlist-r">
-                            <span class="vlist" style="height:0.143em;">
-                             <span>
-                             </span>
-                            </span>
-                           </span>
-                          </span>
-                         </span>
-                        </span>
+                       <span class="mord mathnormal mtight">
+                        i
                        </span>
                       </span>
+                     </span>
+                    </span>
+                    <span class="vlist-s">
+                     ​
+                    </span>
+                   </span>
+                   <span class="vlist-r">
+                    <span class="vlist" style="height:0.15em;">
+                     <span>
                      </span>
                     </span>
                    </span>

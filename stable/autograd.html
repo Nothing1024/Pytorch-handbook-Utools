@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   Automatic differentiation package - torch.autograd — PyTorch 1.11.0 documentation
+   Automatic differentiation package - torch.autograd — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -1819,6 +1819,24 @@ and nvprof based (registers both CPU and GPU activity) using
               </span>
              </span>
             </em>
+            ,
+            <em class="sig-param">
+             <span class="n">
+              <span class="pre">
+               experimental_config
+              </span>
+             </span>
+             <span class="o">
+              <span class="pre">
+               =
+              </span>
+             </span>
+             <span class="default_value">
+              <span class="pre">
+               None
+              </span>
+             </span>
+            </em>
             <span class="sig-paren">
              )
             </span>
@@ -2049,6 +2067,19 @@ and not eager mode models.
                   </span>
                  </code>
                  and can be used to lower the overhead for GPU-only profiling.
+                </p>
+               </li>
+               <li>
+                <p>
+                 <strong>
+                  experimental_config
+                 </strong>
+                 (
+                 <em>
+                  _ExperimentalConfig
+                 </em>
+                 ) – A set of experimental options
+used by profiler libraries like Kineto. Note, backward compatibility is not guaranteed.
                 </p>
                </li>
               </ul>

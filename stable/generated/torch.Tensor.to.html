@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>
-   torch.Tensor.to — PyTorch 1.11.0 documentation
+   torch.Tensor.to — PyTorch 1.12 documentation
   </title>
   <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
   <!-- Google Analytics -->
@@ -85,7 +85,7 @@
           <dd>
            <p>
             Performs Tensor dtype and/or device conversion. A
-            <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+            <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
              <code class="xref py py-class docutils literal notranslate">
               <span class="pre">
                torch.dtype
@@ -93,7 +93,7 @@
              </code>
             </a>
             and
-            <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+            <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
              <code class="xref py py-class docutils literal notranslate">
               <span class="pre">
                torch.device
@@ -125,7 +125,7 @@ inferred from the arguments of
              </code>
              Tensor already
 has the correct
-             <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+             <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
               <code class="xref py py-class docutils literal notranslate">
                <span class="pre">
                 torch.dtype
@@ -133,7 +133,7 @@ has the correct
               </code>
              </a>
              and
-             <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+             <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
               <code class="xref py py-class docutils literal notranslate">
                <span class="pre">
                 torch.device
@@ -154,7 +154,7 @@ Otherwise, the returned tensor is a copy of
               </span>
              </code>
              with the desired
-             <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+             <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
               <code class="xref py py-class docutils literal notranslate">
                <span class="pre">
                 torch.dtype
@@ -162,7 +162,7 @@ Otherwise, the returned tensor is a copy of
               </code>
              </a>
              and
-             <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+             <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
               <code class="xref py py-class docutils literal notranslate">
                <span class="pre">
                 torch.device
@@ -267,11 +267,13 @@ Otherwise, the returned tensor is a copy of
               <div>
                <p>
                 Returns a Tensor with the specified
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  dtype
-                 </span>
-                </code>
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   dtype
+                  </span>
+                 </code>
+                </a>
                </p>
                <dl class="simple">
                 <dt>
@@ -280,7 +282,7 @@ Otherwise, the returned tensor is a copy of
                 <dd>
                  <p>
                   memory_format (
-                  <a class="reference internal" href="../tensor_attributes.html#torch.torch.memory_format" title="torch.torch.memory_format">
+                  <a class="reference internal" href="../tensor_attributes.html#torch.memory_format" title="torch.memory_format">
                    <code class="xref py py-class docutils literal notranslate">
                     <span class="pre">
                      torch.memory_format
@@ -421,23 +423,29 @@ returned Tensor. Default:
               <div>
                <p>
                 Returns a Tensor with the specified
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  device
-                 </span>
-                </code>
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   device
+                  </span>
+                 </code>
+                </a>
                 and (optional)
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  dtype
-                 </span>
-                </code>
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   dtype
+                  </span>
+                 </code>
+                </a>
                 . If
-                <code class="xref py py-attr docutils literal notranslate">
-                 <span class="pre">
-                  dtype
-                 </span>
-                </code>
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
+                 <code class="xref py py-attr docutils literal notranslate">
+                  <span class="pre">
+                   dtype
+                  </span>
+                 </code>
+                </a>
                 is
                 <code class="docutils literal notranslate">
                  <span class="pre">
@@ -476,7 +484,7 @@ already matches the desired conversion.
                 <dd>
                  <p>
                   memory_format (
-                  <a class="reference internal" href="../tensor_attributes.html#torch.torch.memory_format" title="torch.torch.memory_format">
+                  <a class="reference internal" href="../tensor_attributes.html#torch.memory_format" title="torch.memory_format">
                    <code class="xref py py-class docutils literal notranslate">
                     <span class="pre">
                      torch.memory_format
@@ -571,7 +579,7 @@ returned Tensor. Default:
               <div>
                <p>
                 Returns a Tensor with same
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.dtype" title="torch.torch.dtype">
+                <a class="reference internal" href="../tensor_attributes.html#torch.dtype" title="torch.dtype">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    torch.dtype
@@ -579,7 +587,7 @@ returned Tensor. Default:
                  </code>
                 </a>
                 and
-                <a class="reference internal" href="../tensor_attributes.html#torch.torch.device" title="torch.torch.device">
+                <a class="reference internal" href="../tensor_attributes.html#torch.device" title="torch.device">
                  <code class="xref py py-class docutils literal notranslate">
                   <span class="pre">
                    torch.device
